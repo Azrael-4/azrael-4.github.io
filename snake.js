@@ -95,5 +95,7 @@ const spree7 = new Audio('arquivos/Flamboyant_8_kills.mp3');
 const spree8 = new Audio('arquivos/Flamboyant_9_kills.mp3');
 const spree9 = new Audio('arquivos/Flamboyant_10_kills.mp3');
 const spree10 = new Audio('arquivos/Flamboyant_annihilation.mp3');
+const derrota = new Audio('arquivos/Flamboyant_defeat.mp3');
 
+const comer = new Audio('arquivos/comer.wav');
 const musica = new Audio('arquivos/Musica.mp3');
