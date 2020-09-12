@@ -2,7 +2,7 @@ var velocidade = 200;
 var optiones = 0;
 
 while (!(optiones == 1 || optiones == 2 || optiones == 3 || optiones == 4)) {
-  var x = prompt("Escolha a velocidade do jogo!\n\n1 - Lenta\n\n2 - Média\n\n3 - Rápida\n\n4 - Burlesca\n\n", "1 2 3 4");
+  var x = prompt("Escolha a velocidade do jogo!\n\n1 - Lenta\n\n2 - Média\n\n3 - Rápida\n\n4 - Burlesca\n\n", "4");
   optiones = x;
   }
 
