@@ -39,11 +39,11 @@ function Snake() {
   }
   this.changeDirection = function (direction) {
   	switch(direction) {
-  		case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'; console.log(direciones)} break;
-  		case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'; console.log(direciones)} break;
-  		case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'; console.log(direciones)} break;
-  		case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'; console.log(direciones)} break;
-      default: console.log("DEFAULT!");
+  		case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'} break;
+  		case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'} break;
+  		case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'} break;
+  		case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'} break;
+      default: console.log("DEFAULT SWITCH DIRECTION SNAKE");
   	}
   }
   this.eat = function(fruit) {
@@ -60,9 +60,9 @@ function Snake() {
         if (this.total == 80) { spree8.play(); }
         if (this.total == 90) { spree9.play(); }
         if (this.total >= 100) { spree10.play(); }
-	comer.play();
+        comer.play();
         
-  	return true
+  		return true
   	}
   	return false;
   }
@@ -71,9 +71,9 @@ function Snake() {
   		if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
   			var last = snake.total;
   			document.querySelector('.lastScore').innerText = last;
-  			this.total = 0;
+        this.total = 0;
   			this.tail = [];
-			derrota.play();
+        derrota.play();
   			if (last >= maximum) {maximum = last; document.querySelector('.maxScore').innerText = maximum;};
   		}
   	}
@@ -100,4 +100,6 @@ const spree10 = new Audio('arquivos/Flamboyant_annihilation.mp3');
 const derrota = new Audio('arquivos/Flamboyant_defeat.mp3');
 
 const comer = new Audio('arquivos/comer.wav');
-const musica = new Audio('arquivos/Musica.mp3');
+const musica1 = new Audio('arquivos/Musica1.mp3');
+const musica2 = new Audio('arquivos/Musica2.mp3');
+const musica3 = new Audio('arquivos/Musica3.mp3');
