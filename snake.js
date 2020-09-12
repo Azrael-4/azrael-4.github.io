@@ -60,8 +60,9 @@ function Snake() {
         if (this.total == 80) { spree8.play(); }
         if (this.total == 90) { spree9.play(); }
         if (this.total >= 100) { spree10.play(); }
+	comer.play();
         
-  		return true
+  	return true
   	}
   	return false;
   }
@@ -72,6 +73,7 @@ function Snake() {
   			document.querySelector('.lastScore').innerText = last;
   			this.total = 0;
   			this.tail = [];
+			derrota.play();
   			if (last >= maximum) {maximum = last; document.querySelector('.maxScore').innerText = maximum;};
   		}
   	}
