@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake Game</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body onclick="removerMsg()">
+	
+	<h1>Snake Game</h1>
+	<h2><i>Feito por Elton Andrade</i></h2>
+	
+	<canvas class="canvas" height="300" width="300" style="background-color: #000"></canvas>
+	
+	<h2>Current Score: <span class="score quadrado"></span></h2>
+	<h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2>
+	<h2>Maximum Score: <span class="maxScore quadrado"></span></h2>
+	<h1 id="SOM" style="color: red"><i>Som Desativado!<br>Clique na tela para ativar.<br>Música sugerida: <a href="https://www.youtube.com/watch?v=a4fv-BtzNmY">Tomas Skyldeberg</a></h1>
+		
+	<script src="fruit.js"></script>
+	<script src="snake.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
