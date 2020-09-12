@@ -58,5 +58,13 @@ window.addEventListener('keydown', ((evt) => {
 
 function removerMsg () {
   document.getElementById('SOM').innerHTML = "";
-  musica.play();
+  musicRandom = Math.floor(Math.random() * 3) ;
+  console.log(musicRandom);
+  switch ( musicRandom ){
+    case 0: musica2.pause();musica3.pause();musica1.play();break;
+    case 1: musica1.pause();musica3.pause();musica2.play();break;
+    case 2: musica1.pause();musica2.pause();musica3.play();break;
+    default: console.log("Random Music");
+  }
+
 }
