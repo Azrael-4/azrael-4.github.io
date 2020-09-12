@@ -58,4 +58,5 @@ window.addEventListener('keydown', ((evt) => {
 
 function removerMsg () {
   document.getElementById('SOM').innerHTML = "";
+  musica.play();
 }
