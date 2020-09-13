@@ -5,3 +5,5 @@ body {
 .quadrado {border: solid 1px black;}
 
 canvas {background-color: #000; border: 1px solid green;}
+
+button {height: 300px; width:300px;}
