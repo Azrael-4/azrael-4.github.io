@@ -4,24 +4,23 @@
 	<title>Snake Game</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="arquivos\Favicon.png">
-	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">	
 </head>
-<body><div class="w3-container w3-main">
+<body><div class="w3-container w3-main w3-center">
 
-	<div class="w3-teal">
-		<h1>Snake Game</h1><h2><i>By Az</i></h2>
-	</div>
-	
+	<h1 class="w3-black" style="text-shadow:1px 1px 0 #444">Snake Game</h1><h2 style="text-shadow:1px 1px 0 #fff"><i>by Az</i></h2>
+		
 	<canvas class="canvas" height="300" width="300" onclick="iniciar()"></canvas>
 	
 	<h2>Current Score: <span class="score quadrado"></span></h2>
-	<h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2>
+	<!-- <h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2> -->
 	<h2>Maximum Score: <span class="maxScore quadrado">0</span></h2>
-	<h1 id="SOM" style="color: red"><i>Som Desativado!<br>Clique na tela do jogo para ativar.<br>Clique novamente para mudar ou recomeçar a música.</i></h1>
+	
+	<h1 id="SOM" class="w3-text-red"><i>Som Desativado!<br>Clique na tela para ativar, mudar ou recomeçar a música.</i></h1>
 	<!-- Tomas Skyldeberg: https://www.youtube.com/watch?v=a4fv-BtzNmY</a>-->
-	<div class="w3-bar">
+	<div class="w3-bar w3-hide">
 		<button id="buttonLeft" class="w3-button w3-teal w3-jumbo "><i class="fa fa-arrow-left"></i></button>
 		<button id="buttonUp" class="w3-button w3-teal w3-jumbo"><i class="fa fa-arrow-up"></i></button>
 		<button id="buttonDown" class="w3-button w3-teal w3-jumbo"><i class="fa fa-arrow-down"></i></button>
