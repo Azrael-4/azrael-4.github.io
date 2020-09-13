@@ -1,5 +1,7 @@
 body {
-	text-align: center;
+	text-align: center; background-color: #eeeeff; 
 	}
 
 .quadrado {border: solid 1px black;}
+
+canvas {background-color: #000; border: 1px solid green;}
