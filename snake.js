@@ -59,7 +59,10 @@ function Snake() {
         if (this.total == 70) { spree7.play(); }
         if (this.total == 80) { spree8.play(); }
         if (this.total == 90) { spree9.play(); }
-        if (this.total >= 100) { spree10.play(); }
+        if (this.total == 100) { spree10.play(); }
+	if (this.total == 110) { spree10.play(); }
+	if (this.total == 120) { spree10.play(); }
+	if (this.total >= 130) { spree10.play(); }
         comer.play();
         
   		return true
