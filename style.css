@@ -1,9 +1,10 @@
 body {
-	text-align: center; background-color: #eeeeff; 
+	background-color: #eeeeff; 
 	}
 
-.quadrado {border: solid 1px black;}
+.quadrado {border: solid 1px;}
 
-canvas {background-color: #000; border: 1px solid teal; min-width: 40%}
+canvas {background-color: #000; border: 1px solid teal;}
 
-button {width:200px; height: 200px; max-width: 20%}
+button {width:23%;}
+
