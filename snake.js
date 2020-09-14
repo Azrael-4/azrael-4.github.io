@@ -85,7 +85,6 @@ function Snake() {
   	for (let i = 0; i < this.tail.length; i++) {
   		if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
   			var last = snake.total;
-  			document.querySelector('.lastScore').innerText = last;
         if (last < 50) {derrota1.play()} else {derrota2.play()};
         this.total = 0;
   			this.tail = [];
