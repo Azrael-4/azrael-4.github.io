@@ -46,14 +46,14 @@ var snake;
 
 
 
-/*// ELTON TOUCH -> //
-document.getElementById("buttonUp").addEventListener('click', function() {
+// ELTON TOUCH -> //
+document.getElementById("buttonUp").addEventListener('touchstart', function() {
   var direction2 = 'Up'; snake.changeDirection(direction2); });
-document.getElementById("buttonDown").addEventListener('click', function() {
+document.getElementById("buttonDown").addEventListener('touchstart', function() {
   var direction2 = 'Down'; snake.changeDirection(direction2); });
-document.getElementById("buttonLeft").addEventListener('click', function() {
+document.getElementById("buttonLeft").addEventListener('touchstart', function() {
   var direction2 = 'Left'; snake.changeDirection(direction2); });
-document.getElementById("buttonRight").addEventListener('click', function() {
+document.getElementById("buttonRight").addEventListener('touchstart', function() {
   var direction2 = 'Right'; snake.changeDirection(direction2); });
 // <- ELTON TOUCH //
 
