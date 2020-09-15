@@ -44,7 +44,9 @@ var snake;
     }, velocidade);
 }());
 
-//ELTON
+
+
+/*// ELTON TOUCH -> //
 document.getElementById("buttonUp").addEventListener('click', function() {
   var direction2 = 'Up'; snake.changeDirection(direction2); });
 document.getElementById("buttonDown").addEventListener('click', function() {
@@ -53,7 +55,21 @@ document.getElementById("buttonLeft").addEventListener('click', function() {
   var direction2 = 'Left'; snake.changeDirection(direction2); });
 document.getElementById("buttonRight").addEventListener('click', function() {
   var direction2 = 'Right'; snake.changeDirection(direction2); });
-//ELTON
+// <- ELTON TOUCH //
+
+
+
+
+/* ELTON BOTÕES //
+document.getElementById("buttonUp").addEventListener('click', function() {
+  var direction2 = 'Up'; snake.changeDirection(direction2); });
+document.getElementById("buttonDown").addEventListener('click', function() {
+  var direction2 = 'Down'; snake.changeDirection(direction2); });
+document.getElementById("buttonLeft").addEventListener('click', function() {
+  var direction2 = 'Left'; snake.changeDirection(direction2); });
+document.getElementById("buttonRight").addEventListener('click', function() {
+  var direction2 = 'Right'; snake.changeDirection(direction2); });
+// <- ELTON BOTÕES //*/
 
 window.addEventListener('keydown', ((evt) => {
   //console.log(evt);
@@ -112,9 +128,7 @@ const spree10 = new Audio('arquivos/Flamboyant_10_kills.mp3');
 const spree11 = new Audio('arquivos/Flamboyant_annihilation.mp3');
 const spree12 = new Audio('arquivos/Flamboyant_immortal.mp3');
 
-
-const derrota1 = new Audio('arquivos/Flamboyant_nemesis.mp3');
-const derrota2 = new Audio('arquivos/Flamboyant_defeat.mp3');
+const derrota = new Audio('arquivos/Flamboyant_defeat.mp3');
 
 const comer = new Audio('arquivos/comer.wav');
 const musica1 = new Audio('arquivos/Musica1.mp3');
