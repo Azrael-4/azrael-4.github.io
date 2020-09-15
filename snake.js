@@ -11,26 +11,28 @@ function Snake() {
   this.tail = [];
 
   this.draw = function() {
+
     ctx.fillStyle = "#FFFFFF";
 
     for (let i=0; i < this.tail.length; i++) {
-    ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
-	}
+      ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
+    }
 
     ctx.fillRect(this.x, this.y, scale, scale);
-    }
+  }
 
   this.update = function() {
     for (let i=0; i < this.tail.length -1; i++) {
   		this.tail[i] = this.tail[i+1];
-  	}
+    }
 
-  	this.tail[this.total -1] = { x: this.x, y: this.y};
+    this.tail[this.total -1] = { x: this.x, y: this.y};
 
-  	this.x += this.xSpeed;
-  	this.y += this.ySpeed;
-  	if (this.x == canvas.width) {this.x = 0};
-  	if (this.x < 0) {this.x = canvas.width};
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+  
+    if (this.x == canvas.width) {this.x = 0};
+    if (this.x < 0) {this.x = canvas.width};
     if (this.y == canvas.height) {this.y = 0};
     if (this.y < 0) {this.y = canvas.height};
   }
@@ -46,18 +48,17 @@ function Snake() {
 
     //ELTON
     this.changeDirection2 = function (direction2) {
-    switch(direction2) {
-      case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'} break;
-      case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'} break;
-      case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'} break;
-      case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'} break;
-      default: break;
-    }}
-    //ELTON
-
-
+      switch(direction2) {
+        case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'} break;
+        case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'} break;
+        case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'} break;
+        case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'} break;
+        default: break;
+        }
+    }
   }
 
+  // KILLING SPREES
   this.eat = function(fruit) {
   	if (this.x === fruit.x && this.y === fruit.y) {
       this.total++;
@@ -81,11 +82,12 @@ function Snake() {
   	}
   	return false;
   }
+
   this.checkCollision = function() {
   	for (let i = 0; i < this.tail.length; i++) {
   		if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
   			var last = snake.total;
-        if (last < 50) {derrota1.play()} else {derrota2.play()};
+  			derrota2.play();
         this.total = 0;
   			this.tail = [];
         if (last >= maximum) {maximum = last; document.querySelector('.maxScore').innerText = maximum;};
