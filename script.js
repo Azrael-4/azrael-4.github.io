@@ -223,10 +223,10 @@ function Snake() {
     for (let i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
         var last = snake.total;
-        derrota2.play();
         this.total = 0;
         this.tail = [];
         if (last >= maximum) {maximum = last; document.querySelector('.maxScore').innerText = maximum;};
+        derrota.play();
       }
     }
   }
