@@ -1,5 +1,5 @@
 // GENERAL SCRIPT -> //
-var velocidade = 50;
+var velocidade = 70;
 /*
 var optiones = 0;
 while (!(optiones == 1 || optiones == 2 || optiones == 3 )) {
@@ -209,7 +209,7 @@ function Snake() {
       if (this.total == 90) { spree9.play(); }
       if (this.total == 100) { spree10.play(); }
       if (this.total == 110) { spree11.play(); }
-      if (this.total == 120) { spree11.play(); }
+      if (this.total == 120) { spree12.play(); }
       if (this.total == 130) { spree12.play(); }
       if (this.total == 140) { spree12.play(); }
       if (this.total >= 150) { spree12.play(); }
