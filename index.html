@@ -14,17 +14,21 @@
 		#botoes {width: 100%;}
 	</style>
 </head>
-<body><div class="w3-center w3-light-grey">
+<body class="w3-light-grey">
 
-	<h1 class="w3-black" style="text-shadow:1px 1px 0 #444">Snake Game</h1><h2 style="text-shadow:1px 1px 0 #fff"><i>by Az</i></h2>
+	<div class="w3-container w3-center ">
+		<h1 style="text-shadow:1px 1px 0 #fff">Azrael's Snake Game</h1>
+	</div>
 		
-	<canvas class="canvas" height=300 width="300" onclick="iniciar()"></canvas>
+	<center><canvas class="canvas" height=300 width="300" onclick="iniciar()" style="width:40%">Seu navegador não suporta canvas =(</canvas></center>
 	
-	<h2>Current Score: <span class="score quadrado"></span></h2>
-	<!-- <h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2> -->
-	<h2>Maximum Score: <span class="maxScore quadrado">0</span></h2>
+	<div class="w3-container w3-center">
+		<h2>Current Score: <span class="score quadrado"></span></h2>
+		<!-- <h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2> -->
+		<h2>Maximum Score: <span class="maxScore quadrado">0</span></h2>
+	</div>
 	
-	<div class="w3-bar">
+	<div class="w3-bar w3-center">
 		<button id="buttonUp" class="w3-button w3-red w3-jumbo"><i class="fa fa-arrow-up"></i></button><br>
 		<button id="buttonLeft" class="w3-button w3-red w3-jumbo"><i class="fa fa-arrow-left"></i></button>
 		<!--<button class="w3-button w3-light-grey w3-jumbo"></button>-->
@@ -32,9 +36,9 @@
 		<button id="buttonRight" class="w3-button w3-red w3-jumbo"><i class="fa fa-arrow-right"></i></button>		
 	</div>
 
-	<h1 id="SOM" class="w3-text-red"><i>Som Desativado!<br>Clique na tela para ativar, mudar ou recomeçar a música.</i></h1>
+	<h1 id="SOM" class="w3-text-red w3-center"><i>Som Desativado!<br>Clique na tela para ativar, mudar ou recomeçar a música.</i></h1>
 	<!-- Tomas Skyldeberg: https://www.youtube.com/watch?v=a4fv-BtzNmY</a>-->
-	</div>
+	
 	<script src="script.js"></script>
 </body>
 </html>
