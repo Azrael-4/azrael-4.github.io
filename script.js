@@ -1,5 +1,5 @@
 // GENERAL SCRIPT -> //
-var velocidade = 70;
+var velocidade = 80;
 /*
 var optiones = 0;
 while (!(optiones == 1 || optiones == 2 || optiones == 3 )) {
