@@ -45,8 +45,7 @@ var snake;
 }());
 
 
-
-// ELTON TOUCH -> //
+// TOUCH -> //
 document.getElementById("buttonUp").addEventListener('touchstart', function() {
   var direction2 = 'Up'; snake.changeDirection(direction2); });
 document.getElementById("buttonDown").addEventListener('touchstart', function() {
@@ -55,12 +54,9 @@ document.getElementById("buttonLeft").addEventListener('touchstart', function() 
   var direction2 = 'Left'; snake.changeDirection(direction2); });
 document.getElementById("buttonRight").addEventListener('touchstart', function() {
   var direction2 = 'Right'; snake.changeDirection(direction2); });
-// <- ELTON TOUCH //
+// <- TOUCH //
 
-
-
-
-/* ELTON BOTÕES //
+/* BUTTONS -> //
 document.getElementById("buttonUp").addEventListener('click', function() {
   var direction2 = 'Up'; snake.changeDirection(direction2); });
 document.getElementById("buttonDown").addEventListener('click', function() {
@@ -69,7 +65,7 @@ document.getElementById("buttonLeft").addEventListener('click', function() {
   var direction2 = 'Left'; snake.changeDirection(direction2); });
 document.getElementById("buttonRight").addEventListener('click', function() {
   var direction2 = 'Right'; snake.changeDirection(direction2); });
-// <- ELTON BOTÕES //*/
+// <- BUTTONS //*/
 
 window.addEventListener('keydown', ((evt) => {
   //console.log(evt);
@@ -82,7 +78,7 @@ window.addEventListener('keydown', ((evt) => {
 // <- GENERAL SCRIPT //
 
 
-// FRUIT SCRIPT ->
+// FRUIT ->
 function fruit () {
   this.x;
   this.y;
@@ -96,11 +92,10 @@ function fruit () {
     ctx.fillRect(this.x, this.y, scale, scale);
   }
 }
-// <- FRUIT SCRIPT //
+// <- FRUIT //
 
 
-// START AND SOUNDS DECLARATIONS -> //
-
+// STARTING AND SOUNDS DECLARATIONS -> //
 var musicaTocar = 0;
 
 function iniciar () {
@@ -127,12 +122,112 @@ const spree9 = new Audio('arquivos/Flamboyant_9_kills.mp3');
 const spree10 = new Audio('arquivos/Flamboyant_10_kills.mp3');
 const spree11 = new Audio('arquivos/Flamboyant_annihilation.mp3');
 const spree12 = new Audio('arquivos/Flamboyant_immortal.mp3');
-
 const derrota = new Audio('arquivos/Flamboyant_defeat.mp3');
-
 const comer = new Audio('arquivos/comer.wav');
 const musica1 = new Audio('arquivos/Musica1.mp3');
 const musica2 = new Audio('arquivos/Musica2.mp3');
 const musica3 = new Audio('arquivos/Musica3.mp3');
+// <- STARTING AND SOUNDS DECLARATIONS //
 
-// <- START AND SOUNDS DECLARATIONS //
+
+
+
+//// SNAKE.JS ////
+
+var maximum = 0;
+var direciones = 0;
+
+function Snake() {
+  this.x = 0;
+  this.y = 0;
+  this.xSpeed = scale*1;
+  this.ySpeed = 0;
+  
+  this.total = 0;
+  this.tail = [];
+
+  this.draw = function() {
+
+    ctx.fillStyle = "#FFFFFF";
+
+    for (let i=0; i < this.tail.length; i++) {
+      ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
+    }
+
+    ctx.fillRect(this.x, this.y, scale, scale);
+  }
+
+  this.update = function() {
+    for (let i=0; i < this.tail.length -1; i++) {
+      this.tail[i] = this.tail[i+1];
+    }
+
+    this.tail[this.total -1] = { x: this.x, y: this.y};
+
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+  
+    if (this.x == canvas.width) {this.x = 0};
+    if (this.x < 0) {this.x = canvas.width};
+    if (this.y == canvas.height) {this.y = 0};
+    if (this.y < 0) {this.y = canvas.height};
+  }
+  
+  this.changeDirection = function (direction) {
+    switch(direction) {
+      case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'} break;
+      case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'} break;
+      case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'} break;
+      case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'} break;
+      default: break;
+    }
+
+    //ELTON
+    this.changeDirection2 = function (direction2) {
+      switch(direction2) {
+        case 'Up':    if (direciones != 'Down')   {this.xSpeed = 0;          this.ySpeed = -scale*1;   direciones = 'Top'} break;
+        case 'Down':  if (direciones != 'Top')   {this.xSpeed = 0;          this.ySpeed = scale*1;    direciones = 'Down'} break;
+        case 'Left':  if (direciones != 'Right')   {this.xSpeed = -scale*1;   this.ySpeed = 0;          direciones = 'Left'} break;
+        case 'Right': if (direciones != 'Left')   {this.xSpeed = scale*1;    this.ySpeed = 0;          direciones = 'Right'} break;
+        default: break;
+        }
+    }
+  }
+
+  // KILLING SPREES
+  this.eat = function(fruit) {
+    if (this.x === fruit.x && this.y === fruit.y) {
+      this.total++;
+      if (this.total == 10) { spree1.play(); }
+      if (this.total == 20) { spree2.play(); }
+      if (this.total == 30) { spree3.play(); }
+      if (this.total == 40) { spree4.play(); }
+      if (this.total == 50) { spree5.play(); }
+      if (this.total == 60) { spree6.play(); }
+      if (this.total == 70) { spree7.play(); }
+      if (this.total == 80) { spree8.play(); }
+      if (this.total == 90) { spree9.play(); }
+      if (this.total == 100) { spree10.play(); }
+      if (this.total == 110) { spree11.play(); }
+      if (this.total == 120) { spree11.play(); }
+      if (this.total == 130) { spree12.play(); }
+      if (this.total == 140) { spree12.play(); }
+      if (this.total >= 150) { spree12.play(); }
+      comer.play();
+      return true;
+    }
+    return false;
+  }
+
+  this.checkCollision = function() {
+    for (let i = 0; i < this.tail.length; i++) {
+      if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+        var last = snake.total;
+        derrota2.play();
+        this.total = 0;
+        this.tail = [];
+        if (last >= maximum) {maximum = last; document.querySelector('.maxScore').innerText = maximum;};
+      }
+    }
+  }
+}
