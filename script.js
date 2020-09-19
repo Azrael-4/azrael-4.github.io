@@ -120,8 +120,9 @@ const spree7 = new Audio('arquivos/Flamboyant_7_kills.mp3');
 const spree8 = new Audio('arquivos/Flamboyant_8_kills.mp3');
 const spree9 = new Audio('arquivos/Flamboyant_9_kills.mp3');
 const spree10 = new Audio('arquivos/Flamboyant_10_kills.mp3');
-const spree11 = new Audio('arquivos/Flamboyant_annihilation.mp3');
-const spree12 = new Audio('arquivos/Flamboyant_immortal.mp3');
+const spree11 = new Audio('arquivos/Flamboyant_quad_kill.mp3');
+const spree12 = new Audio('arquivos/Flamboyant_annihilation.mp3');
+const spree13 = new Audio('arquivos/Flamboyant_immortal.mp3');
 const derrota = new Audio('arquivos/Flamboyant_defeat.mp3');
 const comer = new Audio('arquivos/comer.wav');
 const musica1 = new Audio('arquivos/Musica1.mp3');
@@ -198,21 +199,21 @@ function Snake() {
   this.eat = function(fruit) {
     if (this.x === fruit.x && this.y === fruit.y) {
       this.total++;
-      if (this.total == 10) { spree1.play(); }
-      if (this.total == 20) { spree2.play(); }
-      if (this.total == 30) { spree3.play(); }
-      if (this.total == 40) { spree4.play(); }
-      if (this.total == 50) { spree5.play(); }
-      if (this.total == 60) { spree6.play(); }
-      if (this.total == 70) { spree7.play(); }
-      if (this.total == 80) { spree8.play(); }
-      if (this.total == 90) { spree9.play(); }
-      if (this.total == 100) { spree10.play(); }
-      if (this.total == 110) { spree11.play(); }
-      if (this.total == 120) { spree12.play(); }
-      if (this.total == 130) { spree12.play(); }
-      if (this.total == 140) { spree12.play(); }
-      if (this.total >= 150) { spree12.play(); }
+      if (this.total == 10) { spree1.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-apple'></i> Cherry Popper!!!</i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 20) { spree2.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Homicidal!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 30) { spree3.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Fabulous!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 40) { spree4.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Big bear!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 50) { spree5.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Diva!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 60) { spree6.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Macho!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 70) { spree7.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Thavage... uuh!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 80) { spree8.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Domination!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 90) { spree9.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Homewrecker!!!"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 100) { spree10.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Superstar! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 110) { spree11.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Unicorn Stampede! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 120) { spree12.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Rainbow Warrior! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 130) { spree13.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Ooh... Scarry! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total == 140) { spree13.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Ooh... Scarry! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
+      if (this.total >= 150) { spree12.play(); document.getElementById("titulo").innerHTML="<span class='announcer'><i class='fa fa-star'></i> Ooh... Scarry! <i class='fa fa-star'></i>"; setTimeout(function() {document.getElementById("titulo").innerHTML="Azrael's Snake Game"},4000)}
       comer.play();
       return true;
     }
