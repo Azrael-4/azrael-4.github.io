@@ -3,7 +3,7 @@
 <head>
 	<title>Snake Game</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, width=992">
+	<meta name="viewport" content="width=device-width, user-scalable=no, width=992, height=2070">
 	<link rel="icon" href="arquivos\Favicon.png">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,13 +11,14 @@
 		canvas {background-color: #000; border: 1px solid teal;}
 		button {width:300px; height: 300px;margin-bottom:2px;}
 		.quadrado {border: solid 1px;}
+		.announcer { font-style: italic;}
 	</style>
 </head>
 
 <body class="w3-light-grey w3-center">
 
-	<div class="w3-container">
-		<h1 style="text-shadow:1px 1px 0 #fff">Azrael's Snake Game</h1>
+	<div class="w3-container w3-blue">
+		<h1 id="titulo" style="text-shadow:1px 1px 0 #fff">Azrael's Snake Game</h1>
 	</div>
 	
 	<div class="w3-container">
@@ -28,7 +29,8 @@
 		<h2>Current Score: <span class="score quadrado"></span></h2>
 		<!-- <h2 style="display:none">Last Score: <span class="lastScore quadrado"></span></h2> -->
 		<h2>Maximum Score: <span class="maxScore quadrado">0</span></h2>
-		<h1 id="SOM" class="w3-text-red"><i>Som Desativado!<br>Clique na tela para ativar, mudar ou recomeçar a música.</i></h1>	<!-- Tomas Skyldeberg: https://www.youtube.com/watch?v=a4fv-BtzNmY</a>-->
+
+		<h1 id="SOM" class="w3-text-red"><i>Som Desativado!<br>Clique na tela do jogo para ativar, mudar ou recomeçar a música.<br>São 3 opções de músicas, a quarta é sem som.</i></h1><!-- Tomas Skyldeberg: https://www.youtube.com/watch?v=a4fv-BtzNmY</a>-->
 	</div>
 	
 	<div class="w3-bar w3-hide-large">
@@ -39,9 +41,7 @@
 		<!--<button class="w3-button w3-light-grey w3-jumbo"></button>-->
 		<button id="buttonDown" class="w3-button w3-red w3-hover-red w3-jumbo"><i class="fa fa-arrow-down"></i></button>
 		<button id="buttonRight" class="w3-button w3-red w3-hover-red w3-jumbo"><i class="fa fa-arrow-right"></i></button>		
-	</div>
-
-	
+	</div>	
 	
 	<script src="script.js"></script>
 </body>
