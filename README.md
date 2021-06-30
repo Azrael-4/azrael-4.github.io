@@ -1,3 +1,3 @@
 # Az's Repository
 
-Saudações, viajante!
+Esse é o meu repositório no Github. Seja bem-vindo.
