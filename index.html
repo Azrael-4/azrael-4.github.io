@@ -14,8 +14,21 @@
 	html {scroll-behavior: smooth;}
 	h1, h2, h3 {text-align: center; cursor: pointer; text-shadow:2px 2px 0 #000; }
 	h1, h2, h3:hover {background-color: #BB0000}
+		
+	#grasssymbol, #firesymbol, #watersymbol, #electricsymbol, #psychicsymbol, #fightingsymbol, #darksymbol, #fairysymbol, #metalsymbol, #dragonsymbol {background: url(https://i.pinimg.com/originals/51/75/e5/5175e5d17f6a1b5dafc30a803be61834.png); transform: scale(0.9);}
+		#grasssymbol {width: 165px; height: 165px; background-position: -47px -41px;}
+		#firesymbol {width: 165px; height: 165px; background-position: -238px -43px;}
+		#watersymbol {width: 165px; height: 165px; background-position: -429px -45px;}
+		#electricsymbol {width: 165px; height: 165px; background-position: -620px -47px;}
+		#psychicsymbol {width: 165px; height: 165px; background-position: -809px -47px;}
+		#fightingsymbol {width: 165px; height: 165px; background-position: -47px -226px;}
+		#darksymbol {width: 165px; height: 165px; background-position: -240px -228px;}
+		#fairysymbol {width: 165px; height: 165px; background-position: -47px -41px;}
+		#metalsymbol {width: 165px; height: 165px; background-position: -429px -230px;}
+		#dragonsymbol {width: 165px; height: 165px; background-position: -812px -232px;}
 
-
+	.ocupado {filter: grayscale(100%);} 
+		.ocupado:hover {filter: grayscale(0%);}
 
 	@media only screen and (min-width: 992px) {
   		.card {max-width: 32.9%;}
@@ -48,16 +61,24 @@
 		</nav>
 				<!-- TEXTO MODAL - tive que tirar da 'nav' acima porque ele ficava transparente, mesmo com w3-opacity-off -->
 				<div id="id01" class="w3-modal">
-			    <div class="w3-modal-content w3-animate-top w3-card-4 w3-border">
+			    <div class="w3-modal-content w3-animate-top w3-card-4 w3-border" style="margin-bottom: 15%;">
 			      <div class="w3-container w3-blue w3-xlarge"> 
 			        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-			        <p class="w3-center">Sobre Mim</p>
+			        <p class="w3-center">Pokémon Explorer <i>by Az</i></p>
 			      </div>
 			      
 			      <div class="w3-container w3-white w3-large">
+			        <p class="w3-center"><b>- Formato Regular -</b></p>
+			        <p>O Formato Regular é o modo de jogo oficial daqui de Delmiro, idealizado por mim e por Will. O intuito é criar um metagame que seja balanceado, barato e que tenha a jogabilidade clássica do Pokémon TCG.<br><br>
+			        1. Cartas Permitidas e Proibidas: todas as cartas permitidas no formato <u>Expanded</u> são permitidas nesse formato. Todas as cartas proibidas no formato <u>Expanded</u> são proibidas nesse formato.<br>
+					2. Cartas adicionais Proibidas:<br>
+					<spam style="margin-left: 3em">a) TODOS os Pokémon de prêmio múltiplo (EX, GX, V e VMAX);</spam><br>
+					<spam style="margin-left: 3em">b) Ultra Necrozma (Cosmic Eclipse CEC 164).</spam><br><br>
+					Lembrando que são permitidos qualquer Pokémon que tenham subtipo mas são de prêmio único: Ultra Beast, Galarian, Alolan, Ancient Trait, Dual Type, Prism Star, etc.</p>
+			        <p class="w3-center"><b>- Sobre Mim -</b></p>
 			        <p>Meu nome é Elton Andrade, meu nickname é Azrael ou simplesmente Az.</p>
-			        <p>Esse é o Pokémon Explorer, onde pretendo compilar a informações mais importantes do card game.</p>
-			        <p>Para reportar algum erro ou dar uma sugestão, envie uma mensagem através do whatsapp.</p>
+			        <p>Esse é o Pokémon Explorer, onde pretendo compilar as cartas e informações mais importantes do Formato Regular.</p>
+			        <p>Para reportar algum erro ou dar uma sugestão, me envie uma mensagem através do Whatsapp ou Telegram.</p>
 			      </div>
 			    
 			    </div>
@@ -66,300 +87,382 @@
 
 		<!-- 2. Banidas e Restritas -->
 		<div id="banidas" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-banidas')">Expanded - Banned Card List</h3>
+			<h3 onclick="w3.toggleShow('#div-banidas')">Cartas Banidas</h3>
 			<div id="div-banidas" style="display: none" class="w3-animate-bottom">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-114-oranguru.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW3-067-archeops.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY2-023-milotic.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-045-marshadow.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-091-unown.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-090-unown.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-078-mismagius.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW5-062-sableye.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-083-flabebe.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-077-shaymin_ex.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-HF-060-lt_surges_strategy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-HF-058-jessie_james.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-099-lysandres_trump_card.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-133-maxies_hidden_ball_trick.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-075-hex_maniac.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-165-chip_chip_ice_axe.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-206-reset_stamp.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-071-red_card.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-109-puzzle_of_time.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-194-island_challenge_amulet.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-074-forest_of_giant_plants.jpg" class="w3-image card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-164-ultra_necrozma.jpg?w=734&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-114-oranguru.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW3-067-archeops.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY2-023-milotic.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-045-marshadow.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-091-unown.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-090-unown.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-078-mismagius.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW5-062-sableye.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-083-flabebe.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-077-shaymin_ex.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-HF-060-lt_surges_strategy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-HF-058-jessie_james.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-099-lysandres_trump_card.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-133-maxies_hidden_ball_trick.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-075-hex_maniac.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-165-chip_chip_ice_axe.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-206-reset_stamp.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-071-red_card.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-109-puzzle_of_time.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-194-island_challenge_amulet.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-074-forest_of_giant_plants.jpg" class="card">
 			</div>
 		</div>
 
 		<!-- 3. Special Energy -->
 		<div id="special-energy" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-special-energy')">Expanded - Special Energy</h3>
+			<h3 onclick="w3.toggleShow('#div-special-energy')">Energias Especiais</h3>
 			<div id="div-special-energy" style="display: none" class="w3-animate-bottom">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-165-wash_w_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-174-heat_r_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-173-speed_lightning_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-162-aromatic_g_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-164-stone_f_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-172-horror_psychic_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-175-hiding_d_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-163-coating_m_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-176-powerful_c_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-113-splash_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-151-burning_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-083-flash_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-103-herbal_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-104-strong_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-112-mystery_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-082-dangerous_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-143-shield_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-144-wonder_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-097-double_dragon_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-069-double_colorless_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-174-twin_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-190-triple_acceleration_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-171-capture_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-209-draw_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-213-weakness_guard_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-212-recycle_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-100-counter_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW4-093-prism_energy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-118-unit_energy_fdy.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-138-unit_energy_lpm.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-137-unit_energy_grw.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW6-118-blend_energy_w_l_f_m.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW6-117-blend_energy_g_r_p_d.jpg" class="w3-image card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-165-wash_w_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-174-heat_r_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-173-speed_lightning_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-162-aromatic_g_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-164-stone_f_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-172-horror_psychic_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-175-hiding_d_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-163-coating_m_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-176-powerful_c_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-113-splash_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-151-burning_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-083-flash_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-103-herbal_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-104-strong_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-112-mystery_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-082-dangerous_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-143-shield_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-144-wonder_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-097-double_dragon_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-069-double_colorless_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-174-twin_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-190-triple_acceleration_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-171-capture_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-209-draw_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-213-weakness_guard_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-212-recycle_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-100-counter_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW4-093-prism_energy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-118-unit_energy_fdy.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-138-unit_energy_lpm.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-137-unit_energy_grw.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW6-118-blend_energy_w_l_f_m.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW6-117-blend_energy_g_r_p_d.jpg" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-117-beast_energy.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-136-super_boost_energy.jpg?fit=734%2C1024&ssl=1" class="card">
 			</div>
 		</div>
 
 		<!-- 4. Supporter -->
 		<div id="supporter" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-supporter')">Expanded - Supporter Staples</h3>
+			<h3 onclick="w3.toggleShow('#div-supporter')">TRAINER - Supporter</h3>
 			<div id="div-supporter" style="display: none" class="w3-animate-bottom">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-060-professors_research.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM3-112-acerola.jpg" class="w3-image card">
-			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-091-az.jpg?w=734&ssl=1.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-205-roxie.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-189-welder.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-183-mina.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-124-archies_ace_in_the_hole.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-058-bosss_orders.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM3-115-guzma.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-065-sonia.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-141-teammates.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-125-lillie.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-119-cynthia.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-189-cynthia_caitlin.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-200-hapu.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM3-116-kiawe.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-060-pokemon_center_lady.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY2-088-blacksmith.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-073-team_flare_grunt.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-148-tate_liza.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-127-copycat.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-135-volkner.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-157-nessa.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-095-korrina.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-094-wally.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-056-marnie.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY10-105-n.jpg" class="w3-image card">
-			<img src="AAAAAAA" class="w3-image card">
-			<img src="AAAAAAA" class="w3-image card">
-			<img src="AAAAAAA" class="w3-image card">
-			<img src="AAAAAAA" class="w3-image card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-060-professors_research.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM3-112-acerola.jpg" class="card">
+			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-091-az.jpg?w=734&ssl=1.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-205-roxie.jpg" class="card">
+			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-105-diantha.jpg?w=734&ssl=1" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-058-bosss_orders.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM3-115-guzma.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-065-sonia.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-141-teammates.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-125-lillie.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-119-cynthia.jpg" class="card">
+			<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM11-188-blues_tactics.jpg?fit=734%2C1024&ssl=1" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-189-cynthia_caitlin.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-200-hapu.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-060-pokemon_center_lady.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-073-team_flare_grunt.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-148-tate_liza.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-127-copycat.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-094-wally.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-056-marnie.jpg" class="card">
+			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-108-judge.jpg?w=734&ssl=1" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY10-105-n.jpg" class="card">
+			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-193-guzma_hala.jpg?w=734&ssl=1" class="card">
+			<img src="AAAAAAA" class="card">
+			<img src="AAAAAAA" class="card">
+			<img src="AAAAAAA" class="card">
 			</div>
 		</div>
 
 		<!-- 5. Items -->
 		<div id="items" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-items')">Expanded - Item Staples</h3>
+			<h3 onclick="w3.toggleShow('#div-items')">TRAINER - Item</h3>
 			<div id="div-items" style="display: none" class="w3-animate-bottom">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-119-aqua_patch.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-BW5-093-dark_patch.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-170-metal_saucer.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-172-electropower.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-175-pokemon_catcher.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-183-switch.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-146-professors_letter.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-160-energy_retrieval.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-113-mysterious_treasure.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-171-custom_catcher.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-152a-pokemon_communication-ya.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-165-scoop_up_net.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-149-super_rod.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-171-ordinary_rod.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-102-max_elixir.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-BW8-123-hypnotoxic_laser.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-159-crushing_hammer.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-174-pokegear_30.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-092-trainers_mail.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-092-battle_compressor_team_flare_gear.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-091-counter_catcher.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-130-rescue_stretcher.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-125-escape_rope.jpg" class="w3-image card">
-			<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH1-180-rare_candy.jpg?w=734&ssl=1" class="w3-image card">
-			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY11-105-special_charge.jpg?w=734&ssl=1" class="w3-image card">
-			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-167-adventure_bag.jpg?w=734&ssl=1" class="w3-image card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-175-pokemon_catcher.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-183-switch.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-146-professors_letter.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-160-energy_retrieval.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-171-custom_catcher.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-152a-pokemon_communication-ya.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-165-scoop_up_net.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-149-super_rod.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-171-ordinary_rod.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-102-max_elixir.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-BW8-123-hypnotoxic_laser.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-159-crushing_hammer.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-174-pokegear_30.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-092-trainers_mail.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-092-battle_compressor_team_flare_gear.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-091-counter_catcher.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-130-rescue_stretcher.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-125-escape_rope.jpg" class="card">
+			<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH1-180-rare_candy.jpg?w=734&ssl=1" class="card">
+			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY11-105-special_charge.jpg?w=734&ssl=1" class="card">
+			<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-167-adventure_bag.jpg?w=734&ssl=1" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-059-poke_ball.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-129-level_ball.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-052-great_ball.jpg" class="card">
+			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH1-179-quick_ball.jpg?fit=734%2C1024&ssl=1" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM1-134-timer_ball.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-068-ultra_ball.jpg" class="card">
 			<br>
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-059-poke_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-129-level_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-CP-052-great_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM1-134-timer_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-068-ultra_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-187-net_ball.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-125-dive_ball.jpg" class="w3-image card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY1-119-hard_charm.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-077-lucky_helmet.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-167-lucky_egg.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-190-spell_tag.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-122-escape_board.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-137-float_stone.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-211-u_turn_board.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-156-air_balloon.jpg" class="card">
+			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY9-099-fighting_fury_belt.jpg?w=734&ssl=1" class="card">
 			<br>
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY1-119-hard_charm.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY7-077-lucky_helmet.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-167-lucky_egg.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-190-spell_tag.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-122-escape_board.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-137-float_stone.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-211-u_turn_board.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-156-air_balloon.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-148-metal_goggles.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-091-focus_sash.jpg" class="w3-image card">
-			<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-112-metal_frying_pan.jpg?w=734&ssl=1" class="w3-image card">
-			<br>
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-156-viridian_forest.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-183-power_plant.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-197-giant_hearth.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-140-silent_lab.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-093-dimension_valley.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-120-brooklet_hill.jpg" class="w3-image card">
-			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY10-110-scorched_earth.jpg" class="w3-image card">
-			
-			<img src="AAAAAAA" class="w3-image card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-156-viridian_forest.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-183-power_plant.jpg" class="card">
+			<img src="https://pkmncards.com/wp-content/uploads/en_US-XY5-140-silent_lab.jpg" class="card">
+			<img src="AAAAAAA" class="card">
 			</div>
 		</div>
 
 		<!-- 6. Pokémons -->
 		<div id="pokemons" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-pokemons')">Expanded - Pokémon Staples</h3>
+			<h3 onclick="w3.toggleShow('#div-pokemons')">Pokémon Diversos</h3>
 			<div id="div-pokemons" style="display: none" class="w3-animate-bottom">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-025-volcanion.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-SV034-frosmoth.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-076-mew.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-107-coalossal.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-SV006-rillaboom.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-DM-SV37-altaria-yaa-037ya.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-164-ultra_necrozma.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-016-ninetales.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-057-phione.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-045-marshadow.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-099-jirachi.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-177-audino.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-140-lugia.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-036-wobbuffet.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-057-garbodor.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-051-garbodor.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-028-seaking.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-128-kangaskhan.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM1-101-eevee.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-025-charizard.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-101-necrozma.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-097-giratina.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM6-051-malamar.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-119-drampa.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-097-passimian.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW10-071-kangaskhan.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-069-skarmory.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-020-gossifleur.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-110-dunsparce.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-141-snorlax.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-033-deoxys.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-100-sudowoodo.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-120-indeedee.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-127-alolan_grimer.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-088-hitmontop.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-Promo_XY-XY195-jirachi.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW9-047-mr_mime.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-076-mew.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-076-koffing.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-081-mimikyu.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-038-gengar.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW10-104-dusknoir.jpg" class="w3-image card">
-				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-055-oricorio.jpg" class="w3-image card">
-				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-145-alolan_ninetales.jpg?w=734&ssl=1" class="w3-image card">
-				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-138-granbull.jpg?w=734&ssl=1" class="w3-image card">
-				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-069-slurpuff.jpg?w=734&ssl=1" class="w3-image card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-076-mew.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW9-047-mr_mime.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SL-045-marshadow.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-099-jirachi.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-177-audino.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-140-lugia.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY4-036-wobbuffet.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY9-057-garbodor.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-051-garbodor.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY8-028-seaking.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM9-128-kangaskhan.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM1-101-eevee.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-025-charizard.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-097-giratina.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-119-drampa.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-097-passimian.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW10-071-kangaskhan.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-069-skarmory.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-020-gossifleur.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM7-110-dunsparce.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-141-snorlax.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY6-033-deoxys.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH1-100-sudowoodo.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH5-120-indeedee.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-127-alolan_grimer.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH4-088-hitmontop.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-Promo_XY-XY195-jirachi.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM12-076-koffing.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH3-081-mimikyu.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM4-038-gengar.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW10-104-dusknoir.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-055-oricorio.jpg" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-Promo_XY-XY59-salamence.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY6-017-articuno.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY5-108-kingdra.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY5-036-swampert.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM7-035-swampert.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-154-ditto.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-089-solgaleo.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-077-darkrai.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-144-xerneas.jpg?fit=734%2C1024&ssl=1" class="card">
 			</div>
 		</div>
 
-		<!-- 5. elton --><!--
-		<div id="elton" class="w3-indigo">
-			<h3 onclick="w3.toggleShow('#div-elton')">Elton</h3>
-			<div id="div-elton" style="display: none" class="w3-animate-bottom">
+		<!-- -------------------------------------------------------------------------------->
+
+		<div id="fires" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-fires')"><img src="https://www.w3schools.com/css/img_trans.gif" id="firesymbol"></h3>
+			<div id="div-fires" style="display: none" class="w3-animate-bottom">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY2-088-blacksmith.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM3-116-kiawe.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM10-173-fire_crystal.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-DM-060-fiery_flint.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY2-089-fiery_torch.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-118-altar_of_the_sunne.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM11-197-giant_hearth.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY10-110-scorched_earth.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY8-145-parallel_city.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-178-heat_factory.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM10-025-volcanion.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-016-ninetales.jpg?w=734&ssl=1" class="card">
 			</div>
-		</div>-->
+		</div>
+
+		<div id="waters" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-waters')"><img src="https://www.w3schools.com/css/img_trans.gif" id="watersymbol"></h3>
+			<div id="div-waters" style="display: none" class="w3-animate-bottom">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH4-157-nessa.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY5-124-archies_ace_in_the_hole.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-120-cyrus.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-119-aqua_patch.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY5-125-dive_ball.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SF-030-frosmoth.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-057-phione.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-031-volcanion.jpg?w=734&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="electrics" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-electrics')"><img src="https://www.w3schools.com/css/img_trans.gif" id="electricsymbol"></h3>
+			<div id="div-electrics" style="display: none" class="w3-animate-bottom">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM5-135-volkner.jpg" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-059-clemont.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM8-172-electropower.jpg" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-116-aether_paradise_conservation_area.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-191-thunder_mountain.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-051-tapu_koko.jpg?fit=734%2C1024&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="fightings" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-fightings')"><img src="https://www.w3schools.com/css/img_trans.gif" id="fightingsymbol"></h3>
+			<div id="div-fightings" style="display: none" class="w3-animate-bottom" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH4-147-bea.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY3-095-korrina.jpg" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY3-091-focus_sash.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM2-120-brooklet_hill.jpg" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-XY10-110-scorched_earth.jpg" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-074-diancie.jpg?fit=734%2C1024&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="grasss" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-grasss')"><img src="https://www.w3schools.com/css/img_trans.gif" id="grasssymbol"></h3>
+			<div id="div-grasss" style="display: none" class="w3-animate-bottom">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-187-net_ball.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-070-revitalizer.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-CP-068-turffield_stadium.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-116-aether_paradise_conservation_area.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY8-145-parallel_city.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY7-074-forest_of_giant_plants.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-180-life_forest.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SF-SV006-rillaboom.jpg" class="card">
+			</div>
+		</div>
+
+		<div id="psychics" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-psychics')"><img src="https://www.w3schools.com/css/img_trans.gif" id="psychicsymbol"></h3>
+			<div id="div-psychics" style="display: none" class="w3-animate-bottom">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-186-morty.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH6-140-fog_crystal.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-113-mysterious_treasure.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-CP-066-suspicious_food_tin.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-190-spell_tag.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-117-altar_of_the_moone.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-093-dimension_valley.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-117-altar_of_the_moone.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-051-malamar.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM10-076-mew.jpg">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-BW9-047-mr_mime.jpg">
+			</div>
+		</div>
+
+		<div id="metals" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-metals')"><img src="https://www.w3schools.com/css/img_trans.gif" id="metalsymbol"></h3>
+			<div id="div-metals" style="display: none" class="w3-animate-bottom">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-145-jasmine.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-120-cyrus.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH1-170-metal_saucer.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM10-180-metal_core_barrier.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-148-metal_goggles.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-112-metal_frying_pan.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-130-mt_coronet.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM2-118-altar_of_the_sunne.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH5-102-bronzong.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY10-061-bronzong.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-061-bronzong.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-101-bronzong.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-085-bastiodon.jpg?fit=734%2C1024&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="darks" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-darks')"><img src="https://www.w3schools.com/css/img_trans.gif" id="darksymbol"></h3>
+			<div id="div-darks" style="display: none" class="w3-animate-bottom">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-CP-058-piers.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-150-nanu.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-138-dangerous_drill.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-BW5-093-dark_patch.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-BW5-092-dark_claw.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM11-193-dark_city.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY1-126-shadow_circle.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-134-black_market.jpg?fit=734%2C1024&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="fairys" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-fairys')"><img src="https://www.w3schools.com/css/img_trans.gif" id="fairysymbol" style="filter: invert(100%);"></h3>
+			<div id="div-fairys" style="display: none" class="w3-animate-bottom">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-183-mina.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-105-diantha.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY10-099-fairy_drop.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-XY10-100-fairy_garden.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-158-wondrous_labyrinth.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-TwentiethAnn-052-mr_mime.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY1-093-aromatisse.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-XY4-069-slurpuff.jpg?w=734&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="dragons" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-dragons')"><img src="https://www.w3schools.com/css/img_trans.gif" id="dragonsymbol"></h3>
+			<div id="div-dragons" style="display: none" class="w3-animate-bottom">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-200-ns_resolve.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-DM-064-zinnia.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-DM-061-lance.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM6-113-mysterious_treasure.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-DM-059-dragon_talon.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-BW6-089-gabite.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-DM-SV37-altaria-yaa-037ya.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-119-dragonite.jpg?w=734&ssl=1" class="card">
+			</div>
+		</div>
+
+		<div id="mains" class="w3-indigo">
+			<h3 onclick="w3.toggleShow('#div-mains')">Main Beaters</h3>
+			<div id="div-mains" style="display: none" class="w3-animate-bottom">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH4-025-charizard.jpg?w=734&ssl=1" class="card ocupado">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH6-028-cinderace.jpg?fit=734%2C1024&ssl=1" class="card">
+				<br>
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH5-082-sandaconda.jpg?w=734&ssl=1" class="card ocupado">
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SWSH2-107-coalossal.jpg" class="card">
+				<br>
+				<img src="https://pkmncards.com/wp-content/uploads/en_US-SM11-101-necrozma.jpg" class="card ocupado">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SWSH2-091-dragapult.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM9-056-nidoqueen.jpg?fit=734%2C1024&ssl=1" class="card ocupado">
+				<br>
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-145-alolan_ninetales.jpg?w=734&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-138-granbull.jpg?w=734&ssl=1" class="card">
+				<img src="https://i2.wp.com/pkmncards.com/wp-content/uploads/en_US-SM8-141-gardevoir.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-152-florges.jpg?w=734&ssl=1" class="card">
+				<br>
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM5-095-alolan_exeggutor.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM11-151-dragonite.jpg?w=734&ssl=1" class="card ocupado">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY6-052-dragonite.jpg?w=734&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-SM11-156-haxorus.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i0.wp.com/pkmncards.com/wp-content/uploads/en_US-XY8-111-haxorus.jpg?fit=734%2C1024&ssl=1" class="card">
+				<img src="https://i1.wp.com/pkmncards.com/wp-content/uploads/en_US-SM12-163-kommo_o.jpg?fit=734%2C1024&ssl=1" class="card">
+			</div>
+		</div>
 
 	</div> <!-- FIM DA DIV MÃE -->
 </body>
 </html>
-
-
-
-<div style="display: none" class="JJJkkk222*">
-
-Artigo sobre a rotação 2022: https://infinite.tcgplayer.com/article/Pokémon-TCG-Standard-Format-Rotation-Coming-Sept-10/104c5faf-1354-4ccc-ad71-7e98f5725522/
-
-
-• Formato Regular:
-- Proibido Pokémons de prêmio múltiplo: ex, EX, GX, V, VMAX, etc.
-- Proibido qualquer carta Prism Star
-- Banlist: Ultra Necrozma, Double Dragon Energy (pokémons dragão praticamente não tem fraqueza nesse formato, já que os pokémon fada são horríveis)
-* São permitidos Pokémon Ultra Beast, Galarian, Alolan.
-
-A DECIDIR:
-- Sem Special Energy de nenhum tipo
-3. Sem pokémons que, mesmo regulares, apresentem fraqueza contra FADA ou DRAGÃO (porque assim eles não podem ser punidos)
-4. Ultra Beasts, Regional (Galarian, Alolan)
-** decidir se inclui os Ultra Beasts, não possuem caixa de regras!
-*** Realmente, tem  os Galarian, Aiolian, etc. que não possuem caixa de regras também!
-
-Ou seja, somente energias básicas, somente pokémons regulares (se prêmio único).
-
-
-
-AERODACTYL
-https://www.youtube.com/watch?v=uNgo1VmCnFg&t=72s
-
-ULTA NECROZMA
-https://limitlesstcg.com/decks/?id=143&variant=1
-
-# BUDGET NECROZMA
-4 Necrozma (UNM-101)
-4 Inkay (FLI-50)
-4 Malamar (FLI-51) 	[só tem 1 na loja]
-4 Audino (UNM-177)
-2 Espurr (UNB-79)
-(18)
-4 Professor's Research
-4 Roxie
-4 Guzma			[não tem nenhum na loja]
-(18+16= 34)
-4 Mysterious Treasure
-2 U-Turn Board
-4 Switch
-4 Pokemon Communication
-2 Spell Tag
-4 Viridian Forest
-(58)
-4 Recycle Energy
-4 Double Colorless	[difícil]
-4 Twin Energy
-4 Horror P Energy
-10 Psychic Energy
-
-# SANDACONDA ==============================================
-4 Gossifleur SSH 20
-4 Silicobra SSH 107
-4 Sandaconda BST 82
-
-4 Brock's Grit HIF 53
-4 Green's Exploration UNB 175
-4 Evolution Incense SSH 163
-4 Level Ball BST 129
-4 Pokégear 3.0 SSH 174
-
-28 Fighting Energy SWSHEnergy 6
