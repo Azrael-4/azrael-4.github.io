@@ -1,0 +1,5 @@
+﻿body {margin: 0; padding: 0;}
+.superCentered {display: grid; place-items: center; height: 100vh; background-color: black;}
+@font-face {font-family: 'diabloHeavy'; src: url('DiabloHeavy.ttf');}
+@font-face {font-family: 'diabloLight'; src: url('DiabloLight.ttf');}
+h1 {font-family: 'diabloHeavy';}

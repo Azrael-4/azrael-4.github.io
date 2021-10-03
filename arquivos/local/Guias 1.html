@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introdução</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <div class="container w3-black w3-padding w3-monospace w3-large">
+  
+  <p class="w3-center w3-xxlarge w3-text-orange">Introdução</p>
+	
+	<p class="w3-large">1. Melee vs Spellcasters</p>
+	<p>No Diablo 2 existe uma diferença radical entre classes que dependem de ataque básico (como o Bárbaro e Amazona) e classes que dependem do uso de mágicas para causar dano. Isso se deve ao cálculo de acerto, que vamos discutir a seguir.</p>
+	<p>O ataque básico (e qualquer skill ativa que seja um ataque básico melhorado) nesse jogo NÃO acerta automaticamente, o jogo calcula a chance de acerto baseado numa série de fatores: attack rating e level do atacante vs defense rating e level do defensor. A fórmula completa é essa aqui: <spam class="w3-border">Chance To Hit = 200% * {AR / (AR + DR)} * {Alvl / (Alvl + Dlvl)}</spam>. Independente desse valores, a maior chance de acerto é sempre 95% e a menor 5%.</p>
+	<p>O que isso significa na prática é que um herói melee precisa de itens que aumentem seu attack rating, caso não tenha, a partir da dificuldade Nightmare ele simplesmente não conseguirá causar dano, pois não acertará seus ataques. Além disso, eles são muito dependentes de equipamentos, pois precisam de defesa, dano, attack rating, algo que ofereça <i>cannot be frozen</i>, mana e alguma forma de <i>sustain</i> (lifesteal).</p>
+	<p>Já os spellcasters precisam simplesmente de mana, pois suas magias nunca erram (isto é, não existe cálculo de acerto). Além disso itens defensivos são dispensáveis, já que eles ficam longe dos inimigos. O único atributo importante para eles é o <i>fast cast rating</i>, que aumenta a velocidade com que conjuram as spells.</p>
+	<p>Portanto eu recomendo que seu primeiro personagem seja um spellcaster, evite os melees. Posteriormente, quando você já tiver um bom estoque de bons itens, você pode criar um.</p>
+
+	<p class="w3-large">2. Personagens Spellcasters</p>
+	<p>A diferença entre melee e spellcasters não depende inteiramente da classe, já que existem diversas builds dentro de cada classe. Assim, listarei as builds mais recomendadas para iniciantes começarem a caçar itens.</p>
+	<p>Amazon: a Amazona tem uma ótima skill para early game que é a Poison Javelin. Posteriormente você pode transformá-la numa Javazon (build baseada nas skills de javelin).</p>
+	<p>Assassin: a Assassina possui a build de traps, que lhe permite upar tranquilamente. As principais skills são Wake of Fire e Lightning Sentry.</p>
+	<p>Barbarian: somente melee (existe uma build spellcaster baseada em War Cry mas mesmo assim passe longe dessa classe como primeiro personagem).</p>
+	<p>Druida: o Druida possui duas builds spellcaster, Summoner e Elemental. Summoner é baseada nos Dire Wolves, porém ela só lhe carrega até a dificuldade Normal. Já a build Elemental maximiza Tornado e Hurricane, dispensando o elemento fogo.</p>
+	<p>Necromancer: o Necromante também possui duas builds, porém é melhor deixar as skills de poison de lado e focar nas invocações.</p>
+	<p>Paladin: o Paladino, apesar de ser melee, possui skills que o tornam um bom personagem para iniciantes. A principal delas é Holy Fire. Após isso, substitua por Holy Shock no mid game.</p>
+	<p>Sorceress: a Feiticeira é a rainha do jogo, possui três builds diferentes e tem acesso a Teleport, a skill mais útil do game.</p>
+
+	<p class="w3-large">3. Budget Builds</p>
+	<p>Qualquer jogador utilizando qualquer personagem consegue terminar o jogo na dificuldade Normal. Porém são pouquíssimos os que conseguem derrotar Diablo na dificuldade Hell, é realmente difícil. Diablo 2 é um RPG de ação, e como todo RPG o seu personagem fica mais forte à medida que sobe de nível e equipa itens melhores. O problema é que chega uma hora que você não consegue mais matar os inimigos, porque precisa de itens, mas para ter itens melhores precisa matar inimigos, o que resulta no seu personagem preso em determinada quest ou Ato.</p>
+	<p>É importante ter um personagem inicial que consiga matar monstros com facilidade, mesmo sem bons equips. A partir dele é que começamos a acumular bons itens mágicos e aí sim se abre a possibilidade de um segundo personagem que queiramos jogar. Abaixo listarei as principais builds para zerar o jogo e para Magic Find.</p>
+
+	<button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('trapsin')">Trapsin: Assassina baseada em skils de traps.</button>
+		<div id="trapsin" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom">
+    	<p>É importante ter um personagem inicial que consiga matar monstros com facilidade, mesmo sem bons equips. A partir dele é que começamos a acumular bons itens mágicos e aí sim se abre a possibilidade de um segundo personagem que queiramos jogar. Abaixo listarei as principais builds para zerar o jogo e para Magic Find.</p>
+    </div>
+	<br><br><button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('winddruid')">Wind Druid: Druida elemental do vento.</button>
+		<div id="winddruid" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom">
+    	<p>É importante ter um personagem inicial que consiga matar monstros com facilidade, mesmo sem bons equips. A partir dele é que começamos a acumular bons itens mágicos e aí sim se abre a possibilidade de um segundo personagem que queiramos jogar. Abaixo listarei as principais builds para zerar o jogo e para Magic Find.</p>
+    </div>
+	<br><br><button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('fishymancer')">Fishymancer: Necromante de invocação.</button>
+	  <div id="fishymancer" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom">
+    	<p>É importante ter um personagem inicial que consiga matar monstros com facilidade, mesmo sem bons equips. A partir dele é que começamos a acumular bons itens mágicos e aí sim se abre a possibilidade de um segundo personagem que queiramos jogar. Abaixo listarei as principais builds para zerar o jogo e para Magic Find.</p>
+    </div>
+	<br><br><button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('javazon')">Javazon: Amazona de Javelin.</button>
+			<div id="javazon" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom">
+    	<p>Lightning javazons focus on Lightning Skills, and appropriately max out Power Strike, Charged Strike, Lightning Strike, and Lightning Fury. The best skills to use out of this set are Charged Strike and Lightning Fury, the combination of which are capable of handling mobs and bosses even in 8-player Hell mode, and even with mediocre gear. The remaining points are invested in Pierce, which works extremely well with Lightning Fury, and other useful Passive and Magic skills such as Dodge, Avoid, Evade, and Critical Strike.</p>
+    </div>
+	<br><br><button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('hammerdin')">Hammerdin: Paladino focado em Blessed Hammer.</button>
+			<div id="hammerdin" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom w3-border">
+    	<p>20 points to Blessed Hammer<br>20 points to Vigor<br>20 points to Blessed Aim<br>20 points to Concentration<br>20 points to Holy Shield</p>
+    </div>
+	<br><br><button class="w3-button w3-border w3-dropdown-click" onclick="myFunction('firecoldsorc')">Fire/Cold Sorc: Feiticeira com duas fontes de dano elemental.</button>
+			<div id="firecoldsorc" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-bottom w3-border">
+    		<p>A build mais comum é a Meteorb, uma combinação entre Meteor/Fireball e Frozen Orb. Nela, Fogo é o elemento primário e Frozen Orb é uma boa skill secundária porque funciona bem sem muitas sinergias. É importante possuir dois elementos diferentes pois a partir do Nightmare o monstros começam a ter imunidades. Outra build possível é focar em Blizzard e usar Fireball como skill secundária.</p>
+    		<p><b>Fire Spells</b><br>01 Warmth<br>20 Fire Ball<br>20 Meteor<br>20 Fire Mastery</p>
+    		<p><b>Cold Spells</b><br>01 Frozen Armor<br>20 Frozen Orb<br>1+ Cold Mastery</p>
+    		<p><b>Lightning Spells</b><br>01 Static Field<br>01 Teleport</p>
+    	</div>
+	<br><br><button class="w3-button w3-border">Elton</button>
+	
+	
+
+
+<br><br><br><br><br><br><br><br><br><br>
+	<p>Obs: Countess Normal dropa até Ral, a runeword mais alta que da pra fazer dessa forma é Leaf (lvl 19)</p>
+	<p>No entanto da pra dropar com outros monstros até a Dol no normal lá no ato 5. Mesmo assim não da pra fazer as runewords: Myth (25), White (35), Black (35) por causa da Hel e Io.</h2>
+	<p>17   Stealth Armor {2}   Tal Eth</p>
+	<p>19   Leaf    Weapons {2} (Staves) Tir Ral (Sorceress Only)</p>
+	<p>--</p>
+	<p>25   Spirit  Weapons {4} (Swords) & Shields {4}  Tal Thul Ort Amn</p>
+	<p>27   Lore    Headgear {2}    Ort Sol</p>
+	<p>29   Rhyme   Shields {2} Shael Eth</p>
+	<p>--</p>
+	<p>35   White   Weapons {2} (Wands) Dol Io (Necromancer Only)</p>
+	<p>--</p>
+	<p>Uma boa estratégia é usar a Sorceress ou Druid ou Assassin e fazer Leaf, Stealth e Lore no early game.</p>
+	<p>Mais tarde substitui a Leaf por Spirit junto com Rhyme e a Stealth por Smoke. O Paladino de hammer é o mais beneficiado porque consegue usar Spirit no escudo já no level 25 (os outros devem encontrar um Monarch no Hell).</p>
+
+
+
+	O Sublime text tem algumas coisas legais. Primeiro é ao dar ctrl+a mostrar todos os espaços e tabulações. Segundo é poder identar utilizando tabulação ao invés de espaço (view >> identation >> desmarcar).
+	O lado ruim é que de vez em quando mostra uma janela mandando comprar a licença.
+
+	
+    </div>
+
+<script type="text/javascript">function myFunction(ev) {
+  var x = document.getElementById(ev);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}</script>
+    </body>
+</html>
