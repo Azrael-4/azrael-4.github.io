@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Az's Snap Builder</title>
+  <link rel="stylesheet" href="w3.css">
+  <style>
+    html {width: 1200px; scroll-behavior: smooth; overflow-y:scroll;}
+    table {border: 0px; border-spacing: 0px; border-collapse: collapse}
+    td {width: 151px; height: 155px; border: 1px dotted white}
+    .card {height: 150px; margin-bottom: -4px;}
+    .divbar {width: 755px;}
+    .divbar button {width: 147px; height: 37px; border-radius: 3px; font-family: 'Courier New', Courier, monospace}
+    #tableBuilder {position: fixed; right: 5px; top: 0px; max-width: 40%;}
+    .inputer {background-color: black; color: white; border: none; font-family: 'Times New Roman', Times, serif; font-size: 36px; font-weight: bold; text-align: center; margin-left: 0 auto; width: 453px; margin-top: 3px;}
+  </style>
+</head>
+<body class="w3-black">
+
+  <div id="tableBuilder">
+    <input type="text" class="inputer" name="caixa" placeholder="Az's Snap Builder" maxlength="25" size="25" value="">
+    <table id="tabelaDrop" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+    </div>
+
+<div class="divbar">
+  <button onclick="esconder(0)" id="botao0" title="26 cards&#10;" style="display: none">Pool 0</button> <!-- Não excluí este botão por conta da função  esconder(e) var y, que precisa fazer referência ao botão 0 -->
+  <button onclick="esconder(1)" id="botao1" title="26 + 46 = 72 cards">Pool 1</button>
+  <button onclick="esconder(2)" id="botao2" title="25 + 72 = 97 cards">Pool 2</button>
+  <button onclick="esconder(3)" id="botao3" title="77 cards">Pool 3</button>
+  <button onclick="esconder(4)" id="botao4" title="20 cards">Pool 4+</button>
+  <button onclick="esconder(5)" id="botao5" title="Anotações">Anotações</button>
+</div>
+
+
+<table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool1" style="display: none">
+  <tr>
+    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/elektra.webp?v=39" class="card" id=""></td>
+    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/squirrel-girl.webp?v=39" class="card" id=""></td>
+    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ant-man.webp?v=39" class="card" id=""></td>
+    <td><img src="imgcards/hawkeye.png" class="card" id=""></td>
+    <td><img src="imgcards/misty-knight.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/angel.png" class="card" id=""></td>
+    <td><img src="imgcards/quicksilver.png" class="card" id=""></td>
+    <td><img src="imgcards/iron-fist.png" class="card" id=""></td>
+    <td><img src="imgcards/korg.png" class="card" id=""></td>
+    <td><img src="imgcards/nightcrawler.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/mantis.png" class="card" id=""></td>
+    <td><img src="imgcards/nova.png" class="card" id=""></td>
+    <td><img src="imgcards/rocket-racoon.png" class="card" id="rocket-"></td>
+    <td><img src="imgcards/uatu-the-watcher.png" class="card" id=""></td>
+    <td><img src="imgcards/yondu.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/blade.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/angela.png" class="card" id=""></td>
+    <td><img src="imgcards/forge.png" class="card" id=""></td>
+    <td><img src="imgcards/cable.png" class="card" id=""></td>
+    <td><img src="imgcards/carnage.png" class="card" id=""></td>
+    <td><img src="imgcards/kraven.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/medusa.png" class="card" id=""></td>
+    <td><img src="imgcards/mister-sinister.png" class="card" id=""></td>
+    <td><img src="imgcards/star-lord.png" class="card" id=""></td>
+    <td><img src="imgcards/wolverine.png" class="card" id=""></td>
+    <td><img src="imgcards/shocker.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/domino.png" class="card" id=""></td>
+    <td><img src="imgcards/colossus.png" class="card" id=""></td>
+    <td><img src="imgcards/armor.png" class="card" id=""></td>
+    <td><img src="imgcards/multiple-man.png" class="card" id=""></td>
+    <td><img src="imgcards/scarlet-witch.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/sentinel.png" class="card" id=""></td>
+    <td><img src="imgcards/lizard.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/ironheart.png" class="card" id=""></td>
+    <td><img src="imgcards/morph.png" class="card" id=""></td>
+    <td><img src="imgcards/bishop.png" class="card" id=""></td>
+    <td><img src="imgcards/wolfsbane.png" class="card" id=""></td>
+    <td><img src="imgcards/mister-fantastic.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/punisher.png" class="card" id=""></td>
+    <td><img src="imgcards/cosmo.png" class="card" id=""></td>
+    <td><img src="imgcards/doctor-strange.png" class="card" id=""></td>
+    <td><img src="imgcards/captain-america.png" class="card" id=""></td>
+    <td><img src="imgcards/cyclops.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/groot.png" class="card" id=""></td>
+    <td><img src="imgcards/hulk-buster.png" class="card" id=""></td>
+    <td><img src="imgcards/lady-sif.png" class="card" id=""></td>
+    <td><img src="imgcards/deathlok.png" class="card" id=""></td>
+    <td><img src="imgcards/sword-master.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/jessica-jones.png" class="card" id=""></td>
+    <td><img src="imgcards/ka-zar.png" class="card" id=""></td>
+    <td><img src="imgcards/enchantress.png" class="card" id=""></td>
+    <td><img src="imgcards/moon-girl.png" class="card" id=""></td>
+    <td><img src="imgcards/strong-guy.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/namor.png" class="card" id=""></td>
+    <td><img src="imgcards/white-queen.png" class="card" id=""></td>
+    <td><img src="imgcards/the-thing.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/iron-man.png" class="card" id=""></td>
+    <td><img src="imgcards/white-tiger.png" class="card" id=""></td>
+    <td><img src="imgcards/blue-marvel.png" class="card" id=""></td>
+    <td><img src="imgcards/professor-x.png" class="card" id=""></td>
+    <td><img src="imgcards/devil-dinosaur.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/klaw.png" class="card" id=""></td>
+    <td><img src="imgcards/gamora.png" class="card" id=""></td>
+    <td><img src="imgcards/spider-woman.png" class="card" id=""></td>
+    <td><img src="imgcards/abomination.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/spectrum.png" class="card" id=""></td>
+    <td><img src="imgcards/onslaught.png" class="card" id=""></td>
+    <td><img src="imgcards/apocalypse.png" class="card" id=""></td>
+    <td><img src="imgcards/heimdall.png" class="card" id=""></td>
+    <td><img src="imgcards/odin.png" class="card" id=""></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/america-chavez.png" class="card" id=""></td>
+    <td><img src="imgcards/hulk.png" class="card" id=""></td>
+  </tr>
+</table>
+
+
+<table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool2" style="display: none">
+  <tr>
+    <td><img src="imgcards/elektra.png" class="card" id="elektra"></td>
+    <td><img src="imgcards/squirrel-girl.png" class="card" id="squirrel-girl"></td>
+    <td><img src="imgcards/ant-man.png" class="card" id="ant-man"></td>
+    <td><img src="imgcards/hawkeye.png" class="card" id="hawkeye"></td>
+    <td><img src="imgcards/sunspot.png" class="card" id="sunspot"></td>
+  </tr>
+  <tr>  
+    <td><img src="imgcards/misty-knight.png" class="card" id="misty-knight"></td>
+    <td><img src="imgcards/angel.png" class="card" id="angel"></td>
+    <td><img src="imgcards/quicksilver.png" class="card" id="quicksilver"></td>
+    <td><img src="imgcards/iron-fist.png" class="card" id="iron-fist"></td>
+    <td><img src="imgcards/korg.png" class="card" id="korg"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/nightcrawler.png" class="card" id="nightcrawler"></td>
+    <td><img src="imgcards/mantis.png" class="card" id="mantis"></td>
+    <td><img src="imgcards/nova.png" class="card" id="nova"></td>
+    <td><img src="imgcards/rocket-racoon.png" class="card" id="rocket-racoon"></td>
+    <td><img src="imgcards/uatu-the-watcher.png" class="card" id="uatu-the-watcher"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/yondu.png" class="card" id="yondu"></td>
+    <td><img src="imgcards/agent-13.png" class="card" id="agent-13"></td>
+    <td><img src="imgcards/iceman.png" class="card" id="iceman"></td>
+    <td><img src="imgcards/blade.png" class="card" id="blade"></td>
+    <td><img src="imgcards/ebony-maw.png" class="card" id="ebony-maw">
+  </tr>
+  <tr>
+    <td><img src="imgcards/angela.png" class="card" id="angela"></td>
+    <td><img src="imgcards/morbius.png" class="card" id="morbius"></td></td>
+    <td><img src="imgcards/forge.png" class="card" id="forge"></td>
+    <td><img src="imgcards/bucky-barnes.png" class="card" id="bucky-barnes"></td>
+    <td><img src="imgcards/the-collector.png" class="card" id="the-collector"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/cable.png" class="card" id="cable"></td>
+    <td><img src="imgcards/carnage.png" class="card" id="carnage"></td>
+    <td><img src="imgcards/kraven.png" class="card" id="kraven"></td>
+    <td><img src="imgcards/medusa.png" class="card" id="medusa"></td>
+    <td><img src="imgcards/mister-sinister.png" class="card" id="mister-sinister"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/star-lord.png" class="card" id="star-lord"></td>
+    <td><img src="imgcards/okoye.png" class="card" id="okoye"></td>
+    <td><img src="imgcards/scorpion.png" class="card" id="scorpion"></td>
+    <td><img src="imgcards/wolverine.png" class="card" id="wolverine"></td>
+    <td><img src="imgcards/shocker.png" class="card" id="shocker"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/domino.png" class="card" id="domino"></td>
+    <td><img src="imgcards/armor.png" class="card" id="armor"></td>
+    <td><img src="imgcards/colossus.png" class="card" id="colossus"></td>  
+    <td><img src="imgcards/multiple-man.png" class="card" id="multiple-man"></td>
+    <td><img src="imgcards/scarlet-witch.png" class="card" id="scarlet-witch"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/sentinel.png" class="card" id="sentinel"></td>  
+    <td><img src="imgcards/swarm.png" class="card" id="swarm"></td>
+    <td><img src="imgcards/cloak.png" class="card" id="cloak"></td>
+    <td><img src="imgcards/lizard.png" class="card" id="lizard"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/ironheart.png" class="card" id="ironheart"></td>
+    <td><img src="imgcards/morph.png" class="card" id="morph"></td>
+    <td><img src="imgcards/bishop.png" class="card" id="bishop"></td>
+    <td><img src="imgcards/wolfsbane.png" class="card" id="wolfsbane"></td>
+    <td><img src="imgcards/nakia.png" class="card" id="nakia"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/mister-fantastic.png" class="card" id="mister-fantastic"></td>
+    <td><img src="imgcards/punisher.png" class="card" id="punisher"></td>
+    <td><img src="imgcards/storm.png" class="card" id="storm"></td>
+    <td><img src="imgcards/cosmo.png" class="card" id="cosmo"></td>
+    <td><img src="imgcards/doctor-strange.png" class="card" id="doctor-strange"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/captain-america.png" class="card" id="captain-america"></td>
+    <td><img src="imgcards/killmonger.png" class="card" id="killmonger"></td>
+    <td><img src="imgcards/rhino.png" class="card" id="rhino"></td>
+    <td><img src="imgcards/vulture.png" class="card" id="vulture"></td>
+    <td><img src="imgcards/cyclops.png" class="card" id="cyclops"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/groot.png" class="card" id="groot"></td>
+    <td><img src="imgcards/hulk-buster.png" class="card" id="hulk-buster"></td>
+    <td><img src="imgcards/lady-sif.png" class="card" id="lady-sif"></td>
+    <td><img src="imgcards/sabretooth.png" class="card" id="sabretooth"></td>
+    <td><img src="imgcards/deathlok.png" class="card" id="deathlok"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/sword-master.png" class="card" id="sword-master"></td>
+    <td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/jubilee.png" class="card" id="jubilee"></td>
+    <td><img src="imgcards/sandman.png" class="card" id="sandman"></td>
+    <td><img src="imgcards/shang-chi.png" class="card" id="shang-chi"></td>
+    <td><img src="imgcards/ka-zar.png" class="card" id="ka-zar"></td>
+    <td><img src="imgcards/enchantress.png" class="card" id="enchantress"></td>
+  </tr>
+  <tr>
+    
+    <td><img src="imgcards/moon-girl.png" class="card" id="moon-girl"></td>
+    <td><img src="imgcards/jessica-jones.png" class="card" id="jessica-jones"></td>
+    <td><img src="imgcards/strong-guy.png" class="card" id="strong-guy"></td>
+    <td><img src="imgcards/namor.png" class="card" id="namor"></td>
+    <td><img src="imgcards/warpath.png" class="card" id="warpath"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/the-thing.png" class="card" id="the-thing"></td>
+    <td><img src="imgcards/white-queen.png" class="card" id="white-queen"></td>
+    <td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/hobgoblin.png" class="card" id="hobgoblin"></td>
+    <td><img src="imgcards/iron-man.png" class="card" id="iron-man"></td>
+    <td><img src="imgcards/white-tiger.png" class="card" id="white-tiger"></td>
+    <td><img src="imgcards/blue-marvel.png" class="card" id="blue-marvel"></td>
+    <td><img src="imgcards/professor-x.png" class="card" id="professor-x"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/devil-dinosaur.png" class="card" id="devil-dinosaur"></td>
+    <td><img src="imgcards/leech.png" class="card" id="leech"></td>
+    <td><img src="imgcards/klaw.png" class="card" id="klaw"></td>
+    <td><img src="imgcards/vision.png" class="card" id="vision"></td>
+    <td><img src="imgcards/spider-woman.png" class="card" id="spider-woman"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/gamora.png" class="card" id="gamora"></td>
+    <td><img src="imgcards/abomination.png" class="card" id="abomination"></td>
+    <td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/spectrum.png" class="card" id="spectrum"></td>
+    <td><img src="imgcards/onslaught.png" class="card" id="onslaught"></td>
+    <td><img src="imgcards/apocalypse.png" class="card" id="apocalypse"></td>
+    <td><img src="imgcards/odin.png" class="card" id="odin"></td>
+    <td><img src="imgcards/heimdall.png" class="card" id="heimdall"></td>
+  </tr>
+  <tr>
+    <td><img src="imgcards/america-chavez.png" class="card" id="america-chavez"></td>
+    <td><img src="imgcards/hulk.png" class="card" id="hulk"></td>
+    <td><img src="imgcards/the-infinaut.png" class="card" id="the-infinaut"></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
+  <table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool3" style="display: none">
+    <tr>
+      <td><img src="imgcards/wasp.png" class="card" id="wasp"></td>
+      <td><img src="imgcards/yellowjacket.png" class="card" id="yellowjacket"></td>
+      <td><img src="imgcards/the-hood.png" class="card" id="the-hood"></td>
+      <td><img src="imgcards/deadpool.png" class="card" id="deadpool"></td>
+      <td><img src="imgcards/human-torch.png" class="card" id="human-torch"></td>
+    <tr>
+    <tr>
+      <td><img src="imgcards/quinjet.png" class="card" id="quinjet"></td>
+      <td><img src="imgcards/zero.png" class="card" id="zero"></td>
+      <td><img src="imgcards/titania.png" class="card" id="titania"></td>
+      <td></td><td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/adam-warlock.png" class="card" id="adam-warlock"></td>
+      <td><img src="imgcards/black-widow.png" class="card" id="black-widow"></td>
+      <td><img src="imgcards/dagger.png" class="card" id="dagger"></td>
+      <td><img src="imgcards/psylocke.png" class="card" id="psylocke"></td>
+      <td><img src="imgcards/luke-cage.png" class="card" id="luke-cage"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/hazmat.png" class="card" id="hazmat"></td>
+      <td><img src="imgcards/beast.png" class="card" id="beast"></td>
+      <td><img src="imgcards/daredevil.png" class="card" id="daredevil"></td>
+      <td><img src="imgcards/goose.png" class="card" id="goose"></td>
+      <td><img src="imgcards/invisible-woman.png" class="card" id="invisible-woman"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/mojo.png" class="card" id="mojo"></td>
+      <td><img src="imgcards/baron-mordo.png" class="card" id="baron-mordo"></td>
+      <td><img src="imgcards/falcon.png" class="card" id="falcon"></td>
+      <td><img src="imgcards/viper.png" class="card" id="viper"></td>
+      <td><img src="imgcards/quake.png" class="card" id="quake"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/colleen-wing.png" class="card" id="colleen-wing"></td>
+      <td><img src="imgcards/mysterio.png" class="card" id="mysterio"></td>
+      <td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/green-goblin.png" class="card" id="green-goblin"></td>
+      <td><img src="imgcards/mystique.png" class="card" id="mystique"></td>
+      <td><img src="imgcards/cerebro.png" class="card" id="cerebro"></td>
+      <td><img src="imgcards/gambit.png" class="card" id="gambit"></td>
+      <td><img src="imgcards/venom.png" class="card" id="venom"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/patriot.png" class="card" id="patriot"></td>
+      <td><img src="imgcards/rogue.png" class="card" id="rogue"></td>
+      <td><img src="imgcards/brood.png" class="card" id="brood"></td>
+      <td><img src="imgcards/electro.png" class="card" id="electro"></td>
+      <td><img src="imgcards/lockjaw.png" class="card" id="lockjaw"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/debrii.png" class="card" id="debrii"></td>
+      <td><img src="imgcards/wave.png" class="card" id="wave"></td>
+      <td><img src="imgcards/juggernaut.png" class="card" id="juggernaut"></td>
+      <td><img src="imgcards/moon-knight.png" class="card" id="moon-knight"></td>
+      <td><img src="imgcards/kingpin.png" class="card" id="kingpin"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/thor.png" class="card" id="thor"></td>
+      <td><img src="imgcards/polaris.png" class="card" id="polaris"></td>
+      <td><img src="imgcards/black-cat.png" class="card" id="black-cat"></td>
+      <td><img src="imgcards/maximus.png" class="card" id="maximus"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/mister-negative.png" class="card" id="mister-negative"></td>
+      <td><img src="imgcards/dracula.png" class="card" id="dracula"></td>
+      
+      <td><img src="imgcards/wong.png" class="card" id="wong"></td>
+      <td><img src="imgcards/absorbing-man.png" class="card" id="absorbing-man"></td>
+      <td><img src="imgcards/spider-man.png" class="card" id="spider-man"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/ghost-rider.png" class="card" id="ghost-rider"></td>
+      <td><img src="imgcards/crystal.png" class="card" id="crystal"></td>
+      <td><img src="imgcards/drax.png" class="card" id="drax"></td>
+      <td><img src="imgcards/rescue.png" class="card" id="rescue"></td>
+      <td><img src="imgcards/omega-red.png" class="card" id="omega-red"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/miles-morales.png" class="card" id="miles-morales"></td>
+      <td><img src="imgcards/rockslide.png" class="card" id="rockslide"></td>
+      <td><img src="imgcards/hellcow.png" class="card" id="hellcow"></td>
+      <td><img src="imgcards/crossbones.png" class="card" id="crossbones"></td>
+      <td><img src="imgcards/typhoid-mary.png" class="card" id="typhoid-mary"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/taskmaster.png" class="card" id="taskmaster"></td>
+      <td><img src="imgcards/magik.png" class="card" id="magik"></td>
+      <td><img src="imgcards/ronan-the-accuser.png" class="card" id="ronan-the-accuser"></td>
+      <td><img src="imgcards/sera.png" class="card" id="sera"></td>
+      <td><img src="imgcards/captain-marvel.png" class="card" id="captain-marvel"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/nick-fury.png" class="card" id="nick-fury"></td>
+      <td><img src="imgcards/aero.png" class="card" id="aero"></td>
+      <td><img src="imgcards/black-bolt.png" class="card" id="black-bolt"></td>
+      <td><img src="imgcards/jane-foster-mighty-thor.png" class="card" id="jane-foster-mighty-thor"></td>
+      <td><img src="imgcards/doctor-octopus.png" class="card" id="doctor-octopus"></td>
+      
+    </tr>
+    <tr>
+      <td><img src="imgcards/red-skull.png" class="card" id="red-skull"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/arnim-zola.png" class="card" id="arnim-zola"></td>
+      <td><img src="imgcards/doctor-doom.png" class="card" id="doctor-doom"></td>
+      <td><img src="imgcards/hela.png" class="card" id="hela"></td>
+      <td><img src="imgcards/leader.png" class="card" id="leader"></td>
+      <td><img src="imgcards/ultron.png" class="card" id="ultron"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/she-hulk.png" class="card" id="she-hulk"></td>
+      <td><img src="imgcards/magneto.png" class="card" id="magneto"></td>
+      <td><img src="imgcards/agatha-harkness.png" class="card" id="agatha-harkness"></td>
+      <td><img src="imgcards/giganto.png" class="card" id="giganto"></td>
+      <td><img src="imgcards/destroyer.png" class="card" id="destroyer"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/death.png" class="card" id="death"></td>
+      <td></td><td></td><td></td><td></td>
+  </table>
+
+
+  <table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool4" style="display: none">
+    <tr>
+      <td><img src="imgcards/bast.png" class="card" id="bast"></td>
+      <td><img src="imgcards/mbaku.png" class="card" id="mbaku"></td>
+      <td><img src="imgcards/maria-hill.png" class="card" id="maria-hill"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/silver-surfer.png" class="card" id="silver-surfer"></td>
+      <td><img src="imgcards/zabu.png" class="card" id="zabu"></td>
+      <td><img src="imgcards/agent-coulson.png" class="card" id="agent-coulson"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/darkhawk.png" class="card" id="darkhawk"></td>
+      <td><img src="imgcards/shuri.png" class="card" id="shuri"></td>
+      <td><img src="imgcards/super-skrull.png" class="card" id="super-skrull"></td>
+      <td><img src="imgcards/sentry.png" class="card" id="sentry"></td>
+      <td><img src="imgcards/attuma.png" class="card" id="attuma"></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/valkyrie.png" class="card" id="valkyrie"></td>
+      <td><img src="imgcards/black-panther.png" class="card" id="black-panther"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><img src="imgcards/knull.png" class="card" id="knull"></td>
+      <td><img src="imgcards/galactus.png" class="card" id="galactus"></td>
+      <td><img src="imgcards/thanos.png" class="card" id="thanos"></td>
+      <td><img src="imgcards/orka.png" class="card" id="orka"></td>
+      <td><img src="imgcards/helicarrier.png" class="card" id="helicarrier"></td>
+    </tr>
+  </table>
+
+  <br>
+
+  <div id="pool5" style="display: none; max-width: 755px; font-family: Verdana" class="w3-container">
+    <b>TECH CARDS</b>
+    <br><br>
+    <b>(2) Armor</b><br>
+      Protege cartas de efeito constante (Devil Dinosaur), frustra estratégias de destruição do oponente, previne o efeito de diversos locais.<br>
+      Counter de: Killmonger, Shang-Chi. Protege dos locais que destroem.<br>
+      Comba com: Cartas de custo 1, Destroyer.<br>
+      É counterado por: Enchantress.<br><br>
+      Além de proteger nossas cartas, existe o aspecto de controle frustando os planos do oponente de destruir suas próprias cartas, counterando: The Hood, Bucky Barnes, etc.
+      <br><br>
+      <b>(3) Cosmos</b><br>
+      Protege cartas de efeito constante (Devil Dinosaur) de tomarem counter.<br>
+      Counter de: Enchantress, Wong, Odin, Silver Surfer.<br>
+      Comba com: Devil Dinosaur (protege).<br>
+      É counterado por: falta de prioridade.<br><br>
+      <b>(3) Killmonger</b><br>
+      Counter de: Zoo, Sunspot, Hood. Neutralizar local que coloca um simbionte (tem custo 1).<br>
+      Comba com: Nova e The Hood.<br>
+      É counterado por: Armor, Cosmo. Anti-sinergia com Hood.<br><br>
+      <b>(4) Shang-Chi</b><br>
+      Counter de: Devil Dinosaur, etc. Tem sinergia com alguns locais: dobra poder, +5 poder, monstro de poder 9, transforma em Hulk.<br>
+      Comba com: Red Skull.<br>
+      É counterado por: Armor, tem anti-sinergia com Scorpion.<br><br>
+      <b>(5) Leech</b><br>
+      Conter de: Silver Surfer, Sera decks.<br>
+      Comba com: Wave.<br>
+      É counterado por: The Infinaut, Red Skull, etc.<br><br>
+      <hr><h3>Pool 3</h3><hr><br>
+      <b>(3) Polaris, (5) Aero, (6) Magneto</b><br>
+      Boas cartas no geral para controle.<br>
+      Comba com: Kingpin, Fisk Tower (local).<br>
+      É counterado por: Cosmo.<br><br>
+  </div>
+
+
+<script>
+  'use strict'
+
+  document.getElementById('agent-13').title = "Agent 13\n\nYou can move this each turn."
+  document.getElementById('debrii').title = "Agent 13\n\nYou can move this each turn."
+  document.getElementById('ebony-maw').title = "Ebony Maw\n\nYou can move this each turn."
+  document.getElementById('iceman').title = "Iceman\n\nYou can move this each turn."
+  document.getElementById('sunspot').title = "Sunspot\n\nYou can move this each turn."
+  document.getElementById('cloak').title = "Cloak\n\nYou can move this each turn."
+  document.getElementById('okoye').title = "Okoye\n\nYou can move this each turn."
+  document.getElementById('scorpion').title = "Scorpion\n\nYou can move this each turn."
+  document.getElementById('swarm').title = "Swarm\n\nYou can move this each turn."
+  document.getElementById('the-collector').title = "The Collector\n\nYou can move this each turn."
+  document.getElementById('bucky-barnes').title = "Bucky Barnes\n\nYou can move this each turn."
+  document.getElementById('nakia').title = "Nakia\n\nYou can move this each turn."
+  document.getElementById('killmonger').title = "Killmonger\n\nYou can move this each turn."
+  document.getElementById('rhino').title = "Rhino\n\nYou can move this each turn."
+  document.getElementById('storm').title = "Storm\n\nYou can move this each turn."
+  document.getElementById('vulture').title = "Vulture\n\nYou can move this each turn."
+  document.getElementById('sabretooth').title = "Sabretooth\n\nYou can move this each turn."
+  document.getElementById('jubilee').title = "Jubilee\n\nYou can move this each turn."
+  document.getElementById('sandman').title = "Sandman\n\nYou can move this each turn."
+  document.getElementById('shang-chi').title = "Shang-Chi\n\nYou can move this each turn."
+  document.getElementById('warpath').title = "Warpath\n\nYou can move this each turn."
+  document.getElementById('hobgoblin').title = "Hobgoblin\n\nYou can move this each turn."
+  document.getElementById('leech').title = "Leech\n\nYou can move this each turn."
+  document.getElementById('vision').title = "Vision\n\nYou can move this each turn."
+  document.getElementById('the-infinaut').title = "The Infinaut\n\nIf you played a card last turn, you can't play this."
+  
+  function allowDrop(e) {
+    e.preventDefault();
+  }
+
+  function drag(e) {
+    e.dataTransfer.setData("text", e.target.id)
+  }
+
+  function drop(e) {
+    e.preventDefault();
+    var data = e.dataTransfer.getData("text");
+    if (e.target.tagName == 'TD') { // Este if resolve o bug de quando jogar uma imagem em cima de outra, a primeira imagem se perder e também de poder jogar a imagem fora das células de tabela
+      e.target.appendChild(document.getElementById(data));
+      console.log('Movido: '+data)
+    }
+    else {console.log('Não movido: '+ data)}
+  }
+
+  function addDropAllCards() {
+    var a = document.getElementsByClassName('card');
+    var b = a.length;
+    for (var i = 0; i < b; i++) {
+      a[i].setAttribute('draggable', true);
+      a[i].setAttribute('ondragstart', 'drag(event)');
+    }
+  }
+
+  function addClassAllButtons() {
+    var a = document.getElementsByTagName('button');
+    var b = a.length;
+    for (var i = 0; i < b; i++) {
+      a[i].classList.add('w3-button');
+      a[i].classList.add('w3-red');
+      a[i].classList.add('w3-text-white');
+    }
+  }
+
+  function esconder(e) {
+    var x = document.getElementById('pool' + e);
+    var y = document.getElementById('botao' + e);
+    
+    if (x) {
+      if (x.style.display === "none") {
+      x.style.display = "block";
+      y.classList.add('w3-gray');
+      y.classList.remove('w3-red');
+      } else {
+      x.style.display = "none";
+      y.classList.add('w3-red');
+      y.classList.remove('w3-gray');
+      }
+    } else {console.log('Parâmetro inválido! → '+ e)}
+  }
+
+  
+  // Start
+  addDropAllCards();
+  addClassAllButtons()
+
+</script>
+</body>
+</html>
