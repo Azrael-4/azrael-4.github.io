@@ -8,6 +8,12 @@
   padding: 10px;
   border: 1px solid #aaaaaa;
 }
+#box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(219, 18, 18);
+}
 </style>
 <script>
 function allowDrop(ev) {
@@ -23,6 +29,37 @@ function drop(ev) {
   var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
 }
+
+
+
+window.onload = function() {
+  // find the element that you want to drag.
+  var box = document.getElementById('box');
+  
+  /* listen to the touchMove event,
+  every time it fires, grab the location
+  of touch and assign it to box */
+  
+  box.addEventListener('touchmove', function(e) {
+    // grab the location of touch
+    var touchLocation = e.targetTouches[0];
+    
+    // assign box new coordinates based on the touch.
+    box.style.left = touchLocation.pageX + 'px';
+    box.style.top = touchLocation.pageY + 'px';
+  })
+  
+  /* record the position of the touch
+  when released using touchend event.
+  This will be the drop position. */
+  
+  box.addEventListener('touchend', function(e) {
+    // current box position.
+    var x = parseInt(box.style.left);
+    var y = parseInt(box.style.top);
+  })
+  
+}
 </script>
 </head>
 <body>
@@ -32,6 +69,25 @@ function drop(ev) {
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ontouchmove="allowDrop(event)"></div>
 <br>
 <img id="drag1" src="https://www.w3schools.com/html/img_logo.gif" draggable="true" ontouchstart="drag(event)" ondragstart="drag(event)" width="336" height="69">
+
+
+
+
+<p></p><p></p><p></p><p></p><p></p>
+
+
+<div id="container">
+  <p>Toggle your browser device toolbar and change device to any mobile or tablet from your browser inspect.</p>
+  <div id="box"></div>
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
