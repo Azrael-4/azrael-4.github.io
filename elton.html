@@ -39,20 +39,23 @@ function drop(ev) {
 
 
 window.onload = function() {
-
+  console.log('Opa');
   var x = document.getElementsByClassName('card');
   var y = x.length;
-
+    
   for (var i = 0; i < y; i++) {
-    x[i].addEventListener('touchmove', function(e) {
+    
+    var item = x[i];
+
+    item.addEventListener('touchmove', function(e) {
       var touchLocation = e.targetTouches[0];
-      x[i].style.left = touchLocation.pageX + 'px';
-      x[i].style.top = touchLocation.pageY + 'px';
+      item.style.left = touchLocation.pageX + 'px';
+      item.style.top = touchLocation.pageY + 'px';
     })
 
-    x[i].addEventListener('touchend', function(e) {
-      var x2 = parseInt(x[i].style.left);
-      var y2 = parseInt(x[i].style.top);
+    item.addEventListener('touchend', function(e) {
+      var x2 = parseInt(x[0].style.left);
+      var y2 = parseInt(x[0].style.top);
   })
   }
 
