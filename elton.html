@@ -29,9 +29,9 @@ function drop(ev) {
 
 <p>Drag the W3Schools image into the rectangle:</p>
 
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ontouchmove="allowDrop(event)"></div>
 <br>
-<img id="drag1" src="https://www.w3schools.com/html/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+<img id="drag1" src="https://www.w3schools.com/html/img_logo.gif" draggable="true" ontouchstart="drag(event)" ondragstart="drag(event)" width="336" height="69">
 
 </body>
 </html>
