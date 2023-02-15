@@ -4,539 +4,413 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Az's Snap Builder</title>
+  <title>Snap Builder by Az</title>
   <link rel="stylesheet" href="w3.css">
   <style>
-    html {width: 1200px; scroll-behavior: smooth; overflow-y:scroll;}
-    table {border: 0px; border-spacing: 0px; border-collapse: collapse}
-    td {width: 153px; height: 155px; border: 1px dotted white}
-    .card {height: 150px; margin-bottom: -4px;}
-    .divbar {width: 755px;}
-    .divbar button {width: 147px; height: 37px; border-radius: 3px; font-family: 'Courier New', Courier, monospace}
-    #tableBuilder {position: fixed; right: 5px; top: 0px; max-width: 40%;}
-    .inputer {background-color: black; color: white; border: none; font-family: 'Times New Roman', Times, serif; font-size: 36px; font-weight: bold; text-align: center; margin-left: 0 auto; width: 453px; margin-top: 3px;}
+    html {overflow-y: scroll}
+    td {border: 1px dotted white; padding: 0px !important}
+    .card {height: 100%; width: 100%;}
+    .builder-table tr {height: 7em} /* Limitado devido à baixa largura */
+    ::placeholder {color: white; opacity: 1; /* Firefox */ }
   </style>
 </head>
 <body class="w3-black">
 
-  <div id="tableBuilder">
-    <input type="text" class="inputer" name="caixa" placeholder="Az's Snap Builder" maxlength="25" size="25" value="">
-    <table id="tabelaDrop" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
+  <div class="w3-row"> <!-- Div Row -->
+
+  <div class="w3-col" style="width: 60%">
+
+    <div class="w3-bar w3-teal w3-center">
+      <button id="botao2" class="w3-button w3-bar-item" onclick="esconder(2)" style="width: 25%">Pool 2</button>
+      <button id="botao3" class="w3-button w3-bar-item" onclick="esconder(3)" style="width: 25%">Pool 3</button>
+      <button id="botao4" class="w3-button w3-bar-item" onclick="esconder(4)" style="width: 25%">Pool 4-5</button>
+      <button id="botao6" class="w3-button w3-bar-item" onclick="esconder(6)" style="width: 25%">Anotações</button>
+    </div>
+  
+
+    <table class="w3-table" ondrop="drop(event)" ondragover="allowDrop(event)" id="pool2" style="display: none;">
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ant-man.webp?v=39" class="card" id="ant-man"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hawkeye.webp?v=39" class="card" id="hawkeye"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/elektra.webp?v=39" class="card" id="elektra"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nova.webp?v=39" class="card" id="nova"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/squirrel-girl.webp?v=39" class="card" id="squirrel-girl"></td>
+        
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sunspot.webp?v=39" class="card" id="sunspot"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/misty-knight.webp?v=39" class="card" id="misty-knight"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quicksilver.webp?v=39" class="card" id="quicksilver"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angel.webp?v=39" class="card" id="angel"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nightcrawler.webp?v=39" class="card" id="nightcrawler"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-fist.webp?v=39" class="card" id="iron-fist"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mantis.webp?v=39" class="card" id="mantis"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rocket-racoon.webp?v=39" class="card" id="rocket-racoon"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/uatu-the-watcher.webp?v=39" class="card" id="uatu-the-watcher"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agent-13.webp?v=39" class="card" id="agent-13"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iceman.webp?v=39" class="card" id="iceman"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/korg.webp?v=39" class="card" id="korg"></td>  
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/yondu.webp?v=39" class="card" id="yondu"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blade.webp?v=39" class="card" id="blade"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ebony-maw.webp?v=39" class="card" id="ebony-maw">
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angela.webp?v=39" class="card" id="angela"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/morbius.webp?v=39" class="card" id="morbius"></td></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/forge.webp?v=39" class="card" id="forge"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bucky-barnes.webp?v=39" class="card" id="bucky-barnes"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-collector.webp?v=39" class="card" id="the-collector"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cable.webp?v=39" class="card" id="cable"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/carnage.webp?v=39" class="card" id="carnage"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/kraven.webp?v=39" class="card" id="kraven"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/medusa.webp?v=39" class="card" id="medusa"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-sinister.webp?v=39" class="card" id="mister-sinister"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/star-lord.webp?v=39" class="card" id="star-lord"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/okoye.webp?v=39" class="card" id="okoye"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/scorpion.webp?v=39" class="card" id="scorpion"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolverine.webp?v=39" class="card" id="wolverine"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shocker.webp?v=39" class="card" id="shocker"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/domino.webp?v=39" class="card" id="domino"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/armor.webp?v=39" class="card" id="armor"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/colossus.webp?v=39" class="card" id="colossus"></td>  
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/multiple-man.webp?v=39" class="card" id="multiple-man"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/scarlet-witch.webp?v=39" class="card" id="scarlet-witch"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sentinel.webp?v=39" class="card" id="sentinel"></td>  
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/swarm.webp?v=39" class="card" id="swarm"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cloak.webp?v=39" class="card" id="cloak"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lizard.webp?v=39" class="card" id="lizard"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ironheart.webp?v=39" class="card" id="ironheart"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/morph.webp?v=39" class="card" id="morph"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bishop.webp?v=39" class="card" id="bishop"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolfsbane.webp?v=39" class="card" id="wolfsbane"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nakia.webp?v=39" class="card" id="nakia"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-fantastic.webp?v=39" class="card" id="mister-fantastic"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/punisher.webp?v=39" class="card" id="punisher"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/storm.webp?v=39" class="card" id="storm"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cosmo.webp?v=39" class="card" id="cosmo"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-strange.webp?v=39" class="card" id="doctor-strange"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/captain-america.webp?v=39" class="card" id="captain-america"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/killmonger.webp?v=39" class="card" id="killmonger"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rhino.webp?v=39" class="card" id="rhino"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/vulture.webp?v=39" class="card" id="vulture"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cyclops.webp?v=39" class="card" id="cyclops"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/groot.webp?v=39" class="card" id="groot"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk-buster.webp?v=39" class="card" id="hulk-buster"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lady-sif.webp?v=39" class="card" id="lady-sif"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sabretooth.webp?v=39" class="card" id="sabretooth"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/deathlok.webp?v=39" class="card" id="deathlok"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sword-master.webp?v=39" class="card" id="sword-master"></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jubilee.webp?v=39" class="card" id="jubilee"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sandman.webp?v=39" class="card" id="sandman"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shang-chi.webp?v=39" class="card" id="shang-chi"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ka-zar.webp?v=39" class="card" id="ka-zar"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/enchantress.webp?v=39" class="card" id="enchantress"></td>
+      </tr>
+      <tr>
+        
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/moon-girl.webp?v=39" class="card" id="moon-girl"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jessica-jones.webp?v=39" class="card" id="jessica-jones"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/strong-guy.webp?v=39" class="card" id="strong-guy"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/namor.webp?v=39" class="card" id="namor"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/warpath.webp?v=39" class="card" id="warpath"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-thing.webp?v=39" class="card" id="the-thing"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-queen.webp?v=39" class="card" id="white-queen"></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hobgoblin.webp?v=39" class="card" id="hobgoblin"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-man.webp?v=39" class="card" id="iron-man"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-tiger.webp?v=39" class="card" id="white-tiger"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blue-marvel.webp?v=39" class="card" id="blue-marvel"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/professor-x.webp?v=39" class="card" id="professor-x"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/devil-dinosaur.webp?v=39" class="card" id="devil-dinosaur"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/leech.webp?v=39" class="card" id="leech"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/klaw.webp?v=39" class="card" id="klaw"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/vision.webp?v=39" class="card" id="vision"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spider-woman.webp?v=39" class="card" id="spider-woman"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/gamora.webp?v=39" class="card" id="gamora"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/abomination.webp?v=39" class="card" id="abomination"></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spectrum.webp?v=39" class="card" id="spectrum"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/onslaught.webp?v=39" class="card" id="onslaught"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/apocalypse.webp?v=39" class="card" id="apocalypse"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/odin.webp?v=39" class="card" id="odin"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/heimdall.webp?v=39" class="card" id="heimdall"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/america-chavez.webp?v=39" class="card" id="america-chavez"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk.webp?v=39" class="card" id="hulk"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-infinaut.webp?v=39" class="card" id="the-infinaut"></td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
+  
+  
+  
+  
+  
+  
+    <table class="w3-table" ondrop="drop(event)" ondragover="allowDrop(event)" id="pool3" style="display: none;">
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wasp.webp?v=39" class="card" id="wasp"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/yellowjacket.webp?v=39" class="card" id="yellowjacket"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-hood.webp?v=39" class="card" id="the-hood"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/deadpool.webp?v=39" class="card" id="deadpool"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/human-torch.webp?v=39" class="card" id="human-torch"></td>
+      <tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quinjet.webp?v=39" class="card" id="quinjet"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/zero.webp?v=39" class="card" id="zero"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/titania.webp?v=39" class="card" id="titania"></td>
+        <td></td><td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/adam-warlock.webp?v=39" class="card" id="adam-warlock"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-widow.webp?v=39" class="card" id="black-widow"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/dagger.webp?v=39" class="card" id="dagger"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/psylocke.webp?v=39" class="card" id="psylocke"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/luke-cage.webp?v=39" class="card" id="luke-cage"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hazmat.webp?v=39" class="card" id="hazmat"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/beast.webp?v=39" class="card" id="beast"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/daredevil.webp?v=39" class="card" id="daredevil"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/goose.webp?v=39" class="card" id="goose"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/invisible-woman.webp?v=39" class="card" id="invisible-woman"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mojo.webp?v=39" class="card" id="mojo"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/baron-mordo.webp?v=39" class="card" id="baron-mordo"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/falcon.webp?v=39" class="card" id="falcon"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/viper.webp?v=39" class="card" id="viper"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quake.webp?v=39" class="card" id="quake"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/colleen-wing.webp?v=39" class="card" id="colleen-wing"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mysterio.webp?v=39" class="card" id="mysterio"></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/green-goblin.webp?v=39" class="card" id="green-goblin"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mystique.webp?v=39" class="card" id="mystique"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cerebro.webp?v=39" class="card" id="cerebro"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/gambit.webp?v=39" class="card" id="gambit"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/venom.webp?v=39" class="card" id="venom"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/patriot.webp?v=39" class="card" id="patriot"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rogue.webp?v=39" class="card" id="rogue"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/brood.webp?v=39" class="card" id="brood"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/electro.webp?v=39" class="card" id="electro"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lockjaw.webp?v=39" class="card" id="lockjaw"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/debrii.webp?v=39" class="card" id="debrii"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wave.webp?v=39" class="card" id="wave"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/juggernaut.webp?v=39" class="card" id="juggernaut"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/moon-knight.webp?v=39" class="card" id="moon-knight"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/kingpin.webp?v=39" class="card" id="kingpin"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/thor.webp?v=39" class="card" id="thor"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/polaris.webp?v=39" class="card" id="polaris"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-cat.webp?v=39" class="card" id="black-cat"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/maximus.webp?v=39" class="card" id="maximus"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-negative.webp?v=39" class="card" id="mister-negative"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/dracula.webp?v=39" class="card" id="dracula"></td>
+        
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wong.webp?v=39" class="card" id="wong"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/absorbing-man.webp?v=39" class="card" id="absorbing-man"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spider-man.webp?v=39" class="card" id="spider-man"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ghost-rider.webp?v=39" class="card" id="ghost-rider"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/crystal.webp?v=39" class="card" id="crystal"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/drax.webp?v=39" class="card" id="drax"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rescue.webp?v=39" class="card" id="rescue"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/omega-red.webp?v=39" class="card" id="omega-red"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/miles-morales.webp?v=39" class="card" id="miles-morales"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rockslide.webp?v=39" class="card" id="rockslide"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hellcow.webp?v=39" class="card" id="hellcow"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/crossbones.webp?v=39" class="card" id="crossbones"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/typhoid-mary.webp?v=39" class="card" id="typhoid-mary"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/taskmaster.webp?v=39" class="card" id="taskmaster"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/magik.webp?v=39" class="card" id="magik"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ronan-the-accuser.webp?v=39" class="card" id="ronan-the-accuser"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sera.webp?v=39" class="card" id="sera"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/captain-marvel.webp?v=39" class="card" id="captain-marvel"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nick-fury.webp?v=39" class="card" id="nick-fury"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/aero.webp?v=39" class="card" id="aero"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-bolt.webp?v=39" class="card" id="black-bolt"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jane-foster-mighty-thor.webp?v=39" class="card" id="jane-foster-mighty-thor"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-octopus.webp?v=39" class="card" id="doctor-octopus"></td>
+        
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/red-skull.webp?v=39" class="card" id="red-skull"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/arnim-zola.webp?v=39" class="card" id="arnim-zola"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-doom.webp?v=39" class="card" id="doctor-doom"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hela.webp?v=39" class="card" id="hela"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/leader.webp?v=39" class="card" id="leader"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ultron.webp?v=39" class="card" id="ultron"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/she-hulk.webp?v=39" class="card" id="she-hulk"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/magneto.webp?v=39" class="card" id="magneto"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agatha-harkness.webp?v=39" class="card" id="agatha-harkness"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/giganto.webp?v=39" class="card" id="giganto"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/destroyer.webp?v=39" class="card" id="destroyer"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/death.webp?v=39" class="card" id="death"></td>
+        <td></td><td></td><td></td><td></td>
+    </table>
+  
+  
+  
+
+    <table class="w3-table" ondrop="drop(event)" ondragover="allowDrop(event)" id="pool4" style="display: none">
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bast.webp?v=39" class="card" id="bast"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mbaku.webp?v=39" class="card" id="mbaku"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/zabu.webp?v=39" class="card" id="zabu"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/maria-hill.webp?v=39" class="card" id="maria-hill"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/silver-surfer.webp?v=39" class="card" id="silver-surfer"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agent-coulson.webp?v=39" class="card" id="agent-coulson"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/darkhawk.webp?v=39" class="card" id="darkhawk"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shuri.webp?v=39" class="card" id="shuri"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/super-skrull.webp?v=39" class="card" id="super-skrull"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sentry.webp?v=39" class="card" id="sentry"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/attuma.webp?v=39" class="card" id="attuma"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/valkyrie.webp?v=39" class="card" id="valkyrie"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-panther.webp?v=39" class="card" id="black-panther"></td>
+      </tr>
+      <tr>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/knull.webp?v=39" class="card" id="knull"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/galactus.webp?v=39" class="card" id="galactus"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/thanos.webp?v=39" class="card" id="thanos"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/orka.webp?v=39" class="card" id="orka"></td>
+        <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/helicarrier.webp?v=39" class="card" id="helicarrier"></td>
+      </tr>
+    </table>
+
+
+
+
+    <div id="pool6" class="w3-container" style="display: none">
+      <h3>Tech Cards</h3>
+      <hr>
+      <h3>Pool 2</h3>
+      <b>(2) Armor</b><br>
+        Protege cartas de efeito constante (Devil Dinosaur), frustra estratégias de destruição do oponente, previne o efeito de diversos locais.<br>
+        Counter de: Killmonger, Shang-Chi. Protege dos locais que destroem.<br>
+        Comba com: Cartas de custo 1, Destroyer.<br>
+        É counterado por: Enchantress.<br><br>
+        Além de proteger nossas cartas, existe o aspecto de controle frustando os planos do oponente de destruir suas próprias cartas, counterando: The Hood, Bucky Barnes, etc.
+        <br><br>
+        <b>(3) Cosmos</b><br>
+        Protege cartas de efeito constante (Devil Dinosaur) de tomarem counter.<br>
+        Counter de: Enchantress, Wong, Odin, Silver Surfer.<br>
+        Comba com: Devil Dinosaur (protege).<br>
+        É counterado por: falta de prioridade.<br><br>
+        <b>(3) Killmonger</b><br>
+        Counter de: Zoo, Sunspot, Hood. Neutralizar local que coloca um simbionte (tem custo 1).<br>
+        Comba com: Nova e The Hood.<br>
+        É counterado por: Armor, Cosmo. Anti-sinergia com Hood.<br><br>
+        <b>(4) Shang-Chi</b><br>
+        Counter de: Devil Dinosaur, etc. Tem sinergia com alguns locais: dobra poder, +5 poder, monstro de poder 9, transforma em Hulk.<br>
+        Comba com: Red Skull.<br>
+        É counterado por: Armor, tem anti-sinergia com Scorpion.<br><br>
+        <b>(5) Leech</b><br>
+        Conter de: Silver Surfer, Sera decks.<br>
+        Comba com: Wave.<br>
+        É counterado por: The Infinaut, Red Skull, etc.<br><br>
+        <h3>Pool 3</h3>
+        <b>(3) Polaris, (5) Aero, (6) Magneto</b><br>
+        Boas cartas no geral para controle.<br>
+        Comba com: Kingpin, Fisk Tower (local).<br>
+        É counterado por: Cosmo.<br><br>
+    </div>
+  
+  </div> <!-- Div 2/3 -->
+
+
+  <div class="w3-col" style="position: fixed; right: 0px; width: 40%;">
+    
+    <div class="w3-container w3-blue w3-center">
+      <input type="text" class="w3-button" placeholder="Snap Builder by Az" maxlength="25" size="25" autocomplete="off">
     </div>
 
-<div class="divbar">
-  <button onclick="esconder(0)" id="botao0" title="26 cards&#10;" style="display: none">Pool 0</button> <!-- Não excluí este botão por conta da função  esconder(e) var y, que precisa fazer referência ao botão 0 -->
-  <button onclick="esconder(1)" id="botao1" title="26 + 46 = 72 cards">Pool 1</button>
-  <button onclick="esconder(2)" id="botao2" title="25 + 72 = 97 cards">Pool 2</button>
-  <button onclick="esconder(3)" id="botao3" title="77 cards">Pool 3</button>
-  <button onclick="esconder(4)" id="botao4" title="20 cards">Pool 4+</button>
-  <button onclick="esconder(5)" id="botao5" title="Anotações">Anotações</button>
-</div>
+    <table class="w3-table builder-table" id="tabelaDrop" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <tr><td style="width: 33%"></td><td style="width: 33%"></td><td style="width: 33%"></td></tr>
+      <tr><td style="width: 33%"></td><td style="width: 33%"></td><td style="width: 33%"></td></tr>
+      <tr><td style="width: 33%"></td><td style="width: 33%"></td><td style="width: 33%"></td></tr>
+    </table>
+  </div> <!-- Div 1/3 -->
 
-
-<table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool1" style="display: none">
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/elektra.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/squirrel-girl.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ant-man.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hawkeye.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/misty-knight.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angel.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quicksilver.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-fist.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/korg.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nightcrawler.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mantis.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nova.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rocket-racoon.webp?v=39" class="card" id="rocket-"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/uatu-the-watcher.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/yondu.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blade.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angela.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/forge.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cable.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/carnage.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/kraven.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/medusa.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-sinister.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/star-lord.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolverine.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shocker.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/domino.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/colossus.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/armor.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/multiple-man.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/scarlet-witch.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sentinel.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lizard.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ironheart.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/morph.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bishop.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolfsbane.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-fantastic.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/punisher.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cosmo.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-strange.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/captain-america.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cyclops.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/groot.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk-buster.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lady-sif.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/deathlok.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sword-master.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jessica-jones.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ka-zar.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/enchantress.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/moon-girl.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/strong-guy.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/namor.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-queen.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-thing.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-man.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-tiger.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blue-marvel.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/professor-x.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/devil-dinosaur.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/klaw.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/gamora.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spider-woman.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/abomination.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spectrum.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/onslaught.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/apocalypse.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/heimdall.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/odin.webp?v=39" class="card" id=""></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/america-chavez.webp?v=39" class="card" id=""></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk.webp?v=39" class="card" id=""></td>
-  </tr>
-</table>
-
-
-<table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool2" style="display: none">
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/elektra.webp?v=39" class="card" id="elektra"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/squirrel-girl.webp?v=39" class="card" id="squirrel-girl"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ant-man.webp?v=39" class="card" id="ant-man"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hawkeye.webp?v=39" class="card" id="hawkeye"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sunspot.webp?v=39" class="card" id="sunspot"></td>
-  </tr>
-  <tr>  
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/misty-knight.webp?v=39" class="card" id="misty-knight"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angel.webp?v=39" class="card" id="angel"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quicksilver.webp?v=39" class="card" id="quicksilver"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-fist.webp?v=39" class="card" id="iron-fist"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/korg.webp?v=39" class="card" id="korg"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nightcrawler.webp?v=39" class="card" id="nightcrawler"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mantis.webp?v=39" class="card" id="mantis"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nova.webp?v=39" class="card" id="nova"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rocket-racoon.webp?v=39" class="card" id="rocket-racoon"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/uatu-the-watcher.webp?v=39" class="card" id="uatu-the-watcher"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/yondu.webp?v=39" class="card" id="yondu"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agent-13.webp?v=39" class="card" id="agent-13"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iceman.webp?v=39" class="card" id="iceman"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blade.webp?v=39" class="card" id="blade"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ebony-maw.webp?v=39" class="card" id="ebony-maw">
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/angela.webp?v=39" class="card" id="angela"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/morbius.webp?v=39" class="card" id="morbius"></td></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/forge.webp?v=39" class="card" id="forge"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bucky-barnes.webp?v=39" class="card" id="bucky-barnes"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-collector.webp?v=39" class="card" id="the-collector"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cable.webp?v=39" class="card" id="cable"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/carnage.webp?v=39" class="card" id="carnage"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/kraven.webp?v=39" class="card" id="kraven"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/medusa.webp?v=39" class="card" id="medusa"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-sinister.webp?v=39" class="card" id="mister-sinister"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/star-lord.webp?v=39" class="card" id="star-lord"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/okoye.webp?v=39" class="card" id="okoye"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/scorpion.webp?v=39" class="card" id="scorpion"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolverine.webp?v=39" class="card" id="wolverine"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shocker.webp?v=39" class="card" id="shocker"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/domino.webp?v=39" class="card" id="domino"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/armor.webp?v=39" class="card" id="armor"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/colossus.webp?v=39" class="card" id="colossus"></td>  
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/multiple-man.webp?v=39" class="card" id="multiple-man"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/scarlet-witch.webp?v=39" class="card" id="scarlet-witch"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sentinel.webp?v=39" class="card" id="sentinel"></td>  
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/swarm.webp?v=39" class="card" id="swarm"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cloak.webp?v=39" class="card" id="cloak"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lizard.webp?v=39" class="card" id="lizard"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ironheart.webp?v=39" class="card" id="ironheart"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/morph.webp?v=39" class="card" id="morph"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bishop.webp?v=39" class="card" id="bishop"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wolfsbane.webp?v=39" class="card" id="wolfsbane"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nakia.webp?v=39" class="card" id="nakia"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-fantastic.webp?v=39" class="card" id="mister-fantastic"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/punisher.webp?v=39" class="card" id="punisher"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/storm.webp?v=39" class="card" id="storm"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cosmo.webp?v=39" class="card" id="cosmo"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-strange.webp?v=39" class="card" id="doctor-strange"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/captain-america.webp?v=39" class="card" id="captain-america"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/killmonger.webp?v=39" class="card" id="killmonger"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rhino.webp?v=39" class="card" id="rhino"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/vulture.webp?v=39" class="card" id="vulture"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cyclops.webp?v=39" class="card" id="cyclops"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/groot.webp?v=39" class="card" id="groot"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk-buster.webp?v=39" class="card" id="hulk-buster"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lady-sif.webp?v=39" class="card" id="lady-sif"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sabretooth.webp?v=39" class="card" id="sabretooth"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/deathlok.webp?v=39" class="card" id="deathlok"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sword-master.webp?v=39" class="card" id="sword-master"></td>
-    <td></td><td></td><td></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jubilee.webp?v=39" class="card" id="jubilee"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sandman.webp?v=39" class="card" id="sandman"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shang-chi.webp?v=39" class="card" id="shang-chi"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ka-zar.webp?v=39" class="card" id="ka-zar"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/enchantress.webp?v=39" class="card" id="enchantress"></td>
-  </tr>
-  <tr>
-    
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/moon-girl.webp?v=39" class="card" id="moon-girl"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jessica-jones.webp?v=39" class="card" id="jessica-jones"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/strong-guy.webp?v=39" class="card" id="strong-guy"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/namor.webp?v=39" class="card" id="namor"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/warpath.webp?v=39" class="card" id="warpath"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-thing.webp?v=39" class="card" id="the-thing"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-queen.webp?v=39" class="card" id="white-queen"></td>
-    <td></td><td></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hobgoblin.webp?v=39" class="card" id="hobgoblin"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/iron-man.webp?v=39" class="card" id="iron-man"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/white-tiger.webp?v=39" class="card" id="white-tiger"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/blue-marvel.webp?v=39" class="card" id="blue-marvel"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/professor-x.webp?v=39" class="card" id="professor-x"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/devil-dinosaur.webp?v=39" class="card" id="devil-dinosaur"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/leech.webp?v=39" class="card" id="leech"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/klaw.webp?v=39" class="card" id="klaw"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/vision.webp?v=39" class="card" id="vision"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spider-woman.webp?v=39" class="card" id="spider-woman"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/gamora.webp?v=39" class="card" id="gamora"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/abomination.webp?v=39" class="card" id="abomination"></td>
-    <td></td><td></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spectrum.webp?v=39" class="card" id="spectrum"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/onslaught.webp?v=39" class="card" id="onslaught"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/apocalypse.webp?v=39" class="card" id="apocalypse"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/odin.webp?v=39" class="card" id="odin"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/heimdall.webp?v=39" class="card" id="heimdall"></td>
-  </tr>
-  <tr>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/america-chavez.webp?v=39" class="card" id="america-chavez"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hulk.webp?v=39" class="card" id="hulk"></td>
-    <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-infinaut.webp?v=39" class="card" id="the-infinaut"></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-
-  <table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool3" style="display: none">
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wasp.webp?v=39" class="card" id="wasp"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/yellowjacket.webp?v=39" class="card" id="yellowjacket"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/the-hood.webp?v=39" class="card" id="the-hood"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/deadpool.webp?v=39" class="card" id="deadpool"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/human-torch.webp?v=39" class="card" id="human-torch"></td>
-    <tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quinjet.webp?v=39" class="card" id="quinjet"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/zero.webp?v=39" class="card" id="zero"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/titania.webp?v=39" class="card" id="titania"></td>
-      <td></td><td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/adam-warlock.webp?v=39" class="card" id="adam-warlock"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-widow.webp?v=39" class="card" id="black-widow"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/dagger.webp?v=39" class="card" id="dagger"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/psylocke.webp?v=39" class="card" id="psylocke"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/luke-cage.webp?v=39" class="card" id="luke-cage"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hazmat.webp?v=39" class="card" id="hazmat"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/beast.webp?v=39" class="card" id="beast"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/daredevil.webp?v=39" class="card" id="daredevil"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/goose.webp?v=39" class="card" id="goose"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/invisible-woman.webp?v=39" class="card" id="invisible-woman"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mojo.webp?v=39" class="card" id="mojo"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/baron-mordo.webp?v=39" class="card" id="baron-mordo"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/falcon.webp?v=39" class="card" id="falcon"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/viper.webp?v=39" class="card" id="viper"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/quake.webp?v=39" class="card" id="quake"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/colleen-wing.webp?v=39" class="card" id="colleen-wing"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mysterio.webp?v=39" class="card" id="mysterio"></td>
-      <td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/green-goblin.webp?v=39" class="card" id="green-goblin"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mystique.webp?v=39" class="card" id="mystique"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/cerebro.webp?v=39" class="card" id="cerebro"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/gambit.webp?v=39" class="card" id="gambit"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/venom.webp?v=39" class="card" id="venom"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/patriot.webp?v=39" class="card" id="patriot"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rogue.webp?v=39" class="card" id="rogue"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/brood.webp?v=39" class="card" id="brood"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/electro.webp?v=39" class="card" id="electro"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/lockjaw.webp?v=39" class="card" id="lockjaw"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/debrii.webp?v=39" class="card" id="debrii"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wave.webp?v=39" class="card" id="wave"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/juggernaut.webp?v=39" class="card" id="juggernaut"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/moon-knight.webp?v=39" class="card" id="moon-knight"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/kingpin.webp?v=39" class="card" id="kingpin"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/thor.webp?v=39" class="card" id="thor"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/polaris.webp?v=39" class="card" id="polaris"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-cat.webp?v=39" class="card" id="black-cat"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/maximus.webp?v=39" class="card" id="maximus"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mister-negative.webp?v=39" class="card" id="mister-negative"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/dracula.webp?v=39" class="card" id="dracula"></td>
-      
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/wong.webp?v=39" class="card" id="wong"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/absorbing-man.webp?v=39" class="card" id="absorbing-man"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/spider-man.webp?v=39" class="card" id="spider-man"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ghost-rider.webp?v=39" class="card" id="ghost-rider"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/crystal.webp?v=39" class="card" id="crystal"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/drax.webp?v=39" class="card" id="drax"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rescue.webp?v=39" class="card" id="rescue"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/omega-red.webp?v=39" class="card" id="omega-red"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/miles-morales.webp?v=39" class="card" id="miles-morales"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/rockslide.webp?v=39" class="card" id="rockslide"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hellcow.webp?v=39" class="card" id="hellcow"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/crossbones.webp?v=39" class="card" id="crossbones"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/typhoid-mary.webp?v=39" class="card" id="typhoid-mary"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/taskmaster.webp?v=39" class="card" id="taskmaster"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/magik.webp?v=39" class="card" id="magik"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ronan-the-accuser.webp?v=39" class="card" id="ronan-the-accuser"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sera.webp?v=39" class="card" id="sera"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/captain-marvel.webp?v=39" class="card" id="captain-marvel"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/nick-fury.webp?v=39" class="card" id="nick-fury"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/aero.webp?v=39" class="card" id="aero"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-bolt.webp?v=39" class="card" id="black-bolt"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/jane-foster-mighty-thor.webp?v=39" class="card" id="jane-foster-mighty-thor"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-octopus.webp?v=39" class="card" id="doctor-octopus"></td>
-      
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/red-skull.webp?v=39" class="card" id="red-skull"></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/arnim-zola.webp?v=39" class="card" id="arnim-zola"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/doctor-doom.webp?v=39" class="card" id="doctor-doom"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/hela.webp?v=39" class="card" id="hela"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/leader.webp?v=39" class="card" id="leader"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/ultron.webp?v=39" class="card" id="ultron"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/she-hulk.webp?v=39" class="card" id="she-hulk"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/magneto.webp?v=39" class="card" id="magneto"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agatha-harkness.webp?v=39" class="card" id="agatha-harkness"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/giganto.webp?v=39" class="card" id="giganto"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/destroyer.webp?v=39" class="card" id="destroyer"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/death.webp?v=39" class="card" id="death"></td>
-      <td></td><td></td><td></td><td></td>
-  </table>
-
-
-  <table ondrop="drop(event)" ondragover="allowDrop(event)" id="pool4" style="display: none">
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/bast.webp?v=39" class="card" id="bast"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/mbaku.webp?v=39" class="card" id="mbaku"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/maria-hill.webp?v=39" class="card" id="maria-hill"></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/silver-surfer.webp?v=39" class="card" id="silver-surfer"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/zabu.webp?v=39" class="card" id="zabu"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/agent-coulson.webp?v=39" class="card" id="agent-coulson"></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/darkhawk.webp?v=39" class="card" id="darkhawk"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/shuri.webp?v=39" class="card" id="shuri"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/super-skrull.webp?v=39" class="card" id="super-skrull"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/sentry.webp?v=39" class="card" id="sentry"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/attuma.webp?v=39" class="card" id="attuma"></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/valkyrie.webp?v=39" class="card" id="valkyrie"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/black-panther.webp?v=39" class="card" id="black-panther"></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/knull.webp?v=39" class="card" id="knull"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/galactus.webp?v=39" class="card" id="galactus"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/thanos.webp?v=39" class="card" id="thanos"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/orka.webp?v=39" class="card" id="orka"></td>
-      <td><img src="https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/helicarrier.webp?v=39" class="card" id="helicarrier"></td>
-    </tr>
-  </table>
-
-  <br>
-
-  <div id="pool5" style="display: none; max-width: 755px; font-family: Verdana" class="w3-container">
-    <b>TECH CARDS</b>
-    <br><br>
-    <b>(2) Armor</b><br>
-      Protege cartas de efeito constante (Devil Dinosaur), frustra estratégias de destruição do oponente, previne o efeito de diversos locais.<br>
-      Counter de: Killmonger, Shang-Chi. Protege dos locais que destroem.<br>
-      Comba com: Cartas de custo 1, Destroyer.<br>
-      É counterado por: Enchantress.<br><br>
-      Além de proteger nossas cartas, existe o aspecto de controle frustando os planos do oponente de destruir suas próprias cartas, counterando: The Hood, Bucky Barnes, etc.
-      <br><br>
-      <b>(3) Cosmos</b><br>
-      Protege cartas de efeito constante (Devil Dinosaur) de tomarem counter.<br>
-      Counter de: Enchantress, Wong, Odin, Silver Surfer.<br>
-      Comba com: Devil Dinosaur (protege).<br>
-      É counterado por: falta de prioridade.<br><br>
-      <b>(3) Killmonger</b><br>
-      Counter de: Zoo, Sunspot, Hood. Neutralizar local que coloca um simbionte (tem custo 1).<br>
-      Comba com: Nova e The Hood.<br>
-      É counterado por: Armor, Cosmo. Anti-sinergia com Hood.<br><br>
-      <b>(4) Shang-Chi</b><br>
-      Counter de: Devil Dinosaur, etc. Tem sinergia com alguns locais: dobra poder, +5 poder, monstro de poder 9, transforma em Hulk.<br>
-      Comba com: Red Skull.<br>
-      É counterado por: Armor, tem anti-sinergia com Scorpion.<br><br>
-      <b>(5) Leech</b><br>
-      Conter de: Silver Surfer, Sera decks.<br>
-      Comba com: Wave.<br>
-      É counterado por: The Infinaut, Red Skull, etc.<br><br>
-      <hr><h3>Pool 3</h3><hr><br>
-      <b>(3) Polaris, (5) Aero, (6) Magneto</b><br>
-      Boas cartas no geral para controle.<br>
-      Comba com: Kingpin, Fisk Tower (local).<br>
-      É counterado por: Cosmo.<br><br>
-  </div>
-
-
+</div> <!-- Div Row -->
 <script>
-  'use strict'
 
-  document.getElementById('agent-13').title = "Agent 13\n\nYou can move this each turn."
-  document.getElementById('debrii').title = "Agent 13\n\nYou can move this each turn."
-  document.getElementById('ebony-maw').title = "Ebony Maw\n\nYou can move this each turn."
-  document.getElementById('iceman').title = "Iceman\n\nYou can move this each turn."
-  document.getElementById('sunspot').title = "Sunspot\n\nYou can move this each turn."
-  document.getElementById('cloak').title = "Cloak\n\nYou can move this each turn."
-  document.getElementById('okoye').title = "Okoye\n\nYou can move this each turn."
-  document.getElementById('scorpion').title = "Scorpion\n\nYou can move this each turn."
-  document.getElementById('swarm').title = "Swarm\n\nYou can move this each turn."
-  document.getElementById('the-collector').title = "The Collector\n\nYou can move this each turn."
-  document.getElementById('bucky-barnes').title = "Bucky Barnes\n\nYou can move this each turn."
-  document.getElementById('nakia').title = "Nakia\n\nYou can move this each turn."
-  document.getElementById('killmonger').title = "Killmonger\n\nYou can move this each turn."
-  document.getElementById('rhino').title = "Rhino\n\nYou can move this each turn."
-  document.getElementById('storm').title = "Storm\n\nYou can move this each turn."
-  document.getElementById('vulture').title = "Vulture\n\nYou can move this each turn."
-  document.getElementById('sabretooth').title = "Sabretooth\n\nYou can move this each turn."
-  document.getElementById('jubilee').title = "Jubilee\n\nYou can move this each turn."
-  document.getElementById('sandman').title = "Sandman\n\nYou can move this each turn."
-  document.getElementById('shang-chi').title = "Shang-Chi\n\nYou can move this each turn."
-  document.getElementById('warpath').title = "Warpath\n\nYou can move this each turn."
-  document.getElementById('hobgoblin').title = "Hobgoblin\n\nYou can move this each turn."
-  document.getElementById('leech').title = "Leech\n\nYou can move this each turn."
-  document.getElementById('vision').title = "Vision\n\nYou can move this each turn."
-  document.getElementById('the-infinaut').title = "The Infinaut\n\nIf you played a card last turn, you can't play this."
-  
+// Drag and Drop API
+
   function allowDrop(e) {
     e.preventDefault();
   }
@@ -564,15 +438,7 @@
     }
   }
 
-  function addClassAllButtons() {
-    var a = document.getElementsByTagName('button');
-    var b = a.length;
-    for (var i = 0; i < b; i++) {
-      a[i].classList.add('w3-button');
-      a[i].classList.add('w3-red');
-      a[i].classList.add('w3-text-white');
-    }
-  }
+  // Botões
 
   function esconder(e) {
     var x = document.getElementById('pool' + e);
@@ -582,19 +448,16 @@
       if (x.style.display === "none") {
       x.style.display = "block";
       y.classList.add('w3-gray');
-      y.classList.remove('w3-red');
       } else {
       x.style.display = "none";
-      y.classList.add('w3-red');
       y.classList.remove('w3-gray');
       }
     } else {console.log('Parâmetro inválido! → '+ e)}
   }
 
-  
   // Start
+  
   addDropAllCards();
-  addClassAllButtons()
 
 </script>
 </body>
