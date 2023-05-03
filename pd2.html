@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Diablo 2</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {background-color: black; color: white; font-family: Verdana; font-size: 12px; padding: 10px;}
+    table {width: 1000px; margin: auto;}
+    #runewords td, th {padding: 5px; line-height: 25px;}
+    input[type=text] {width: 100%; height: 100%;}
+    .cblue {color: #8e8;}
+    #paragrafo {border: 1px solid white; padding: 10px; line-height: 18px; width: 1000px; margin: auto;}
+  </style>
+</head>
+<body>
+  
+  <table border="1" id="runewords">
+    <tr>
+      <th colspan="6">Project Diablo 2 Runeword List by Elton (v. 02/05/2023)</th>
+    </tr>
+    <tr>
+      <th><input type="text" onkeyup="filterTable('runewords', 0)" id="inputLevel" placeholder="Filtrar..." autocomplete="off"></th>
+      <th><input type="text" onkeyup="filterTable('runewords', 1)" id="inputRuneword" placeholder="Filtrar..." autocomplete="off"></th>
+      <th><input type="text" onkeyup="filterTable('runewords', 2)" id="inputRunes" placeholder="Filtrar..." autocomplete="off"></th>
+      <th><input type="text" onkeyup="filterTable('runewords', 3)" id="inputEquip" placeholder="Filtrar..." autocomplete="off"></th>
+      <th><input type="text" onkeyup="filterTable('runewords', 4)" id="inputDesc" placeholder="Filtrar..." autocomplete="off"></th>
+      <th><input type="text" onkeyup="filterTable('runewords', 5)" id="inputExtra" placeholder="Filtrar..." autocomplete="off"></th>
+    </tr>
+    <tr>
+      <th>Level <span onclick="sortTable('runewords', 0, 3)" style="cursor: pointer">↑↓</span></th>
+      <th>Runeword</th>
+      <th>Runes</th>
+      <th>Equipment</th>
+      <th>Description</th>
+      <th>Extra</th>
+    </tr>
+    <tr class="cblue">
+      <td>21</td>
+      <td>Zephyr</td>
+      <td>Ort Eth</td>
+      <td>Bows / Crossbows</td>
+      <td>7% Chance to Cast Level 1 Twister when Struck<br>+25% Faster Run/Walk<br>+25% Increased Attack Speed<br>+[33-66]% Enhanced Damage<br>-25% Target Defense<br>+66 to Attack Rating<br>Adds 1-50 Lightning Damage <br>+25 Defense</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Edge</td>
+      <td>Tir Tal Amn</td>
+      <td>Bows / Crossbows</td>
+      <td>Level 15 Thorns Aura when Equipped<br>+35% Increased Attack Speed<br>+[320-380]% Damage to Demons <br>+280% Damage to Undead<br>+75 Poison Damage over 5 Seconds<br>7% Life Stolen per Hit<br>Prevent Monster Heal<br>+[5-10] to All Attributes<br>+2 to Mana after each Kill<br>Reduces All Vendor Prices 15%</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Harmony</td>
+      <td>Tir Ith Sol Ko</td>
+      <td>Bows / Crossbows</td>
+      <td>Level 10 Vigor Aura when Equipped<br>+[200-275]% Enhanced Damage<br>+9 to Minimum Damage<br>+9 to Maximum Damage<br>Adds 55-160 Fire Damage<br>Adds 55-160 Lightning Damage<br>Adds 55-160 Cold Damage<br>+[3-6] to Valkyrie (Amazon Only)<br>+10 to Dexterity<br>Regenerate Mana 20%<br>+2 to Mana after each Kill<br>+2 to Light Radius<br>Level 20 Revive (25 Charges)<br></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Melody</td>
+      <td>Shael Ko Nef</td>
+      <td>Bows / Crossbows</td>
+      <td>+3 to Bow and Crossbow Skills (Amazon Only)<br>+20% Increased Attack Speed<br>+[100-150]% Enhanced Damage<br>+300% Damage to Undead<br>+3 to Slow Movement (Amazon Only)<br>+3 to Dodge (Amazon Only)<br>+3 to Critical Strike (Amazon Only)<br>Knockback<br>+10 to Dexterity</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Wrath</td>
+      <td>Pul Um Ber Mal</td>
+      <td>Bows / Crossbows</td>
+      <td>60% Chance to Cast Level 31 Amplify Damage on Striking<br>+[30-45]% Increased Attack Speed<br>+[30-45]% Increased Attack Speed<br>+375% Damage to Demons<br>+100 to Attack Rating against Demons<br>+[250-300]% Damage to Undead<br>Adds 85-120 Magic Damage<br>Adds 41-240 Lightning Damage<br>20% Chance of Crushing Blow<br>Prevent Monster Heal<br>+10 to Energy<br>Cannot Be Frozen</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>Faith</td>
+      <td>Ohm Jah Lem Eld</td>
+      <td>Bows / Crossbows</td>
+      <td>Level [12-15] Fanaticism Aura when Equipped<br>+[250-300]% Enhanced Damage<br>Ignore Target's Defense <br>300% Bonus to Attack Rating <br>+75% Damage to Undead <br>+50 to Attack Rating against Undead <br>+120 Fire Damage <br>All Resistances +15 <br>[6-8]% Reanimate As: Returned <br>75% Extra Gold from Monsters</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>Ice</td>
+      <td>Amn Shael Jah Lo</td>
+      <td>Bows / Crossbows</td>
+      <td>20% Chance to Cast Level 32 Frost Nova on Striking <br>100% Chance to Cast Level 40 Blizzard when you Level-Up <br>Level 18 Holy Freeze Aura when Equipped <br>+20% Increased Attack Speed <br>+[140-210]% Enhanced Damage <br>Ignore Target's Defense <br>7% Life Stolen per Hit <br>+[25-30]% to Cold Skill Damage <br>-20% to Enemy Cold Resistance <br>20% Deadly Strike <br>[3-309]% Extra Gold from Monsters (3.125 per Character Level)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>Brand</td>
+      <td>Jah Lo Mal Gul</td>
+      <td>Bows / Crossbows</td>
+      <td>50% Chance to Cast Level 45 Bone Spear on Striking <br>65% Chance to Cast Level 31 Amplify Damage when Struck<br>You May Summon 6 Additional Skeleton Archers <br>Fires Explosive Arrows or Bolts (Level 15) <br>+[260-340]% Enhanced Damage <br>Ignore Target's Defense <br>20% Bonus to Attack Rating <br>+[280-330]% Damage to Demons <br>20% Deadly Strike <br>Prevent Monster Heal <br>Knockback</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Mist</td>
+      <td>Shael Gul Thul Ith</td>
+      <td>Bows / Crossbows</td>
+      <td>Level [8-12] Concentration Aura when Equipped <br>+2 to All Skills <br>+20% Increased Attack Speed <br>+100% Chance to Pierce <br>+[325-375]% Enhanced Damage <br>+9 to Minimum Damage <br>20% Bonus to Attack Rating <br>Adds 3-14 Cold Damage <br>Freezes Target +3 <br>+[20-30] to Vitality <br>All Resistances +40</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Steel</td>
+      <td>Tir El</td>
+      <td>Swords<br>Axes<br>Tipped Maces<br>Claws</td>
+      <td>+25% Increased Attack Speed <br>+20% Enhanced Damage <br>+3 to Minimum Damage <br>+3 to Maximum Damage <br>+50 to Attack Rating <br>50% Chance of Open Wounds <br>+2 to Mana after each Kill <br>+1 to Light Radius </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Malice</td>
+      <td>Ith El Eth</td>
+      <td>Melee Weapons</td>
+      <td>+33% Enhanced Damage <br>+9 to Maximum Damage<br>-25% Target Defense<br>+50 to Attack Rating<br>100% Chance of Open Wounds<br>+6 Open Wounds Damage per Second<br>Prevent Monster Heal<br>-100 to Monster Defense per Hit<br>Drain Life -5</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Leaf</td>
+      <td>Tir Ral</td>
+      <td>Staves</td>
+      <td>+3 to Fire Skills<br>Adds 5-30 Fire Damage<br>+3 to Inferno (Sorceress Only)<br>+3 to Warmth (Sorceress Only)<br>+3 to Fire Bolt (Sorceress Only)<br>+[2-198] Defense (+2 per Character Level)<br>Cold Resist +33%<br>+2 to Mana after each Kill</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Pattern</td>
+      <td>Tal Ort Tir</td>
+      <td>Claws</td>
+      <td>+30% Faster Block Rate<br>+[80-120]% Enhanced Damage<br>10% Bonus to Attack Rating<br>Adds 12-32 Fire Damage<br>Adds 1-50 Lightning Damage<br>+75 Poison Damage over 5 Seconds<br>+6 to Strength<br>+6 to Dexterity<br>All Resistances +15<br>+2 to Mana after each Kill</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Holy Thunder</td>
+      <td>Eth Ral Ort Tal</td>
+      <td>Scepters</td>
+      <td>+60% Enhanced Damage<br>+10 to Maximum Damage<br>-25% Target Defense<br>Adds 5-30 Fire Damage<br>Adds 21-110 Lightning Damage<br>+75 Poison Damage over 5 Seconds<br>+3 to Holy Shock (Paladin Only)<br>+5% to Maximum Lightning Resist<br>Lightning Resist +60%<br>Level 7 Chain Lightning (60 Charges)<br></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Neophyte</td>
+      <td>Thul Tir</td>
+      <td>Orbs<br>Claws<br>Scepters<br>Clubs<br>Staves</td>
+      <td>+30% Faster Cast Rate (Non-Staves Only)<br>+40% Faster Cast Rate (Staves Only)<br>Adds 3-14 Cold Damage<br>Physical Damage Taken Reduced by [2-4]<br>Half Freeze Duration<br>Poison length Reduced by 25%<br>+2 to Mana after each Kill</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Strength</td>
+      <td>Amn Tir</td>
+      <td>Melee Weapons</td>
+      <td>+[65-95]% Enhanced Damage<br>7% Life Stolen per Hit<br>25% Chance of Crushing Blow<br>+20 to Strength<br>+10 to Vitality<br>+2 to Mana after each Kill</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>King's Grace</td>
+      <td>Amn Ral Thul</td>
+      <td>Scepters<br>Swords<br>Claws</td>
+      <td>+100% Enhanced Damage<br>+150 to Attack Rating<br>+100% Damage to Demons<br>+100 to Attack Rating against Demons<br>+50% Damage to Undead<br>+100 to Attack Rating against Undead<br>Adds 10-60 Fire Damage<br>Adds 20-40 Cold Damage<br>7% Life Stolen per Hit</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Spirit</td>
+      <td>Tal Thul Ort Amn</td>
+      <td>Swords<br>Staves</td>
+      <td>+1 to All Skills (Non-Staves Only)<br>+2 to All Skills (Staves Only)<br>+[25-35]% Faster Cast Rate<br>+25% Faster Hit Recovery (Non-Staves Only)<br>+55% Faster Hit Recovery (Staves Only)<br>Adds 1-50 Lightning Damage<br>Adds 3-14 Cold Damage<br>+75 Poison Damage over 5 Seconds<br>7% Life Stolen per Hit<br>+[11-22] to Vitality<br>+[59-82] to Mana<br>+[3-8] Magic Absorb<br>Requirements -15%</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Insight</td>
+      <td>Ral Tir Tal Sol</td>
+      <td>Staves<br>Polearms<br>Spears<br>Scepters</td>
+      <td>Level [12-17] Meditation Aura when Equipped<br>+35% Faster Cast Rate<br>+[140-180]% Enhanced Damage +9 to Minimum Damage<br>[180-250]% Bonus to Attack Rating<br>Adds 5-30 Fire Damage<br>+75 Poison Damage over 5 Seconds<br>+[1-6] to Critical Strike<br>+[10-20] to All Attributes<br>+2 to Mana after each Kill<br>23% Better Chance of Getting Magic Items</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Honor</td>
+      <td>Amn El Ith Tir Sol</td>
+      <td>Melee Weapons</td>
+      <td>+1 to All Skills<br>+[160-200]% Enhanced Damage<br>+9 to Minimum Damage<br>+9 to Maximum Damage<br>+250 to Attack Rating<br>7% Life Stolen per Hit<br>25% Deadly Strike<br>+10 to Strength<br>Replenish Life +10<br>+2 to Mana after each Kill<br>+1 to Light Radius</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Rampage</td>
+      <td>Shael El Ith Eth</td>
+      <td>Polearms<br>Spears<br>Staves</td>
+      <td>+65% Increased Attack Speed<br>+20% Faster Hit Recovery<br>+[110-135]% Enhanced Damage<br>+9 to Maximum Damage<br>-25% Target Defense<br>+50 to Attack Rating<br>Fire Resist +25%<br>+1 to Light Radius</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Black</td>
+      <td>Thul Io Nef</td>
+      <td>Clubs<br>Hammers<br>Tipped Maces<br>Claws</td>
+      <td>+15% Increased Attack Speed<br>+100% Enhanced Damage<br>Damage +[20-30]<br>+200 to Attack Rating<br>Adds 3-14 Cold Damage<br>40% Chance of Crushing Blow<br>Knockback<br>+10 to Vitality<br>Magic Damage Taken Reduced by 2<br>Level 4 Corpse Explosion (12 Charges)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>White</td>
+      <td>Dol Io</td>
+      <td>Wands</td>
+      <td>+2 to Poison and Bone Skills (Necromancer Only)<br>+20% Faster Cast Rate<br>+4 to Skeleton Mastery (Necromancer Only)<br>+[2-3] to Bone Armor (Necromancer Only)<br>+20% Enhanced Damage<br>+10 to Vitality<br>+13 to Mana<br>Magic Damage Taken Reduced by 4</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Memory</td>
+      <td>Lum Io Sol Eth</td>
+      <td>Staves</td>
+      <td>+3 to Sorceress Skill Levels<br>+33% Faster Cast Rate<br>+9 to Minimum Damage<br>-25% Target Defense<br>+3 to Energy Shield (Sorceress Only)<br>+2 to Static Field (Sorceress Only)<br>+50% Enhanced Defense<br>+10 to Vitality<br>+10 to Energy<br>Increase Maximum Mana [20-40]%<br>Magic Damage Taken Reduced by 7</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Unbending Will</td>
+      <td>Fal Io Ith Eld El Hel</td>
+      <td>Swords</td>
+      <td>8% Chance to Cast Level 18 Taunt on Striking<br>+3 to Combat Skills (Barbarian Only)<br>+[20-30]% Increased Attack Speed<br>+[300-350]% Enhanced Damage<br>+9 to Maximum Damage<br>+50 to Attack Rating<br>+75% Damage to Undead<br>+50 to Attack Rating against Undead<br>[8-10]% Life Stolen per Hit<br>+10 to Strength<br>+10 to Vitality<br>Physical Damage Taken Reduced by 8<br>+1 to Light Radius<br>Requirements -20%</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Obedience</td>
+      <td>Polearms<br>Spears<br>Hammers</td>
+      <td>Hel Ko Thul Eth Fal</td>
+      <td>30% Chance to Cast Level 21 Enchant Fire when you Kill an Enemy<br>+40% Faster Hit Recovery<br>+[280-320]% Enhanced Damage<br>-25% Target Defense<br>Adds 3-14 Cold Damage<br>-25% to Enemy Fire Resistance<br>40% Chance of Crushing Blow<br>+[200-300] Defense<br>+10 to Strength<br>+10 to Dexterity<br>All Resistances +[20-30]<br>Requirements -20%</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Passion</td>
+      <td>Dol Ort Eld Lem</td>
+      <td>Weapons</td>
+      <td>+25% Increased Attack Speed<br>+[180-230]% Enhanced Damage<br>[50-80]% Bonus to Attack Rating<br>+75% Damage to Undead<br>+50 to Attack Rating against Undead<br>Adds 1-50 Lightning Damage<br>+1 to Concentrate<br>+1 to Zeal<br>Hit Blinds Target +10<br>75% Extra Gold from Monsters<br>Level 8 Heart of Wolverine (36 Charges)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Voice of Reason</td>
+      <td>Lem Ko El Eld</td>
+      <td>Swords<br>Tipped Maces<br>Bows<br>Crossbows</td>
+      <td>15% Chance to Cast Level 16 Frozen Orb on Striking <br>18% Chance to Cast Level 20 Ice Blast on Striking<br>+50 to Attack Rating<br>+[240-300]% Damage to Demons<br>+[280-325]% Damage to Undead<br>+50 to Attack Rating against Undead<br>Adds 200-320 Cold Damage<br>-24% to Enemy Cold Resistance<br>+10 to Dexterity<br>Cannot Be Frozen<br>Cannot Be Frozen<br>+1 to Light Radius</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Lawbringer</td>
+      <td>Amn Lem Ko</td>
+      <td>Hammers<br>Scepters<br>Swords<br>Claws</td>
+      <td>20% Chance to Cast Level 15 Decrepify on Striking<br>+[150-200]% Enhanced Damage<br>-50% Target Defense<br>Adds 150-210 Fire Damage<br>Adds 130-180 Cold Damage<br>7% Life Stolen per Hit<br>Slain Monsters Rest in Peace<br>+[200-250] Defense vs. Missile<br>+10 to Dexterity<br>75% Extra Gold from Monsters</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Crescent Moon</td>
+      <td>Shael Um Tir</td>
+      <td> Axes<br>Swords<br>Polearms<br>Spears<br>Claws</td>
+      <td>10% Chance to Cast Level 27 Lightning on Striking<br>12% Chance to Cast Level 13 Static Field on Striking (Axes/Swords/Claws Only)<br>24% Chance to Cast Level 13 Static Field on Striking (Polearms/Spears Only)<br>+20% Increased Attack Speed<br>+[180-220]% Enhanced Damage<br>Ignore Target's Defense<br>-[10-15]% to Enemy Lightning Resistance<br>10% Chance of Open Wounds<br>+120 Open Wounds Damage per Second<br>+[3-5] Magic Absorb<br>+2 to Mana after each Kill<br>Level 18 Summon Spirit Wolf (30 Charges)</td>
+      <td>Late Game</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Venom</td>
+      <td>Tal Dol Mal</td>
+      <td>Weapons</td>
+      <td>20% Chance to Cast Level 28 Poison Nova on Striking<br>Ignore Target's Defense<br>+400 Poison Damage over 3 Seconds<br>7% Mana Stolen per Hit<br>-[20-30]% to Enemy Poison Resistance<br>+6 to Poison Strike<br>Prevent Monster Heal<br>+20% Enhanced Damage<br>Level 15 Desecrate (27 Charges)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Oath</td>
+      <td>Shael Pul Mal Lum</td>
+      <td>Swords<br>Axes<br>Tipped Maces</td>
+      <td>30% Chance to Cast Level 20 Bone Spirit on Striking<br>Indestructible<br>+50% Increased Attack Speed<br>+[210-340]% Enhanced Damage<br>+75% Damage to Demons<br>+100 to Attack Rating against Demons<br>Prevent Monster Heal<br>+10 to Energy<br>+[10-15] Magic Absorb<br>Level 16 Heart of Wolverine (20 Charges)<br><i>Replenish 1 Charge in 3 Seconds</i></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Rift</td>
+      <td>Hel Ko Lem Gul</td>
+      <td>Scepters/Polearms/Spears/Swords</td>
+      <td>20% Chance to Cast Level 30 Tornado on Striking<br>20% Chance to Cast Level 25 Frozen Orb on Attack<br>+60% Increased Attack Speed<br>20% Bonus to Attack Rating<br>Adds 160-250 Magic Damage<br>Adds 60-180 Fire Damage<br>+[15-20] to Strength<br>+[25-30] to Dexterity<br>+[15-20] to Vitality<br>+[15-20] to Energy<br>38% Damage Taken Gained as Mana when Hit<br>75% Extra Gold from Monsters<br>Requirements -20%</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <p id="paragrafo">Early Game: Normal and Nightmare<br>Mid Game: Hell<br>Late Game: Hell Farm (Cows, Chaos, etc.) + Maps + Mini Ubers<br>End Game: Ubers, DClone, Rhatma, Dungeon</p>
+<script src="elton.js"></script>
+</body>
+</html>
