@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PD2 by Elton</title>
+  <title>PD2 Explorer by Elton</title>
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {background-color: black; color: white; font-family: Verdana; font-size: 12px; padding: 10px;}
@@ -15,12 +15,23 @@
     .cgreen {color: #7CFC00;}
     .cred {color: #f44336;}
     .cyellow {color: #ffc40d}
-    #paragrafo {border: 1px solid white; padding: 10px; line-height: 18px; width: 1200px; margin: auto;}
+    #paragrafo {border: 1px dotted white; padding: 10px; line-height: 18px; width: 1200px; margin: 32px auto; text-align: center;}
+    .barra {width: 100%; height: 32px; background-color: #ffc40d; color: black; position: fixed; padding: 5px; margin: -10px;}
+    .botao {background-color: black; color: white; border: none; padding: 4px; cursor: pointer; height: 22px; font-size: 12px; font-weight: bold;}
+    .botao:hover {background-color: gray;}
   </style>
 </head>
 <body>
   
-  <table id="runewords">
+<nav class="barra">
+  <button class="botao" onclick="abrirAba('runewords')">Runewords</button>
+  <button class="botao" onclick="abrirAba('runeList')">Rune List</button>
+  <button class="botao" style="cursor: not-allowed" disabled>Runeword Bases</button>
+
+  <button class="botao" style="cursor: default; position: absolute; right: 5px;" onclick="abrirAba('')">PD2 Explorer by Az</button>
+</nav>
+
+  <table id="runewords" class="aba" style="margin-top: 32px; display: none;">
     <tr>
       <th colspan="6">Project Diablo 2 Runeword List by Elton (v. 04/05/2023)</th>
     </tr>
@@ -820,9 +831,9 @@
 
   
 
-  <table style="margin-top: 32px">
+  <table id="runeList" class="aba" style="margin-top: 32px; display: none;">
     <tr>
-      <th colspan="7">Rune List</th>
+      <th colspan="7">Rune List PD2</th>
     </tr>
     <tr>
       <th>#</th>
@@ -1143,8 +1154,10 @@
 
 
 
+  <p id="paragrafo">PD2 Explorer by Az.<br>v.0.02</p>
 
-  <p id="paragrafo" style="margin-top: 32px">Early Game: Normal and Nightmare<br>Mid Game: Hell<br>Late Game: Hell Farm (Cows, Chaos, etc.) + Maps + Mini Ubers<br>End Game: Ubers, DClone, Rathma, Dungeon</p>
+
+
 <script>
   function filterTable(idTable, column) {
   // Colocar um <input> antes da tabela, dar um id para ele;
@@ -1222,6 +1235,15 @@ function sortTable(id, n, ths) {
       }
     }
   }
+}
+
+function abrirAba(id) {
+  var i;
+  var x = document.getElementsByClassName("aba");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  if (id) {  document.getElementById(id).style.display = "block";}
 }
 </script>
 </body>
