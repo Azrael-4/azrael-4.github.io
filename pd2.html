@@ -8,7 +8,7 @@
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {background-color: black; color: white; font-family: Verdana; font-size: 12px; padding: 10px;}
-    table {width: 1200px; margin: auto; border: 1px dotted white; border-collapse: collapse;}
+    table {width: 1200px; margin: 32px auto; border: 1px dotted white; border-collapse: collapse; display: none;}
     td, th {padding: 5px; line-height: 25px; border: 1px dotted white;}
     input[type=text] {width: 100%; height: 100%;}
     .cblue {color: #2d89ef;}
@@ -19,6 +19,7 @@
     .barra {width: 100%; height: 32px; background-color: #ffc40d; color: black; position: fixed; padding: 5px; margin: -10px;}
     .botao {background-color: black; color: white; border: none; padding: 4px; cursor: pointer; height: 22px; font-size: 12px; font-weight: bold;}
     .botao:hover {background-color: gray;}
+    #anotacoes td {white-space: pre;}
   </style>
 </head>
 <body>
@@ -27,11 +28,12 @@
   <button class="botao" onclick="abrirAba('runewords')">Runewords</button>
   <button class="botao" onclick="abrirAba('runeList')">Rune List</button>
   <button class="botao" style="cursor: not-allowed" disabled>Runeword Bases</button>
+  <button class="botao" onclick="abrirAba('anotacoes')">Anotações</button>
 
   <button class="botao" style="cursor: default; position: absolute; right: 5px;" onclick="abrirAba('')">PD2 Explorer by Az</button>
 </nav>
 
-  <table id="runewords" class="aba" style="margin-top: 32px; display: none;">
+  <table id="runewords" class="aba">
     <tr>
       <th colspan="6">Project Diablo 2 Runeword List by Elton (v. 04/05/2023)</th>
     </tr>
@@ -831,7 +833,17 @@
 
   
 
-  <table id="runeList" class="aba" style="margin-top: 32px; display: none;">
+
+
+
+
+
+
+
+
+
+
+  <table id="runeList" class="aba">
     <tr>
       <th colspan="7">Rune List PD2</th>
     </tr>
@@ -1151,6 +1163,86 @@
       <td colspan="6"><span class="cgreen">The Countess Normal</span> / The Countess Nightmare / <span class="cyellow">The Countess Hell</span> / <span class="cred">> The Countess Hell</span></td>
     </tr>
   </table>
+
+  <table id="anotacoes" class="aba">
+    <tr><th>Amplify Damage</th></tr>
+    <tr><td>Witchwild String		Exceptional Bow				14% Chance to Cast Level 31 Amplify Damage on Striking		Act I
+
+The Reaper's Toll		Elite Polearm					33% Chance to Cast Level 31 Amplify Damage on Striking		Act II
+
+The Vile Husk			Exceptional Two-Handed Sword	18% Chance to Cast Level 31 Amplify Damage on Striking		Act V
+
+The Gavel of Pain		Exceptional Two-Handed Mace	12% Chance to Cast Level 31 Amplify Damage on Striking		Act V
+
+The Cranium Basher	Elite Two-Handed Mace			08% Chance to Cast Level 33 Amplify Damage on Striking		Act V
+
+Head Hunter's Glory	Elite Shield					12% Chance to Cast Level 31 Amplify Damage on Striking		N/A
+
+Wrath				Pul • Lum • Ber • Mal			60% Chance to Cast Level 31 Amplify Damage on Striking		Act I</td></tr>
+<tr>
+  <th>Mapping Season 7 (S- a S+ em cima, A+ embaixo, outras não foram listadas)</th>
+</tr>
+<tr><td>• Sorceress
+- Nova
+- Charged Bolt
+- Chain Lightning/Lightning
+- Frost Nova 
+- Frozen Orb
+- Ice Barrage
+- Blizzard
+
+• Druid
+- Wind
+- Fire (Physical - Volcano/Molten Boulder/Armageddon)
+- Fire (Pure Fire - Fissure/Firestorm)
+- Rabies
+
+- Fury
+
+• Assassin
+- Wake of Fire/Wake of Inferno/Death Sentry
+- Phoenix Strike
+- Claws of Thunder
+- Dragon Tail/Talon
+
+- Chain Lightning/Lightning Sentry/Death Sentry
+- Blade Fury/Sentinel 
+- Cobra Strike
+
+• Amazon
+- Lightning Fury
+- Lightning Strike
+- Poison/Plague Javelin
+- Multiple Shot
+- Strafe (Standard)
+- Freezing Arrow
+  
+- Cold Arrow
+- Fire/Immolation Arrow
+
+• Necromancer
+- Poison Nova
+- Teeth (Bone)
+- Corpse Explosion
+- Dark Pact
+
+- Desecrate 
+- Poison Strike 
+- Summoner - Physical Skeles (Warriors + Archers)
+- Summoner - Revive + CE (Eternity)
+- Summoner - Mage Skeles + All Elemental Summons
+- Summoner - Fire Golems (Pure)
+
+• Paladin
+- Blessed Hammer
+
+- Holy Fire - Zeal/Charge (Native Aura)
+- Holy Shock - Zeal/Charge (Dual Dreams)
+- Holy Freeze - Zeal/Charge (Doom + Shattered Wall)
+- Holy Fire - Zeal/Charge (HOJ + Dual Dragons)</td></tr>
+</table>
+
+
 
 
 
