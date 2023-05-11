@@ -20,6 +20,7 @@
     .botao {background-color: black; color: white; border: none; padding: 4px; cursor: pointer; height: 22px; font-size: 12px; font-weight: bold;}
     .botao:hover {background-color: gray;}
     #anotacoes td {white-space: pre;}
+    #uniques td:nth-child(odd) {text-align: center;}
   </style>
 </head>
 <body>
@@ -27,6 +28,7 @@
 <nav class="barra">
   <button class="botao" onclick="abrirAba('runewords')">Runewords</button>
   <button class="botao" onclick="abrirAba('runeList')">Rune List</button>
+  <button class="botao" onclick="abrirAba('uniques')">Uniques</button>
   <button class="botao" style="cursor: not-allowed" disabled>Runeword Bases</button>
   <button class="botao" onclick="abrirAba('anotacoes')">Anotações</button>
 
@@ -35,7 +37,7 @@
 
   <table id="runewords" class="aba">
     <tr>
-      <th colspan="6">Project Diablo 2 Runeword List by Elton (v. 04/05/2023)</th>
+      <th colspan="6">Runeword List PD2</th>
     </tr>
     <tr>
       <th><input type="text" onkeyup="filterTable('runewords', 0)" id="inputLevel" placeholder="Filtrar..." autocomplete="off"></th>
@@ -1164,6 +1166,72 @@
     </tr>
   </table>
 
+
+
+  <table id="uniques" class="aba">
+    <tr><th colspan="4">Good Uniques</th></tr>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Class</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Gimmershred<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/1/15/Throwing_Axe.png" alt="Gimmershred"><br><br>Flying Axe<br><i>Elite</i></td>
+      <td>+30% Increased Attack Speed<br>+[190-240]% Enhanced Damage<br>Adds 258-523 Fire Damage<br>Adds 29-581 Lightning Damage<br>Adds 216-437 Cold Damage</td>
+      <td>Vengeance Paladin</td>
+      <td>Budget</td>
+    </tr>
+    <tr>
+      <td>Death Cleaver<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/7/70/War_Axe.png" alt="Death Cleaver" class="itemimg"><br><br>Berserker Axe<br><i>Elite</i></td>
+      <td>+40% Increased Attack Speed<br>+[300-350]% Enhanced Damage<br>+[20-30] to Minimum Damage<br>-33% Target Defense<br>50% Deadly Strike<br>+[6-9] Life after each Kill</td>
+      <td>Melee</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>The Cranium Basher<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/2/2f/Great_Maul.png" alt="The Cranium Basher"><br><br>Thunder Maul<br><i>Elite</i></td>
+      <td>8% Chance to Cast Level 33 Amplify Damage on Striking<br>+30% Increased Attack Speed<br>+[220-260]% Enhanced Damage<br>Adds 20-25 Damage<br>75% Chance of Crushing Blow<br>+25 to Strength<br>All Resistances +25<br>+50% Damage to Undead</td>
+      <td>Mercenary - Act V</td>
+      <td>Amplify Damage</td>
+    </tr>
+    <tr>
+      <td>The Gavel of Pain<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/5/56/The_Gavel_of_Pain.png" alt="The Gavel of Pain"><br><br>Martel de Fer<br><i>Exceptional</i></td>
+      <td>12% Chance to Cast Level 31 Amplify Damage on Striking<br><br>5% Chance to Cast Level 1 Iron Maiden when Struck<br>+[215-245]% Enhanced Damage<br>Adds 12-30 Damage<br>Curse Resistance +[10-20]%<br>Attacker Takes Damage of 260<br>Level 8 Amplify Damage (3 Charges)<br>Replenish 1 Charge in 3 SecondsUndead<br>+50% Damage to Undead</td>
+      <td>Mercenary - Act V</td>
+      <td>Amplify Damage</td>
+    </tr>
+    <tr>
+      <td>The Vile Husk<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/5/5f/The_Vile_Husk.png" alt="The Vile Husk"><br><br>Tusk Sword<br><i>Exceptional</i></td>
+      <td>18% Chance to Cast Level 31 Amplify Damage on Striking<br>+20% Increased Attack Speed<br>+[175-225]% Enhanced Damage<br>+[3-346]% Damage to Undead (+3.5% per Character Level)<br>+[10-990] to Attack Rating against Undead (+10 per Character Level)<br>+250 Poison Damage over 2 Seconds<br>Poison Resist +50%</td>
+      <td>Mercenary - Act V</td>
+      <td>Amplify Damage</td>
+    </tr>
+    <tr>
+      <td>Witchwild String<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/0/07/Witchwild_String.png" alt="Witchwild String"><br><br>Short Siege Bow<br><i>Exceptional</i></td>
+      <td>14% Chance to Cast Level 31 Amplify Damage on Striking<br>Fires Magic Arrows (Level 20)<br>+[150-190]% Enhanced Damage<br>[0-49]% Deadly Strike (0.5% per Character Level)<br>All Resistances +[20-40]<br>Socketed [2-4]</td>
+      <td>Mercenary - Act I</td>
+      <td>Amplify Damage</td>
+    </tr>
+    <tr>
+      <td>The Reaper's Toll<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/c/cd/Scythe.png" alt="The Reaper's Toll"><br><br>Thresher<br><i>Elite</i></td>
+      <td>33% Chance to Cast Level 31 Amplify Damage on Striking<br>+[190-290]% Enhanced Damage<br>Ignore Target's Defense<br>Adds 4-44 Cold Damage<br>[11-15]% Life Stolen per Hit<br>33% Deadly Strike<br>Requirements -25% </td>
+      <td>Mercenary - Act II</td>
+      <td>Amplify Damage</td>
+    </tr>
+    <tr>
+      <td>Kalan's Legacy<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/9/9b/Kalan%27s_Legacy.png" alt="Kalan's Legacy"><br><br>Mummified Trophy<br><i>Exceptoinal</i></td>
+      <td>Level [4-6] Vigor Aura when Equipped<br>+1 to Necromancer Skill Levels<br>+20% Faster Block Rate<br>20% Increased Chance of Blocking<br>+[40-75] Defense<br>Socketed [1-2]</td>
+      <td>Necromancer</td>
+      <td>Vigor Aura</td>
+    </tr>
+    <tr>
+      <td>Homunculus<br><br><img src="https://static.miraheze.org/projectdiablo2wiki/3/34/Demon_Head.png" alt="Homunculus"></td>
+    </tr>
+  </table>
+
+
+
+
   <table id="anotacoes" class="aba">
     <tr><th>Amplify Damage</th></tr>
     <tr><td>Witchwild String		Exceptional Bow				14% Chance to Cast Level 31 Amplify Damage on Striking		Act I
@@ -1246,7 +1314,7 @@ Wrath				Pul • Lum • Ber • Mal			60% Chance to Cast Level 31 Amplify Damag
 
 
 
-  <p id="paragrafo">PD2 Explorer by Az.<br>v.0.02</p>
+  <p id="paragrafo">Project Diablo 2 Explorer by Az<br>v.0.02 (04/05/2023)</p>
 
 
 
