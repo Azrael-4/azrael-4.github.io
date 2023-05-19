@@ -1338,7 +1338,7 @@
 
 
   <table id="anotacoes" class="aba">
-    <tr><th style="width: 1200px">Amplify Damage Sources</th></tr> <!-- Essa width de 1200px é para deixar as células com a mesma largura da tabela  -->
+    <tr><th>Amplify Damage Sources</th></tr> <!-- Essa width de 1200px é para deixar as células com a mesma largura da tabela  -->
     <tr><td>Witchwild String		Exceptional Bow				14% Chance to Cast Level 31 Amplify Damage on Striking		Act I
 
 The Reaper's Toll		Elite Polearm					33% Chance to Cast Level 31 Amplify Damage on Striking		Act II
@@ -1412,33 +1412,54 @@ Wrath				Pul • Lum • Ber • Mal			60% Chance to Cast Level 31 Amplify Damag
 - Holy Fire - Zeal/Charge (Native Aura)
 - Holy Shock - Zeal/Charge (Dual Dreams)
 - Holy Freeze - Zeal/Charge (Doom + Shattered Wall)
-- Holy Fire - Zeal/Charge (HOJ + Dual Dragons)</td></tr>
-<tr>
-  <th>Zealer Paladin</th>
+- Holy Fire - Zeal/Charge (HOJ + Dual Dragons)</td>
 </tr>
-<tr>
-  <td>Weapon: Death Cleaver (Budget late game)
-Armor: Lionheart (RW) into Fortitude (RW)</td>
-</tr>
+
 <tr>
   <th>Anotações</th>
 </tr>
 <tr>
-  <td>• Obedience (Hel Ko Thul Eth Fal) em Tresher ou Giant Tresher, de preferência etéreo, é uma boa e barata runeword mid game.
+  <td>• Customization
+- É possível alterar o arquivo 'ProjectDiablo.cfg' e em 'Screen Info Configuration' adicionar %REALTIME% para mostrar o horário local durante o jogo.
+• Obedience (Hel Ko Thul Eth Fal) em Tresher ou Giant Tresher, de preferência etéreo, é uma boa e barata runeword mid game.
 • Snapshot: termo usado para descrever como os atributos das summons permanecem os mesmos mesmo depois de mudar os equipamentos.
-• Keys: Terror (The Countess 1/11 and Blood Raven 1/9), Hate (The Summoner 1/8 and Bloodwitch 1/9), Destruction (Nihlathak 1/8 and Izual 1/9).
-• Crafting: Bountiful Belt é muito barato: Belt + El + Perfect Topaz + Jewel.
-• Crafting: Caster Amulet é barato, com o personagem level 88 é possível comprar amuletos ilvl 92 nos vendedores, o que resulta em um amuleto craftado com ilvl 90, que é o mínimo para
- rolar +2 to class skills.
+• Keys
+- Terror: The Countess 9,45% and Blood Raven 11,55%
+- Hate: The Summoner 12,83% and Bloodwitch 11,55%
+- Destruction: Nihlathak 12% and Izual 11,55%
+• Crafting
+- Bountiful Belt é muito barato: Belt + El + Perfect Topaz + Jewel.
+- Caster Amulet é barato, com o personagem level 88 é possível comprar amuletos ilvl 92 nos vendedores, o que resulta em um amuleto craftado com ilvl 90, que é o mínimo para rolar
+ +2 to class skills.
 • Summoners: Todos os "pets" ou unidades invocadas possuem um delay fixo de 15 frames entre um ataque e outro. Isso significa que a aura Fanaticism não tanta efetividade neles.
-• Enhanced Damage: todas as auras e aumento de dano são calculados sobre o valor base do ataque ou da skill. Isso significa, por exemplo, que ter seu ataque aumentado em 100%
- pela aura Might não vai realmente dobrar seu dano atual.
+• Enhanced Damage
+- Todas as auras e aumento de dano são calculados sobre o valor base do ataque ou da skill. Isso significa, por exemplo, que ter seu ataque aumentado em 100% pela aura Might
+ não vai realmente dobrar seu dano atual.
 - Em unidades invocadas o valor base não é o mostrado na descrição da skill in-game, e sim o base já acrescido de todos os modificadores da própria skill e suas sinergias. Para descobrir
  o valor base das summons basta verificar a descrição da skill na wiki do PD2. Um Skeleton Warrior lvl 20 bate 36-37.
-• As luvas The Hand of Broc, Bloodfist e Steelrend oferecem melee splash damage. O objetivo é permitir que um personagem melee (shapeshifter) use armas ranged e ainda assim
- tenha melee splash damage.
-• Critical damage: Deadly Strike e Critical Strike ambos oferecem a chance de um ataque causar 1.5x dano. Deadly Strike é encontrado em itens, Critical Strike é encontrado nas skills
- Critical Strike e Hunger. Utilize cálculo com diminishing returns para calcular a probabilidade de crítico.</td>
+• Melee Splash Damage
+- As luvas The Hand of Broc, Bloodfist e Steelrend oferecem melee splash damage. O objetivo é permitir que um personagem melee (shapeshifter) use armas ranged e ainda assim tenha
+ melee splash damage.
+• Critical damage
+- Oferece a chance de um ataque causar 1.5x dano. Deadly Strike é encontrado em itens e Critical Strike é encontrado nas skills Critical Strike e Hunger.
+- Existem quatro tipos de modificadores: Deadly strike, Critical Strike, Crit Mastery (melee) e Crit Mastery (throw).
+- Utilize cálculo com diminishing returns para calcular a probabilidade de crítico.
+- Existe um limite máximo de 75% de chance para cada um deles. Ter dois deles a 75% garante 93,75% crítico.
+• Crushing Blow
+- Reduz o hp atual do alvo em uma fração (Default: 1/8, Super Unique/Bosses: 1/16, Players/Mercenaries: 1/20)
+- Não funciona em dano melee splash.
+- Não funciona em alvos com menos de 65%.
+• Imunidades
+- Ter resistência a um elemento (incluindo físico) em mais de 99% torna a unidade imune àquele elemento.
+- Cold Mastery, Fire Mastery e "-x% to enemy y resistance" não podem quebrar imunidades.
+- Skills como Amplify Damage e Lower Resist funcionam com 1/2 de efetividade quando o alvo possui a imunidade correspondente
+ (toda a skill é reduzida, não apenas o valor necessário para quebrar a imunidade)
+- Quaisquer valores que reduzam a resistência abaixo de zero são reduzidos em 1/2 (apenas a parte que tornar a resistência negativa).
+- Efeitos negativos causados por monstros sempre têm 100% de eficiência.
+• Zealer Paladin
+- Weapon: Death Cleaver (Budget late game).
+- Armor: Lionheart (RW) into Fortitude (RW).
+</td>
 </tr>
 
 </tr>
