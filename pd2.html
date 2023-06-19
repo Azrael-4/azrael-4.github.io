@@ -29,8 +29,9 @@
   <button class="botao" onclick="abrirAba('runewords')">Runewords</button>
   <button class="botao" onclick="abrirAba('runeList')">Rune List</button>
   <button class="botao" onclick="abrirAba('uniques')">Uniques</button>
-  <button class="botao" style="cursor: not-allowed" disabled>Runeword Bases</button>
+  <button class="botao" onclick="abrirAba('bases')">Item Bases</button>
   <button class="botao" onclick="abrirAba('anotacoes')">Anotações</button>
+  <button class="botao" style="cursor: not-allowed" disabled>Guides</button>
   
   <button class="botao" style="cursor: default; position: absolute; right: 5px;" onclick="abrirAba('')">PD2 Explorer by Az</button>
 </nav>
@@ -1365,7 +1366,9 @@ Wrath				Pul • Lum • Ber • Mal			60% Chance to Cast Level 31 Amplify Damag
 
 Head Hunter's Glory	Elite Shield					12% Chance to Cast Level 31 Amplify Damage on Striking		N/A
 
-Atma's Scarab			Amulet (ilvl 60)				8% Chance to Cast Level 15 Amplify Damage on Striking		N/A</td></tr>
+Atma's Scarab			Amulet (ilvl 60)				8% Chance to Cast Level 15 Amplify Damage on Striking		N/A
+
+Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</td></tr>
 <tr>
   <th>DH's Mapping Season 7 (S- a S+ em cima, A+ embaixo, outras não foram listadas)</th>
 </tr>
@@ -1481,6 +1484,608 @@ Atma's Scarab			Amulet (ilvl 60)				8% Chance to Cast Level 15 Amplify Damage on
 </table>
 
 
+
+
+<table id="bases" class="aba">
+  <tr>
+    <th colspan="8">Item Bases</th>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <th>Class</th>
+    <th>Normal</th>
+    <th>Exceptional</th>
+    <th>Elite</th>
+    <th>Sockets</th>
+    <th>Damage</th>
+    <th>Speed</th>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Axe</td>
+    <td>Hand Axe</td>
+    <td>Hatchet</td>
+    <td>Tomahawk</td>
+    <td>3</td>
+    <td>59,5</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Axe</td>
+    <td>Axe</td>
+    <td>Cleaver</td>
+    <td>Small Crescent</td>
+    <td>4</td>
+    <td>61,0</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Axe</td>
+    <td>Double Axe</td>
+    <td>Twin Axe</td>
+    <td>Ettin Axe</td>
+    <td>5</td>
+    <td>62,0</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Axe</td>
+    <td>Millitary Pick</td>
+    <td>Crowbill</td>
+    <td>War Spike</td>
+    <td>6</td>
+    <td>49,0</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Axe</td>
+    <td>War Axe</td>
+    <td>Naga</td>
+    <td>Berserker Axe</td>
+    <td>6</td>
+    <td>59,5</td>
+    <td>0</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Axe</td>
+    <td>Large Axe</td>
+    <td>Military Axe</td>
+    <td>Feral Axe</td>
+    <td>5</td>
+    <td>92,5</td>
+    <td>-15</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Axe</td>
+    <td>Broad Axe</td>
+    <td>Bearded Axe</td>
+    <td>Silver-Edge Axe</td>
+    <td>5</td>
+    <td>108,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Axe</td>
+    <td>Battle Axe</td>
+    <td>Tabar</td>
+    <td>Decaptator</td>
+    <td>5</td>
+    <td>116,0</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Axe</td>
+    <td>Great Axe</td>
+    <td>Gothic Axe</td>
+    <td>Champion Axe</td>
+    <td>6</td>
+    <td>96,0</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Axe</td>
+    <td>Giant Axe</td>
+    <td>Ancient Axe</td>
+    <td>Glorious Axe</td>
+    <td>6</td>
+    <td>115,0</td>
+    <td>10</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Short Sword</td>
+    <td>Gladius</td>
+    <td>Falcata</td>
+    <td>3</td>
+    <td>56,5</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Scimatar</td>
+    <td>Cutlass</td>
+    <td>Ataghan</td>
+    <td>3</td>
+    <td>45,5</td>
+    <td>-20</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Sabre</td>
+    <td>Sashimir</td>
+    <td>Elegant Blade</td>
+    <td>3</td>
+    <td>48,5</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Falchion</td>
+    <td>Tulwar</td>
+    <td>Hydra Edge</td>
+    <td>3</td>
+    <td>60,0</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Crystal Sword</td>
+    <td>Dimensional Blade</td>
+    <td>Phase Blade</td>
+    <td>6</td>
+    <td>41,5</td>
+    <td>-30</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Broad Sword</td>
+    <td>Battle Sword</td>
+    <td>Conquest Sword</td>
+    <td>4</td>
+    <td>56</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>Long Sword</td>
+    <td>Rune Sword</td>
+    <td>Cryptic Sword</td>
+    <td>4</td>
+    <td>51,0</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Sword</td>
+    <td>War Sword</td>
+    <td>Ancient Sword</td>
+    <td>Mythical Sword</td>
+    <td>3</td>
+    <td>56,5</td>
+    <td>0</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Two-Handed Sword</td>
+    <td>Espandon</td>
+    <td>Legend Sword</td>
+    <td>3</td>
+    <td>90,5</td>
+    <td>-15</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Claymore</td>
+    <td>Dacian Falx</td>
+    <td>Highland Blade</td>
+    <td>4</td>
+    <td>102,0</td>
+    <td>-5</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Giant Sword</td>
+    <td>Tusk Sword</td>
+    <td>Balrog Blade</td>
+    <td>4</td>
+    <td>109,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Bastard Sword</td>
+    <td>Gothic Sword</td>
+    <td>Champion Sword</td>
+    <td>4</td>
+    <td>96,5</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Flamberge</td>
+    <td>Zweihander</td>
+    <td>Colossus Sword</td>
+    <td>5</td>
+    <td>113,5</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>2H Sword</td>
+    <td>Great Sword</td>
+    <td>Executioner Sword</td>
+    <td>Colossus Blade</td>
+    <td>6</td>
+    <td>108,50</td>
+    <td>5</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>Bardiche</td>
+    <td>Lochaber Axe</td>
+    <td>Ogre Axe</td>
+    <td>4</td>
+    <td>108,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>Voulge</td>
+    <td>Bill</td>
+    <td>Colossus Voulge</td>
+    <td>4</td>
+    <td>113,5</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>Scythe</td>
+    <td>Battle Scythe</td>
+    <td>Thresher</td>
+    <td>5</td>
+    <td>95,5</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>Poleaxe</td>
+    <td>Partizan</td>
+    <td>Cryptic Axe</td>
+    <td>5</td>
+    <td>114,5</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>Halberd</td>
+    <td>Bec-De-Corbin</td>
+    <td>Great Poleaxe</td>
+    <td>6</td>
+    <td>108,5</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Polearm</td>
+    <td>War Scythe</td>
+    <td>Grim Scythe</td>
+    <td>Giant Thresher</td>
+    <td>6</td>
+    <td>96,0</td>
+    <td>-10</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Spear</td>
+    <td>Spear</td>
+    <td>War Spear</td>
+    <td>Hyperion Spear</td>
+    <td>3</td>
+    <td>96,5</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Spear</td>
+    <td>Trident</td>
+    <td>Fuscia</td>
+    <td>Stygian Pike</td>
+    <td>4</td>
+    <td>108,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Spear</td>
+    <td>Brandistock</td>
+    <td>War Fork</td>
+    <td>Mancatcher</td>
+    <td>5</td>
+    <td>167,0</td>
+    <td>-20</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Spear</td>
+    <td>Spetum</td>
+    <td>Yari</td>
+    <td>Ghost Spear</td>
+    <td>6</td>
+    <td>217,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Spear</td>
+    <td>Pike</td>
+    <td>Lance</td>
+    <td>War Pike</td>
+    <td>6</td>
+    <td>132,0</td>
+    <td>20</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Club</td>
+    <td>Club</td>
+    <td>Cudgel</td>
+    <td>Truncheon</td>
+    <td>3</td>
+    <td>49,0</td>
+    <td>-10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Club</td>
+    <td>Spiked Club</td>
+    <td>Barbed Club</td>
+    <td>Tyrant Club</td>
+    <td>3</td>
+    <td>59,0</td>
+    <td>0</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Mace</td>
+    <td>Mace</td>
+    <td>Flanged Mace</td>
+    <td>Reinforced Mace</td>
+    <td>3</td>
+    <td>61,0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Mace</td>
+    <td>Morning Star</td>
+    <td>Jagged Star</td>
+    <td>Devil Star</td>
+    <td>3</td>
+    <td>62,5</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Mace</td>
+    <td>Flail</td>
+    <td>Knout</td>
+    <td>Scourge</td>
+    <td>5</td>
+    <td>57,0</td>
+    <td>-10</td>
+  </tr>
+  <tr><td colspan="8">&nbsp;</td></tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Hammer</td>
+    <td>War Hammer</td>
+    <td>Battle Hammer</td>
+    <td>Legendary Mallet</td>
+    <td>4</td>
+    <td>69,5</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Hammer</td>
+    <td>Maul</td>
+    <td>War Club</td>
+    <td>Ogre Maul</td>
+    <td>6</td>
+    <td>114,0</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Weapon</td>
+    <td>Hammer</td>
+    <td>Great Maul</td>
+    <td>Martel de Fer</td>
+    <td>Thunder Maul</td>
+    <td>6</td>
+    <td>133,0</td>
+    <td>20</td>
+  </tr>
+</table>
+<br><br>
+<table class="tabela" border=1>
+  <tr>
+    <th>Type</th>
+    <th>Class</th>
+    <th>Normal</th>
+    <th>Exceptional</th>
+    <th>Elite</th>
+    <th>Defense</th>
+    <th>Strength</th>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Quilted Armor [2]</td>
+    <td>Ghost Armor [2]</td>
+    <td>Dusk Shroud [4]</td>
+    <td>~414</td>
+    <td>77</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Leather Armor [2]</td>
+    <td>Serpent Skin [2]</td>
+    <td>Wyrmhide [4]</td>
+    <td>~417</td>
+    <td>84</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Hard Leather Armor [2]</td>
+    <td>Demonhide Armor [2]</td>
+    <td>Scarab Husk [4]</td>
+    <td>~421,5</td>
+    <td>95</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Studded Leather [2]</td>
+    <td>Trellised Armor [2]</td>
+    <td>Wire Fleece [4]</td>
+    <td>~428</td>
+    <td>111</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Ring Mail [3]</td>
+    <td>Linked Mail [3]</td>
+    <td>Diamond Mail [4]</td>
+    <td>~436</td>
+    <td>131</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Scale Mail [2]</td>
+    <td>Trigulated Mail [3]</td>
+    <td>Loricated Mail [4]</td>
+    <td>~443</td>
+    <td>149</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Chain Mail [2]</td>
+    <td>Mesh Armor [3]</td>
+    <td>Boneweave [4]</td>
+    <td>~452</td>
+    <td>158</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Breast Plate [3]</td>
+    <td>Cuirass [3]</td>
+    <td>Great Hauberk [4]</td>
+    <td>~448</td>
+    <td>118</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Splint Mail [2]</td>
+    <td>Russet Armor [3]</td>
+    <td>Balrog Skin [4]</td>
+    <td>~463,5</td>
+    <td>165</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Plate Mail [2]</td>
+    <td>Templar Coat [3]</td>
+    <td>Hellforge Plate [4]</td>
+    <td>~475,5</td>
+    <td>196</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Field Plate [2]</td>
+    <td>Sharktooth Armor [3]</td>
+    <td>Kraken Shell [4]</td>
+    <td>~470</td>
+    <td>174</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Gothic Plate [4]</td>
+    <td>Embossed Plate [4]</td>
+    <td>Lacquered Plate [4]</td>
+    <td>~487</td>
+    <td>208</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Light Plate [3]</td>
+    <td>Mage Plate [3]</td>
+    <td>Archon Plate [4]</td>
+    <td>~467</td>
+    <td>103</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Full Plate Mail [4]</td>
+    <td>Chaos Armor [4]</td>
+    <td>Shadow Plate [4]</td>
+    <td>~501,5</td>
+    <td>230</td>
+  </tr>
+  <tr>
+    <td>Armor</td>
+    <td>Armor</td>
+    <td>Ancient Armor [4]</td>
+    <td>Ornate Plate [4]</td>
+    <td>Sacred Armor [4]</td>
+    <td>~543,5</td>
+    <td>232</td>
+  </tr>
+</table>
 
 
 
