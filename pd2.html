@@ -7,6 +7,7 @@
   <title>PD2 Explorer by Elton</title>
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth; overflow-y: scroll}
     body {background-color: black; color: white; font-family: Verdana; font-size: 12px; padding: 10px;}
     table {width: 1200px; margin: 32px auto; border: 1px dotted white; border-collapse: collapse; display: none;}
     td, th {padding: 5px; line-height: 25px; border: 1px dotted white;}
@@ -16,7 +17,7 @@
     .cred {color: #f44336;}
     .cyellow {color: #ffc40d}
     #paragrafo {border: 1px dotted white; padding: 10px; line-height: 18px; width: 1200px; margin: 32px auto; text-align: center;}
-    .barra {width: 100%; height: 32px; background-color: #ffc40d; color: black; position: fixed; padding: 5px; margin: -10px;}
+    .barra {width: 100%; height: 32px; background: linear-gradient(90deg, rgba(236,67,67,1) 25%, rgba(0,0,0,1) 50%, rgba(236,67,67,1) 75%); color: black; position: fixed; padding: 5px; margin: -10px;}
     .botao {background-color: black; color: white; border: none; padding: 4px; cursor: pointer; height: 22px; font-size: 12px; font-weight: bold;}
     .botao:hover {background-color: gray;}
     #anotacoes td {white-space: pre;}
@@ -206,7 +207,7 @@
       <td>Insight</td>
       <td>Ral Tir Tal Sol</td>
       <td>Staves<br>Polearms<br>Spears<br>Scepters</td>
-      <td>Level [12-17] Meditation Aura when Equipped<br>+35% Faster Cast Rate<br>+[140-180]% Enhanced Damage +9 to Minimum Damage<br>[180-250]% Bonus to Attack Rating<br>Adds 5-30 Fire Damage<br>+75 Poison Damage over 5 Seconds<br>+[1-6] to Critical Strike<br>+[10-20] to All Attributes<br>+2 to Mana after each Kill<br>23% Better Chance of Getting Magic Items</td>
+      <td>Level [12-17] Meditation Aura when Equipped<br>+35% Faster Cast Rate<br>+[140-180]% Enhanced Damage<br>+9 to Minimum Damage<br>[180-250]% Bonus to Attack Rating<br>Adds 5-30 Fire Damage<br>+75 Poison Damage over 5 Seconds<br>+[1-6] to Critical Strike<br>+[10-20] to All Attributes<br>+2 to Mana after each Kill<br>23% Better Chance of Getting Magic Items</td>
       <td>Level [12-17] Meditation Aura</td>
     </tr>
     <tr>
@@ -295,7 +296,7 @@
       <td>Shael Um Tir</td>
       <td> Axes<br>Swords<br>Polearms<br>Spears<br>Claws</td>
       <td>10% Chance to Cast Level 27 Lightning on Striking<br>12% Chance to Cast Level 13 Static Field on Striking (Axes/Swords/Claws Only)<br>24% Chance to Cast Level 13 Static Field on Striking (Polearms/Spears Only)<br>+20% Increased Attack Speed<br>+[180-220]% Enhanced Damage<br>Ignore Target's Defense<br>-[10-15]% to Enemy Lightning Resistance<br>10% Chance of Open Wounds<br>+120 Open Wounds Damage per Second<br>+[3-5] Magic Absorb<br>+2 to Mana after each Kill<br>Level 18 Summon Spirit Wolf (30 Charges)</td>
-      <td>Late Game</td>
+      <td>Mid Game</td>
     </tr>
     <tr>
       <td>49</td>
@@ -1478,6 +1479,15 @@ Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</t
 - Weapon: Gimmershred into Death Cleaver into Grief.
 - Armor: Lionheart (RW) into Fortitude (RW).
 - Act V Mercenary: Headstriker / The Gavel of Pain into The Cranium Basher
+• Runewords Zealer Early (Fal) e Mid (Lem) Game
+NOME		SOCKETS	LEVEL	HAND	RUNA MAIS ALTA
+King's Grace	3 	25	1H	Amn (11)
+Honor		5	27	1/2H	Sol (12)
+Rampage (New)	4	29	2H	Shael (13)
+Unbending Will	6	35	1/2*	Fal (19)
+Obedience	5	41	2H	Fal (19)
+Passion		4	43	1H	Lem (20)
+Lawbringer	3	43	1H	Lem (20)
 </td>
 </tr>
 
@@ -1833,7 +1843,7 @@ Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</t
     <td>War Fork</td>
     <td>Mancatcher</td>
     <td>5</td>
-    <td>167,0</td>
+    <td>83,5</td>
     <td>-20</td>
   </tr>
   <tr>
@@ -1843,7 +1853,7 @@ Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</t
     <td>Yari</td>
     <td>Ghost Spear</td>
     <td>6</td>
-    <td>217,0</td>
+    <td>108,5</td>
     <td>0</td>
   </tr>
   <tr>
@@ -1947,8 +1957,6 @@ Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</t
   </tr>
 </table>
 
-<br>
-<br>
 
 <table id="basesA" class="aba">
   <tr>
@@ -2101,7 +2109,7 @@ Spellsteel			Exceptional Axe				Level 18 Amplify Damage (60 charges)						N/A</t
 </table>
 
 
-<p id="paragrafo">Project Diablo 2 Explorer by Az<br>v.0.02 (04/05/2023)</p>
+<p id="paragrafo">Project Diablo 2 Explorer by Az<br>v.0.03 (19/06/2023)<br>v.0.02 (04/05/2023)</p>
 
 
 <script>
