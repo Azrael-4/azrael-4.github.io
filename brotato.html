@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="w3.css">
   <style>
     body {background-image: url(https://brotato.wiki.spellsandguns.com/skins/ScratchWikiSkin2/resources/background.png?d9a9a); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
-    img {max-width: 3em;}
-    tr td:nth-child(3),th:nth-child(2) {background-color: #202020;}
-    tr td:nth-child(4),th:nth-child(3) {background-color: #0f2028;}
-    tr td:nth-child(5),th:nth-child(4) {background-color: #100a1b;}
-    tr td:nth-child(6),th:nth-child(5) {background-color: #240909;}
+    .stats img {max-width: 3em;}
+    .stats tr td:nth-child(3), .stats th:nth-child(2) {background-color: #202020;}
+    .stats tr td:nth-child(4), .stats th:nth-child(3) {background-color: #0f2028;}
+    .stats tr td:nth-child(5), .stats th:nth-child(4) {background-color: #100a1b;}
+    .stats tr td:nth-child(6), .stats th:nth-child(5) {background-color: #240909;}
+    .tierlist td:nth-child(1) {font-weight: bold;}
     td {vertical-align: middle !important;}
     /*
     tr td:nth-child(3),th:nth-child(2) {background-color: #424242;}
@@ -23,8 +24,8 @@
   </style>
 </head>
 <body class="w3-content w3-blue-gray w3-section">
-  <table class="w3-table w3-border w3-bordered w3-centered w3-black w3-card-4">
-    <tr><th colspan="2" class="w3-center">Upgrades</th><th>Tier I</th><th>Tier II</th><th>Tier III</th><th>Tier IV</th></tr>
+  <table class="w3-table w3-border w3-bordered w3-centered w3-black w3-card-4 stats">
+    <tr><th colspan="2" class="w3-center" title="Unlocks:&#10;Anvil - Win with Arms Dealer&#10;Hunting Trophy - Win with Crazy&#10;Lucky Charm - Win with Lucky&#10;Community Support - Win with Streamer&#10;Improved Tools - Win with Cyborg&#10;Tentacle - Win with Lich&#10;Nuclear Launcher - Win with Soldier">Upgrades</th><th>Tier I</th><th>Tier II</th><th>Tier III</th><th>Tier IV</th></tr>
     <tr><td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/6/6e/Damage_Upgrade.png/60px-Damage_Upgrade.png"></td><td>Damage</td><td>5%</td><td>8%</td><td>12%</td><td>16%</td></tr>
     <tr><td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/6/6c/Melee_Damage_Upgrade.png/60px-Melee_Damage_Upgrade.png"></td><td>Melee Damage</td><td>2</td><td>4</td><td>6</td><td>8</td></tr>
     <tr><td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/c/c6/Ranged_Damage_Upgrade.png/60px-Ranged_Damage_Upgrade.png"></td><td>Ranged Damage</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
@@ -43,6 +44,120 @@
     <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/1/16/Luck_Upgrade.png/60px-Luck_Upgrade.png"></td><td>Luck</td><td>5</td><td>10</td><td>15</td><td>20</td></tr>
     <tr><td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/f/f2/Harvesting_Upgrade.png/60px-Harvesting_Upgrade.png"></td><td>Harvesting</td><td>5</td><td>8</td><td>10</td><td>12</td></tr>
+  </table>
+
+  <br><br>
+
+  <table class="w3-table w3-border w3-bordered w3-centered w3-black w3-card-4 itens">
+    <tr><th colspan="5">ITENS</th></tr>
+    <tr><th>Tier</th><th>Nome</th><th>Descrição</th><th>Classe</th><th>Comentário</th></tr>
+    <tr>
+      <td>Tier 1</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/25/Fertilizer.png/60px-Fertilizer.png"><br>Fertilizer</td>
+      <td>+8 Harvesting<br>-1 Melee Damage</td>
+      <td>Economia</td>
+      <td>Sempre comprar</td>
+    </tr>
+    <tr>
+      <td>Tier 1</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/c/c5/Coupon.png/60px-Coupon.png"><br>Coupon</td>
+      <td>-5% Price</td>
+      <td>Economia</td>
+      <td>Sempre comprar</td>
+    </tr>
+    <tr>
+      <td>Tier 1</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/a/ac/Tree.png/60px-Tree.png"><br>Tree</td>
+      <td>More trees spawn</td>
+      <td>Economia</td>
+      <td>Sempre comprar</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/26/Recycling_Machine.png/60px-Recycling_Machine.png"><br>Fertilizer</td>
+      <td>Gain +35% more materials from recycling items</td>
+      <td>Economia</td>
+      <td>Sempre comprar</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/79/Dangerous_Bunny.png/60px-Dangerous_Bunny.png"><br>Dangerous Bunny</td>
+      <td>+1 free reroll in the shop (max 3)</td>
+      <td>Economia</td>
+      <td>Sempre comprar</td>
+    </tr>
+    <tr>
+      <td>Tier 1</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/e/e9/Coffee.png/60px-Coffee.png"><br>Coffee</td>
+      <td>+10% Attack Speed<br>-2% Damage</td>
+      <td>Stats</td>
+      <td>Great Item</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/5/51/Cyclops_Worm.png/60px-Cyclops_Worm.png"><br>Cyclops Worm</td>
+      <td>+12% Damage<br>-12 Range</td>
+      <td>Stats</td>
+      <td>Good Item</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/0/06/Small_Magazine.png/60px-Small_Magazine.png"><br>Small Magazine</td>
+      <td>+2 Ranged Damage<br>+10% Attack Speed<br>-6% Damage</td>
+      <td>Stats</td>
+      <td>Ranged Damage</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/5/58/Mastery.png/60px-Mastery.png"><br>Mastery </td>
+      <td>+6 Melee Damage<br>-3 Ranged Damage</td>
+      <td>Stats</td>
+      <td>Melee Damage</td>
+    </tr>
+    <tr>
+      <td>Tier 2</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/b/bb/Fuel_Tank.png/60px-Fuel_Tank.png"><br>Fuel Tank</td>
+      <td><span class="w3-text-green">+4</span> Elemental Damage<br><span class="w3-text-red">-1</span> Melee Damage<br><span class="w3-text-red">-1</span> Ranged Damage</td>
+      <td>Stats</td>
+      <td>Elemental Damage</td>
+    </tr>
+  </table>
+
+  <br><br>
+
+  <table class="w3-table w3-border w3-bordered w3-centered w3-black w3-card-4 tierlist">
+    <tr><th colspan="10">ArosRising's TIER LIST</th></tr>
+    <tr>
+      <td>Tier S</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/0/00/Loud.png/60px-Loud.png" alt=""><br>Loud</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/4/4d/Entrepreneur.png/60px-Entrepreneur.png"><br>Entrepeneur</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/7b/Soldier.png/60px-Soldier.png"><br>Soldier</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/7b/Masochist.png/60px-Masochist.png" alt=""><br>Masochist</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/6/6b/Knight.png/60px-Knight.png"><br>Knight</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/c/c4/Demon.png/60px-Demon.png" alt=""><br>Demon</td>
+    </tr>
+    <tr>
+      <td>Tier A</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/f/fa/Brawler.png/60px-Brawler.png" alt=""><br>Brawler</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/f/fa/Brawler.png/60px-Brawler.png" alt=""><br>Crazy</td>
+    </tr>
+    <tr>
+      <td>Tier B</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/3/32/Well_Rounded.png/60px-Well_Rounded.png"><br>Well Rounded</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/e/e9/Ranger.png/60px-Ranger.png" alt=""><br>Ranger</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/a/a6/Lucky.png/60px-Lucky.png" alt=""><br>Lucky</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/5/58/Mutant.png/60px-Mutant.png"><br>Mutant</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/d/d8/Engineer.png/60px-Engineer.png"><br>Engineer</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/6/6c/Doctor.png/60px-Doctor.png"><br>Doctor</td>
+    </tr>
+    <tr>
+      <td>Tier C</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/7a/Bull.png/60px-Bull.png"><br>Bull</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/9/98/Artificer.png/60px-Artificer.png"><br>Artificer</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/75/One_Armed.png/60px-One_Armed.png"><br>One Armed</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/a/ab/Ghost.png/60px-Ghost.png"><br>Ghost</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/8/84/Saver.png/60px-Saver.png"><br>Saver</td>
+    </tr>
   </table>
 </body>
 </html>
