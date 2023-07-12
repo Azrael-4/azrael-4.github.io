@@ -14,6 +14,7 @@
     .stats tr td:nth-child(5), .stats th:nth-child(4) {background-color: rgba(16, 10, 27, 0.85)}
     .stats tr td:nth-child(6), .stats th:nth-child(5) {background-color: rgba(36, 9, 9, 0.85)}
     /*.tierlist td:nth-child(1) {font-weight: bold;} Desativei pois, após a quebra de linha, negritava os nomes da primeira classe da segunda linha; coloquei bold manualmente através da classe mais abaixo*/
+    .gameplay td:nth-child(1) {font-weight: bold;}
     td {vertical-align: middle !important;}
     .borda {border-bottom: 1px solid black}
     .opacidade-black {background: rgba(0,0,0,0.85)}
@@ -55,49 +56,49 @@
   <br>
 
   <table class="w3-table w3-border w3-bordered w3-centered w3-card-4 opacidade-black">
-    <tr><th colspan="5">ITENS</th></tr>
-    <tr><th>Tier</th><th>Nome</th><th>Descrição</th><th>Classe</th><th>Comentário</th></tr>
-    <tr>
-      <td>Tier 1</td>
-      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/25/Fertilizer.png/60px-Fertilizer.png"><br>Fertilizer</td>
-      <td><span class="w3-text-green">+8</span> Harvesting<br><span class="w3-text-red">-1</span> Melee Damage</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
-    </tr>
+    <tr><th colspan="5">ITEMS</th></tr>
+    <tr><th>Rarity</th><th>Name</th><th>Description</th><th>Class</th><th>Comment</th></tr>
     <tr>
       <td>Tier 1</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/c/c5/Coupon.png/60px-Coupon.png"><br>Coupon</td>
       <td><span class="w3-text-green">-5%</span> Price</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
+      <td>Economy</td>
+      <td>Always buy</td>
     </tr>
     <tr>
       <td>Tier 1</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/d/d4/Bag.png/60px-Bag.png"><br>Bag</td>
       <td><span class="w3-text-green">+15</span> materials when you pick up a crate<br><span class="w3-text-red">-1%</span> Speed</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
+      <td>Economy</td>
+      <td>Always buy</td>
     </tr>
     <tr>
       <td>Tier 1</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/a/ac/Tree.png/60px-Tree.png"><br>Tree</td>
       <td>More trees spawn</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
+      <td>Economy</td>
+      <td>Always buy</td>
+    </tr>
+    <tr>
+      <td>Tier 1</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/25/Fertilizer.png/60px-Fertilizer.png"><br>Fertilizer</td>
+      <td><span class="w3-text-green">+8</span> Harvesting<br><span class="w3-text-red">-1</span> Melee Damage</td>
+      <td>Economy</td>
+      <td>Always buy</td>
     </tr>
     <tr>
       <td>Tier 2</td>
-      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/26/Recycling_Machine.png/60px-Recycling_Machine.png"><br>Fertilizer</td>
+      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/2/26/Recycling_Machine.png/60px-Recycling_Machine.png"><br>Recycling Machine</td>
       <td>Gain <span class="w3-text-green">+35%</span> more materials from recycling items</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
+      <td>Economy</td>
+      <td>Always buy</td>
     </tr>
     <tr>
       <td>Tier 2</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/79/Dangerous_Bunny.png/60px-Dangerous_Bunny.png"><br>Dangerous Bunny</td>
       <td><span class="w3-text-green">+1</span> free reroll in the shop (max 3)</td>
-      <td>Economia</td>
-      <td>Sempre comprar</td>
+      <td>Economy</td>
+      <td>Always buy</td>
     </tr>
     <tr>
       <td>Tier 1</td>
@@ -180,10 +181,9 @@
       <td class="borda w3-text-green"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/d/d8/Engineer.png/60px-Engineer.png" id="engineerc"><br>Engineer</td>
       <td class="borda w3-text-green"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/6/6c/Doctor.png/60px-Doctor.png" id="doctorc"><br>Doctor</td>
       <td class="borda w3-text-yellow"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/4/4b/Hunter.png/60px-Hunter.png" id="hunterc"><br>Hunter</td>
-      <td class="borda w3-text-red"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/4/46/Jack.png/60px-Jack.png" id="jackc"><br>Jack</td>
+      <td class="borda"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/5/52/Cryptid.png/60px-Cryptid.png" id="cryptidc"><br>Cryptid</td>
     </tr>
     <tr>
-      <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/5/52/Cryptid.png/60px-Cryptid.png" id="cryptidc"><br>Cryptid</td>
       <td class="w3-text-red"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/f/f0/Fisherman.png/60px-Fisherman.png" id="fishermanc"><br>Fisherman</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/c/ce/Golem.png/60px-Golem.png" id="golemc"><br>Golem</td>
       <td><img src="https://brotato.wiki.spellsandguns.com/images/thumb/1/1d/King.png/60px-King.png" id="kingc"><br>King</td>
@@ -204,109 +204,101 @@
       <td class="w3-text-yellow"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/a/ab/Ghost.png/60px-Ghost.png" id="ghostc"><br>Ghost</td>
       <td class="w3-text-red"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/7/75/One_Armed.png/60px-One_Armed.png" id="onearmedc"><br>One Armed</td>
     </tr>
-    <tr><td colspan="10"><span class="w3-text-green">Jogabilidade padrão.</span><br><span class="w3-text-yellow">Jogabilidade padrão mas difícil ou não intuitiva.</span><br><span class="w3-text-red">Jogabilidade muito diferente da padrão (precisa de estudo) ou muito difícil.</span></td></tr>
+    <tr>
+      <td class="bold">Tier D</td>
+      <td class="w3-text-red"><img src="https://brotato.wiki.spellsandguns.com/images/thumb/4/46/Jack.png/60px-Jack.png" id="jackc"><br>Jack</td>
+    </tr>
+    <tr><td colspan="10"><span class="w3-text-green">Jogabilidade padrão.</span><br><span class="w3-text-yellow">Jogabilidade padrão mas não intuitiva ou difícil.</span><br><span class="w3-text-red">Jogabilidade muito diferente da padrão ou muito difícil.</span></td></tr>
   </table>
 
   <br><br>
 
-  <table class="w3-table w3-border w3-bordered w3-centered w3-card-4 stats20 opacidade-black" style="width: auto">
+  <table class="w3-table w3-border w3-bordered w3-card-4 gameplay opacidade-black" style="width: auto;">
+    <tr><th colspan="2" class="w3-center">Gameplay</th></tr>
+    <tr><td>Melee</td><td>Brawler, Crazy, Gladiator, Knight, Glutton, Speedy</td></tr>
+    <tr><td>Ranged</td><td>Ranger, Soldier, One Armed</td></tr>
+    <tr><td>Elemental</td><td>Mage, Artificer</td></tr>
+    <tr><td>Engineer</td><td>Engineer, Old, Entrepeneur, Multitasker, Streamer</td></tr>
+    <tr><td>Melee + Ranged</td><td>Generalist</td></tr>
+    <tr><td>Ranged + Engineer</td><td>Cyborg</td></tr>
+    <tr><td>Melee + Range + Elemental + Engenharia</td><td>Apprentice</td></tr>
+    <tr><td>Max HP</td><td>Chunky, Lich, Golem, Demon</td></tr>
+    <tr><td>HP Regeneration</td><td>Lich, Doctor</td></tr>
+    <tr><td>Life Steal</td><td>Wildling, Sick</td></tr>
+    <tr><td>Critical</td><td>Crazy, Hunter (Items: Knife, Thief Dagger, Shuriken, Crossbow, Sniper Gun, Clae)</td></tr>
+    <tr><td>Harvesting</td><td>Well Rounded, Old, Saver, Farmer, Entrepeneur, Arms Dealer, Fisherman</td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td>12 Weapons</td><td>Multitasker</td></tr>
+    <tr><td>1 Weapon</td><td>One Armed</td></tr>
+    <tr><td>0 Weapon</td><td>Bull</td></tr>
+    <tr><td>Tier 2 Weapons</td><td>Wildling</td></tr>
+    <tr><td>Tier 4 Weapons</td><td>King</td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td>Explosion</td><td>Artificer, Glutton, Bull</td></tr>
+    <tr><td>Consumables</td><td>Farmer, Chunky, Glutton</td></tr>
+    <tr><td>More Trees</td><td>Explorer, Cryptid</td></tr>
+    <tr><td>Pacifist</td><td>Pacifist, Farmer, Explorer, Cryptid</td></tr>
+    <tr><td>No Harvesting</td><td>Loud</td></tr>
+    <tr><td>XP Gain</td><td>Mutant (+200%)<br>Lucky (-50%), Glutton (-25%)</td></tr>
+    <tr><td>Materials Dropped</td><td>Jack (+200%)<br>Farmer , Explorer , Streamer , Cryptid , Fisherman (-50%)</td></tr>
+    <tr><td>Items Price</td><td>Glutton (+25%)<br>Mutant, Saver (+50%)</td></tr>
+    <tr><td>Map Size</td><td>Old (-33%), Explorer (+33%)</td></tr>
+    <tr><td>Enemies</td><td>Old (-10%), Explorer (+25%), Loud (+50%), Jack (-75%)</td></tr>
+  </table>
+
+  <br><br>
+
+  <table class="w3-table w3-border w3-bordered w3-centered w3-card-4 stats20 opacidade-black w3-cell" style="width: auto;">
     <tr>
       <th colspan="3">Stats na 20ª Wave</th>
     </tr>
     <tr>
-      <td>Level</td>
-      <td>20</td>
+      <td>Level</td><td>20</td>
     </tr>
     <tr>
-      <td>Max HP</td>
-      <td>70</td>
+      <td>Max HP</td><td>70</td>
     </tr>
     <tr>
-      <td>HP Regeneration</td>
-      <td>10</td>
+      <td>HP Regeneration</td><td>10</td>
     </tr>
     <tr>
-      <td>Life Steal</td>
-      <td>25%</td>
+      <td>Life Steal</td><td>25%</td>
     </tr>
     <tr>
-      <td>% Damage</td>
-      <td>30%</td>
+      <td>% Damage</td><td>30%</td>
     </tr>
     <tr>
-      <td>Melee Damage</td>
-      <td>40</td>
+      <td>Melee Damage</td><td>40</td>
     </tr>
     <tr>
-      <td>Ranged Damage</td>
-      <td>20</td>
+      <td>Ranged Damage</td><td>20</td>
     </tr>
     <tr>
-      <td>Elemental Damage</td>
-      <td>20</td>
+      <td>Elemental Damage</td><td>20</td>
     </tr>
     <tr>
-      <td>Attack Speed</td>
-      <td>40%</td>
+      <td>Attack Speed</td><td>40%</td>
     </tr>
     <tr>
-      <td>Critical</td>
-      <td>25%</td>
+      <td>Critical</td><td>25%</td>
     </tr>
     <tr>
-      <td>Engineering</td>
-      <td>30</td>
+      <td>Engineering</td><td>30</td>
     </tr>
     <tr>
-      <td>Range</td>
-      <td>100</td>
+      <td>Range</td><td>100</td>
     </tr>
     <tr>
-      <td>Armor</td>
-      <td>7</td>
+      <td>Armor</td><td>7</td>
     </tr>
     <tr>
-      <td>Dodge</td>
-      <td>-0% | 60%</td>
+      <td>Dodge</td><td>-0% | 60%</td>
     </tr>
     <tr>
-      <td>Speed</td>
-      <td>25%</td>
+      <td>Speed</td><td>25%</td>
     </tr>
     <tr>
-      <td>Luck</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <td>Harvest</td>
-      <td>N/A</td>
-    </tr>
-  </table>
-
-  <br><br>
-
-  <table class="w3-table w3-border w3-bordered w3-centered w3-card-4 stats20 opacidade-black" style="width: auto">
-    <tr>
-      <th>Gameplay</th>
-    </tr>
-    <tr>
-      <td style="white-space: pre-wrap;">Melee: Brawler, Crazy, Gladiator, Knight, Glutton, Speedy
-Ranged: Ranger, Soldier, One Armed
-Melee/Ranged: Generalist
-Elemental: Mage, Artificer
-Engenharia: Engineer, Old, Entrepeneur, Multitasker, Streamer
-Ranged/Engenharia: Cyborg
-Melee/Range/Engenharia: Apprentice
-Consumables: Farmer, Chunky, Glutton
-12 Weapons: Multitasker
-1 Weapon: One Armed
-0 Weapon: Bull
-Explosion: 
-Trees: Explorer, Cryptid
-Level 2 Weapons: Wildling
-Level 4 Weapons: King
-Life Steal: Wildling, Sick
-Explosion: Artificer, Glutton, Bull</td>
+      <td>Luck</td><td>20</td>
     </tr>
   </table>
 
@@ -318,7 +310,7 @@ Explosion: Artificer, Glutton, Bull</td>
   document.getElementById('magec').title = "Elemental Damage modifications are increased by 33%\nYou start with 1 Snake\nYou start with 1 Scared Sausage\nMelee Damage Modifications are reduced by -100%\nRanged Damage Modifications are reduced by -100%\nEngineering Modifications are reduced by -100%\n\nTag: Elemental Damage";
   document.getElementById('chunkyc').title = "Max HP modifications are increased by 25%\n+1% Damage for every 3 Max HP you have [+3]\n+3 HP recovered from consumables\n-100% Life Steal\nHP Regeneration modifications are reduced by 50%\nDodge modifications are reduced by 50%\nSpeed modifications are reduced by 100%\n\nTag: Max HP, Luck";
   document.getElementById('oldc').title = "-25% Enemy speed\n+10 Harvesting\n-33%Map Size\n-10% Enemies\n-10% Speed\n\nTag: Less Enemies, Less Enemy Speed";
-  document.getElementById('luckyc').title = "+100 Luck\nLuck modifications are increased by 25%\n+75% chance to deal 1 (15%🎲) damage to a random enemy when you pick up a material\n-60% Attack Speed\n-50% XP Gain\n\nTag: Luck, Pickup, Exploration";
+  document.getElementById('luckyc').title = "+100 Luck\nLuck modifications are increased by 25%\n+75% chance to deal (15%🎲) damage to a random enemy when you pick up a material\n-60% Attack Speed\n-50% XP Gain\n\nTag: Luck, Pickup, Exploration";
   document.getElementById('mutantc').title = "+200% XP Gain\n+50% Items Price\n\nTag: XP Gain";
   document.getElementById('generalistc').title = "+2 Melee Damage for every 1 Ranged Damage you have\n+1 Ranged Damage for every 2 Melee Damage you have\nYou can only equip 3 melee weapons and 3 ranged weapons at a time\n\nTag: Melee Damage, Ranged Damage.\n\n• Tips:\nWeapons: Cacti Club + Slingshot\nItems: Hedgehog, Wheat, Big Arms, Cuffs, Alloy.\nStats: avoid hp regeneration due to Hedgehog and dodge due to Alloy.";
   document.getElementById('loudc').title = "+30% Damage\n+50% Enemies\n-3 Harvesting at the end of a wave\n\nTag: More Enemies";
@@ -342,7 +334,7 @@ Explosion: Artificer, Glutton, Bull</td>
   document.getElementById('cyborgc').title = "You start with 1 Minigun\nRanged Damage modifications are increased by 250%\n100% of your Ranged Damage are temporarily converted into Engineering halfway through a wave (1 Ranged Damage = 2 Engineering)\nEngineering modifications are reduced by 75%\nMelee modifications are reduced by 100%\nElemental modifications are reduced by 100%\n\nTag: Engineering, Ranged Damage";
   document.getElementById('gluttonc').title = "+50 Luck\n+1 % Explosion Damage when picking up a consumable while at maximum health\nConsumable have a 100% chance to explode for 500%🗡️ damage when picked up\n+25 % Items Price\n-25 % XP Gain\n\ntag: Luck, Explosive, Melee Damage";
   document.getElementById('jackc').title = "+75% damage against bosses and elites\n+200% materials dropped from enemies\n-75% Enemies\n+250 % Enemy health\n+50 % Enemy damage\n\nTag: None";
-  document.getElementById('lichc').title = "+10 HP Regeneration\n+10 % Life Steal\n100% chance to deal 100%💚 damage to a random enemy when you heal\nDamage modifications are reduced by 50%\n\nTag: Max HP, HP Regeneration, Life Steal";
+  document.getElementById('lichc').title = "+10 HP Regeneration\n+10 % Life Steal\n100% chance to deal (100%💚) damage to a random enemy when you heal\nDamage modifications are reduced by 50%\n\nTag: Max HP, HP Regeneration, Life Steal";
   document.getElementById('apprenticec').title = "+2 Melee Damage when you level up\n+1 Ranged Damage when you level up\n+1 Elemental Damage when you level up\n+1 Engineering Damage when you level up\n-2 Max HP when you level up\n\nTag: Xp Gain";
   document.getElementById('cryptidc').title = "More trees spawn (+6)\nGain 12 material and XP for every living tree at the end of a wave\n+3 HP Regeneration for every current living tree\nDodge is capped at 70%\n+3 Attack Speed until the end of the wave when you dodge an attack\n-100 % Life Steal\n-100 Range\n-50% materials dropped from enemies\n\nTag: Exploration, Dodge";
   document.getElementById('fishermanc').title = "+5 Max HP\n+20 Harvesting\nShops always sell a Bait\n-100% Bait price\n+2 Harvesting for every 1 Bait you have\nBaits make some special enemies spawn throughout all future waves\n-50% materials dropped from enemies\n\nTag: None";
@@ -350,7 +342,7 @@ Explosion: Artificer, Glutton, Bull</td>
   document.getElementById('kingc').title = "+50 Luck\n+25 % Damage for every Tier IV weapon you have\n+25% Attack Speed for every Tier IV weapon you have\n+5 Max HP for every different Tier IV item you have\n-15% Damage for every Tier I weapon you have\n-15% Attack Speed for every Tier I weapon you have\n-2% Max HP for every Tier I item you have\n*Starting weapon is Tier II\n\nTag: None";
   document.getElementById('renegadec').title = "+2 projectiles\nProjectiles pierce through 1 additional target\n+10 % Damage for every different Tier I item you have\nYou can't equip melee weapons\n-400% Damage\n-50% accuracy\n% Damage modifications are reduced by 80%\n\nTag: None";
   document.getElementById('onearmedc').title = "+200% Attack Speed\nDamage modifications are increased by 100%\nYou can only equip one weapon at a time\n\nTag: Damage";
-  document.getElementById('bullc').title = "+20 Max HP\n+15 HP Regeneration\n+10 Armor\nHP Regeneration modifications are increased by 50%\nYou explode for 300%🗡️300%🏹300%🔥 damage when you take damage\nThis explosion has a 1.5x crit multiplier\nYou can't equip weapons\n\nTag: Max HP, HP Regeneration, Explosive";
+  document.getElementById('bullc').title = "+20 Max HP\n+15 HP Regeneration\n+10 Armor\nHP Regeneration modifications are increased by 50%\nYou explode for (300%🗡️300%🏹300%🔥) damage when you take damage\nThis explosion has a 1.5x crit multiplier\nYou can't equip weapons\n\nTag: Max HP, HP Regeneration, Explosive";
   document.getElementById('soldierc').title = "+50% Damage while standing still\n+50% Attack Speed while standing still\n+10% Speed\n+200% pickup range\n+15 Knockback\nYou cant attack while moving\n\nTag: Stand Still";
   document.getElementById('masochistc').title = "+5% Damage when you take damage until the end of the wave\n+10 Max HP\n+20 HP Regeneration\n+8 Armor\n-100% Damage\n\nTag: Max HP, Armor, HP Regeneration, Life Steal";
   document.getElementById('knightc').title = "+2 Melee Damage for every 1 Armor you have\n+5 Armor\nYou can't equip ranged weapons\nYou can only equip tier 2 weapons or above\n% Attack Speed modifications are reduced by 50%\nHarvesting modifications are reduced by 80%\n\nTag: Armor";
