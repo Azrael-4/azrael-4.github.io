@@ -1,0 +1,2 @@
+TRansferir a tabela de breakpoints para a Sheets
+Colocar os guias de classes na Sheets
