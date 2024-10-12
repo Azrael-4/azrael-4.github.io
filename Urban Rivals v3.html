@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UR - Lógica</title>
+    <title>UR - Combate</title>
     <style>
-
+        * {font-family: Verdana; font-size: 14px;}
     </style>
 </head>
 <body>
     <!-- Escolha dos Personagens para o Jogador 1 -->
     <div id="jogador1">
-        <h3>Jogador 1</h3>
+        <h3>Cards do Jogador 1</h3>
         <select id="personagemJogador1">
-            <option value="Bangers/Ulu Watu">Bangers/Ulu Watu (👊: 8, 🔥: 8, ⚡: Potência +2)</option>
-            <option value="All Stars">All Stars (👊: 8, 🔥: 8, ⚡: Potência adversária -2)</option>
-            <option value="Junkz/Sentinel">Junkz/Sentinel (👊: 8, 🔥: 8, ⚡: Ataque +8)</option>
-            <option value="Sarkrohm">Sarkrohm (👊: 8, 🔥: 8, ⚡: Ataque adversário -8)</option>
-            <option value="La Junta">La Junta (👊: 8, 🔥: 8, ⚡: Dano +2)</option>
-            <option value="Sentinel">Sentinel (👊: 8, 🔥: 8, ⚡: Dano adversário -2, mínimo 1)</option>
+            <optgroup label="Bangers / Ulu Watu">
+                <option value="Bangers/Ulu Watu">Bangers/Ulu Watu (👊: 8, 🔥: 8, ⚡: Potência +2)</option>
+            </optgroup>
+            <optgroup label="All Stars">
+                <option value="Oyoh">Oyoh (👊: 7, 🔥: 7, ⚡: Potência adversária -2, mín 1)</option>
+            </optgroup>
+            <optgroup label="Junkz / Sentinel">
+                <option value="Junkz/Sentinel">Junkz/Sentinel (👊: 8, 🔥: 8, ⚡: Ataque +8)</option>
+            </optgroup>
+            <optgroup label="Sarkrohm">
+                <option value="Sarkrohm">Sarkrohm (👊: 8, 🔥: 8, ⚡: Ataque adversário -8, mín 3)</option>
+            </optgroup>
+            <optgroup label="Fang Pi / La Junta">
+                <option value="La Junta">La Junta (👊: 8, 🔥: 8, ⚡: Dano +2)</option>
+            </optgroup>
+            <optgroup label="Pussycats">
+                <option value="Pussycats">Pussycats (👊: 8, 🔥: 8, ⚡: Dano adversário -2, mín 1)</option>
+            </optgroup>
         </select>
         <label for="pilulasJogador1">Pílulas disponíveis: <span id="pilulasDisponiveisJogador1">12</span></label>
         <br>
@@ -29,14 +41,7 @@
     <!-- Escolha dos Personagens para o Jogador 2 -->
     <div id="jogador2">
         <h3>Jogador 2</h3>
-        <select id="personagemJogador2">
-            <option value="Bangers/Ulu Watu">Bangers/Ulu Watu (👊: 8, 🔥: 8, ⚡: Potência +2)</option>
-            <option value="All Stars">All Stars (👊: 8, 🔥: 8, ⚡: Potência adversária -2)</option>
-            <option value="Junkz/Sentinel">Junkz/Sentinel (👊: 8, 🔥: 8, ⚡: Ataque +8)</option>
-            <option value="Sarkrohm">Sarkrohm (👊: 8, 🔥: 8, ⚡: Ataque adversário -8)</option>
-            <option value="La Junta">La Junta (👊: 8, 🔥: 8, ⚡: Dano +2)</option>
-            <option value="Sentinel">Sentinel (👊: 8, 🔥: 8, ⚡: Dano adversário -2, mínimo 1)</option>
-        </select>
+        <select id="personagemJogador2"></select> <!-- Aqui costumava ter uma lista repetida, mas criei uma função para copíar o deck do jogador1-->
         <label for="pilulasJogador2">Pílulas disponíveis: <span id="pilulasDisponiveisJogador2">12</span></label>
         <br>
         <label for="gastarJogador2">Pílulas para gastar:</label>
@@ -46,16 +51,17 @@
     <button id="batalhar">Batalhar</button>
 
 <script>
+    // Variáveis Globais
     let totalPilulasJogador1 = 12;
     let totalPilulasJogador2 = 12;
 
     const personagens = {
-        'Bangers/Ulu Watu': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'All Stars': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p - 2, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Bangers/Ulu Watu': { potencia: 8, dano: 0, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Oyoh': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
         'Junkz/Sentinel': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
-        'Sarkrohm': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p-8},
+        'Sarkrohm': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8)},
         'La Junta': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Pussycats': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p-2, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Pussycats': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p},
     }
 
     document.getElementById('batalhar').addEventListener('click', function() {
@@ -115,8 +121,8 @@
         document.getElementById('pilulasDisponiveisJogador2').textContent = totalPilulasJogador2;
 
         // Exibe valores finais de ataque após habilidades, pílulas e bônus
-        console.log(personagemJogador1 + "\nAtaque = " + xx + 'x' + parseInt(gastarPilulasJogador1 + 1)  + ' = ' + jogador1Potencia);
-        console.log(personagemJogador1 + ": " + yy + 'x' + gastarPilulasJogador2 + ' = ' + jogador2Potencia);
+        console.log(personagemJogador1 + "\nAtaque Final = " + xx + 'x' + parseInt(gastarPilulasJogador1 + 1)  + ' = ' + jogador1Potencia);
+        console.log(personagemJogador2 + "\nAtaque Final = " + yy + 'x' + parseInt(gastarPilulasJogador2 + 1)  + ' = ' + jogador2Potencia);
 
         // ELTON
         let ataqueFinalJogador1 = jogador1Potencia;
@@ -131,6 +137,18 @@
                 alert('Empate!\nAtaque final de ' + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2);
             }
     });
+
+    function copiardeckjogador2() {
+        document.getElementById('personagemJogador2').innerHTML = document.getElementById('personagemJogador1').innerHTML;
+    }
+
+    // Função Start
+    copiardeckjogador2();
 </script>
 </body>
 </html>
+<!--
+Bugs Conhecidos:
+Uma potência/dano/ataque menor que o mínimo de um oponente que a reduz, eleva o atributo até o valor mínimo (ex: dano 0 contra Pussycats torna o dano 1, que o mínimo das Pussycats)
+
+-->
