@@ -1,136 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UR - Lógica</title>
-    <style>
-        button {padding: 0.5em;}
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index † by Az</title>
+  <link rel="stylesheet" href="w3.css">
+  <style>
+    a {text-decoration: none;}
+    * {font-family: Impact !important;}
+    img {filter:sepia(50%); transition: 0.2s linear;}
+    img:hover {filter:sepia(0%); transition: 0.2s; /*transform: scale(1.1)*/}
+  </style>
 </head>
-<body>
-    <!-- Escolha dos Personagens para o Jogador 1 -->
-    <div id="jogador1">
-        <h3>Jogador 1</h3>
-        <select id="personagemJogador1">
-            <option value="Bangers/Ulu Watu">Bangers/Ulu Watu (👊: 8, 🔥: 8, ⚡: Potência +2)</option>
-            <option value="All Stars">All Stars (👊: 8, 🔥: 8, ⚡: Potência adversária -2)</option>
-            <option value="Junkz/Sentinel">Junkz/Sentinel (👊: 8, 🔥: 8, ⚡: Ataque +8)</option>
-            <option value="Sarkrohm">Sarkrohm (👊: 8, 🔥: 8, ⚡: Ataque adversário -8)</option>
-            <option value="La Junta">La Junta (👊: 8, 🔥: 8, ⚡: Dano +2)</option>
-            <option value="Sentinel">Sentinel (👊: 8, 🔥: 8, ⚡: Dano adversário -2, mínimo 1)</option>
-        </select>
-        <label for="pilulasJogador1">Pílulas disponíveis: <span id="pilulasDisponiveisJogador1">12</span></label>
-        <br>
-        <label for="gastarJogador1">Pílulas para gastar:</label>
-        <input type="number" id="gastarJogador1" min="0" max="12" value="0">
+<body class="w3-black w3-content w3-center">
+  <h1>Escolha um Projeto</h1>
+  <div class="w3-row">
+    <div class="w3-container w3-half">
+      <a href="pd2.html">
+        <div><img src="https://preview.redd.it/vtvbm93rtqsa1.gif?format=png8&s=1f4748e67d3e21ab68c36d164cd6cca1bb6b934c" style="width: 100%"></div>
+        <h3 class="w3-text-teal w3-hover-red">Project Diablo II</h3>
+      </a>
     </div>
-    
-    <!-- Escolha dos Personagens para o Jogador 2 -->
-    <div id="jogador2">
-        <h3>Jogador 2</h3>
-        <select id="personagemJogador2">
-            <option value="Bangers/Ulu Watu">Bangers/Ulu Watu (👊: 8, 🔥: 8, ⚡: Potência +2)</option>
-            <option value="All Stars">All Stars (👊: 8, 🔥: 8, ⚡: Potência adversária -2)</option>
-            <option value="Junkz/Sentinel">Junkz/Sentinel (👊: 8, 🔥: 8, ⚡: Ataque +8)</option>
-            <option value="Sarkrohm">Sarkrohm (👊: 8, 🔥: 8, ⚡: Ataque adversário -8)</option>
-            <option value="La Junta">La Junta (👊: 8, 🔥: 8, ⚡: Dano +2)</option>
-            <option value="Sentinel">Sentinel (👊: 8, 🔥: 8, ⚡: Dano adversário -2, mínimo 1)</option>
-        </select>
-        <label for="pilulasJogador2">Pílulas disponíveis: <span id="pilulasDisponiveisJogador2">12</span></label>
-        <br>
-        <label for="gastarJogador2">Pílulas para gastar:</label>
-        <input type="number" id="gastarJogador2" min="0" max="12" value="0">
+    <div class="w3-container w3-half">
+      <a href="brotato/brotato_sheets.html">
+        <div>
+          <img src="https://th.bing.com/th/id/R.57b33594bd225136cce6c24c24cdb675?rik=xHrpwRQ7mwoBug&pid=ImgRaw&r=0" style="width: 100%">
+        </div>
+        <h3 class="w3-text-teal w3-hover-red">Brotato</h3>
+      </a>
     </div>
-
-    <button id="batalhar">Batalhar</button>
-
-<script>
-    let totalPilulasJogador1 = 12;
-    let totalPilulasJogador2 = 12;
-
-    const personagens = {
-        'Bangers/Ulu Watu': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'All Stars': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p - 2, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Junkz/Sentinel': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
-        'Sarkrohm': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p-8},
-        'La Junta': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Pussycats': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p-2, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-    }
-
-    document.getElementById('batalhar').addEventListener('click', function() {
-        // Jogador 1 escolhe um personagem
-        let personagemJogador1 = document.getElementById('personagemJogador1').value;
-        let jogador1Potencia = personagens[personagemJogador1].potencia;
-        let jogador1Dano = personagens[personagemJogador1].dano;
-        
-        // Jogador 2 escolhe um personagem
-        let personagemJogador2 = document.getElementById('personagemJogador2').value;
-        let jogador2Potencia = personagens[personagemJogador2].potencia;
-        let jogador2Dano = personagens[personagemJogador2].dano;
-            
-        // Aplicar modificadores de Potência no personagem do jogador 1
-        jogador1Potencia = personagens[personagemJogador1].modPotencia(jogador1Potencia);
-        jogador1Potencia = personagens[personagemJogador2].modPotenciaAdv(jogador1Potencia);
-        // Aplicar modificadores de Dano no personagem do jogador 1
-        jogador1Dano = personagens[personagemJogador1].modDano(jogador1Dano);
-        jogador1Dano = personagens[personagemJogador2].modDanoAdv(jogador1Dano);
-        
-        // Aplicar modificadores de Potência no personagem do jogador 2
-        jogador2Potencia = personagens[personagemJogador2].modPotencia(jogador2Potencia);
-        jogador2Potencia = personagens[personagemJogador1].modPotenciaAdv(jogador2Potencia);
-        // Aplicar modificadores de Dano no personagem do jogador 2
-        jogador2Dano = personagens[personagemJogador2].modDano(jogador2Dano);
-        jogador2Dano = personagens[personagemJogador1].modDanoAdv(jogador2Dano);
-
-        // Capturar o número de pílulas que o jogador quer gastar e garantir que é um número válido <-- Olhar
-        let gastarPilulasJogador1 = parseInt(document.getElementById('gastarJogador1').value) || 0;
-        let gastarPilulasJogador2 = parseInt(document.getElementById('gastarJogador2').value) || 0;
-
-        // Verificar se o jogador está tentando gastar mais pílulas do que possui <-- Olhar
-        if (gastarPilulasJogador1 > totalPilulasJogador1) gastarPilulasJogador1 = totalPilulasJogador1;
-        if (gastarPilulasJogador2 > totalPilulasJogador2) gastarPilulasJogador2 = totalPilulasJogador2;
-
-        // Aplicar o multiplicador das pílulas gastas à potência
-        let xx = jogador1Potencia; // <-- criei só para salvar a potência final antes de modificar pelos mods de ataque (usei esse valor no console.log); declarar a variável ataqueFinalJogador1 por aqui, para salvar a potência final da carta e deixar esse valor separado do ataque, que é potêncial final + mod de ataque
-        let yy = jogador2Potencia;
-        
-        jogador1Potencia *= (gastarPilulasJogador1 + 1);
-        jogador2Potencia *= (gastarPilulasJogador2 + 1);
-
-        // Calculada a Potência, obtemos o Ataque e agora soma-se/subtrai-se os modificadores de ataque
-            // Jogador 1
-        jogador1Potencia = personagens[personagemJogador1].modAtaque(jogador1Potencia);
-        jogador1Potencia = personagens[personagemJogador2].modAtaqueAdv(jogador1Potencia);
-            // Jogador 2
-        jogador2Potencia = personagens[personagemJogador2].modAtaque(jogador2Potencia);
-        jogador2Potencia = personagens[personagemJogador1].modAtaqueAdv(jogador2Potencia);
-
-        // Subtrair as pílulas gastas do total de pílulas disponíveis <-- Olhar
-        totalPilulasJogador1 -= gastarPilulasJogador1;
-        totalPilulasJogador2 -= gastarPilulasJogador2;
-
-        // Atualizar a exibição de pílulas restantes
-        document.getElementById('pilulasDisponiveisJogador1').textContent = totalPilulasJogador1;
-        document.getElementById('pilulasDisponiveisJogador2').textContent = totalPilulasJogador2;
-
-        // Exibe valores finais de ataque após habilidades, pílulas e bônus
-        console.log(personagemJogador1 + "\nAtaque = " + xx + 'x' + parseInt(gastarPilulasJogador1 + 1)  + ' + ' + parseInt(personagens[personagemJogador1].modAtaque(0) + personagens[personagemJogador2].modAtaqueAdv(0)) + ' = ' + jogador1Potencia);
-        console.log(personagemJogador2 + "\nAtaque = " + yy + 'x' + parseInt(gastarPilulasJogador2 + 1)  + ' + ' + parseInt(personagens[personagemJogador2].modAtaque(0) + personagens[personagemJogador1].modAtaqueAdv(0)) + ' = ' + jogador2Potencia);
-
-        // ELTON
-        let ataqueFinalJogador1 = jogador1Potencia;
-        let ataqueFinalJogador2 = jogador2Potencia;
-        
-        // Lógica de quem vence, exibindo o ataque final
-        if (ataqueFinalJogador1 > ataqueFinalJogador2) {
-                alert(personagemJogador1 + " vence!\n\nAtaque final de " + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2 + '\n\nDano causado: ' + jogador1Dano);
-            } else if (ataqueFinalJogador2 > ataqueFinalJogador1) {
-                alert(personagemJogador2 + " vence!\nAtaque final de " + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2 + '\n\nDano causado: ' + jogador2Dano);
-            } else {
-                alert('Empate!\nAtaque final de ' + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2);
-            }
-    });
-</script>
+  </div>
+  <div class="w3-row">
+    <div class="w3-container w3-half">
+      <a href="snapbuilder.html">
+        <img src="https://images8.alphacoders.com/128/1281453.png" style="width: 100%">
+        <h3 class="w3-text-teal w3-hover-deep-purple">Snap Builder</h3>
+      </a>
+    </div>
+    <div class="w3-container w3-half">
+      <a href="snapcalculator.html">
+        <img src="https://images3.alphacoders.com/128/1281451.png" style="width: 100%">
+        <h3 class="w3-text-teal w3-hover-deep-purple">Snap Calculator</h3>
+      </a>
+    </div>
+  </div>
+  <div class="w3-row">
+    <div class="w3-container w3-half">
+      <a href="pkmnexplorer.html">
+        <img src="https://images6.alphacoders.com/613/613924.jpg" style="width: 100%">
+        <h3 class="w3-text-teal w3-hover-yellow">Pokémon Explorer</h3>
+      </a>
+    </div>
+    <div class="w3-container w3-half">
+      <a href="">
+        <img src="" style="width: 100%;">
+        <h3 class="w3-text-teal w3-hover-blue"></h3>
+      </a>
+    </div>
+  </div>
+  <a href="Urban Rivals v3.html">x</a>
 </body>
 </html>
