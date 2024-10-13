@@ -56,12 +56,12 @@
     let totalPilulasJogador2 = 12;
 
     const personagens = {
-        'Bangers/Ulu Watu': { potencia: 8, dano: 0, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Oyoh': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Junkz/Sentinel': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
-        'Sarkrohm': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8)},
-        'La Junta': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Pussycats': { potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Bangers/Ulu Watu': {nome: "Bangers", potencia: 8, dano: 0, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Oyoh': {nome: "Bangers", potencia: 7, dano: 7, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Junkz/Sentinel': {nome: "Bangers", potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
+        'Sarkrohm': {nome: "Bangers", potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8)},
+        'La Junta': {nome: "Bangers", potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Pussycats': {nome: "Bangers", potencia: 8, dano: 8, habilidade: "Derrota: -2 de Vida do oponente, mínimo 2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p},
     }
 
     document.getElementById('batalhar').addEventListener('click', function() {
@@ -138,12 +138,25 @@
             }
     });
 
-    function copiardeckjogador2() {
+    // Elton //
+    function copiarDeckDojogador1ParaOJogador2() {
         document.getElementById('personagemJogador2').innerHTML = document.getElementById('personagemJogador1').innerHTML;
     }
 
-    // Função Start
-    copiardeckjogador2();
+    function criarOptionsParaOSelectDojogador1() {
+        let x = document.getElementById('personagemJogador1');
+        
+        for (let i in personagens) {
+        console.log(`Personagem: ${i}`);
+        console.log(`Potência: ${personagens[i].potencia}`);
+        console.log(`Dano: ${personagens[i].dano}`);
+        console.log(`Habilidade: ${personagens[i].habilidade}`);
+        console.log('---');
+        }
+    }
+    // Funções Start //
+    criarOptionsParaOSelectDojogador1();
+    copiarDeckDojogador1ParaOJogador2();
 </script>
 </body>
 </html>
