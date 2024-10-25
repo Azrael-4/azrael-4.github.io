@@ -22,7 +22,6 @@
 
         /* Cards */
         
-    
         .bordacard {display: inline-block; margin: 1em;}
         .tabelacard {table-layout: fixed; border-collapse: separate; border-spacing: 0px; border: 4px solid rgb(145, 53, 53); width: 238px; height: 332px; border-radius: 10px; text-align: center; font-size: 16px; overflow: hidden; background-color: white; color: black;}
         .tabelacard td {border: 1px solid black; font-family: 'Times New Roman';}
@@ -73,7 +72,7 @@
                     <table class="tabelacard">
                       <tr><td class="td1"><img id="personagemJogador1clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador1nome"></td></tr>
                       <tr><td class="td3" colspan="2"><img id="personagemJogador1imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
-                      <tr><td class="td4" colspan="2"><img id="personagemJogador1level" src="https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0"></td></tr>
+                      <tr><td class="td4" colspan="2" id="personagemJogador1level">⭐⭐</td></tr>
                       <tr><td class="td5" id="personagemJogador1potencia">👊</td><td class="td6" id="personagemJogador1habilidade">⚡</td></tr>
                       <tr><td class="td7" id="personagemJogador1dano">💥</td><td class="td8" id="personagemJogador1bonus">👥</td></tr>
                       <tr><td class="td9" colspan="2" id="personagemJogador1edicao">STA 01/204&nbsp;</td></tr>
@@ -99,7 +98,7 @@
                 <table class="tabelacard">
                     <tr><td class="td1"><img id="personagemJogador2clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador2nome"></td></tr>
                     <tr><td class="td3" colspan="2"><img id="personagemJogador2imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
-                    <tr><td class="td4" colspan="2"><img id="personagemJogador2level" src="https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0"></td></tr>
+                    <tr><td class="td4" colspan="2" id="personagemJogador2level">⭐⭐</td></tr>
                     <tr><td class="td5" id="personagemJogador2potencia">👊</td><td class="td6" id="personagemJogador2habilidade">⚡</td></tr>
                     <tr><td class="td7" id="personagemJogador2dano">💥</td><td class="td8" id="personagemJogador2bonus">👥</td></tr>
                     <tr><td class="td9" colspan="2" id="personagemJogador2edicao">STA 01/204&nbsp;</td></tr>
@@ -131,12 +130,12 @@
     let vidaJogador2 = 12;
 
     const personagens = {
-        'Willy': {nome: "Willy", clan: "https://static.wikia.nocookie.net/urban-rivals/images/a/ae/BANGERS_Symbol.png/revision/latest?cb=20190215180620", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/41/BANGERS_WILLY_N5_STD.png/revision/latest?cb=20110702203808", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 5, dano: 7, habilidade: "Coragem: Potência +4", bonus: "Potência +2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Oyoh': {nome: "Oyoh", clan: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Fuzz': {nome: "Fuzz", clan: "https://static.wikia.nocookie.net/urban-rivals/images/2/24/JUNKZ_Symbol.png/revision/latest?cb=20190215165648", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/e/e5/JUNKZ_FUZZ_N5_STD.png/revision/latest?cb=20110704102723", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 6, dano: 8, habilidade: "Anula habilidade do oponente", bonus: "Ataque +8", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
-        'Stella': {nome: "Stella", clan: "https://static.wikia.nocookie.net/urban-rivals/images/9/97/SAKROHM_Symbol.png/revision/latest?cb=20190519131949", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/8/8f/SAKROHM_STELLA_N2_STD.png/revision/latest?cb=20111213213508", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "Ataque +8", bonus: "-8 Ataque do oponente, mín 3", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8)},
-        'Emeth': {nome: "Emeth", clan: "https://static.wikia.nocookie.net/urban-rivals/images/8/8b/LAJUNTA_Symbol.png/revision/latest?cb=20190302170111", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/1/14/LAJUNTA_EMETH_N5_STD.png/revision/latest?cb=20110723144624", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "Apoio: Ataque +5", bonus: "Dano +2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Clara': {nome: "Clara", clan: "https://static.wikia.nocookie.net/urban-rivals/images/d/df/PUSSYCATS_Symbol.png/revision/latest?cb=20190427125950", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/b/be/PUSSYCATS_CLARA_N5_STD.png/revision/latest?cb=20111213210219", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 8, dano: 5, habilidade: "Anula bônus do oponente", bonus: "-2 Dano do oponente, mín 1", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Willy': {nome: "Willy", clan: "https://static.wikia.nocookie.net/urban-rivals/images/a/ae/BANGERS_Symbol.png/revision/latest?cb=20190215180620", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/41/BANGERS_WILLY_N5_STD.png/revision/latest?cb=20110702203808", level: "⭐⭐⭐⭐⭐", potencia: 5, dano: 7, habilidade: "Coragem: Potência +4", bonus: "Potência +2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p + 4, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Oyoh': {nome: "Oyoh", clan: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Fuzz': {nome: "Fuzz", clan: "https://static.wikia.nocookie.net/urban-rivals/images/2/24/JUNKZ_Symbol.png/revision/latest?cb=20190215165648", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/e/e5/JUNKZ_FUZZ_N5_STD.png/revision/latest?cb=20110704102723", level: "⭐⭐⭐⭐⭐", potencia: 6, dano: 8, habilidade: "Anula habilidade do oponente", bonus: "Ataque +8", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Stella': {nome: "Stella", clan: "https://static.wikia.nocookie.net/urban-rivals/images/9/97/SAKROHM_Symbol.png/revision/latest?cb=20190519131949", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/8/8f/SAKROHM_STELLA_N2_STD.png/revision/latest?cb=20111213213508", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Ataque +8", bonus: "-8 Ataque do oponente, mín 3", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8), modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Emeth': {nome: "Emeth", clan: "https://static.wikia.nocookie.net/urban-rivals/images/8/8b/LAJUNTA_Symbol.png/revision/latest?cb=20190302170111", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/1/14/LAJUNTA_EMETH_N5_STD.png/revision/latest?cb=20110723144624", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Apoio: Ataque +5", bonus: "Dano +2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Clara': {nome: "Clara", clan: "https://static.wikia.nocookie.net/urban-rivals/images/d/df/PUSSYCATS_Symbol.png/revision/latest?cb=20190427125950", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/b/be/PUSSYCATS_CLARA_N5_STD.png/revision/latest?cb=20111213210219", level: "⭐⭐⭐⭐⭐", potencia: 8, dano: 5, habilidade: "Anula bônus do oponente", bonus: "-2 Dano do oponente, mín 1", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
     }
 
     document.getElementById('batalhar').addEventListener('click', function() {
@@ -155,16 +154,42 @@
         // Aplicar modificadores de Potência no personagem do jogador 1
         jogador1Potencia = personagens[personagemJogador1].modPotencia(jogador1Potencia);
         jogador1Potencia = personagens[personagemJogador2].modPotenciaAdv(jogador1Potencia);
+        // Aplicar modificadores de Coragem: +- Potência no personagem do jogador 1
+        jogador1Potencia = personagens[personagemJogador1].modCoragemPotencia(jogador1Potencia);
+        jogador1Potencia = personagens[personagemJogador2].modCoragemPotenciaAdv(jogador1Potencia);
+        // Aplicar modificadores de Vigilância: +- Potência no personagem do jogador 1
+        jogador1Potencia = personagens[personagemJogador1].modVigilanciaPotencia(jogador1Potencia);
+        jogador1Potencia = personagens[personagemJogador2].modVigilanciaPotenciaAdv(jogador1Potencia);
+        
         // Aplicar modificadores de Dano no personagem do jogador 1
         jogador1Dano = personagens[personagemJogador1].modDano(jogador1Dano);
         jogador1Dano = personagens[personagemJogador2].modDanoAdv(jogador1Dano);
+        // Aplicar modificadores de Coragem: +- Dano no personagem do jogador 1
+        jogador1Dano = personagens[personagemJogador1].modCoragemDano(jogador1Dano);
+        jogador1Dano = personagens[personagemJogador2].modCoragemDanoAdv(jogador1Dano);
+        // Aplicar modificadores de Vigilância: +- Dano no personagem do jogador 1
+        jogador1Dano = personagens[personagemJogador1].modVigilanciaDano(jogador1Dano);
+        jogador1Dano = personagens[personagemJogador2].modVigilanciaDanoAdv(jogador1Dano);
         
         // Aplicar modificadores de Potência no personagem do jogador 2
         jogador2Potencia = personagens[personagemJogador2].modPotencia(jogador2Potencia);
         jogador2Potencia = personagens[personagemJogador1].modPotenciaAdv(jogador2Potencia);
+        // Aplicar modificadores de Coragem: +- Potência no personagem do jogador 2
+        jogador2Potencia = personagens[personagemJogador2].modCoragemPotencia(jogador2Potencia);
+        jogador2Potencia = personagens[personagemJogador1].modCoragemPotenciaAdv(jogador2Potencia);
+        // Aplicar modificadores de Vigilância: +- Potência no personagem do jogador 2
+        jogador2Potencia = personagens[personagemJogador2].modVigilanciaPotencia(jogador2Potencia);
+        jogador2Potencia = personagens[personagemJogador1].modVigilanciaPotenciaAdv(jogador2Potencia);
+        
         // Aplicar modificadores de Dano no personagem do jogador 2
         jogador2Dano = personagens[personagemJogador2].modDano(jogador2Dano);
         jogador2Dano = personagens[personagemJogador1].modDanoAdv(jogador2Dano);
+        // Aplicar modificadores de Coragem: +- Dano no personagem do jogador 2
+        jogador2Dano = personagens[personagemJogador2].modCoragemDano(jogador2Dano);
+        jogador2Dano = personagens[personagemJogador1].modCoragemDanoAdv(jogador2Dano);
+        // Aplicar modificadores de Vigilancia: +- Dano no personagem do jogador 2
+        jogador2Dano = personagens[personagemJogador2].modVigilanciaDano(jogador2Dano);
+        jogador2Dano = personagens[personagemJogador1].modVigilanciaDanoAdv(jogador2Dano);
 
         // Capturar o número de pílulas que o jogador quer gastar e garantir que é um número válido <-- Olhar
         let gastarPilulasJogador1 = parseInt(document.getElementById('gastarJogador1').value) || 0;
@@ -185,9 +210,22 @@
         // Aplicar modificadores de Ataque no personagem do jogador 1
         jogador1Ataque = personagens[personagemJogador1].modAtaque(jogador1Ataque);
         jogador1Ataque = personagens[personagemJogador2].modAtaqueAdv(jogador1Ataque);
-        // Aplicar modificadores de Ataque no personagem do jogador 1
+        // Aplicar modificadores de Coragem: +- Ataque no personagem do jogador 1
+        jogador1Ataque = personagens[personagemJogador1].modCoragemAtaque(jogador1Ataque);
+        jogador1Ataque = personagens[personagemJogador2].modCoragemAtaqueAdv(jogador1Ataque);
+        // Aplicar modificadores de Vigilância: +- Ataque no personagem do jogador 1
+        jogador1Ataque = personagens[personagemJogador1].modVigilanciaAtaque(jogador1Ataque);
+        jogador1Ataque = personagens[personagemJogador2].modVigilanciaAtaqueAdv(jogador1Ataque);
+        
+        // Aplicar modificadores de Ataque no personagem do jogador 2
         jogador2Ataque = personagens[personagemJogador2].modAtaque(jogador2Ataque);
         jogador2Ataque = personagens[personagemJogador1].modAtaqueAdv(jogador2Ataque);
+        // Aplicar modificadores de Coragem: +- Ataque no personagem do jogador 2
+        jogador2Ataque = personagens[personagemJogador2].modCoragemAtaque(jogador2Ataque);
+        jogador2Ataque = personagens[personagemJogador1].modCoragemAtaqueAdv(jogador2Ataque);
+        // Aplicar modificadores de Vigilância: +- Ataque no personagem do jogador 2
+        jogador2Ataque = personagens[personagemJogador2].modVigilanciaAtaque(jogador2Ataque);
+        jogador2Ataque = personagens[personagemJogador1].modVigilanciaAtaqueAdv(jogador2Ataque);
 
         // Subtrair as pílulas gastas do total de pílulas disponíveis <-- Olhar
         totalPilulasJogador1 -= gastarPilulasJogador1;
@@ -259,7 +297,7 @@
         document.getElementById(idrecebido + 'nome').innerText = personagens[x].nome;
         document.getElementById(idrecebido + 'clan').src = personagens[x].clan;
         document.getElementById(idrecebido + 'imagem').src = personagens[x].imagem;
-        document.getElementById(idrecebido + 'level').src = personagens[x].level;
+        document.getElementById(idrecebido + 'level').innerText = personagens[x].level;
         document.getElementById(idrecebido + 'potencia').innerText = personagens[x].potencia;
         document.getElementById(idrecebido + 'dano').innerText = personagens[x].dano;
         document.getElementById(idrecebido + 'habilidade').innerText = personagens[x].habilidade;
@@ -287,4 +325,12 @@ Bugs Conhecidos:
 🌊 Ulu Watu
 🎽 All Stars
 🤖 Robô
+- - - - - -
+Habilidades:
+Veneno: 2 mín 2 (Freaks)
+Proteção: Potência, Dano (Ataque não)
+Pot = Pot opp
+Dano = dano opp
+Curar
+
 -->
