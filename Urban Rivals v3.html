@@ -46,7 +46,7 @@
                         <option value="Willy">Willy (⭐: 5, 👊: 5, 💥: 7, ⚡: Coragem: Potência +4)</option>
                     </optgroup>
                     <optgroup label="All Stars (Potência adversária -2, mín 1)">
-                        <option value="Oyoh">Oyoh (⭐: 5, 👊: 7, 💥: 7, ⚡: -</option>
+                        <option value="Oyoh">Oyoh (⭐: 5, 👊: 7, 💥: 7, ⚡: -)</option>
                     </optgroup>
                     <optgroup label="Junkz (Ataque +8)">
                         <option value="Fuzz">Fuzz (⭐: 5, 👊: 6, 💥: 8, ⚡: Anula habilidade do oponente)</option>
@@ -132,7 +132,7 @@
 
     const personagens = {
         'Willy': {nome: "Willy", clan: "https://static.wikia.nocookie.net/urban-rivals/images/a/ae/BANGERS_Symbol.png/revision/latest?cb=20190215180620", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/41/BANGERS_WILLY_N5_STD.png/revision/latest?cb=20110702203808", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 5, dano: 7, habilidade: "Coragem: Potência +4", bonus: "Potência +2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
-        'Oyoh': {nome: "Oyoh", clan: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
+        'Oyoh': {nome: "Oyoh", clan: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
         'Fuzz': {nome: "Fuzz", clan: "https://static.wikia.nocookie.net/urban-rivals/images/2/24/JUNKZ_Symbol.png/revision/latest?cb=20190215165648", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/e/e5/JUNKZ_FUZZ_N5_STD.png/revision/latest?cb=20110704102723", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 6, dano: 8, habilidade: "Anula habilidade do oponente", bonus: "Ataque +8", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p},
         'Stella': {nome: "Stella", clan: "https://static.wikia.nocookie.net/urban-rivals/images/9/97/SAKROHM_Symbol.png/revision/latest?cb=20190519131949", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/8/8f/SAKROHM_STELLA_N2_STD.png/revision/latest?cb=20111213213508", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "Ataque +8", bonus: "-8 Ataque do oponente, mín 3", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8)},
         'Emeth': {nome: "Emeth", clan: "https://static.wikia.nocookie.net/urban-rivals/images/8/8b/LAJUNTA_Symbol.png/revision/latest?cb=20190302170111", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/1/14/LAJUNTA_EMETH_N5_STD.png/revision/latest?cb=20110723144624", level: "https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0", potencia: 7, dano: 7, habilidade: "Apoio: Ataque +5", bonus: "Dano +2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p},
@@ -219,13 +219,13 @@
         // Lógica de quem vence, exibindo o ataque final
         if (ataqueFinalJogador1 > ataqueFinalJogador2) {
                 // Escrever quem ganha, dano causa, remover vida, ajustar o display da vida
-                caixadetexto.innerText += personagemJogador1 + " vence! » Dano causado: " + jogador1Dano;
+                caixadetexto.innerText += personagemJogador1 + " vence! » Dano causado: " + jogador1Dano + '\n';
                 vidaJogador2 -= jogador1Dano;
                 document.getElementById('vidaJogador2').textContent = vidaJogador2;
                 alert(personagemJogador1 + " vence!\n\nAtaque final de " + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2 + '\n\nDano causado: ' + jogador1Dano);
             } else if (ataqueFinalJogador2 > ataqueFinalJogador1) {
                 // Escrever quem ganha, dano causa, remover vida, ajustar o display da vida
-                caixadetexto.innerText += personagemJogador2 + " vence! » Dano causado: " + jogador2Dano;
+                caixadetexto.innerText += personagemJogador2 + " vence! » Dano causado: " + jogador2Dano + '\n';
                 vidaJogador1 -= jogador2Dano;
                 document.getElementById('vidaJogador1').textContent = vidaJogador1;
                 alert(personagemJogador2 + " vence!\nAtaque final de " + personagemJogador1 + ": " + ataqueFinalJogador1 + "\nAtaque final de " + personagemJogador2 + ": " + ataqueFinalJogador2 + '\n\nDano causado: ' + jogador2Dano);
@@ -236,8 +236,7 @@
             }
     });
 
-    // Elton //
-    //
+    // Funções Elton //
     function copiarDeckDojogador1ParaOJogador2() {
         document.getElementById('personagemJogador2').innerHTML = document.getElementById('personagemJogador1').innerHTML;
     }
@@ -265,9 +264,7 @@
         document.getElementById(idrecebido + 'dano').innerText = personagens[x].dano;
         document.getElementById(idrecebido + 'habilidade').innerText = personagens[x].habilidade;
         document.getElementById(idrecebido + 'bonus').innerText = personagens[x].bonus;
-        document.getElementById(idrecebido + 'edicao').innerText = personagens[x].edicao;
-
-        
+        document.getElementById(idrecebido + 'edicao').innerText = personagens[x].edicao;        
     }
 
     // Funções Start //
@@ -278,7 +275,16 @@
 </html>
 <!--
 Bugs Conhecidos:
-Uma potência/dano/ataque menor que o mínimo de um oponente que a reduz, eleva o atributo até o valor mínimo (ex: dano 0 contra Pussycats torna o dano 1, que o mínimo das Pussycats)
+1) Uma potência/dano/ataque menor que o mínimo de um oponente que a reduz, eleva o atributo até o valor mínimo (ex: dano 0 contra Pussycats torna o dano 1, que o mínimo das Pussycats)
 🎩 Montana
 💎 Uppers
+🪐 Sakrohm (👽)
+😼 Pussycats
+💣 La Junta
+🥷 La Junta
+🏴‍☠️ Piranas (🦈)
+🦇 Nightmare
+🌊 Ulu Watu
+🎽 All Stars
+🤖 Robô
 -->
