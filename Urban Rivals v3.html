@@ -42,22 +42,22 @@
                 <h3 class="titulojogadores">Cards do Jogador 1</h3>
                 <select id="personagemJogador1" onchange="atualizarCard('personagemJogador1')" autocomplete="off">
                     <option hidden disabled selected value="vazio"> -- Escolha um card -- </option>
-                    <optgroup label="Bangers / Ulu Watu (Potência +2)">
+                    <optgroup label="Bangers (Potência +2)">
                         <option value="Willy">Willy (⭐: 5, 👊: 5, 💥: 7, ⚡: Coragem: Potência +4)</option>
                     </optgroup>
-                    <optgroup label="👕 All Stars (Potência adversária -2, mín 1)">
+                    <optgroup label="All Stars (Potência adversária -2, mín 1)">
                         <option value="Oyoh">Oyoh (⭐: 5, 👊: 7, 💥: 7, ⚡: -</option>
                     </optgroup>
-                    <optgroup label="🤖 Junkz / 👮 Sentinel (Ataque +8)">
+                    <optgroup label="Junkz (Ataque +8)">
                         <option value="Fuzz">Fuzz (⭐: 5, 👊: 6, 💥: 8, ⚡: Anula habilidade do oponente)</option>
                     </optgroup>
-                    <optgroup label="🪐 Sakrohm (Ataque adversário -8, mín 3)">
+                    <optgroup label="Sakrohm (Ataque adversário -8, mín 3)">
                         <option value="Stella">Stella (⭐: 5, 👊: 7, 💥: 6, ⚡: Ataque +8)</option>
                     </optgroup>
-                    <optgroup label="🥷 Fang Pi / 💣 La Junta (Dano +2)">
+                    <optgroup label="La Junta (Dano +2)">
                         <option value="Emeth">Emeth (⭐: 5, 👊: 7, 💥: 7, ⚡: Apoio: +5 Ataque)</option>
                     </optgroup>
-                    <optgroup label="😼 Pussycats (Dano adversário -2, mín 1)">
+                    <optgroup label="Pussycats (Dano adversário -2, mín 1)">
                         <option value="Clara">Clara (⭐: 5, 👊: 8, 💥: 5, ⚡: Anula bônus do oponente)</option>
                     </optgroup>
                 </select>
@@ -71,11 +71,11 @@
             <div id="tabelacardjogador1">
                 <div class="bordacard">
                     <table class="tabelacard">
-                      <tr><td class="td1"><img id="personagemJogador1clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador1nome">Nome</td></tr>
+                      <tr><td class="td1"><img id="personagemJogador1clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador1nome"></td></tr>
                       <tr><td class="td3" colspan="2"><img id="personagemJogador1imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
                       <tr><td class="td4" colspan="2"><img id="personagemJogador1level" src="https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0"></td></tr>
-                      <tr><td class="td5" id="personagemJogador1potencia">Pot</td><td class="td6" id="personagemJogador1habilidade">Habilidade</td></tr>
-                      <tr><td class="td7" id="personagemJogador1dano">Dan</td><td class="td8" id="personagemJogador1bonus">Bônus</td></tr>
+                      <tr><td class="td5" id="personagemJogador1potencia">👊</td><td class="td6" id="personagemJogador1habilidade">⚡</td></tr>
+                      <tr><td class="td7" id="personagemJogador1dano">💥</td><td class="td8" id="personagemJogador1bonus">👥</td></tr>
                       <tr><td class="td9" colspan="2" id="personagemJogador1edicao">STA 01/204&nbsp;</td></tr>
                     </table>
                 </div>
@@ -97,11 +97,11 @@
         <div id="tabelacardjogador2">
             <div class="bordacard">
                 <table class="tabelacard">
-                    <tr><td class="td1"><img id="personagemJogador2clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador2nome">Nome</td></tr>
+                    <tr><td class="td1"><img id="personagemJogador2clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador2nome"></td></tr>
                     <tr><td class="td3" colspan="2"><img id="personagemJogador2imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
                     <tr><td class="td4" colspan="2"><img id="personagemJogador2level" src="https://th.bing.com/th/id/R.74856ae740c51fc54bed8586bb7ed4b8?rik=SwasNs97EItuCA&riu=http%3a%2f%2fpng-2.vector.me%2ffiles%2fimages%2f3%2f1%2f315456%2fsimple_star_thumb&ehk=knSDllBBJlnob5tV0vcZeYTTvIg9tHq57eYdANf6X4o%3d&risl=&pid=ImgRaw&r=0"></td></tr>
-                    <tr><td class="td5" id="personagemJogador2potencia">Pot</td><td class="td6" id="personagemJogador2habilidade">Habilidade</td></tr>
-                    <tr><td class="td7" id="personagemJogador2dano">Dan</td><td class="td8" id="personagemJogador2bonus">Bônus</td></tr>
+                    <tr><td class="td5" id="personagemJogador2potencia">👊</td><td class="td6" id="personagemJogador2habilidade">⚡</td></tr>
+                    <tr><td class="td7" id="personagemJogador2dano">💥</td><td class="td8" id="personagemJogador2bonus">👥</td></tr>
                     <tr><td class="td9" colspan="2" id="personagemJogador2edicao">STA 01/204&nbsp;</td></tr>
                 </table>
             </div>
