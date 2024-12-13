@@ -41,22 +41,22 @@
                 <h3 class="titulojogadores">Cards do Jogador 1</h3>
                 <select id="personagemJogador1" onchange="atualizarCard('personagemJogador1')" autocomplete="off">
                     <option hidden disabled selected value="vazio"> -- Escolha um card -- </option>
-                    <optgroup label="Bangers (Potência +2)">
+                    <optgroup label="🅱️ Bangers (Potência +2)">
                         <option value="Willy">Willy (⭐: 5, 👊: 5, 💥: 7, ⚡: Coragem: Potência +4)</option>
                     </optgroup>
-                    <optgroup label="All Stars (Potência adversária -2, mín 1)">
+                    <optgroup label="🎽 All Stars (Potência adversária -2, mín 1)">
                         <option value="Oyoh">Oyoh (⭐: 5, 👊: 7, 💥: 7, ⚡: -)</option>
                     </optgroup>
-                    <optgroup label="Junkz (Ataque +8)">
+                    <optgroup label="🤖 Junkz (Ataque +8)">
                         <option value="Fuzz">Fuzz (⭐: 5, 👊: 6, 💥: 8, ⚡: Anula habilidade do oponente)</option>
                     </optgroup>
-                    <optgroup label="Sakrohm (Ataque adversário -8, mín 3)">
+                    <optgroup label="🪐 Sakrohm (Ataque adversário -8, mín 3)">
                         <option value="Stella">Stella (⭐: 5, 👊: 7, 💥: 6, ⚡: Ataque +8)</option>
                     </optgroup>
-                    <optgroup label="La Junta (Dano +2)">
+                    <optgroup label="💣 La Junta (Dano +2)">
                         <option value="Emeth">Emeth (⭐: 5, 👊: 7, 💥: 7, ⚡: Apoio: +5 Ataque)</option>
                     </optgroup>
-                    <optgroup label="Pussycats (Dano adversário -2, mín 1)">
+                    <optgroup label="😼 Pussycats (Dano adversário -2, mín 1)">
                         <option value="Clara">Clara (⭐: 5, 👊: 8, 💥: 5, ⚡: Anula bônus do oponente)</option>
                     </optgroup>
                 </select>
@@ -70,12 +70,12 @@
             <div id="tabelacardjogador1">
                 <div class="bordacard">
                     <table class="tabelacard">
-                      <tr><td class="td1"><img id="personagemJogador1clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador1nome"></td></tr>
+                      <tr><td class="td1"><img id="personagemJogador1clanimg" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador1nome"></td></tr>
                       <tr><td class="td3" colspan="2"><img id="personagemJogador1imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
                       <tr><td class="td4" colspan="2" id="personagemJogador1level">⭐⭐</td></tr>
                       <tr><td class="td5" id="personagemJogador1potencia">👊</td><td class="td6" id="personagemJogador1habilidade">⚡</td></tr>
                       <tr><td class="td7" id="personagemJogador1dano">💥</td><td class="td8" id="personagemJogador1bonus">👥</td></tr>
-                      <tr><td class="td9" colspan="2" id="personagemJogador1edicao">STA 01/204&nbsp;</td></tr>
+                      <tr><td class="td9" colspan="2" id="personagemJogador1edicao">EDI 01/02&nbsp;</td></tr>
                     </table>
                 </div>
             </div>
@@ -96,12 +96,12 @@
         <div id="tabelacardjogador2">
             <div class="bordacard">
                 <table class="tabelacard">
-                    <tr><td class="td1"><img id="personagemJogador2clan" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador2nome"></td></tr>
+                    <tr><td class="td1"><img id="personagemJogador2clanimg" src="https://static.wikia.nocookie.net/urban-rivals/images/7/7c/OCULUS_Symbol.png/revision/latest?cb=20210211152704"></td><td class="td2" id="personagemJogador2nome"></td></tr>
                     <tr><td class="td3" colspan="2"><img id="personagemJogador2imagem" src="htps://static.wikia.nocookie.net/urban-rivals/images/8/8b/GHEIST_METHANE_N4_STD.png/revision/latest?cb=20110625205023"></td></tr>
                     <tr><td class="td4" colspan="2" id="personagemJogador2level">⭐⭐</td></tr>
                     <tr><td class="td5" id="personagemJogador2potencia">👊</td><td class="td6" id="personagemJogador2habilidade">⚡</td></tr>
                     <tr><td class="td7" id="personagemJogador2dano">💥</td><td class="td8" id="personagemJogador2bonus">👥</td></tr>
-                    <tr><td class="td9" colspan="2" id="personagemJogador2edicao">STA 01/204&nbsp;</td></tr>
+                    <tr><td class="td9" colspan="2" id="personagemJogador2edicao">EDI 02/02&nbsp;</td></tr>
                 </table>
             </div>
         </div>
@@ -114,28 +114,26 @@
 
     </div>
 
-    <div class="divaudios" style="position: fixed; bottom: 0px;">
-        <audio controls><source src="arquivos/mp3/Rooftops from Clint City.mp3" type="audio/ogg"></audio>
-        <br>
-        <audio controls><source src="arquivos/mp3/Music 2.m4a" type="audio/mpeg"></audio>
-        <br>
-        <audio controls><source src="arquivos/mp3/Music 3.m4a" type="audio/mpeg"></audio>
+    <div class="divaudios" style="position: fixed; bottom: 0px; width: 100%; text-align: center;">
+        <audio controls loop><source src="arquivos/mp3/Rooftops from Clint City.mp3" type="audio/ogg"></audio>
+        <audio controls loop><source src="arquivos/mp3/Music 2.m4a" type="audio/mpeg"></audio>
+        <audio controls loop><source src="arquivos/mp3/Music 3.m4a" type="audio/mpeg"></audio>
     </div>
 <script>
     // Variáveis Globais
     let totalPilulasJogador1 = 12;
     let totalPilulasJogador2 = 12;
-    let roundnumber = 1;
     let vidaJogador1 = 12;
     let vidaJogador2 = 12;
+    let roundnumber = 1;
 
     const personagens = {
-        'Willy': {nome: "Willy", clan: "https://static.wikia.nocookie.net/urban-rivals/images/a/ae/BANGERS_Symbol.png/revision/latest?cb=20190215180620", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/41/BANGERS_WILLY_N5_STD.png/revision/latest?cb=20110702203808", level: "⭐⭐⭐⭐⭐", potencia: 5, dano: 7, habilidade: "Coragem: Potência +4", bonus: "Potência +2", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p + 4, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
-        'Oyoh': {nome: "Oyoh", clan: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", modPotencia: (p) => p, modPotenciaAdv: (p) => (p < 3 ? 1 : p - 2), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
-        'Fuzz': {nome: "Fuzz", clan: "https://static.wikia.nocookie.net/urban-rivals/images/2/24/JUNKZ_Symbol.png/revision/latest?cb=20190215165648", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/e/e5/JUNKZ_FUZZ_N5_STD.png/revision/latest?cb=20110704102723", level: "⭐⭐⭐⭐⭐", potencia: 6, dano: 8, habilidade: "Anula habilidade do oponente", bonus: "Ataque +8", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
-        'Stella': {nome: "Stella", clan: "https://static.wikia.nocookie.net/urban-rivals/images/9/97/SAKROHM_Symbol.png/revision/latest?cb=20190519131949", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/8/8f/SAKROHM_STELLA_N2_STD.png/revision/latest?cb=20111213213508", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Ataque +8", bonus: "-8 Ataque do oponente, mín 3", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => (p < 11 ? 3 : p - 8), modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
-        'Emeth': {nome: "Emeth", clan: "https://static.wikia.nocookie.net/urban-rivals/images/8/8b/LAJUNTA_Symbol.png/revision/latest?cb=20190302170111", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/1/14/LAJUNTA_EMETH_N5_STD.png/revision/latest?cb=20110723144624", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Apoio: Ataque +5", bonus: "Dano +2", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
-        'Clara': {nome: "Clara", clan: "https://static.wikia.nocookie.net/urban-rivals/images/d/df/PUSSYCATS_Symbol.png/revision/latest?cb=20190427125950", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/b/be/PUSSYCATS_CLARA_N5_STD.png/revision/latest?cb=20111213210219", level: "⭐⭐⭐⭐⭐", potencia: 8, dano: 5, habilidade: "Anula bônus do oponente", bonus: "-2 Dano do oponente, mín 1", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => (p < 3 ? 1 : p - 2), modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p,},
+        'Willy': {nome: "Willy", clanchar: "Bangers", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/a/ae/BANGERS_Symbol.png/revision/latest?cb=20190215180620", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/41/BANGERS_WILLY_N5_STD.png/revision/latest?cb=20110702203808", level: "⭐⭐⭐⭐⭐", potencia: 5, dano: 7, habilidade: "Coragem: Potência + 4", bonus: "Potência + 2", edicao: "STA 01/2024\u00A0", modPotencia: (p) => p + 2, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p + 4, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: false},
+        'Oyoh': {nome: "Oyoh", clanchar: "All Stars", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/0/01/ALLSTARS_v2.png/revision/latest?cb=20190215172903", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/4/4f/ALLSTARS_OYOH_N5_STD.png/revision/latest?cb=20110626175852", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "-", bonus: "-2 Potência do oponente", edicao: "STA 01/2024\u00A0", modPotencia: (p) => p, modPotenciaAdv: (p) => reduzirPDA(p, 2, 1), modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: false},
+        'Fuzz': {nome: "Fuzz", clanchar: "Junkz", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/2/24/JUNKZ_Symbol.png/revision/latest?cb=20190215165648", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/e/e5/JUNKZ_FUZZ_N5_STD.png/revision/latest?cb=20110704102723", level: "⭐⭐⭐⭐⭐", potencia: 6, dano: 8, habilidade: "Anula habilidade do oponente", bonus: "Ataque + 8", edicao: "STA 01/2024\u00A0", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p+8, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: false},
+        'Stella': {nome: "Stella", clanchar: "Sakrohm", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/9/97/SAKROHM_Symbol.png/revision/latest?cb=20190519131949", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/8/8f/SAKROHM_STELLA_N2_STD.png/revision/latest?cb=20111213213508", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Ataque + 8", bonus: "-8 Ataque do oponente, mín 3", edicao: "STA 01/2024\u00A0", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => reduzirPDA(p, 8, 3), modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: false},
+        'Emeth': {nome: "Emeth", clanchar: "La Junta", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/8/8b/LAJUNTA_Symbol.png/revision/latest?cb=20190302170111", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/1/14/LAJUNTA_EMETH_N5_STD.png/revision/latest?cb=20110723144624", level: "⭐⭐⭐⭐⭐", potencia: 7, dano: 7, habilidade: "Apoio: Ataque + 5", bonus: "Dano + 2", modPotencia: (p) => p, edicao: "STA 01/2024\u00A0", modPotenciaAdv: (p) => p, modDano: (p) => p+2, modDanoAdv: (p) => p, modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: false},
+        'Clara': {nome: "Clara", clanchar: "Pussycats", clanimg: "https://static.wikia.nocookie.net/urban-rivals/images/d/df/PUSSYCATS_Symbol.png/revision/latest?cb=20190427125950", imagem: "https://static.wikia.nocookie.net/urban-rivals/images/b/be/PUSSYCATS_CLARA_N5_STD.png/revision/latest?cb=20111213210219", level: "⭐⭐⭐⭐⭐", potencia: 8, dano: 5, habilidade: "Anula bônus do oponente", bonus: "-2 Dano do oponente, mín 1", edicao: "STA 01/2024\u00A0", modPotencia: (p) => p, modPotenciaAdv: (p) => p, modDano: (p) => p, modDanoAdv: (p) => reduzirPDA(p, 2, 1), modAtaque: (p) => p, modAtaqueAdv: (p) => p, modCoragemPotencia: (p) => p, modCoragemPotenciaAdv: (p) => p, modCoragemDano: (p) => p, modCoragemDanoAdv: (p) => p, modCoragemAtaque: (p) => p, modCoragemAtaqueAdv: (p) => p, modVigilanciaPotencia: (p) => p, modVigilanciaPotenciaAdv: (p) => p, modVigilanciaDano: (p) => p, modVigilanciaDanoAdv: (p) => p, modVigilanciaAtaque: (p) => p, modVigilanciaAtaqueAdv: (p) => p, anulaBonusAdv: true},
     }
 
     document.getElementById('batalhar').addEventListener('click', function() {
@@ -253,6 +251,10 @@
         // ELTON (por enquanto é desnecessário essa re-nomenclatura de variáveis, mas deixarei por enquanto)
         let ataqueFinalJogador1 = jogador1Ataque;
         let ataqueFinalJogador2 = jogador2Ataque;
+
+        // TESTE
+        if (!personagens[personagemJogador1].anulaBonusAdv) console.log(personagens[personagemJogador1].anulaBonusAdv)
+        if (!personagens[personagemJogador2].anulaBonusAdv) console.log(personagens[personagemJogador2].anulaBonusAdv)
         
         // Lógica de quem vence, exibindo o ataque final
         if (ataqueFinalJogador1 > ataqueFinalJogador2) {
@@ -295,14 +297,20 @@
         let idrecebido = e;
         let x = document.getElementById(idrecebido).value;
         document.getElementById(idrecebido + 'nome').innerText = personagens[x].nome;
-        document.getElementById(idrecebido + 'clan').src = personagens[x].clan;
+        document.getElementById(idrecebido + 'clanimg').src = personagens[x].clanimg;
         document.getElementById(idrecebido + 'imagem').src = personagens[x].imagem;
         document.getElementById(idrecebido + 'level').innerText = personagens[x].level;
         document.getElementById(idrecebido + 'potencia').innerText = personagens[x].potencia;
         document.getElementById(idrecebido + 'dano').innerText = personagens[x].dano;
         document.getElementById(idrecebido + 'habilidade').innerText = personagens[x].habilidade;
         document.getElementById(idrecebido + 'bonus').innerText = personagens[x].bonus;
-        document.getElementById(idrecebido + 'edicao').innerText = personagens[x].edicao;        
+        document.getElementById(idrecebido + 'edicao').innerText = personagens[x].edicao;
+    }
+
+    function reduzirPDA(p, q, r) { // p: valor a ser modificado, q: redutor de Potência/Dano/Ataque, r: valor mínimo
+        if (p < r) return p;
+        let resultado = p - q;
+        return resultado < r ? r : resultado;
     }
 
     // Funções Start //
@@ -311,20 +319,22 @@
 </script>
 </body>
 </html>
+
 <!--
 Bugs Conhecidos:
 1) Uma potência/dano/ataque menor que o mínimo de um oponente que a reduz, eleva o atributo até o valor mínimo (ex: dano 0 contra Pussycats torna o dano 1, que o mínimo das Pussycats)
+🅱️ Bangers
 🎩 Montana
 💎 Uppers
 🪐 Sakrohm (👽)
 😼 Pussycats
 💣 La Junta
-🥷 La Junta
+🥷 Fang Pi
 🏴‍☠️ Piranas (🦈)
 🦇 Nightmare
 🌊 Ulu Watu
 🎽 All Stars
-🤖 Robô
+🤖 Junkz
 - - - - - -
 Habilidades:
 Veneno: 2 mín 2 (Freaks)
@@ -332,5 +342,4 @@ Proteção: Potência, Dano (Ataque não)
 Pot = Pot opp
 Dano = dano opp
 Curar
-
 -->
