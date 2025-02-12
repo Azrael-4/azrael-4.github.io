@@ -49,16 +49,18 @@
         else alert("Verifique os dados e tente novamente!")
     }
     function limpar() {
-        let x1 = document.getElementById('input1');
-        let x2 = document.getElementById('input2');
-        let x3 = document.getElementById('input3');
-        let x4 = document.getElementById('input4');
-        let x5 = document.getElementById('input5');
-        x1.value = "";
-        x2.value = "";
-        x3.value = "";
-        x4.value = "";
-        x5.value = ""; 
+        if (confirm("Deseja realmente apagar os dados?")) {
+            let x1 = document.getElementById('input1');
+            let x2 = document.getElementById('input2');
+            let x3 = document.getElementById('input3');
+            let x4 = document.getElementById('input4');
+            let x5 = document.getElementById('input5');
+            x1.value = "";
+            x2.value = "";
+            x3.value = "";
+            x4.value = "";
+            x5.value = ""; 
+        }
     }
     function estilizarInputs() {
         let x = document.getElementsByTagName('input');
