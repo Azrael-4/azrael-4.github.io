@@ -15,14 +15,16 @@
     #td02 img {width: 185px;}
     #td01 {width: 1001px;}
     #td02 {width: 741px;}
+    .fundo {opacity: 10%; position: fixed; z-index: -1; width: 100%;}
     .e-button {width: 333px; height: 32px; font-size: 16px; font-family: Verdana; border: none; color: white; text-shadow: 2px 2px black;}
     .e-button:hover {opacity: 0.85;}
     .e-gray {background-color: rgb(106, 101, 101);}
     .e-blue {background-color: rgb(26, 206, 206);}
     .e-gold {background-color: rgb(241, 175, 8);}
+    #input01 {height: 32px; width: 100%; background-color: transparent; font-family: Verdana; font-size: 16px; border: none; color: white; text-shadow: 2px 2px black; padding: 8px; text-align: center;}
   </style>
 </head>
-<body>
+<body><img src="https://wallpapercave.com/wp/wp4910014.jpg" class="fundo">
   <table id="table01">
     <tr><th colspan="2">Slay the Spire Deck Builder By Elton</th></tr>
     <tr>
@@ -108,6 +110,7 @@
       <img src="arquivos/demonformpng.png" class="rare" ondragstart="drag(event)">
     </td>
     <td id="td02" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <input type="text" id="input01" autocomplete="off">
       <img src="arquivos/Strike_R.png" id="z0">
       <img src="arquivos/Strike_R.png" id="z1">
       <img src="arquivos/Strike_R.png" id="z2">
