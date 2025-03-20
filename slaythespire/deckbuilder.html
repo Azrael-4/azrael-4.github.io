@@ -11,17 +11,21 @@
     #table01 {border-collapse: collapse; margin: auto;}
     #table01 td {border: 1px dotted white; vertical-align: top; font-size: 0px;}
     #table01 th {font-size: 32px; font-family: Verdana; color: white; padding: 12px;}
-    #td01 img {width: 250px;}
+    #table01 img {transition: 0.1s;}
+    #table01 img:hover {transform: scale(1.05); transition: 0.1s;}
+    #td01 img {width: 250px; cursor: grab;}
     #td02 img {width: 185px;}
     #td01 {width: 1001px;}
     #td02 {width: 741px;}
     .fundo {opacity: 10%; position: fixed; z-index: -1; width: 100%;}
-    .e-button {width: 333px; height: 32px; font-size: 16px; font-family: Verdana; border: none; color: white; text-shadow: 2px 2px black;}
+    .e-button {width: 250px; height: 32px; font-size: 16px; font-family: Verdana; border: none; color: white; text-shadow: 2px 2px black;}
     .e-button:hover {opacity: 0.85;}
     .e-gray {background-color: rgb(106, 101, 101);}
     .e-blue {background-color: rgb(26, 206, 206);}
     .e-gold {background-color: rgb(241, 175, 8);}
+    .e-white {background-color: rgba(225, 235, 235, 0.681)}
     #input01 {height: 32px; width: 100%; background-color: transparent; font-family: Verdana; font-size: 16px; border: none; color: white; text-shadow: 2px 2px black; padding: 8px; text-align: center;}
+    .relic {width: 125px !important}
   </style>
 </head>
 <body><img src="https://wallpapercave.com/wp/wp4910014.jpg" class="fundo">
@@ -29,7 +33,7 @@
     <tr><th colspan="2">Slay the Spire Deck Builder By Elton</th></tr>
     <tr>
       <td id="td01" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <button class="e-button e-gray" onclick="mostrarSomente('common')">Common</button><button class="e-button e-blue" onclick="mostrarSomente('uncommon')">Uncommon</button><button class="e-button e-gold" onclick="mostrarSomente('rare')">Rare</button>
+      <button class="e-button e-gray" onclick="mostrarSomente('common')">Common</button><button class="e-button e-blue" onclick="mostrarSomente('uncommon')">Uncommon</button><button class="e-button e-gold" onclick="mostrarSomente('rare')">Rare</button><button class="e-button e-white" onclick="mostrarSomente('relic')">Relics</button>
       <img src="arquivos/angerpng.png" class="common" ondragstart="drag(event)">
       <img src="arquivos/clashpng.png" class="common" ondragstart="drag(event)">
       <img src="arquivos/bodyslampng.png" class="common" ondragstart="drag(event)">
@@ -108,6 +112,24 @@
       <img src="arquivos/barricadepng.png" class="rare" ondragstart="drag(event)">
       <img src="arquivos/corruptionpng.png" class="rare" ondragstart="drag(event)">
       <img src="arquivos/demonformpng.png" class="rare" ondragstart="drag(event)">
+
+      <img src="arquivos/relics/bustedcrownpng.png" class="relic" ondragstart="drag(event)" id="bustedcrown">
+      <img src="arquivos/relics/coffeedripperpng.png" class="relic" ondragstart="drag(event)" id="coffeedripperpng">
+      <img src="arquivos/relics/cursedkeypng.png" class="relic" ondragstart="drag(event)" id="cursedkeypng">
+      <img src="arquivos/relics/ectoplasmpng.png" class="relic" ondragstart="drag(event)" id="ectoplasmpng">
+      <img src="arquivos/relics/fusionhammerpng.png" class="relic" ondragstart="drag(event)" id="fusionhammerpng">
+      <img src="arquivos/relics/markofpainpng.png" class="relic" ondragstart="drag(event)" id="markofpainpng">
+      <img src="arquivos/relics/philosophersstonepng.png" class="relic" ondragstart="drag(event)" id="philosophersstonepng">
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/slaverscollarpng.png" class="relic" ondragstart="drag(event)" id="slaverscollarpng">
+      <img src="arquivos/relics/sozupng.png" class="relic" ondragstart="drag(event)" id="sozupng">
+      <img src="arquivos/relics/velvetchokerpng.png" class="relic" ondragstart="drag(event)" id="velvetchokerpng">
+      <br>
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
     </td>
     <td id="td02" ondrop="drop(event)" ondragover="allowDrop(event)">
       <input type="text" id="input01" autocomplete="off">
