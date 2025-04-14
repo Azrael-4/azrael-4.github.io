@@ -11,7 +11,7 @@
     #table01 {border-collapse: collapse; margin: auto;}
     #table01 td {border: 1px dotted white; vertical-align: top; font-size: 0px;}
     #table01 th {font-size: 32px; font-family: Verdana; color: white; padding: 12px;}
-    #table01 img {transition: 0.1s;}
+    #table01 img {transition: 0.2s;}
     #table01 img:hover {transform: scale(1.05); transition: 0.1s;}
     #td01 img {width: 250px; cursor: grab;}
     #td02 img {width: 185px;}
@@ -23,10 +23,11 @@
     .e-gray {background-color: rgb(106, 101, 101);}
     .e-blue {background-color: rgb(26, 206, 206);}
     .e-gold {background-color: rgb(241, 175, 8);}
-    .e-white {background-color: rgba(225, 235, 235, 0.681)}
+    .e-relics {background-color: rgba(225, 155, 235, 0.681)}
     #input01 {height: 32px; width: 100%; background-color: transparent; font-family: Verdana; font-size: 16px; border: none; color: white; text-shadow: 2px 2px black; padding: 8px; text-align: center; font-weight: bold;}
     .relic {width: 125px !important}
     .ironcladrelic:hover {box-shadow: 0px 0px 1px #800 inset; border-radius: 10px;} /* box-shadow: 0px 0px 20px red inset; border-radius: 50%; */
+    .button-bar {margin-bottom: 10px;}
   </style>
 </head>
 <body><img src="https://wallpapercave.com/wp/wp4910014.jpg" class="fundo">
@@ -34,7 +35,10 @@
     <tr><th colspan="2">Slay the Spire Deck Builder By Elton</th></tr>
     <tr>
       <td id="td01" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <button class="e-button e-gray" onclick="mostrarSomente('common')">Common</button><button class="e-button e-blue" onclick="mostrarSomente('uncommon')">Uncommon</button><button class="e-button e-gold" onclick="mostrarSomente('rare')">Rare</button><button class="e-button e-white" onclick="mostrarSomente('relic')">Relics</button>
+      <div class="button-bar">
+        <button class="e-button e-gray" onclick="mostrarSomente('common')">Common</button><button class="e-button e-blue" onclick="mostrarSomente('uncommon')">Uncommon</button><button class="e-button e-gold" onclick="mostrarSomente('rare')">Rare</button><button class="e-button e-relics" onclick="mostrarSomente('relic')">Relics</button>
+      </div>
+      
       <img src="arquivos/angerpng.png" class="common" ondragstart="drag(event)">
       <img src="arquivos/clashpng.png" class="common" ondragstart="drag(event)">
       <img src="arquivos/bodyslampng.png" class="common" ondragstart="drag(event)">
@@ -181,36 +185,33 @@
       <img src="arquivos/relics/selfformingclaypng.png" class="relic ironcladrelic" ondragstart="drag(event)" id="selfformingclaypng">
       <!-- Rare Relics  -->
       <br>
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
-      <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
+      <img src="arquivos/relics/birdfacedurnpng.png" class="relic" ondragstart="drag(event)" id="birdfacedurnpng">
+      <img src="arquivos/relics/caliperspng.png" class="relic" ondragstart="drag(event)" id="caliperspng">
+      <img src="arquivos/relics/captainwheelpng.png" class="relic" ondragstart="drag(event)" id="captainwheelpng">
+      <img src="arquivos/relics/deadbranchpng.png" class="relic" ondragstart="drag(event)" id="deadbranchpng">
+      <img src="arquivos/relics/du-vudollpng.png" class="relic" ondragstart="drag(event)" id="du-vudollpng">
+      <img src="arquivos/relics/fossilizedhelixpng.png" class="relic" ondragstart="drag(event)" id="fossilizedhelixpng">
+      <img src="arquivos/relics/gamblingchippng.png" class="relic" ondragstart="drag(event)" id="gamblingchippng">
+      <img src="arquivos/relics/gingerpng.png" class="relic" ondragstart="drag(event)" id="gingerpng">
+      <img src="arquivos/relics/giryapng.png" class="relic" ondragstart="drag(event)" id="giryapng">
+      <img src="arquivos/relics/icecreampng.png" class="relic" ondragstart="drag(event)" id="icecreampng">
+      <img src="arquivos/relics/incenseburnerpng.png" class="relic" ondragstart="drag(event)" id="incenseburnerpng">
+      <img src="arquivos/relics/lizardtailpng.png" class="relic" ondragstart="drag(event)" id="lizardtailpng">
+      <img src="arquivos/relics/mangopng.png" class="relic" ondragstart="drag(event)" id="mangopng">
+      <img src="arquivos/relics/oldcoinpng.png" class="relic" ondragstart="drag(event)" id="oldcoinpng">
+      <img src="arquivos/relics/peacepipepng.png" class="relic" ondragstart="drag(event)" id="peacepipepng">
+      <img src="arquivos/relics/pocketwatchpng.png" class="relic" ondragstart="drag(event)" id="pocketwatchpng">
+      <img src="arquivos/relics/prayerwheelpng.png" class="relic" ondragstart="drag(event)" id="prayerwheelpng">
+      <img src="arquivos/relics/shovelpng.png" class="relic" ondragstart="drag(event)" id="shockwavepng">
+      <img src="arquivos/relics/threadandneedlepng.png" class="relic" ondragstart="drag(event)" id="threadandneedlepng">
+      <img src="arquivos/relics/toriipng.png" class="relic" ondragstart="drag(event)" id="toriipng">
+      <img src="arquivos/relics/tungstenrodpng.png" class="relic" ondragstart="drag(event)" id="tungstenrodpng">
+      <img src="arquivos/relics/turnippng.png" class="relic" ondragstart="drag(event)" id="turnippng">
+      <img src="arquivos/relics/unceasingtoppng.png" class="relic" ondragstart="drag(event)" id="unceasingtoppng">
+      <img src="arquivos/relics/wingedgreavespng.png" class="relic" ondragstart="drag(event)" id="wingedgreavespng">
+      <img src="arquivos/relics/championbeltpng.png" class="relic ironcladrelic" ondragstart="drag(event)" id="championbeltpng">
+      <img src="arquivos/relics/charonsashespng.png" class="relic ironcladrelic" ondragstart="drag(event)" id="charonsashespng">
+      <img src="arquivos/relics/magicflowerpng.png" class="relic ironcladrelic" ondragstart="drag(event)" id="magicflowerpng">
       <!-- Shop Relics  -->
       <br>
       <img src="arquivos/relics/runicdomepng.png" class="relic" ondragstart="drag(event)" id="runicdome">
