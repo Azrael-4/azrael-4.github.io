@@ -23,53 +23,52 @@
 
     <table class="w3-table w3-responsive">
         <tr>
-            <td><button class="w3-button">Melee</button></td>
-            <td><button class="w3-button">Ranged</button></td>    
-            <td><button class="w3-button">Tank</button></td>
-            <td><button class="w3-button">Bruiser</button></td>
-            <td><button class="w3-button">Marksman</button></td>
-            <td><button class="w3-button">Mage</button></td>
-            <td><button class="w3-button">Assassin</button></td>
-            <td><button class="w3-button">Support</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'tank')">Tank</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'bruiser')">Bruiser</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'marksman')">Marksman</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'mage')">Mage</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'assassin')">Assassin</button></td>
+            <td><button class="w3-button" onclick="showclass('imgheroes', 'support')">Support</button></td>
+            <td><button class="w3-button" onclick="showall('imgheroes')">All</button></td>
         </tr>
     </table>
     
     <table id="imgheroes" class="w3-table w3-border w3-bordered w3-responsive">
         <tr>
-            <td><img src="arquivos/heroes/Ace.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Aemon.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Bandito.webp" class="CLASS"></td>
-            <td><img src="arquivos/heroes/Bastion.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Blazer.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Bo.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Buford.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Caprice.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Carter.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Chester.webp" class="CLASS"></td>
-            <td><img src="arquivos/heroes/Claudessa.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Eanu.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Fetterstone.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Flak.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Gokong.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Hale.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Harrower.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Iah.webp" class="CLASS"></td>
-            <td><img src="arquivos/heroes/JinShe.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/LadyTinder.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Malady.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Midknight.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Minerva.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Moxie.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Nikolai.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Ray.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Rip.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Rook.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Shank.webp" class="melee"></td>
-            <td><img src="arquivos/heroes/Trace.webp" class="CLASS"></td>
-            <td><img src="arquivos/heroes/Trixie.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Vermillion.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Vex.webp" class="ranged"></td>
-            <td><img src="arquivos/heroes/Zaku.webp" class="CLASS"></td>
+            <td><img src="arquivos/heroes/Ace.webp" class="tank assassin"></td>
+            <td><img src="arquivos/heroes/Aemon.webp" class="tank"></td>
+            <td><img src="arquivos/heroes/Bandito.webp" class="support"></td>
+            <td><img src="arquivos/heroes/Bastion.webp" class="tank"></td>
+            <td><img src="arquivos/heroes/Blazer.webp" class="assassin"></td>
+            <td><img src="arquivos/heroes/Bo.webp" class="tank"></td>
+            <td><img src="arquivos/heroes/Buford.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Caprice.webp" class="assassin"></td>
+            <td><img src="arquivos/heroes/Carter.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Chester.webp" class="support"></td>
+            <td><img src="arquivos/heroes/Claudessa.webp" class="tank"></td>
+            <td><img src="arquivos/heroes/Eanu.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Fetterstone.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Flak.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Gokong.webp" class="assassin"></td>
+            <td><img src="arquivos/heroes/Hale.webp" class="bruiser"></td>
+            <td><img src="arquivos/heroes/Harrower.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Iah.webp" class="support"></td>
+            <td><img src="arquivos/heroes/JinShe.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/LadyTinder.webp" class="support"></td>
+            <td><img src="arquivos/heroes/Malady.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Midknight.webp" class="bruiser"></td>
+            <td><img src="arquivos/heroes/Minerva.webp" class="assassin"></td>
+            <td><img src="arquivos/heroes/Moxie.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Nikolai.webp" class="bruiser"></td>
+            <td><img src="arquivos/heroes/Ray.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Rip.webp" class="assassin"></td>
+            <td><img src="arquivos/heroes/Rook.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Shank.webp" class="bruiser"></td>
+            <td><img src="arquivos/heroes/Trace.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Trixie.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Vermillion.webp" class="marksman"></td>
+            <td><img src="arquivos/heroes/Vex.webp" class="mage"></td>
+            <td><img src="arquivos/heroes/Zaku.webp" class="support"></td>
         </tr>
     </table>
     
@@ -237,6 +236,24 @@
     function associar(x,y,desc) {
         for (let i = 0; i < y; i++) {
             x[i].innerHTML = desc;     
+        }
+    }
+    function showclass(e, f) { // Aqui, devido ao modo como organizei (tds dentro de uma table -responsive) tive que fazer a imagem sumir reduzindo seu tamanho; display = "none" não funciona, pois desorganiza tudo
+        let x = document.getElementById(e);
+        x = x.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {
+            x[i].style.width = 0;
+            }
+        let y = document.getElementsByClassName(f);
+        for (let i = 0; i < y.length; i++) {
+            y[i].style.width = '6rem';
+        }
+    }
+    function showall(e) {
+        let x = document.getElementById(e);
+        x = x.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {
+            x[i].style.width = '6rem';
         }
     }
     // Start
