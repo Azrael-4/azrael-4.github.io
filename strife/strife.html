@@ -6,6 +6,7 @@
     <title>Strife by Az</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <style>
+        html {scroll-behavior: smooth;}
         th {text-align: center !important;}
         td, th {vertical-align: middle !important;}
         img {vertical-align:middle !important} /* Aparentemente não faz efeito no w3.css */
@@ -72,16 +73,16 @@
         </tr>
     </table>
 
-    <table class="w3-table w3-responsive w3-section">
+    <table class="w3-table w3-responsive">
         <tr>
-            <td><button class="w3-button" onclick="showtbody('imgitems', 'tboots')">Boots</button></td>
+            <td><a href="#"><button class="w3-button" onclick="showtbody('imgitems', 'tboots')">Boots</button></a></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tattack')">Basic Attack</button></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tpower')">Power</button></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tmagic')">Magic Damage</button></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tmana')">Mana</button></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tdefense')">Defense</button></td>
             <td><button class="w3-button" onclick="showtbody('imgitems', 'tutility')">Utility</button></td>
-            <td><button class="w3-button" onclick="showtbody('imgitems')">All</button></td>
+            <td><button class="w3-button" onclick="showtbodyall('imgitems')">All</button></td>
         </tr>
     </table>
     
@@ -294,6 +295,13 @@
         for (let i = 0; i < y.length; i++) {
             y[i].style.display = 'inline';
         }
+    }
+    function showtbodyall(e) {
+        let x = document.getElementById(e);
+        x = x.getElementsByTagName('tbody');
+        for (let i = 0; i < x.length; i++) {
+            x[i].style.display = 'inline';
+            }
     }
     // Start
     criarTRs();
