@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proxy Printer by Elton</title>
     <style>
-        * {margin: 0; padding: 0; box-sizing: border-box; font-family: Courier; font-size: 3px}
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; font-size: 16px}
         body {padding: 1cm;}
         img {height: 332px; width: 238px; vertical-align: middle; margin-bottom: 9px;}
-        #divdiv {text-align: center; font-size: 16px;}
-        #divdiv button {font-size: 16px; padding: 0.5em;}
-        #divdiv input {height: 2em; padding: 0.5em; font-size: 16px;}
-        #divimg {display: none;}
+        #divdiv {text-align: center;}
+        #divdiv button {padding: 8px;}
+        #divdiv input {height: 2em; padding: 0.5em;}
+        #divimg {display: none; font-size: 3px;}
 </style>
 </head>
 <body>
@@ -25,10 +25,9 @@
         <input type="text" placeholder="7..." id="input6"><br>
         <input type="text" placeholder="8..." id="input7"><br>
         <input type="text" placeholder="9..." id="input8"><br><br>
-        <button onclick="limpar()">Limpar</button>
-        <button onclick="gerar()">Gerar</button>
+        <button onclick="limpar()" style="margin-right: 16px;">Limpar</button><button onclick="gerar()">Gerar</button>
         <br><br><br>
-        <p style="font-size: 16px;">Proxy Printer - by Elton<br><br>Instruções:<br>1) Colar a URL das imagens<br>2) utilizar o navegador Firefox<br>3) ajustar margens de impressão para 0</p>
+        <p>Proxy Printer - by Elton<br><br>Instruções:<br>1) Utilize o navegador Firefox<br>2) Cole a URL das imagens<br>3) Ajuste as margens de impressão para 0</p>
     </div>
     <div id="divimg">
         <img src="" id="img0"> <img src="" id="img1"> <img src="" id="img2">
@@ -39,9 +38,12 @@
 <script>
     'use strict'
     function limpar() {
-        for (let i = 0; i<9; i++) {
+        if (window.confirm()) {
+            for (let i = 0; i<9; i++) {
             document.getElementById('input' + i).value = "";
+            }
         }
+        
     }
     function gerar() {
         for (let i = 0; i<9; i++) {
