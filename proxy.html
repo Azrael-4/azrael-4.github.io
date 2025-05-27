@@ -16,15 +16,15 @@
 </head>
 <body>
     <div id="divdiv">
-        <input type="text" placeholder="1..." id="input0"><br>
-        <input type="text" placeholder="2..." id="input1"><br>
-        <input type="text" placeholder="3..." id="input2"><br>
-        <input type="text" placeholder="4..." id="input3"><br>
-        <input type="text" placeholder="5..." id="input4"><br>
-        <input type="text" placeholder="6..." id="input5"><br>
-        <input type="text" placeholder="7..." id="input6"><br>
-        <input type="text" placeholder="8..." id="input7"><br>
-        <input type="text" placeholder="9..." id="input8"><br><br>
+        <input type="text" placeholder="1..." id="input0" autocomplete="on"><br>
+        <input type="text" placeholder="2..." id="input1" autocomplete="on"><br>
+        <input type="text" placeholder="3..." id="input2" autocomplete="on"><br>
+        <input type="text" placeholder="4..." id="input3" autocomplete="on"><br>
+        <input type="text" placeholder="5..." id="input4" autocomplete="on"><br>
+        <input type="text" placeholder="6..." id="input5" autocomplete="on"><br>
+        <input type="text" placeholder="7..." id="input6" autocomplete="on"><br>
+        <input type="text" placeholder="8..." id="input7" autocomplete="on"><br>
+        <input type="text" placeholder="9..." id="input8" autocomplete="on"><br><br>
         <button onclick="limpar()" style="margin-right: 16px;">Limpar</button><button onclick="gerar()">Gerar</button>
         <br><br><br>
         <p>Proxy Printer - by Elton<br><br>Instruções:<br>1) Utilize o navegador Firefox<br>2) Cole a URL das imagens<br>3) Ajuste as margens de impressão para 0</p>
@@ -38,7 +38,7 @@
 <script>
     'use strict'
     function limpar() {
-        if (window.confirm()) {
+        if (window.confirm('Deseja realmente limpar os dados?')) {
             for (let i = 0; i<9; i++) {
             document.getElementById('input' + i).value = "";
             }
