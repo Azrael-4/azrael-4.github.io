@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTCG Database by Elton</title>
+    <link rel="stylesheet" href="w3.css">
+    <style>
+        img {width: 320px;}
+        #divImagens img {margin-right: 6px; margin-bottom: 6px}
+    </style>
+</head>
+<body class="w3-light-gray">
+    <img src="background.jpg" class="w3-hide-small" style="position: fixed; width: 100%; z-index: -100; margin-top: 2em; opacity: 5%;">
+    <div class="w3-row w3-blue w3-container w3-padding w3-card">
+        <select name="options" class="w3-input w3-white w3-round w3-col m4 l4" id="inputText" style="min-width: 25% !important;" autocomplete="off">
+            <option value="" disabled selected>Pesquisar...</option>
+            <optgroup label="Extra">
+                <option value="Support" onclick="buscar()">Support</option>
+                <option value="Disrupt" onclick="buscar()">Disrupt</option>
+                <option value="Wall" onclick="buscar()">Wall</option>
+                <option value="Kofu" onclick="buscar()">Kofu</option>
+            </optgroup>
+            <optgroup label="Stage (filtrar)">
+                <option value="Basic" onclick="ocultar('Stage1', 'Stage2')">Basic</option>
+                <option value="Stage1" onclick="ocultar('Basic', 'Stage2')">Stage 1</option>
+                <option value="Stage2" onclick="ocultar('Basic', 'Stage1')">Stage 2</option>
+            </optgroup>
+            <optgroup label="Type">
+                <option value="Darkness" onclick="buscar()">Darkness</option>
+                <option value="Dragon" onclick="buscar()">Dragon</option>
+                <option value="Fighting" onclick="buscar()">Fighting</option>
+                <option value="Fire" onclick="buscar()">Fire</option>
+                <option value="Grass" onclick="buscar()">Grass</option>
+                <option value="Lightning" onclick="buscar()">Lightning</option>
+                <option value="Metal" onclick="buscar()">Metal</option>
+                <option value="Psychic" onclick="buscar()">Psychic</option>
+                <option value="Water" onclick="buscar()">Water</option>
+            </optgroup>
+            <optgroup label="Prizes">
+                <option value="SinglePrize" onclick="buscar()">Single Prize</option>
+                <option value="DoublePrize" onclick="buscar()">Double Prize</option>
+            </optgroup>
+            <optgroup label="Trainer">
+                <option value="Supporter" onclick="buscar()">Supporter</option>
+                <option value="Item" onclick="buscar()">Item</option>
+                <option value="Tool" onclick="buscar()">Tool</option>
+                <option value="Stadium" onclick="buscar()">Stadium</option>
+            </optgroup>
+        </select>
+        
+        
+        <div class="w3-col m1 l1" style="user-select: none;">&nbsp;</div>
+
+        <select name="options" class="w3-input w3-white w3-round w3-col m4 l4" id="inputOrganizar" style="min-width: 25% !important;" autocomplete="off">
+            <option value="" disabled selected>Organizar...</option>
+            <option value="Title" onclick="sort()">por Nome</option>
+            <option value="Data" onclick="sort()">por Tipo</option>
+            <option value="Hp" onclick="sort()">por Hp</option>
+        </select>
+        
+        <div class="w3-col m1 l1" style="user-select: none;">&nbsp;</div>
+
+        <button class="w3-button w3-white w3-border w3-round w3-col m2 l2" onclick="limpar()">Limpar</button>
+    </div>
+    <div class="w3-container w3-section w3-center" id="divImagens">
+        <!-- Aqui entram as imagens -->
+    </div>
+    
+<script>
+    'use strict'
+    // Globais
+    let contadorIdCards = 0;
+    // Objects
+    const database = {
+        roaringmoon: {name:"Roaring Moon", src:"Roaring Moon.jpg", type:"Darkness", stage:"Basic", hp:140, prize:"SinglePrize"},
+        bloodmoonursaluna: {name:"Bloodmoon Ursaluna", src:"Bloodmoon Ursaluna.jpg", type:"Fighting", stage:"Basic", hp:150, prize:"SinglePrize"},
+        murkrow: {name:"Murkrow", src:"Murkrow.jpg", type:"Darkness", stage:"Basic", hp:60, prize:"SinglePrize"},
+        dondozo: {name:"Dondozo", src:"Dondozo.jpg", type:"Water", stage:"Basic", hp:160, prize:"SinglePrize"},
+        tatsugiri: {name:"Tatsugiri", src:"Tatsugiri.jpg", type:"Dragon", stage:"Basic", hp:70, prize:"SinglePrize"},
+        okidogi: {name:"Okidogi", src:"Okidogi.jpg", type:"Fighting", stage:"Basic", hp:130, prize:"SinglePrize"},
+        miloticex: {name:"Milotic ex", src:"https://pkmncards.com/wp-content/uploads/sv8_en_042_std.jpg", type:"Water", stage:"Stage1", hp:270, prize:"DoublePrize", extra:"Wall"},
+        cornerstoneogerponex: {name:"Cornerstone Mask Ogerpon ex", src:"https://pkmncards.com/wp-content/uploads/sv6_en_112_std.jpg", type:"Fighting", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Wall"},
+        mimikyu: {name:"Mimikyu", src:"https://pkmncards.com/wp-content/uploads/sv2_en_097.jpg", type:"Psychic", stage:"Basic", hp:70, prize:"SinglePrize", extra:"Wall"},
+        budew: {name:"Budew", src:"Budew.jpg", type:"Grass", stage:"Basic", hp:30, prize:"SinglePrize", extra:"Disrupt"},
+        latiasex: {name:"Latias ex", src:"Latias ex.jpg", type:"Psychic", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Support"},
+        fezandipitiex: {name:"Fezandipiti ex", src:"Fezandipiti ex.jpg", type:"Darkness", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Support"},
+        baxcalibur: {name:"Baxcalibur", src:"Baxcalibur.jpg", type:"Water", stage:"Stage2", hp:160, prize:"SinglePrize", extra:"Support"},
+        veluza: {name:"Veluza", src:"Veluza.jpg", type:"Water", stage:"Basic", hp:130, prize:"SinglePrize", extra:"Kofu"},
+        crabominable: {name:"Crabominable", src:"Crabominable.jpg", type:"Water", stage:"Stage1", hp:160, prize:"SinglePrize", extra:"Kofu"},
+        azumarill: {name:"Azumarill", src:"Azumarill.jpg", type:"Psychic", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Ignorecost"},
+        toedscruel: {name:"Toedscruel", src:"Toedscruel.jpg", type:"Grass", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Disrupt"},
+        gastrodon: {name:"Gastrodon", src:"Gastrodon.jpg", type:"Fighting", stage:"Stage1", hp:130, prize:"SinglePrize", extra:"Disrupt"},
+        fluttermane: {name:"Flutter Mane", src:"Flutter Mane.jpg", type:"Psychic", stage:"Basic", hp:90, prize:"SinglePrize", extra:"Disrupt"},
+        klefki: {name:"Klefki", src:"Klefki.jpg", type:"Psychic", stage:"Basic", hp:70, prize:"SinglePrize", extra:"Disrupt"},
+        togekiss: {name:"Togekiss", src:"Togekiss.jpg", type:"Psychic", stage:"Stage2", hp:140, prize:"SinglePrize", extra:"Support"},
+        aegislash: {name:"Aegislash", src:"Aegislash.jpg", type:"Metal", stage:"Basic", hp:150, prize:"SinglePrize", extra:"Wall"},
+        dodrio: {name:"Dodrio", src:"Dodrio.jpg", type:"Colorless", stage:"Stage1", hp:100, prize:"SinglePrize", extra:"Support"},
+        dudunsparce: {name:"Dudunsparce", src:"Dudunsparce.jpg", type:"Colorless", stage:"Stage1", hp:140, prize:"SinglePrize", extra:"Support"},
+        pidgeotex: {name:"Pidgeot ex", src:"Pidgeot ex.jpg", type:"Colorless", stage:"Stage2", hp:280, prize:"DoublePrize", extra:"Support"},
+        rapidash: {name:"Rapidash", src:"Rapidash.jpg", type:"Fire", stage:"Stage1", hp:110, prize:"SinglePrize", extra:"Support"},
+        revavroom: {name:"Revavroom", src:"Revavroom.jpg", type:"Metal", stage:"Stage1", hp:140, prize:"SinglePrize", extra:"Support"},
+        xatu: {name:"Xatu", src:"Xatu.jpg", type:"Psychic", stage:"Stage1", hp:100, prize:"SinglePrize", extra:"Support"},
+        crustle: {name:"Crustle", src:"Crustle.jpg", type:"Grass", stage:"Stage1", hp:150, prize:"SinglePrize", extra:"Wall"},
+        squawkabilly: {name:"Squawkabilly", src:"Squawkabilly.jpg", type:"Colorless", stage:"Basic", hp:160, prize:"DoublePrize", extra:"Support"},
+        noivernex: {name:"Noivern ex", src:"Noivern ex.jpg", type:"Dragon", stage:"Stage1", hp:260, prize:"DoublePrize", extra:"Wall"},
+        sylveon: {name:"Sylveon", src:"Sylveon.jpg", type:"Psychic", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Wall"},
+        gholdengoex: {name:"Gholdengo ex", src:"Gholdengo ex.jpg", type:"Metal", stage:"Stage1", hp:260, prize:"DoublePrize", extra:"Support"},
+        charizardex: {name:"Charizard ex", src:"Charizard ex.jpg", type:"Darkness", stage:"Stage2", hp:330, prize:"DoublePrize", extra:"Support"},
+        drakloak: {name:"Drakloak", src:"Drakloak.jpg", type:"Dragon", stage:"Stage1", hp:90, prize:"SinglePrize", extra:"Support"},
+        quilava: {name:"Quilava", src:"Quilava.jpg", type:"Fire", stage:"Stage1", hp:100, prize:"SinglePrize", extra:"Support"},
+        
+        penny: {name:"Penny", src:"https://pkmncards.com/wp-content/uploads/sv1_en_183.jpg", type:"Trainer", stage:"Supporter", hp:999},
+        lanasaid: {name:"Lana's Aid", src:"Lanas Aid.jpg", type:"Trainer", stage:"Supporter", hp:999, extra:"NoRulebox"},
+        kofu: {name:"Kofu", src:"Kofu.jpg", type:"Trainer", stage:"Supporter", hp:999, extra:"Kofu"},
+    }
+    
+    // Funções
+    function gerarImagens() {
+        contadorIdCards = 0;
+        for (let i in database) imprimir(database[i]);
+        console.log(contadorIdCards + ' cards foram impressos!')
+    }
+    function imprimir(e) {
+        let x = document.getElementById('img' + contadorIdCards);
+        x.src = e.src;
+        //for (let i in e) {
+        x.title = e.name; // cria um title para a imagem com o conteúdo do "name" do objeto
+        x.classList.add(e.type, e.stage); // acrescenta as classes às imagens; as classes servem como as propriedades dos objetos; hp não é uma classe porque não existe filtro para mostrar somente pokémon com hp = x; é um dataset porque o hp é usado somente para organizar
+        if (e.prize) x.classList.add(e.prize);
+        if (e.extra) x.classList.add(e.extra); // o if é para evitar inserir a classe "undefined" para cards que não possuem informações extra
+        x.dataset.name = e.name; // necessário para a função sort(), mas poderia ser dispensável caso queira usar o title
+        x.dataset.type = e.type; // necessário para a função sort(), apesar de já existir a classe
+        if (e.hp) x.dataset.hp = e.hp; // necessário para a função sort()
+        x.style.display = "none"; // após gerar todas as imagens durante o carregamento da página, esconde-as
+        //}
+        contadorIdCards++;
+    }
+    function buscar() {
+        limpar();
+        let x = document.getElementById('inputText').value;
+        let stringImg = document.getElementsByTagName('img');
+        for (let i = 0; i < stringImg.length; i++) {
+            if (stringImg[i].classList.contains(x)) {
+                stringImg[i].style.display = "inline"        
+            }
+        }
+    }
+    function ocultar(e, f) {
+        let x = document.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {
+            if (x[i].classList.contains(e) || x[i].classList.contains(f)) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+    function limpar() {
+        let y = document.getElementById('divImagens');
+        let x = y.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {x[i].style.display = "none"}
+    }
+    function sort() { // Função sort()
+        let x = document.getElementById('inputOrganizar').value;
+        // Declaring Variables 
+        var geek_list, i, run, li, stop; 
+        
+        // Taking content of list as input 
+        geek_list = document.getElementById("divImagens");
+        
+        run = true; 
+        
+        while (run) { 
+            run = false; 
+            li = geek_list.getElementsByTagName("img");
+        
+            // Loop traversing through all the list items - name
+            if (x === "Title") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (li[i].dataset.name.toLowerCase() > li[i + 1].dataset.name.toLowerCase()) { 
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+            
+            // Loop traversing through all the list items - type
+            if (x === "Data") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (li[i].dataset.type.toLowerCase() >  
+                    li[i + 1].dataset.type.toLowerCase()) { 
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+
+            // Loop traversing through all the list items - hp
+            if (x === "Hp") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (parseInt(li[i].dataset.hp) > parseInt(li[i + 1].dataset.hp)) { // 1) Aqui, devido às bizarrices do javascript, deve-se converter o número em number/int; 2) o trecho "|| !li[i].dataset.hp" foi colocar para empurrar o card para baixo mesmo que ele não tenha HP (caso das Trainers), caso essa parte não exista a carta não muda de posição quando filtra por HP; 3) removi o item 2 porque dava lop infinito com 2+ trainers
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+            
+            /* If the current item is smaller than the next item then adding it after it using insertBefore() method */ 
+            if (stop) { 
+                li[i].parentNode.insertBefore(
+                    li[i + 1], li[i]); 
+                    run = true; 
+            } 
+        } 
+    }
+    function animarImagens() {
+        let x = document.getElementsByTagName('img');
+        for (let i = 1; i < x.length; i++) { // i começa em "1" para não abranger a imagem de fundo, que é a primeira imagem
+            x[i].classList.add('w3-animate-zoom')
+        }
+    }
+    function testar() {
+        let x = document.getElementById('divImagens');
+        let y = x.getElementsByTagName('img');
+        console.log(y.length)
+    }
+    function criarImagensVazias() {
+        let contador = 0;
+        for (let i in database) {
+            let x = document.createElement('img');
+            x.id = ("img" + contador);
+            document.getElementById('divImagens').appendChild(x);
+            contador++;
+        }
+    }
+    // Funções Start
+    criarImagensVazias();
+    gerarImagens();
+    animarImagens();
+</script>
+</body>
+</html>
