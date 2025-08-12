@@ -12,12 +12,17 @@
     table {border-collapse: collapse;}
     td, th {border: 0px solid black; vertical-align: top;}
     hr {height:2px; margin-top: 0; margin-bottom: 0;}
-    .logoletras {font-size: 4em; text-shadow: 3px 3px #bbb; font-family: 'Times New Roman', Times, serif;}
+    .logoletras {font-size: 4em; text-shadow: 3px 3px #bbb; font-family: 'Times New Roman', Times, serif;  color: #0078C8;}
     .logoautor {font-size: 1.5em; transform: translateY(-0.3em); font-family: 'Times New Roman', Times, serif;}
     .sublogoletras {font-size: 2em; font-family: 'Times New Roman', Times, serif;}
-    .valores {color: rgb(0, 120, 200); font-weight: bold;}
+
+    .valores {color: #080; font-weight: bold;}
+    .valoresNegativos {color: #c00; font-weight: bold;}
+    .atributos {color: rgb(0, 120, 200); font-weight: bold;}
+    /* #080 #dd6600 rgb(0, 120, 200) */
+
     #tabelaDeClasses img {width: 15em;}
-    #tabelaDeClasses td {text-align: center; padding: 0.5em; width: 50%;}
+    #tabelaDeClasses td {text-align: center; padding: 0.5em 1em; width: 50%;}
     #tabelaDeClasses h2 {font-size: 3em; font-family: 'Black Chancery', Georgia;}
     #tabelaDeClasses p {margin-top: 0.5em; text-align: justify; font-family: Georgia, 'Times New Roman', Times, serif; line-height: 1.5;}
 
@@ -27,7 +32,7 @@
     font-weight: normal;
     font-style: normal;
     }
-
+    footer {background-color: #555; text-align: center; font-family: Georgia; padding: 0.5em; color: white;}
   </style>
 </head>
 <body>
@@ -37,10 +42,23 @@
     <tr><td colspan="2"><hr></td></tr>
     <tr><th class="sublogoletras" colspan="2">Livro de Classes (Versão Online)</th></tr>
     <tr><td colspan="2"><hr></td></tr>
-    <tr><td><h2>Arqueiro</h2><img src="arquivos/Arqueiro.png"><p>O Arqueiro é herói especializado em armas físicas de longo alcance: arcos e bestas. Para realizar um ataque básico, role a Destreza do personagem mais dano da arma.</p></td><td><p>➢ <b>Recuada Estratégica (inerente)</b>: uma vez por combate, ao receber dano, o personagem pode utilizar esta habilidade para escapar dos atacantes próximos e se deslocar para outra posição no campo de batalha (inimigos que estavam atacando o personagem passam a atacar algum outro herói, caso exista). Não consome o turno ao ser realizada.</p><p>➢ <b>Disparo Crítico</b>: o personagem efetua um poderoso disparo, causado dano crítico que aumenta o ataque em <span class="valores">+1d/+2d/+3d/+4d/+5d</span> e ignora <span class="valores">10</span> de Proteção do oponente. Custa 5 PMs por nível de habilidade.</p><p>➢ <b>Concentração</b>: ao ativar, o personagem gasta um turno estudando seus oponentes e o campo de batalha. Durante seus próximos 3 turnos, recebe <span class="valores">+1/+2/+3/+4/+5</span> em Destreza. Custa 5 PMs por nível de habilidade.</p><p>➢ <b>Esquiva Aprimorada (passiva)</b>: o personagem ganha <span class="valores">+1/+2/+3/+4/+5</span> em esquiva.</p></td></tr>
+    <tr><td><h2>Arqueiro</h2><img src="arquivos/Arqueiro.png"><p>O Arqueiro é o herói especializado em armas físicas de longo alcance: arcos e bestas. Ele dedica sua vida e todo seu treinamento para atingir a perfeição no uso do arco.<br><br>Para realizar um ataque básico à distância, role a <span class="atributos">Destreza</span> do personagem (ao invés da Força) para calcular o valor de ataque.</p></td><td><p>➢ <b>Recuada Estratégica (inerente)</b>: uma vez por combate, ao receber dano, o personagem pode utilizar esta habilidade para escapar dos atacantes próximos e se deslocar para outra posição no campo de batalha (inimigos que estavam atacando o personagem passam a atacar algum outro herói, caso exista). Não consome o turno ao ser realizada.</p><p>➢ <b>Disparo Crítico</b>: o personagem efetua um poderoso disparo, causado dano crítico que aumenta o ataque em <span class="valores">+1d/+2d/+3d/+4d/+5d</span> e ignora <span class="valores">10</span> de Proteção do oponente. Custa 5 PMs.</p><p>➢ <b>Concentração</b>: ao ativar, o personagem gasta um turno estudando seus oponentes e o campo de batalha. Durante seus próximos 3 turnos, recebe <span class="valores">+1/+2/+3/+4/+5</span> em <span class="atributos">Destreza</span>. Custa 5 PMs.</p><p>➢ <b>Esquiva Aprimorada (passiva)</b>: o personagem recebe <span class="valores">+1/+2/+3/+4/+5</span> em <span class="atributos">Esquiva</span>.</p></td></tr>
     <tr><td colspan="2"><hr></td></tr>
-    <tr><td><h2>Assassino</h2><img src="arquivos/Assassino.png"><p>O Assassino é um aventureiro cruel, especializado em eliminar seus alvos rápida e furtivamente.</p></td><td><p><b>Avanço Furtivo (inerente)</b>: uma vez por combate, permite se mover pelo campo de batalha sem gastar sua ação, podendo, por exemplo, se mover e logo em seguida atacar. Abater um inimigo (ou participar de um abate) permite utilizar esta habilidade novamente.</p><p><b>Apunhalar (passiva)</b>: o personagem causa +1d/+2d/+3d/+4d/+5d dano adicional ao atacar um oponente pelas costas. Apunhalar não pode ser usada duas vezes seguidas contra o mesmo alvo.</p><p><b>Envenenar Lâmina</b>: o próximo ataque envenena o alvo, causando dano adicional de +2/+4/+6 (ignora armadura e resistências). Durante as próximas 4 rodadas, a vítima perde 2/4/6 de Vida no início do seu próprio turno. Custa 5 de mana.</p><p>Essa habilidade só pode ser usada ao atacar com facas, adagas ou punhais. Algumas criaturas são imunes a veneno, não sendo afetadas por esta habilidade.</p><p><b>Esquiva Perfeita (passiva)</b>: o Assassino pode desviar de qualquer ataque que consiga ver. Em vez de sua esquiva normal, ele pode realizar uma esquiva perfeita com 10/16/20% de chance de sucesso, independentemente da precisão do alvo.</p></td></tr>
-    
+    <tr><td><h2>Assassino</h2><img src="arquivos/Assassino.png"><p>O Assassino é um aventureiro sombrio, especializado em eliminar seus alvos rápida e furtivamente.</p></td><td><p>➢ <b>Avanço Furtivo (inerente)</b>: uma vez por combate, permite se mover pelo campo de batalha sem gastar sua ação, podendo, por exemplo, se mover e logo em seguida atacar. Abater um inimigo (ou participar de um abate) permite utilizar esta habilidade novamente.</p><p>➢ <b>Apunhalar (passiva)</b>: o personagem recebe bônus de ataque igual a <span class="valores">+1d/+2d/+3d/+4d/+5d</span> ao atacar um oponente pelas costas. Apunhalar não pode ser usada duas vezes seguidas contra o mesmo alvo.</p><p>➢ <b>Envenenar Lâmina</b>: este ataque envenena o alvo, causando dano adicional de <span class="valores">+2/+4/+6/+8/+10</span> que ignora Proteção e resistências. Durante as próximas 4 rodadas, a vítima perde <span class="valores">2/4/6/8/10</span> PVs no início do seu próprio turno. Custa 5 PMs.</p><p>Essa habilidade só pode ser usada ao atacar com facas, adagas ou punhais. Algumas criaturas são imunes a veneno, não sendo afetadas por esta habilidade.</p><p><b>Esquiva Perfeita (passiva)</b>: o Assassino pode desviar de qualquer ataque que consiga ver. Em vez de sua esquiva normal, ele pode realizar uma esquiva perfeita com <span class="valores">10/20/30/40/50%</span> de chance de sucesso, independentemente da precisão do alvo. Custa 1 PM (em caso de falha, o PM não é gasto).</p></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><td><h2>Bárbaro</h2><img src="arquivos/Bárbaro.png"><p>Bárbaros são como são chamados os poderosos guerreiros das montanhas do norte. Possuem uma civilização primal, baseada na caça e pesca, e o estudo é substituído pela força e sabedoria. Sua arma favorita é o machado.</p></td>
+      <td id="Frenesi"><p>➢ <b>Bárbaro (inerente)</b>: recebe a perícia <span class="valores">Sobrevivência</span> gratuitamente. Bárbaros não sabem ler, escrever ou se portar em público, nem podem equipar armaduras pesadas.</p><p>➢ <b>Frenesi</b>: ao ativar, o personagem entra em estado de Fúria. Neste estado, ele recebe bônus temporário de <span class="valores">+1/+2/+3/+4/+5</span> em <span class="atributos">Força</span>  e <span class="valores">+10/+20/+30/+40/+50</span> de <span class="atributos">Vida</span>, mas sua Proteção é reduzida a zero e ele não pode esquivar, bloquear, fugir nem ativar habilidades, somente atacar. Após o término da Fúria sofre redutor cumulativo de <span class="valoresNegativos">-1/-2/-3/-4/-5</span> em <span class="atributos">Força</span> até descansar. Não tem custo.</p><p>➢ <b>Pele de Ferro (passiva)</b>: o personagem reduz em <span class="valores">2/4/6/8/10</span> todo o dano recebido pós-mitigação.</p><p>➢ <b>Perícia com Machados e Martelos (passiva)</b>: o personagem recebe <span class="valores">+2/+4/+6/+8/+10</span> de ataque utilizando machados ou martelos.</p><p>➢ <b>Vigor (passiva)</b>: o personagem possui deslocamento básico e resistência à fadiga duas vezes superior aos outros integrantes da sua raça. Além disso, recebe <span class="valores">5/10/15/20/25</span> de <span class="atributos">Vida</span> adicional.</p></td>
+    </tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><td><h2>Berserker</h2><img src="arquivos/Berserker.jpg"><p>Berserker é uma espécie de bárbaro mais bruto, conectado com sua ira primal e os espíritos selvagens. Eles se tornam temíveis em batalha, perdendo o controle sobre suas próprias ações, podendo inclusive investir contra seus próprios aliados.</p></td>
+      <td><p>➢ <b>Ira (inerente)</b>: o Berserker fica mais forte à medida que recebe dano durante a batalha. A cada 4 de Vida perdida, o personagem ganha +1 de ataque. Caso seja curado ou regenere, ele perde o bônus recebido (proporcional ao valor de vida restaurado). Assim como o Bárbaro, não sabem ler, escrever ou se portar em público, nem podem equipar armaduras pesadas.</p>
+        <p>➢ <b>Frenesi</b>: <i>ver em <a href="#Frenesi">Bárbaro</a></i>.</p>
+        <p>➢ <b>Força Violenta</b>: o personagem desfere um violento ataque que causa dano extra ao inimigo e a si mesmo. Investe sobre o alvo com bônus de <span class="valores">+1d/+2d/+3d/+4d/+5d</span> em ataque, porém com redutor de <span class="valoresNegativos">-1</span> em <span class="atributos">Precisão</span>. O personagem também causa <span class="valoresNegativos">1/2/3/4/5</span> de dano a si mesmo, que não pode ser reduzido.</p>
+        <p>➢ <b>Perícia com Machados e Martelos (passiva)</b>: <i>ver em <a href="#Frenesi">Bárbaro</a></i>.</p></td>
+    </tr>
   </table>
+  <footer>
+    Atualização: 11/08/2025
+  </footer>
 </body>
 </html>
