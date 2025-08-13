@@ -40,7 +40,11 @@
     </style>
   <script>
     'use strict'
-    function modoEscuro() {document.body.style.color = "white"; document.body.style.backgroundColor = "black";}
+    function modoEscuro() {
+      let x = document.body;
+      if (x.style.color == "white") {x.style.color = "black"; x.style.backgroundColor = "white"}
+      else {document.body.style.color = "white"; document.body.style.backgroundColor = "black";}
+    }
   </script>    
   </head>
   <body>
@@ -77,6 +81,43 @@
       <tr><td><h2>Mystic Knight</h2><img src="arquivos/Mystic Knight.png"><p>Também conhecidos como Feiticeiros, estes guerreiros místicos do Oriente combinam sua proeza física com as artes mágicas para combater seus inimigos explorando suas fraquezas. São especialmente efetivos em batalhas longas contra inimigos poderosos.</p></td><td><p>➢ <b>Casca Mágica (inerente)</b>: uma vez por batalha, quando os PVs do personagem forem reduzidos a 40% ou menos (arredondado para baixo), conjura automaticamente um encantamento sobre si sem gastar sua ação. O Encantamento reduz em <span class="valores">50%</span> todo dano mágico recebido pós-mitigação e dura 4 rodadas.</p><p>➢ <b>Lâmina Arcana</b>: o personagem gasta um turno encantando sua própria espada ou a de um aliado, fornecendo <span class="valores">4/8/12/16/20</span> de  dano elemental (à sua escolha) por 4 rodadas. Não acumula consigo mesma. Custa 5 PMs.</p><p>➢ <b>Escudo Arcano</b>: o personagem gasta um turno encantando sua própria armadura ou a de um aliado, criando um escudo mágico que bloqueia <span class="valores">4/8/12/16/20</span> por ataque de dano físico por 4 rodadas. Não acumula consigo mesma. Custa 5 PMs.</p><p>➢ <b>Afinidade com Elemento</b>: o personagem gasta um turno encantando sua própria armadura ou a de um aliado, aumentando grandemente sua resistência elemental. Aumenta em  <span class="valores">10/20/30/40/50</span> a resistência elemental do alvo por 4 rodadas. Não acumula consigo mesma. Custa 5 PMs.</p></td></tr>
       <tr><td colspan="2"><hr></td></tr>
       <tr><td><h2>Alquimista</h2><img src="arquivos/Alquimista.webp"><p>Especialista na fabricação e uso de poções e misturas especiais, o alquimista é um profundo estudioso que combina ciência e magia para alcançar os mais diversos efeitos através de seus inventos.</p></td><td><p>➢ <b>Alquimista (inerente)</b>: o Alquimista é um estudioso das artes da <span class="valores">Química</span> e <span class="valores">Biologia</span>, recebendo estas perícias gratuitamente.</p><p>➢ <b>Arremessar Poção (ativa)</b>: o personagem consegue arremessar poções com precisão, até uma distância de 5 metros, sem a necessidade de testes.</p><p>➢ <b>Fabricar Poções (ativa)</b>: o personagem consegue fabricar poções de nível <span class="valores">1/2/3/4/5</span> por metade do custo praticado pelos comerciantes. O tempo necessário depende da quantidade e complexidade das poções.</p><p>➢ <b>Proficiência Alquímica (passiva)</b>: aumenta a eficiência das poções fabricadas em <span class="valores">10/20/30/40/50%</span>.</p><p>➢ <b>Auto-poção (reação)</b>: devido à sua familiaridade, o Alquimista reage reflexivamente ao perigo consumindo rapidamente uma poção que tenha consigo. Ao receber dano, o jogador pode consumir uma poção de cura ou suporte imediatamente, sem gastar sua ação. Esta habilidade pode ser usada até <span class="valores">1/2/3/4/5</span> vezes por batalha.</p></td></tr>
+      <tr><td colspan="2"><hr></td></tr>
+      <tr><th class="sublogoletras" colspan="2">Regras (Resumo)</th></tr>
+      <tr><td colspan="2"><hr></td></tr>
+      <tr><td colspan="2">
+        <p>• <b>Atributos</b>: são as características primárias dos personagens. Ao subir um nível de personagem, o personagem ganha 1 ponto de atributo.</p>
+        <p>• <b>Força</b>: mede a robustez do personagem, permite levantar objetos pesados, etc. Cada ponto aumenta o ataque com armas corpo-a-corpo em 1d6 e aumenta a Vida em +2.</p>
+        <p>• <b>Destreza</b>: mede a agilidade e domínio corporal do personagem, permite fazer malabarismos e movimentos que exijam precisão. Cada ponto aumenta o ataque com armas a distância (e algumas outras) em 1d6, aumenta 1 em Precisão e 1 em Esquiva.</p>
+        <p>• <b>Inteligência</b>: mede o raciocínio e sabedoria para tarefas que exijam concentração e estudo. Cada ponto aumenta a eficiência de feitiços em 1d6 e aumenta a Mana em 10.</p>
+        <p>• <b>Vitalidade</b>: mede a resistência do personagem a dano, doenças e condições malignas. Cada ponto aumenta a Vida em 10.</p>
+        <p>• <b>Características Secundárias</b>: são as características que, no geral, depende dos atributos. Não é possível alocar pontos diretamente nelas, mas muitas delas são afetadas pelos atributos.</p>
+        <p>• <b>Vida</b>: é o "life" máximo do personagem. A Vida inicial do personagem é de 10, aumentada pela Vitalidade e itens.</p>
+        <p>• <b>Mana</b>: é a reserva de energia mística inerente aos seres vivos. É o combustível para realizar magia. A Mana inicial é de 10, aumentada pela Inteligência e itens.</p>
+        <p>• <b>Pontos de Vida (PVs)</b>: são a quantificação da Vida atual. Um poção, por exeplo, recura seus PVs. Já uma armadura pode aumentar sua Vida (ou seja, seus PVs máximos).</p>
+        <p>• <b>Pontos de Mana (PMs)</b>: similar ao descrito acima.</p>
+        <p>• <b>Precisão e Esquiva</b>: no Sigma, todo ataque acerta automaticamente, a menos que alguma mecânica interfira nesse ataque. A mecânica padrão (que não envolve Habilidades Especiais) que pode afetar isso é a Esquiva. Uma esquiva é um tipo de Defesa Ativa que permite ao usuário desviar completamente um ataque, caso bem-sucedida. A esquiva só pode ser realizada caso a diferença entre a sua Esquiva menos a Precisão do oponente seja um valor positivo. Rola-se, então, esse resultado contra 1d10 para verificar se o ataque foi esquivado. Exemplo: um Ladino que tenha Esquiva 3 enfrentando um oponente com Precisão 1 tem (3-1=2) 20% de chance de esquiva (deve rolar 1 ou 2 em 1d10). Precisão e Esquiva iniciais são iguais ao valor da Destreza.</p>
+        <p>• <b>Proteção</b>: Proteção é outro nome para "armadura" em alguns jogos. Existe essa diferença aqui porque "armadura" é um tipo de vestimenta/equipamento, e Proteção é o benefício que ela traz. Cada valor de Proteção reduz os ataques físicos recebidos em 1% (arredonde o valor para baixo). O valor da Proteção inicial para seres humanos é de 0 (zero), aumentado somente através de magia ou equipamentos.</p>
+        <p>• <b>Resistência</b>: resistências funcionam igual a Proteção, porém contra dano elemental. Existem 3 tipos de resistência: contra Fogo, Gelo e Elétrico. As resistências iniciais dos personagens são 0 (zero).</p>
+        <p>• <b>Nível de Personagem</b>: reflete as capacidades e experiência do herói. Ao subir de nível de personagem, o jogador pode aumentar um Atributo em 1 ponto. O nível de personagem também permite o uso de equipamentos de qualidade melhor.</p>
+        <p>• <b>Nível de Classe</b>: mede o o grau de experiência e poder que um personagem atingiu dentro de uma classe específica. Ao subir de nível de classe, o jogador pode investir um ponto de Habilidade em seu personagem.</p>
+        <p>• <b>Habilidades Especiais</b>: são as "skills", habilidades de determinadas classes com efeitos poderosos. As Habilidades possuem níveis, que são descritos pelos valores listados em azul e separados por barras. Algumas Habilidades, no entanto, possuem somente um único nível.</p>
+        <p>• <b>Ataque Básico</b>: utiliza a fórmula (Força/Destreza + dano da arma + modificadores). A arma utilizada define o uso da Força ou Destreza no cálculo de ataque.</p>
+        <p>• <b>Defesa Ativa</b>: uma defesa ativa é uma defesa consciente, que depende da movimentação do personagem. São 3 tipos: Aparar, Bloqueio e Esquiva. Aparar e Bloqueio utilizam uma chance em porcentagem (utilize 1d10) para reduzir um ataque físico em um valor fixo, a depender da arma ou escudo equipado.</p>
+        <p>• <b>Defesa Passiva</b>: é a redução de ataque por meio de equipamentos ou magia. A redução por Proteção e Resistências são exemplos.</p>
+        <p>• <b>Mitigação</b>: é a redução do valor que seria recebido como dano, ou seja, após a redução das defesas ativa e passiva. Pode vir em duas formas: valor fixo ou porcentagem. Caso ambas estejam presentes, reduzir o valor fixo antes da porcentagem.</p>
+        
+        </td>
+      </tr>
+      <tr><td colspan="2"><hr></td></tr>
+      <tr><th class="sublogoletras" colspan="2">Glossário</th></tr>
+      <tr><td colspan="2"><hr></td></tr>
+      <tr><td colspan="2">
+        <p>• <b>RPG</b>: do inglês, Role Playing Game, ou Jogo de Interpretação de Papéis (Personagem). Repare como a palavra "Interpretação" está presente no próprio nome do jogo.</p>
+        <p>• <b>Aventura</b>: sessão de RPG com início, meio e fim.</p>
+        <p>• <b>Campanha</b>: um conjunto de Aventuras. Para o Sigma, o ideal é uma campanha tenha 11 Aventuras, uma para cada nível mais uma última aventura épica lendária.</p>
+        <p>• <b>Turno</b>: período de tempo que abrange as ações de um único personagem durante um combate. Não é um limite temporal estabelecido, mas um turno tem uma curta duração.</p>
+        <p>• <b>Rodada</b>: é o conjunto de cada turno dos personagens do combate, até imediatamente antes da repetição do primeiro. Exemplo: se existem 4 personagens lutando, uma rodada acontece de 4 em 4 turnos.</p>
+      </td></tr>
     </table>
 
     
@@ -84,7 +125,7 @@
     <footer>
       Versão Online: 11/08/2025<br>Atualizado em: 12/08/2025
       <br><br>
-      <button id="botaoDark" onclick="modoEscuro()">Modo Escuro</button>
+      <button id="botaoDark" onclick="modoEscuro()">Modo Claro 🌝 | Escuro 🌚</button>
     </footer>
   </body>
   </html>
