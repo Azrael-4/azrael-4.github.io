@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cthulhu by Elton</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <style>
+    html {scroll-behavior: smooth;}
+  </style>
+</head>
+<body class="w3-black w3-content w3-monospace">
+
+  <div class="w3-bar w3-center" id="home" style="white-space: nowrap; overflow-x: auto;">
+    <a href="#inicio"><button class="w3-button w3-teal">Início</button></a>
+    <a href="#personagens"><button class="w3-button w3-teal">Personagens</button></a>
+    <a href="#reliquias"><button class="w3-button w3-teal">Relíquias</button></a>
+    <a href="#objetivos"><button class="w3-button w3-teal">Objetivos</button></a>
+    <a href="#inimigos"><button class="w3-button w3-teal">Inimigos</button></a>
+    <a href="#about"><button class="w3-button w3-teal">About</button></a>
+  </div>
+
+  <div class="w3-container">
+    <br><img src="https://m.media-amazon.com/images/S/aplus-media/vc/6bc6b4cc-efc9-489f-b4b0-28243d4d0ecd.__CR0,0,970,300_PT0_SX970_V1___.jpg" style="width: 100%;">
+  </div>
+
+  
+
+  <div class="w3-container" id="inicio">
+    <h2>Início</h2>
+    <p>1) Coloque os 4 marcadores dos portais no canto inferior do tabuleiro.</p>
+    <p>2) Coloque as cartas dos Grandes Anciões: 6 cartas aleatórias + o Chtulhu como a última carta, indicada pelo "x".</p>
+    <p>3) Monte o Baralho de Invocação (verso azul, com figura do cultista) embaralhando todas as cartas de invocação. Em seguida:</p>
+    <p>3.1) Vire as 2 cartas do topo e coloque 3 adoradores em cada local indicado;</p>
+    <p>3.2) Vire mais 2 cartas e coloque 2 adoradores em cada local indicado;</p>
+    <p>3.3) Vire mais 2 cartas e coloque 1 adorador em cada local indicado;</p>
+    <p>3.4) Vire mais 1 carta e coloque 1 Shoggoth no local indicado;</p></p>
+    <p>3.5) Coloque todas as cartas reveladas na pilha de descarte de invocação.</p>
+    <p>4) Distribua aleatoriamente as cartas de Investigadores e sua respectiva figura entre os jogadores.</p>
+    <p>4.1) O jogador que leu uma história de terror mais recentemente é o primeiro a jogar.</p>
+    <p>4.2) Cada Investigador começa com 4 marcadores de sanidade.</p>
+    <p>4.3) Todos os jogadores iniciam na Estação de Trem da cidade de Arkham.</p>
+    <p>5) Monte o Baralho de Jogo.</p>
+    <p>5.1) Cartas de Pistas: todas as 44 (Fácil); -1 de cada cor (Normal); -2 de cada cor (Difícil);</p>
+    <p>5.2) Cartas de Relíquias: embaralhe 4/5/6 (de acordo com o número de jogadores) Relíquias junto com as Pistas.</p>
+    <p>5.3) Mão inicial: distribua as cartas entre os jogadores. A mão inicial é de 4/3/2 (de acordo com o número de jogadores).</p>
+    <p>5.4) Adicione as cartas O Mal se Agita: divida o baralho em 4 partes, embaralhe 1 O Mal se Agita em cada uma delas, depois sobreponha-as para formar o Baralho de Jogo final.</p>
+    <p><i>Conteúdo: 7 Investigadores; 7 Figuras de Investigadores; 44 Pistas; 12 Relíquias; 4 O Mal se Agita; 4 Cartas de Referência; 1 Tabuleiro; 24 Cartas de Invocação; 12 Cartas de Grande Ancisão; 1 Dado da Sanidade; 18 Marcadores de Sanidade; 4 Marcadores de Lacrar; 26 Figuras de Adoradores; 3 Figuras de Shoggoth.</i></p>
+  </div>
+
+  <div class="w3-container" id="personagens">
+    <h2>Personagens</h2>
+    <p>• Os jogadores são Investigadores, cada um com um poder especial único.</p>
+    <p>• Cada Investigador começa com 4 marcadores de sanidade.</p>
+    <p>• Cada jogador pode realizar 4 ações por turno.</p>
+    <p>• No final do turno, o jogador compra 2 cartas do baralhos de jogo (pistas).</p>
+    <p>• No final do turno, revele duas cartas do baralho de invocação.</p>
+    <p>• Um jogador nunca pode ter mais de 7 cartas na mão, em momento algum (caso receba a oitava carta, deve descartar uma carta de pista ou relíquia imediatamente).</p>
+    <p>• Entregar e receber uma carta contam como ações separadas.</p>
+    <p>• Só é possível entregar/receber cartas com outros Investigadores que estejam na sua exata localização.</p>
+    <p>• Só é possível entregar/receber cartas de Pista da mesma cor da cidade que vocês se encontram.</p>
+    <p>• Investigadores insanos têm uma ação a menos por turno.</p>
+    <p>• Caso recupere a sanidade, a ação extra recuperada ainda pode ser realizada.</p>
+    <p>• Jogadores devem rolar o dado da sanidade mesmo que seu personagem esteja insano (mas ele não perde mais sanidade).</p>
+    <p>• Ao fechar um Portal, o Investigador: 1) é teleportado para a Igreja ou Hospital (o jogador escolhe); 2) recupera a sanidade inicial; 3) ganha imediatamente uma ação; 4) remove 1 Adorador de cada localidade da cidade.</p>
+    <h2>Movimentos</h2>
+    <p>• Andar: mova-se de um local para o outro conectado por uma linha. Conta como uma ação.</p>
+    <p>• Tomar um Ônibus: caso esteja num local com ponto de ônibus, <b>descarte qualquer carta de pista</b> e vá para <b>qualquer local da mesma cidade da pista descartada</b>. >> Se a pista descartada for <b>da própria cidade que o Investigador se encontra</b>, ele pode ir para <b>qualquer local de qualquer cidade</b>.</p>
+    <p>• Usar um Portal: o Investigador pode viajar entre os portais que ainda estejam abertos. Realizar esta ação resulta em um rolamendo do dado de sanidade.</p>
+  </div>
+
+  <div class="w3-container" id="reliquias">
+    <h2>Relíquias</h2>
+    <p>• Cartas de Relíquias contam como cartas para o limite de 7 cartas na mão.</p>
+    <p>• Relíquias podem ser usadas em qualquer turno.</p>
+    <p>• Usar um Relíquia não consome uma ação.</p>
+    <p>• As Relíquias são removidas de jogo após o uso.</p>
+    <p>• O jogador que ativou a Relíquia deve rolar um dado de sanidade após a resolução do efeito.</p>
+    <p>* Quando duas "O Mal Se Agita" forem reveladas, é possível ativar relíquias entre as duas resoluções.</p>
+  </div>
+
+  <div class="w3-container" id="objetivos">
+    <h2>Objetivos</h2>
+    <p>• Os jogadores devem lacrar os 4 portais.</p>
+    <p>• Os jogadores perdem o jogo se:</p>
+    <p>- Todos os jogadores elouquecerem.</p>
+    <p>- Não restar número suficiente de adoradores quando necessário;</p>
+    <p>- Não restar número suficiente de Shoggoths quando necessário;</p>
+    <p>- Não restar número suficiente de cartas de jogo quando necessário;</p>
+    <p>- Cthulhu despertar;</p>
+    <p>• Para lacrar um Portal, é necessário ir até o local e descartar 5 cartas de pista da mesma cor da cidade.</p>
+  </div>
+
+  <div class="w3-container" id="inimigos">
+    <h2>Inimigos</h2>
+    <p>• Os inimigos "jogam" ao final de cada turno, revelando as duas primeiras cartas do baralho de invocação.</p>
+    <p>• Inicialmente 2 cartas são reveladas, porém esse número aumenta para 3 a partir do despertar do quarto Grande Ancião.</p>
+    <p>• Coloque 1 Adorador em cada um das localidades reveladas, depois descarte-as.</p>
+    <p>• Caso a carta tenha um ícone de Shoggoth, todos os Shoggoths se movem uma casa em direção ao Portal aberto mais próximo.</p>
+    <p>• Caso o Shoggoth já esteja no Portal, ele é removido e ocorre um Ritual do Despertar (o próximo Grande Ancião é revelado).</p>
+    <p>• Caso um local já tenha 3 adoradores, ao invés de colocar um adicional, ocorre um Ritual do Despertar (o próximo Grande Ancião é revelado).</p>
+    <p>• Derrotar um Adorador requer 1 ação.</p>
+    <p>• Derrotar um Shoggoth requer 3 ações. Se derrotado desta forma, o jogador recebe uma Relíquia.</p>
+    <p>• Imediatamente ao ficar no mesmo local que um Shoggoth, o jogador deve rolar um dado de sanidade.</p>
+  </div>
+
+  <div class="w3-container" id="about">
+    <h2>About</h2>
+    <p>• Guia Rápido de Regras para o jogo O Reino do Cthulhu. Escrito e editado por Elton Andrade Bezerra em 29/12/2025.</p>
+  </div>
+
+  <div class="w3-bar w3-center">
+    <a href="#home"><button class="w3-button w3-teal">Início</button></a>
+  </div>
+<script>
+  'use strict'
+  let x = document.querySelectorAll('h1, h2, h3');
+  x.forEach(x => x.classList.add('w3-monospace'))
+</script>
+</body>
+</html>
