@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itens League</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: monospace; font-size: 24px}
+        html {scroll-behavior: smooth}
+        body {background-color: #111; color: #eee; padding: 0.5cm}
+        img {vertical-align: middle}
+        table {border-collapse: collapse; min-width: 2200px}
+        table img {width: 75px}
+        td, th {border: 1px dotted white; padding: 0.5rem; text-align: center; min-width: 8rem}
+        .cgold {color: gold}
+        .cvida {color: green}
+        .carmor {color: orange}
+        .cresist {color: lightblue}
+        .chaste {color: white}
+        .cregen {color: lightgreen}
+
+        
+    </style>
+</head>
+<body>
+
+<table id="tabelaItensTank">
+    <thead>
+        <tr>
+            <th></th>
+            <th onclick="ordenarPor('nome')">Name</th>
+            <th onclick="ordenarPor('gold')">Gold</th>
+            <th onclick="ordenarPor('vida')">Health</th>
+            <th onclick="ordenarPor('armor')">Armor</th>
+            <th onclick="ordenarPor('resist')">Resist</th>
+            <th onclick="ordenarPor('haste')">Ability Haste</th>
+            <th onclick="ordenarPor('regen')">Regeneration</th>
+            <th>Extra</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+
+
+
+<script>
+const idatabase = [
+    {
+        imagem: "arquivos/Overlord.png",
+        nome: "Overlord's Bloodmail",
+        classe: "tank",
+        gold: 3300,
+        armor: 0,
+        resist: 0,
+        vida: 550,
+        haste: 0,
+        regen: 0,
+        desc: "2.5% bonus health as attack damage;<br>up to +12% (based on missing health) attack damage",
+    },
+    {
+        imagem: "arquivos/Jak.png",
+        nome: "Jak'Sho, The Protean",
+        classe: "tank",
+        gold: 3200,
+        armor: 45,
+        resist: 45,
+        vida: 350,
+        haste: 0,
+        regen: 0,
+        desc: "+30% armor and magic resist after 5s in combat with champions",
+    },
+    {
+        imagem: "arquivos/Warmog.png",
+        nome: "Warmog's Armor",
+        classe: "tank",
+        gold: 3100,
+        armor: 0,
+        resist: 0,
+        vida: 1000,
+        haste: 0,
+        regen: 100,
+        desc: "Gain bonus health equal to 12% bonus health from items; 3% max health per second (8s cd)",
+    },
+    {
+        imagem: "arquivos/Heartsteel.png",
+        nome: "Heartsteel",
+        classe: "tank",
+        gold: 3000,
+        armor: 0,
+        resist: 0,
+        vida: 900,
+        haste: 0,
+        regen: 100,
+        desc: "70 (+ 6% max health) bonus physical damage on-hit and grant permanent bonus health (30s cd per target)",
+    },
+    {
+        imagem: "arquivos/Kaenic.png",
+        nome: "Kaenic Rookern",
+        classe: "tank",
+        gold: 2900,
+        armor: 0,
+        resist: 80,
+        vida: 400,
+        haste: 0,
+        regen: 100,
+        desc: "15% max health magic shield (15s cd)",
+    },
+    {
+        imagem: "arquivos/Dead.png",
+        nome: "Dead Man's Plate",
+        classe: "tank",
+        gold: 2900,
+        armor: 55,
+        resist: 0,
+        vida: 350,
+        haste: 0,
+        regen: 0,
+        desc: "+4% ms; 15% slow resist; 20 bonus ms after 3.75s; 40+100%AD on-hit",
+    },
+    {
+        imagem: "arquivos/Iceborn.png",
+        nome: "Iceborn Gauntlet",
+        classe: "tank",
+        gold: 2900,
+        armor: 50,
+        resist: 0,
+        vida: 300,
+        haste: 15,
+        regen: 0,
+        desc: "150% base AD bonus physical damage + 30% slow for 2s (1.5s cd)",
+    },
+    {
+        imagem: "arquivos/Unending.png",
+        nome: "Overlord",
+        classe: "tank",
+        gold: 2800,
+        armor: 50,
+        resist: 0,
+        vida: 400,
+        haste: 15,
+        regen: 0,
+        desc: "3% bonus health as magic damage to champions and heals 250% post-mitigation",
+    },
+    {
+        imagem: "arquivos/Force.png",
+        nome: "Force of Nature",
+        classe: "tank",
+        gold: 2800,
+        armor: 0,
+        resist: 55,
+        vida: 400,
+        haste: 0,
+        regen: 0,
+        desc: "8 stacks = +70 resist, +6% movespeed",
+    },
+    {
+        imagem: "arquivos/Hollow.png",
+        nome: "Hollow Radiance",
+        classe: "tank",
+        gold: 2800,
+        armor: 0,
+        resist: 40,
+        vida: 400,
+        haste: 10,
+        regen: 100,
+        desc: "15+1% bonus health magic damage per second",
+    },
+    {
+        imagem: "arquivos/Spirit.png",
+        nome: "Spirit Visage",
+        classe: "tank",
+        gold: 2700,
+        armor: 0,
+        resist: 50,
+        vida: 400,
+        haste: 10,
+        regen: 100,
+        desc: "25% heal, shield and regen",
+    },
+    {
+        imagem: "arquivos/Sunfire.png",
+        nome: "Sunfire Aegis",
+        classe: "tank",
+        gold: 2700,
+        armor: 50,
+        resist: 0,
+        vida: 350,
+        haste: 10,
+        regen: 0,
+        desc: "20+1% bonus health magic damage per second",
+    },
+    {
+        imagem: "arquivos/Randuin.png",
+        nome: "Randuin's Omen",
+        classe: "tank",
+        gold: 2700,
+        armor: 75,
+        resist: 0,
+        vida: 350,
+        haste: 0,
+        regen: 0,
+        desc: "-30% critical damage; 70% slow for 2s, (90s cd)",
+    },
+    {
+        imagem: "arquivos/Abyssal.png",
+        nome: "Abyssal Mask",
+        classe: "tank",
+        gold: 2650,
+        armor: 0,
+        resist: 45,
+        vida: 350,
+        haste: 15,
+        regen: 0,
+        desc: "+12% magic damage aura",
+    },
+    {
+        imagem: "arquivos/Protoplasm.png",
+        nome: "Protoplasm Harness",
+        classe: "tank",
+        gold: 2600,
+        armor: 0,
+        resist: 0,
+        vida: 600,
+        haste: 20,
+        regen: 0,
+        desc: "+100-300 health, 100-400(+175% armor/resist) healing (90s cd)",
+    },
+    {
+        imagem: "arquivos/Frozen.png",
+        nome: "Frozen Heart",
+        classe: "tank",
+        gold: 2500,
+        armor: 75,
+        resist: 0,
+        vida: 0,
+        haste: 20,
+        regen: 0,
+        desc: "-20% IAS aura",
+    },
+    {
+        imagem: "arquivos/Thornmail.png",
+        nome: "Thornmail",
+        classe: "tank",
+        gold: 2450,
+        armor: 75,
+        resist: 0,
+        vida: 150,
+        haste: 0,
+        regen: 0,
+        desc: "Retaliate on-hit (20+10% bonus armor) magic damage; 3s grievous wounds",
+    },
+    {
+        imagem: "arquivos/Winter.png",
+        nome: "Winter's Approach",
+        classe: "tank",
+        gold: 2400,
+        armor: 0,
+        resist: 0,
+        vida: 550,
+        haste: 15,
+        regen: 0,
+        desc: "15% bonus mana as bonus health",
+    },
+    {
+        imagem: "arquivos/Knight.png",
+        nome: "Knight's Vow",
+        classe: "tank",
+        gold: 2300,
+        armor: 40,
+        resist: 0,
+        vida: 200,
+        haste: 10,
+        regen: 100,
+        desc: "Redirect 14% pre-mitigation; heal for 12% post-mitigation damage",
+    },
+    {
+        imagem: "arquivos/Zeke.png",
+        nome: "Zeke's Convergence",
+        classe: "tank",
+        gold: 2200,
+        armor: 25,
+        resist: 25,
+        vida: 300,
+        haste: 10,
+        regen: 0,
+        desc: "15 ultimate haste; 30% slow 5s após ultimate",
+    },
+    {
+        imagem: "arquivos/Locket.png",
+        nome: "Locket of the Iron Solari",
+        classe: "tank",
+        gold: 2200,
+        armor: 30,
+        resist: 30,
+        vida: 200,
+        haste: 10,
+        regen: 0,
+        desc: "290-360 decaying shield over 2.5s (90s cd)",
+    },
+    {
+        imagem: "arquivos/Bandlepipes.png",
+        nome: "Bandlepipes",
+        classe: "tank",
+        gold: 2300,
+        armor: 20,
+        resist: 20,
+        vida: 200,
+        haste: 15,
+        regen: 0,
+        desc: "20ms after slow or immobilize; 30 ias to you and ally",
+    },
+    {
+        imagem: "arquivos/Overlordd.png",
+        nome: "Overlord",
+        classe: "tank",
+        gold: 0,
+        armor: 0,
+        resist: 0,
+        vida: 550,
+        haste: 0,
+        regen: 0,
+    },
+];
+
+
+
+// Criar Tabela Tank
+const tbody = document.querySelector("#tabelaItensTank tbody");
+
+function renderTabelaTank() {
+
+    tbody.innerHTML = "";
+
+    idatabase.forEach(item => {
+
+        const linha = document.createElement("tr");
+
+        linha.innerHTML = `
+            <td><img src="${item.imagem}"></td>
+            <td>${item.nome}</td>
+            <td class="cgold">${item.gold}</td>
+            <td class="cvida">${item.vida}</td>
+            <td class="carmor">${item.armor}</td>
+            <td class="cresist">${item.resist}</td>
+            <td class="chaste">${item.haste}</td>
+            <td class="cregen">${item.regen}</td>
+            <td class="cdesc">${item.desc}</td>
+        `;
+        tbody.appendChild(linha);
+    });
+}
+
+
+// Funções Start
+renderTabelaTank();
+
+
+
+// Organizar
+let ultimaColuna = "";
+let ordemDecrescente = true;
+
+function ordenarPor(atributo) {
+
+    // Se clicou na mesma coluna, inverte a ordem
+    if (ultimaColuna === atributo) {
+        ordemDecrescente = !ordemDecrescente;
+    } else {
+        ultimaColuna = atributo;
+        ordemDecrescente = true;
+    }
+
+    idatabase.sort((a, b) => {
+
+        // Tratamento para texto
+        if (typeof a[atributo] === "string") {
+
+            return ordemDecrescente
+                ? b[atributo].localeCompare(a[atributo])
+                : a[atributo].localeCompare(b[atributo]);
+
+        }
+
+        // Tratamento para números
+        return ordemDecrescente
+            ? b[atributo] - a[atributo]
+            : a[atributo] - b[atributo];
+
+    });
+
+    renderTabelaTank();
+
+}
+
+</script>
+</body>
+</html>
