@@ -3,6 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staples G+ by Elton</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <style>
+        img {vertical-align: middle}
+        #divImagens img {margin-right: 6px; margin-bottom: 6px; width: 320px; border-radius: 16px}
+        #metagame img {max-height: 50px; transform: scale(1.1);}
+        #metagame i {opacity:50%;}
+    </style>
+</head>
+<body class="w3-light-gray">
+    <img src="https://www.pixelstalk.net/wp-content/uploads/2025/07/A-serene-landscape-with-Pokemon-in-their-natural-habitat-perfect-as-a-HD-wallpaper.jpg" class="w3-hide-small" style="position: fixed; width: 100%; z-index: -100; margin-top: 2em; opacity: 25%;">
+    <div class="w3-row w3-blue w3-container w3-padding w3-card">
+        <select name="options" class="w3-input w3-white w3-round w3-col m4 l4" id="inputText" style="min-width: 25% !important;" autocomplete="off">
+            <option value="" disabled selected>Pesquisar...</option>
+            <optgroup label="Theme">
+                <option value="Attacker" onclick="buscar()">Attacker</option>
+                <option value="Support" onclick="buscar()">Support</option>
+                <option value="Disrupt" onclick="buscar()">Disrupt</option>
+                <option value="Wall" onclick="buscar()">Wall</option>
+            </optgroup>
+
+            <optgroup label="Type">
+                <option value="Darkness" onclick="buscar()">Darkness</option>
+                <option value="Dragon" onclick="buscar()">Dragon</option>
+                <option value="Fighting" onclick="buscar()">Fighting</option>
+                <option value="Fire" onclick="buscar()">Fire</option>
+                <option value="Grass" onclick="buscar()">Grass</option>
+                <option value="Lightning" onclick="buscar()">Lightning</option>
+                <option value="Metal" onclick="buscar()">Metal</option>
+                <option value="Psychic" onclick="buscar()">Psychic</option>
+                <option value="Water" onclick="buscar()">Water</option>
+            </optgroup>
+
+            <optgroup label="Trainer">
+                <option value="Supporter" onclick="buscar()">Supporter</option>
+                <option value="Item" onclick="buscar()">Item</option>
+                <option value="Tool" onclick="buscar()">Tool</option>
+                <option value="Stadium" onclick="buscar()">Stadium</option>
+            </optgroup>
+            
+            <optgroup label="Stage (filtrar)">
+                <option value="Basic" onclick="ocultar('Stage1', 'Stage2')">Basic</option>
+                <option value="Stage1" onclick="ocultar('Basic', 'Stage2')">Stage 1</option>
+                <option value="Stage2" onclick="ocultar('Basic', 'Stage1')">Stage 2</option>
+            </optgroup>
+            
+            <optgroup label="Prizes (filtrar)">
+                <option value="SinglePrize" onclick="ocultar('DoublePrize', 'TriplePrize')">Single Prize</option>
+                <option value="DoublePrize" onclick="ocultar('SinglePrize', 'TriplePrize')">Double Prize</option>
+                <option value="TriplePrize" onclick="ocultar('SinglePrize', 'DoublePrize')">Triple Prize</option>
+            </optgroup>
+
+        </select>
+        
+        <div class="w3-col m1 l1" style="user-select: none;">&nbsp;</div>
+
+        <select name="options" class="w3-input w3-white w3-round w3-col m4 l4" id="inputOrganizar" style="min-width: 25% !important;" autocomplete="off">
+            <option value="" disabled selected>Organizar...</option>
+            <option value="Title" onclick="sort()">por Nome</option>
+            <option value="Data" onclick="sort()">por Tipo</option>
+            <option value="Hp" onclick="sort()">por Hp</option>
+        </select>
+        
+        <div class="w3-col m1 l1" style="user-select: none;">&nbsp;</div>
+
+        <button class="w3-button w3-white w3-border w3-round w3-col m2 l2" onclick="limpar()">Limpar</button>
+    </div>
+
+    <div class="w3-container w3-section w3-center" id="divImagens">
+        <!-- Aqui entram as imagens -->
+    </div>
+
+
+<footer class="w3-card w3-gray w3-text-white w3-wide w3-bottom w3-center" style="z-index:-1">Staples Gray Format by Elton</footer>
+
+
+
+
+
+<table class="w3-table w3-centered w3-content" id="metagame">
+<trx><th colspan="2">Meta</th></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/dragapult.png"></td><td>Dragapult ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/gardevoir.png"></td><td>Gardevoir ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/raging-bolt.png"></td><td>Raging Bolt ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/charizard.png"></td><td>Charizard ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/gholdengo.png"></td><td>Gholdengo ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/joltik.png"></td><td>Joltik Box</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/grimmsnarl.png"></td><td>Marnie's Grimmsnarl</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/zoroark.png"></td><td>N's Zoroark</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/noctowl.png"></td><td>Terabox</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/absol-mega.png"></td><td>Mega Absol ex</td></tr>
+<trx><th colspan="2">Diversos</th></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/ceruledge.png"></td><td>Ceruledge ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/iron-thorns.png"></td><td>Iron Thorns ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/flareon.png"></td><td>Flareon ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/terapagos.png"></td><td>Terapagos ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/alakazam.png"></td><td>Alakazam <i>Powerful Hand</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/slowking.png"></td><td>Slowking <i>Seek Inspiration</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/lucario-mega.png"></td><td>Mega Lucario ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/mewtwo.png"></td><td>Team Rocket's Mewtwo</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/garchomp.png"></td><td>Cynthia's Garchomp</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/honchkrow.png"></td><td>Team Rocket's Honchkrow</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/froslass.png"></td><td>Froslass Munkidori</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/hydrapple.png"></td><td>Hydrapple ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/crustle.png"></td><td>Crustle <i>Mysterious Rock Inn</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/archaludon.png"></td><td>Archaludon</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/klawf.png"></td><td>Klawf <i>Unhinged Scissors</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/miraidon.png"></td><td>Miraidon ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/roaring-moon.png"></td><td>Roaring Moon ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/dipplin.png"></td><td>Festival Lead</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/roaring-moon.png"></td><td>Ancient Box</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/ogerpon.png"><img src="https://r2.limitlesstcg.net/pokemon/gen9/meganium.png"></td><td>Ogerpox Meganium</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/typhlosion.png"></td><td>Etahn's Typhlosion</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/conkeldurr.png"></td><td>Conkeldurr</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/okidogi.png"></td><td>Okidogi <i>Adrena-Power</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/ursaluna-bloodmoon.png"></td><td>Bloodmoon Ursaluna <i>Mad Bite</i></td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/blissey.png"></td><td>Blissey ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/chien-pao.png"></td><td>Chien-Pao</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/zacian-crowned.png"></td><td>Hop's Zacian</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/great-tusk.png"></td><td>Great Tusk Mill</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/mamoswine.png"></td><td>Mamoswine ex</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/murkrow.png"></td><td>United Wings</td></tr>
+<tr><td><img src="https://r2.limitlesstcg.net/pokemon/gen9/iron-crown.png"></td><td>Future Box</td></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+<script>
+    'use strict'
+    // Variáveis Globais
+    let contadorIdCards = 0;
+    // Objetos
+    const database = {
+        roaringmoon: {name:"Roaring Moon", src:"https://pkmncards.com/wp-content/uploads/sv5_en_109_std.jpg", type:"Darkness", stage:"Basic", hp:140, prize:"SinglePrize"},
+        bloodmoonursaluna: {name:"Bloodmoon Ursaluna", src:"https://pkmncards.com/wp-content/uploads/sv6_en_141_std.jpg", type:"Fighting", stage:"Basic", hp:150, prize:"SinglePrize"},
+        murkrow: {name:"Murkrow", src:"https://pkmncards.com/wp-content/uploads/sv2_en_131.jpg", type:"Darkness", stage:"Basic", hp:60, prize:"SinglePrize"},
+        dondozo: {name:"Dondozo", src:"https://pkmncards.com/wp-content/uploads/sv1_en_061-1.jpg", type:"Water", stage:"Basic", hp:160, prize:"SinglePrize"},
+        tatsugiri: {name:"Tatsugiri", src:"https://pkmncards.com/wp-content/uploads/sv6_en_131_std.jpg", type:"Dragon", stage:"Basic", hp:70, prize:"SinglePrize"},
+        okidogi: {name:"Okidogi", src:"https://pkmncards.com/wp-content/uploads/sv6_en_111_std.jpg", type:"Fighting", stage:"Basic", hp:130, prize:"SinglePrize"},
+        miloticex: {name:"Milotic ex", src:"https://pkmncards.com/wp-content/uploads/sv8_en_042_std.jpg", type:"Water", stage:"Stage1", hp:270, prize:"DoublePrize", extra:"Wall"},
+        cornerstoneogerponex: {name:"Cornerstone Mask Ogerpon ex", src:"https://pkmncards.com/wp-content/uploads/sv6_en_112_std.jpg", type:"Fighting", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Wall"},
+        mimikyu: {name:"Mimikyu", src:"https://pkmncards.com/wp-content/uploads/sv2_en_097.jpg", type:"Psychic", stage:"Basic", hp:70, prize:"SinglePrize", extra:"Wall"},
+        budew: {name:"Budew", src:"https://pkmncards.com/wp-content/uploads/sv8-5_en_004_std.jpg", type:"Grass", stage:"Basic", hp:30, prize:"SinglePrize", extra:"Disrupt"},
+        latiasex: {name:"Latias ex", src:"https://pkmncards.com/wp-content/uploads/sv8_en_076_std.jpg", type:"Psychic", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Support"},
+        fezandipitiex: {name:"Fezandipiti ex", src:"https://pkmncards.com/wp-content/uploads/sv6-5_en_038_std.jpg", type:"Darkness", stage:"Basic", hp:210, prize:"DoublePrize", extra:"Support"},
+        baxcalibur: {name:"Baxcalibur", src:"https://pkmncards.com/wp-content/uploads/sv2_en_060.jpg", type:"Water", stage:"Stage2", hp:160, prize:"SinglePrize", extra:"Support"},
+        azumarill: {name:"Azumarill", src:"https://pkmncards.com/wp-content/uploads/sv8_en_074_std.jpg", type:"Psychic", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Ignorecost"},
+        toedscruel: {name:"Toedscruel", src:"https://pkmncards.com/wp-content/uploads/sv4_en_017_std.jpg", type:"Grass", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Disrupt"},
+        gastrodon: {name:"Gastrodon", src:"https://pkmncards.com/wp-content/uploads/sv8_en_107_std.jpg", type:"Fighting", stage:"Stage1", hp:130, prize:"SinglePrize", extra:"Disrupt"},
+        fluttermane: {name:"Flutter Mane", src:"https://pkmncards.com/wp-content/uploads/sv5_en_078_std.jpg", type:"Psychic", stage:"Basic", hp:90, prize:"SinglePrize", extra:"Disrupt"},
+        klefki: {name:"Klefki", src:"https://pkmncards.com/wp-content/uploads/sv1_en_096-1.jpg", type:"Psychic", stage:"Basic", hp:70, prize:"SinglePrize", extra:"Disrupt"},
+        togekiss: {name:"Togekiss", src:"https://pkmncards.com/wp-content/uploads/sv8_en_072_std.jpg", type:"Psychic", stage:"Stage2", hp:140, prize:"SinglePrize", extra:"Support"},
+        aegislash: {name:"Aegislash", src:"https://pkmncards.com/wp-content/uploads/sv4_en_134_std.jpg", type:"Metal", stage:"Basic", hp:150, prize:"SinglePrize", extra:"Wall"},
+        dodrio: {name:"Dodrio", src:"https://pkmncards.com/wp-content/uploads/sv3-5_en_085_std.jpg", type:"Colorless", stage:"Stage1", hp:100, prize:"SinglePrize", extra:"Support"},
+        dudunsparce: {name:"Dudunsparce", src:"https://pkmncards.com/wp-content/uploads/sv5_en_129_std.jpg", type:"Colorless", stage:"Stage1", hp:140, prize:"SinglePrize", extra:"Support"},
+        pidgeotex: {name:"Pidgeot ex", src:"https://pkmncards.com/wp-content/uploads/sv3_en_164.jpg", type:"Colorless", stage:"Stage2", hp:280, prize:"DoublePrize", extra:"Support"},
+        revavroom: {name:"Revavroom", src:"https://pkmncards.com/wp-content/uploads/sv1_en_142.jpg", type:"Metal", stage:"Stage1", hp:140, prize:"SinglePrize", extra:"Support"},
+        xatu: {name:"Xatu", src:"https://pkmncards.com/wp-content/uploads/sv4_en_072_std.jpg", type:"Psychic", stage:"Stage1", hp:100, prize:"SinglePrize", extra:"Support"},
+        crustle: {name:"Crustle", src:"https://pkmncards.com/wp-content/uploads/sv10_en_012_std.jpg", type:"Grass", stage:"Stage1", hp:150, prize:"SinglePrize", extra:"Wall"},
+        squawkabilly: {name:"Squawkabilly", src:"https://pkmncards.com/wp-content/uploads/sv2_en_169.jpg", type:"Colorless", stage:"Basic", hp:160, prize:"DoublePrize", extra:"Support"},
+        noivernex: {name:"Noivern ex", src:"https://pkmncards.com/wp-content/uploads/sv2_en_153.jpg", type:"Dragon", stage:"Stage1", hp:260, prize:"DoublePrize", extra:"Wall"},
+        sylveon: {name:"Sylveon", src:"https://pkmncards.com/wp-content/uploads/sv8-5_en_040_std.jpg", type:"Psychic", stage:"Stage1", hp:120, prize:"SinglePrize", extra:"Wall"},
+        gholdengoex: {name:"Gholdengo ex", src:"https://pkmncards.com/wp-content/uploads/sv4_en_139_std.jpg", type:"Metal", stage:"Stage1", hp:260, prize:"DoublePrize", extra:"Attacker"},
+        charizardex: {name:"Charizard ex", src:"https://pkmncards.com/wp-content/uploads/sv3_en_125.jpg", type:"Darkness", stage:"Stage2", hp:330, prize:"DoublePrize", extra:"Attacker"},
+        drakloak: {name:"Drakloak", src:"https://pkmncards.com/wp-content/uploads/sv6_en_129_std.jpg", type:"Dragon", stage:"Stage1", hp:90, prize:"SinglePrize", extra:"Support"},
+        gardevoirex: {name:"Gardevoir ex", src:"https://pkmncards.com/wp-content/uploads/sv1_en_086-1.jpg", type:"Psychic", stage:"Stage2", hp:310, prize:"DoublePrize", extra:"Attacker"},
+        ragingbolt: {name:"Raging Bolt ex", src:"https://pkmncards.com/wp-content/uploads/sv5_en_123_std.jpg", type:"Dragon", stage:"Basic", hp:240, prize:"DoublePrize", extra:"Attacker"},
+        dragapultex: {name:"Dragapult ex", src:"https://pkmncards.com/wp-content/uploads/sv6_en_130_std.jpg", type:"Dragon", stage:"Stage2", hp:320, prize:"DoublePrize", extra:"Attacker"},
+        chienpao: {name:"Chien-Pao ex", src:"https://pkmncards.com/wp-content/uploads/sv2_en_061.jpg", type:"Water", stage:"Basic", hp:220, prize:"DoublePrize", extra:"Attacker"},
+        slowking: {name:"Slowking", src:"https://pkmncards.com/wp-content/uploads/sv7_en_058_std.jpg", type:"Psychic", stage:"Stage1", hp:5000, prize:"SinglePrize", extra:"Attacker"},
+        dipplin: {name:"Dipplin", src:"https://pkmncards.com/wp-content/uploads/sv6_en_018_std.jpg", type:"Grass", stage:"Stage1", hp:80, prize:"SinglePrize", extra:"Attacker"},
+        teamsrocketmewtwo: {name:"Team's Rocket Mewtwo", src:"https://pkmncards.com/wp-content/uploads/sv10_en_081_std.jpg", type:"Psychic", stage:"Basic", hp:280, prize:"DoublePrize", extra:"Attacker"},
+        teamsrockethonchkrow: {name:"Team's Rocket Honchkrow", src:"https://pkmncards.com/wp-content/uploads/me2-5_en_127_std.jpg", type:"Darkness", stage:"Stage1", hp:130, prize:"SinglePrize", extra:"Attacker"},
+        /*CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},
+        CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},
+        CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},
+        CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},
+        CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},
+        CHAVE: {name:"NOME", src:"SRCCCC", type:"TIPO", stage:"Stage2", hp:5000, prize:"DoublePrize", extra:"Attacker"},*/
+
+
+
+
+
+        penny: {name:"Penny", src:"https://pkmncards.com/wp-content/uploads/sv1_en_183.jpg", type:"Trainer", stage:"Supporter", hp:999},
+        lanasaid: {name:"Lana's Aid", src:"https://pkmncards.com/wp-content/uploads/sv6_en_155_std.jpg", type:"Trainer", stage:"Supporter", hp:999, extra:"NoRulebox"},
+    }
+    
+    // Funções
+    function gerarImagens() {
+        contadorIdCards = 0;
+        for (let i in database) imprimir(database[i]);
+        console.log(contadorIdCards + ' cards impressos com sucesso!')
+    }
+
+    function imprimir(e) {
+        let x = document.getElementById('img' + contadorIdCards);
+        x.src = e.src;
+        //for (let i in e) {
+        x.title = e.name; // cria um title para a imagem com o conteúdo do "name" do objeto
+        x.classList.add(e.type, e.stage); // acrescenta as classes às imagens; as classes servem como as propriedades dos objetos; hp não é uma classe porque não existe filtro para mostrar somente pokémon com hp = x; é um dataset porque o hp é usado somente para organizar
+        if (e.prize) x.classList.add(e.prize);
+        if (e.extra) x.classList.add(e.extra); // o if é para evitar inserir a classe "undefined" para cards que não possuem informações extra
+        x.dataset.name = e.name; // necessário para a função sort(), mas poderia ser dispensável caso queira usar o title
+        x.dataset.type = e.type; // necessário para a função sort(), apesar de já existir a classe
+        if (e.hp) x.dataset.hp = e.hp; // necessário para a função sort()
+        x.style.display = "none"; // após gerar todas as imagens durante o carregamento da página, esconde-as
+        //}
+        contadorIdCards++;
+    }
+
+    function buscar() {
+        limpar();
+        let x = document.getElementById('inputText').value;
+        let stringImg = document.getElementsByTagName('img');
+        for (let i = 0; i < stringImg.length; i++) {
+            if (stringImg[i].classList.contains(x)) {
+                stringImg[i].style.display = "inline"        
+            }
+        }
+    }
+
+    function ocultar(e, f) {
+        let x = document.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {
+            if (x[i].classList.contains(e) || x[i].classList.contains(f)) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
+    function limpar() {
+        let y = document.getElementById('divImagens');
+        let x = y.getElementsByTagName('img');
+        for (let i = 0; i < x.length; i++) {x[i].style.display = "none"}
+    }
+
+    function sort() { // Função sort()
+        let x = document.getElementById('inputOrganizar').value;
+        // Declaring Variables 
+        var geek_list, i, run, li, stop; 
+        
+        // Taking content of list as input 
+        geek_list = document.getElementById("divImagens");
+        
+        run = true; 
+        
+        while (run) { 
+            run = false; 
+            li = geek_list.getElementsByTagName("img");
+        
+            // Loop traversing through all the list items - name
+            if (x === "Title") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (li[i].dataset.name.toLowerCase() > li[i + 1].dataset.name.toLowerCase()) { 
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+            
+            // Loop traversing through all the list items - type
+            if (x === "Data") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (li[i].dataset.type.toLowerCase() >  
+                    li[i + 1].dataset.type.toLowerCase()) { 
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+
+            // Loop traversing through all the list items - hp
+            if (x === "Hp") {
+                for (i = 0; i < (li.length - 1); i++) { 
+                stop = false; 
+                if (parseInt(li[i].dataset.hp) > parseInt(li[i + 1].dataset.hp)) { // 1) Aqui, devido às bizarrices do javascript, deve-se converter o número em number/int; 2) o trecho "|| !li[i].dataset.hp" foi colocar para empurrar o card para baixo mesmo que ele não tenha HP (caso das Trainers), caso essa parte não exista a carta não muda de posição quando filtra por HP; 3) removi o item 2 porque dava lop infinito com 2+ trainers
+                    stop = true; 
+                    break; 
+                    } 
+                }
+            }
+            
+            /* If the current item is smaller than the next item then adding it after it using insertBefore() method */ 
+            if (stop) { 
+                li[i].parentNode.insertBefore(
+                    li[i + 1], li[i]); 
+                    run = true; 
+            } 
+        } 
+    }
+
+    function animarImagens() {
+        let x = document.getElementsByTagName('img');
+        for (let i = 1; i < x.length; i++) { // i começa em "1" para não abranger a imagem de fundo, que é a primeira imagem
+            x[i].classList.add('w3-animate-zoom')
+        }
+    }
+
+    function testar() {
+        let x = document.getElementById('divImagens');
+        let y = x.getElementsByTagName('img');
+        console.log(y.length)
+    }
+
+    function criarImagensVazias() {
+        let contador = 0;
+        for (let i in database) {
+            let x = document.createElement('img');
+            x.id = ("img" + contador);
+            document.getElementById('divImagens').appendChild(x);
+            contador++;
+        }
+    }
+
+    // Funções Start
+    criarImagensVazias();
+    gerarImagens();
+    animarImagens();
+</script>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PTCG Database by Elton</title>
     <link rel="stylesheet" href="w3.css">
     <style>
