@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiny Epic Dungeons - Tabuleiro 7x7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    #deck-area {
+      width: 200px;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 8px;
+      text-align: center;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    #dungeon-area {
+      display: grid;
+      grid-template-columns: repeat(7, 150px);
+      grid-template-rows: repeat(7, 150px);
+      gap: 5px;
+      padding: 20px;
+      background-color: #222;
+      border-radius: 8px;
+      border: 2px solid #444;
+    }
+
+    .slot {
+      width: 150px;
+      height: 150px;
+      background-color: #2a2a2a;
+      border: 1px dashed #555;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slot.drag-over {
+      background-color: #444;
+      border-color: #888;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease; 
+      cursor: pointer;
+    }
+
+    .draggable {
+      cursor: grab;
+      width: 150px;
+      height: 150px;
+    }
+    .draggable:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="deck-area">
+    <h3>Dungeon Deck</h3>
+    <p id="deck-count" style="font-size: 14px; font-weight: bold;"></p>
+    <p style="font-size: 12px; color: #aaa;">Dica: Use Ctrl+Z para desfazer.</p>
+  </div>
+
+  <div id="dungeon-area">
+    <!-- Os 49 slots serão gerados aqui -->
+  </div>
+
+<script>
+const rooms = {
+  roomback: {name:"Room Back", src:"arquivos/rooms/Room Back.png", text:"Arraste para o tabuleiro para revelar.", type:"none"},
+  entrance: {name:"Entrance", src:"arquivos/rooms/Entrance.png", text:"Heroes start the game here. Also, place 1 Altar token on this card at the beginning of the game.", type:"Entrance"},
+  minionencounters: {name:"Minion Encounters", src:"arquivos/rooms/Minion Encounters.png", text:"Place 1 Minion in this room. If this room was revealed by you moving into it, immediately take 2 damage. Also, at the start of Final Battle, place 1 Altar Token on this card.", type:"Encounter"},
+  bosslairdoor: {name:"Boss' Lair Door", src:"arquivos/rooms/Boss Lair Door.png", text:"Free Action: Once all Minions are killed, spend 1 Speed to enter the Boss’ Lair (revealing the face-down Boss Mat if needed).", type:"Boss"},
+  arcanealtar: {name:"Arcane Altar", src:"arquivos/rooms/Arcane Altar.png", text:"Perform an Intellect check of 5. If successful, spend 4 focus to move the torch token 2 spaces up the torch track.", type:"Room"},
+  armory: {name:"Armory", src:"arquivos/rooms/Armory.png", text:"Free Action: Perform a skill check of 7 using a skill of your choice. If successful, pick up 1 Loot from the discard row. If failed, move the torch down 1 space on the torch track.", type:"Room"},
+  bridgeofdoom: {name:"Bridge of Doom", src:"arquivos/rooms/Bridge of Doom.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 7 using the skill of your choice. If you fail, take 2 damage.\n\nDisarm Trap: Perform an Agility check of 6. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  buzzsaw: {name:"Buzzsaw", src:"arquivos/rooms/Buzzsaw.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 6 using the skill of your choice. If you fail, take 3 damage.\n\nDisarm Trap: Perform a Strength check of 5. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  firevortex: {name:"Fire Vortex", src:"arquivos/rooms/Fire Vortex.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 6 using the skill of your choice. If you fail, take 3 damage.\n\nDisarm Trap: Perform an Intellect check of 5. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  feasthall: {name:"Feasthall", src:"arquivos/rooms/Feasthall.png", text:"Free Action: Perform an Intellect check of 4. If successful, spend 3 focus and heal to max. If failed, lose 2 Health.", type:"Room"},
+  goblinbunks: {name:"Goblin Bunks", src:"arquivos/rooms/Goblin Bunks.png", text:"Trigger Trap: When you move into this room you MUST perform an Agility check of 4. If successful, pick up 1 Loot from the discard row. If failed, add 1 Goblin to this room (with this your movement ends, but you do NOT take 1 damage).", type:"Room"},
+  graveyard: {name:"Graveyard", src:"arquivos/rooms/Graveyard.png", text:"Perform a skill check of 7 using a skill of your choice. If successful, move the torch up 1 space on the torch track and pick up 1 Loot from the discard row.", type:"Room"},
+  jeweledchest: {name:"Jeweled Chest", src:"arquivos/rooms/Jeweled Chest.png", text:"Perform an Agility check of 5. If successful, pick up 1 Loot/Spell from the discard row.", type:"Room"},
+  library: {name:"Library", src:"arquivos/rooms/Library.png", text:"Free Action: Spend 4 focus and discover a Spell from the deck or the discard row.", type:"Room"},
+  lockedchest: {name:"Locked Chest", src:"arquivos/rooms/Locked Chest.png", text:"Perform an Strength check of 5. If successful, pick up 1 Loot/Spell from the discard row.", type:"Room"},
+  pharaohstomb: {name:"Pharaoh’s Tomb", src:"arquivos/rooms/Pharaohs Tomb.png", text:"Perform an Agility check of 5. If successful, pick up 1 Loot/Spell from the discard row.", type:"Room"},
+  portal: {name:"Portal", src:"arquivos/rooms/Portal.png", text:"Free Action: Spend 2 Focus to place your hero to any revealed room in the Dungeon. Clarification: you cannot move onto the Boss Mat.", type:"Room"},
+  pulleydevice: {name:"Pulley Device", src:"arquivos/rooms/Pulley Device.png", text:"Free Action: Spend 4 focus and kill a goblin anywhere in the dungeon.", type:"Room"},
+  shelbysweb: {name:"Shelby’s Web", src:"arquivos/rooms/Shelbys Web.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 7 using the skill of your choice. If you fail, take 2 damage.\n\nDisarm Trap: Perform a Strength check of 6. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  spikedlog: {name:"Spiked Log of Impalement", src:"arquivos/rooms/Spiked Log of Impalement.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 7 using the skill of your choice. If you fail, take 2 damage.\n\nDisarm Trap: Perform an Agility check of 6. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  spikepit: {name:"Spike Pit", src:"arquivos/rooms/Spike Pit.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 6 using the skill of your choice. If you fail, take 3 damage.\n\nDisarm Trap: Perform an Agility check of 5. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  hiddenstairwell: {name:"Hidden Stairwell", src:"arquivos/rooms/Hidden Stairwell.png", text:"Free Action: Spend 2 Focus to place your hero to any revealed room in the Dungeon. Clarification: you cannot move onto the Boss Mat.", type:"Room"},
+  twistingbrambles: {name:"Twisting Brambles", src:"arquivos/rooms/Twisting Brambles.png", text:"Trigger Trap: When you move into this room you MUST perform a skill check of 7 using the skill of your choice. If you fail, take 2 damage.\n\nDisarm Trap: Perform an Intellect check of 6. If you succeed, discover a Loot/Spell from the deck or the discard row.", type:"Room"},
+  vault: {name:"Vault", src:"arquivos/rooms/Vault.png", text:"Perform an Intellect check of 5. If successful, pick up 1 Loot/Spell from the discard row.", type:"Room"},
+  well: {name:"Well", src:"arquivos/rooms/Well.png", text:"Free Action: Move the torch on the torch track down 1 and heal to max health.", type:"Room"},
+  witchscauldron: {name:"Witch’s Cauldron", src:"arquivos/rooms/Witchs Cauldron.png", text:"Perform an Intellect check of 5. If successful, gain 2 focus and discover 1 Spell from the deck or the discard row. If failed, move the torch down 1 space on the torch track.", type:"Room"},
+}
+
+// 1. Prompt para quantidade de jogadores com validação
+let numPlayers = 0;
+while (![2, 3, 4].includes(numPlayers)) {
+  const input = prompt("Quantos jogadores? (Digite 2, 3 ou 4)");
+  numPlayers = parseInt(input);
+}
+
+// Função de embaralhar
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// 2. Separação das cartas disponíveis por tipo
+let availableRooms = Object.keys(rooms).filter(k => rooms[k].type === "Room");
+shuffle(availableRooms); // Embaralha a pool de Rooms para comprar aleatoriamente
+
+// 3. Montagem do Deck A
+const countA = numPlayers === 2 ? 9 : (numPlayers === 3 ? 7 : 5);
+const deckA = availableRooms.splice(0, countA);
+
+// 4. Montagem do Deck B
+const countBRooms = numPlayers * 3;
+const deckBRooms = availableRooms.splice(0, countBRooms);
+const deckBEncounters = Array(numPlayers).fill("minionencounters"); // 1 minion encounter por herói
+const deckB = [...deckBRooms, ...deckBEncounters];
+shuffle(deckB);
+
+// 5. Montagem do Deck C
+const countCRooms = 3;
+const deckCRooms = availableRooms.splice(0, countCRooms);
+const deckC = [...deckCRooms, "bosslairdoor"];
+shuffle(deckC);
+
+// 6. Empilhamento Final (O array usa push/pop. O final do array é o topo do baralho)
+// Fundo: Deck C -> Meio: Deck B -> Topo: Deck A
+let deck = [...deckC, ...deckB, ...deckA];
+
+// O resto das cartas em "availableRooms" é descartado automaticamente por não ser incluído em "deck"
+
+// Histórico de jogadas para o Ctrl+Z
+let historicoJogadas = [];
+
+// 7. Renderizar o Baralho
+const deckArea = document.getElementById('deck-area');
+const deckCountText = document.getElementById('deck-count');
+const deckImage = document.createElement('img');
+deckImage.src = rooms['roomback'].src;
+deckImage.alt = rooms['roomback'].name;
+deckImage.classList.add('card', 'draggable');
+
+function atualizarVisualBaralho() {
+  deckCountText.innerText = `Cartas restantes: ${deck.length}`;
+  if (deck.length === 0) {
+    deckImage.style.opacity = '0.3';
+    deckImage.draggable = false;
+    deckImage.classList.remove('draggable');
+    deckImage.title = "Baralho vazio!";
+  } else {
+    deckImage.style.opacity = '1';
+    deckImage.draggable = true;
+    deckImage.classList.add('draggable');
+    deckImage.title = rooms['roomback'].text;
+  }
+}
+atualizarVisualBaralho();
+deckArea.appendChild(deckImage);
+
+deckImage.addEventListener('dragstart', (e) => {
+  if (deck.length === 0) return e.preventDefault();
+  e.dataTransfer.setData('action', 'draw_room');
+});
+
+// Função para criar as imagens das salas
+function criarImagemSala(chaveSala) {
+  const dadosSala = rooms[chaveSala];
+  const img = document.createElement('img');
+  img.src = dadosSala.src;
+  img.alt = dadosSala.name;
+  img.title = `${dadosSala.name}\n\n${dadosSala.text}`;
+  img.classList.add('card');
+  img.dataset.rotation = 0;
+
+  img.addEventListener('contextmenu', (evt) => {
+    evt.preventDefault();
+    let rotacaoAtual = parseInt(img.dataset.rotation);
+    rotacaoAtual += 90;
+    img.dataset.rotation = rotacaoAtual;
+    img.style.transform = `rotate(${rotacaoAtual}deg)`;
+  });
+
+  return img;
+}
+
+// 8. Gerar o Tabuleiro (Grid 7x7) e posicionar a Entrance
+const dungeonArea = document.getElementById('dungeon-area');
+const totalSlots = 49;
+const centroIndex = 24;
+
+for (let i = 0; i < totalSlots; i++) {
+  const slot = document.createElement('div');
+  slot.classList.add('slot');
+  slot.dataset.index = i;
+
+  if (i === centroIndex) {
+    const entranceImg = criarImagemSala('entrance');
+    slot.appendChild(entranceImg);
+  }
+
+  slot.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    if (slot.children.length === 0) {
+      slot.classList.add('drag-over');
+    }
+  });
+
+  slot.addEventListener('dragleave', () => {
+    slot.classList.remove('drag-over');
+  });
+
+  slot.addEventListener('drop', (e) => {
+    e.preventDefault();
+    slot.classList.remove('drag-over');
+    const action = e.dataTransfer.getData('action');
+
+    if (action === 'draw_room' && deck.length > 0 && slot.children.length === 0) {
+      const drawnRoomKey = deck.pop();
+      const newRoomImage = criarImagemSala(drawnRoomKey);
+      slot.appendChild(newRoomImage);
+
+      historicoJogadas.push({
+        chave: drawnRoomKey,
+        elementoImg: newRoomImage
+      });
+
+      atualizarVisualBaralho();
+    }
+  });
+
+  dungeonArea.appendChild(slot);
+}
+
+// 9. Funcionalidade Ctrl + Z (Desfazer)
+window.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+    if (historicoJogadas.length > 0) {
+      const ultimaJogada = historicoJogadas.pop();
+      ultimaJogada.elementoImg.remove();
+      deck.push(ultimaJogada.chave);
+      atualizarVisualBaralho();
+    }
+  }
+});
+</script>
+</body>
+</html>
