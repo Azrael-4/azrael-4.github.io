@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tiny Epic Dungeons - Tabuleiro 7x7</title>
+  <title>Tiny Epic Dungeons Online</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,19 +12,47 @@
       padding: 20px;
       background-color: #1a1a1a;
       color: #fff;
+      align-items: flex-start;
+      margin: 0;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
-    #deck-area {
-      width: 200px;
+    /* Barra lateral fixa e visível */
+    #sidebar {
+      width: 155px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: sticky;
+      top: 20px;
+      flex-shrink: 0; /* Impede que a sidebar seja comprimida ou suma */
+    }
+
+    .deck-container {
       padding: 10px;
       background-color: #333;
       border-radius: 8px;
       text-align: center;
-      position: sticky;
-      top: 20px;
-      height: fit-content;
+      transition: background-color 0.2s;
     }
 
+    .deck-container.drag-over {
+      background-color: #555;
+    }
+    
+    .deck-count {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    #boards-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Grid original 7x7 */
     #dungeon-area {
       display: grid;
       grid-template-columns: repeat(7, 150px);
@@ -36,6 +64,18 @@
       border: 2px solid #444;
     }
 
+    /* Nova grid Misc agora é 7x7 */
+    #misc-area {
+      display: grid;
+      grid-template-columns: repeat(7, 150px);
+      grid-template-rows: repeat(7, 150px); 
+      gap: 5px;
+      padding: 20px;
+      background-color: #1c2a38; 
+      border-radius: 8px;
+      border: 2px solid #2a4055;
+    }
+
     .slot {
       width: 150px;
       height: 150px;
@@ -45,6 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .slot.drag-over {
@@ -59,36 +100,103 @@
       object-fit: cover;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
       transition: transform 0.3s ease; 
-      cursor: pointer;
-    }
-
-    .draggable {
       cursor: grab;
-      width: 150px;
-      height: 150px;
     }
-    .draggable:active {
+    .card:active {
       cursor: grabbing;
     }
+
+    .deck-image {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .draggable-deck {
+      cursor: grab;
+    }
+    .draggable-deck:active {
+      cursor: grabbing;
+    }
+
+    /* Estilos dos Marcadores */
+    .marker {
+      width: 28px;
+      height: 28px;
+      background-color: rgba(0,0,0,0.8);
+      border: 1px solid #666;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: grab;
+      z-index: 10;
+      user-select: none;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+    .marker:active {
+      cursor: grabbing;
+    }
+
+    .slot .marker { position: absolute; margin: 0; }
+    .slot .marker:nth-of-type(1) { top: 5px; left: 5px; }
+    .slot .marker:nth-of-type(2) { top: 5px; right: 5px; }
+    .slot .marker:nth-of-type(3) { bottom: 5px; left: 5px; }
+    .slot .marker:nth-of-type(4) { bottom: 5px; right: 5px; }
+    .slot .marker:nth-of-type(5) { top: 50%; left: 5px; transform: translateY(-50%); }
+    .slot .marker:nth-of-type(6) { top: 50%; right: 5px; transform: translateY(-50%); }
+    .slot .marker:nth-of-type(n+7) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
   </style>
 </head>
 <body>
 
-  <div id="deck-area">
-    <h3>Dungeon Deck</h3>
-    <p id="deck-count" style="font-size: 14px; font-weight: bold;"></p>
-    <p style="font-size: 12px; color: #aaa;">Dica: Use Ctrl+Z para desfazer.</p>
+  <!-- Menu Lateral -->
+  <div id="sidebar">
+    <div class="deck-container" id="container-rooms" data-deck-id="rooms">
+      <div id="count-rooms" class="deck-count"></div>
+      <img id="deck-rooms" class="deck-image draggable-deck" title="Dungeon Deck">
+    </div>
+
+    <div class="deck-container" id="container-goblins" data-deck-id="goblins">
+      <div id="count-goblins" class="deck-count"></div>
+      <img id="deck-goblins" class="deck-image draggable-deck" title="Goblins">
+    </div>
+
+    <div class="deck-container" id="container-minions" data-deck-id="minions">
+      <div id="count-minions" class="deck-count"></div>
+      <img id="deck-minions" class="deck-image draggable-deck" title="Minions">
+    </div>
+
+    <div class="deck-container" id="container-loot" data-deck-id="loot">
+      <div id="count-loot" class="deck-count"></div>
+      <img id="deck-loot" class="deck-image draggable-deck" title="Loot">
+    </div>
+
+    <div class="deck-container" id="container-spells" data-deck-id="spells">
+      <div id="count-spells" class="deck-count"></div>
+      <img id="deck-spells" class="deck-image draggable-deck" title="Spells">
+    </div>
+
+    <!-- Caixinha de Marcadores -->
+    <div class="deck-container" id="markers-box">
+      <h3 style="font-size: 14px; margin: 0 0 10px 0; color: #ccc;">Marcadores</h3>
+      <div id="markers-container" style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;"></div>
+    </div>
   </div>
 
-  <div id="dungeon-area">
-    <!-- Os 49 slots serão gerados aqui -->
+  <div id="boards-container">
+    <div id="dungeon-area"></div>
+    <div id="misc-area"></div>
   </div>
 
 <script>
 const rooms = {
-  roomback: {name:"Room Back", src:"arquivos/rooms/Room Back.png", text:"Arraste para o tabuleiro para revelar.", type:"none"},
   entrance: {name:"Entrance", src:"arquivos/rooms/Entrance.png", text:"Heroes start the game here. Also, place 1 Altar token on this card at the beginning of the game.", type:"Entrance"},
-  minionencounters: {name:"Minion Encounters", src:"arquivos/rooms/Minion Encounters.png", text:"Place 1 Minion in this room. If this room was revealed by you moving into it, immediately take 2 damage. Also, at the start of Final Battle, place 1 Altar Token on this card.", type:"Encounter"},
+  minionencounters: {name:"Minion Encounters", src:"arquivos/rooms/Minion Encounter.png", text:"Place 1 Minion in this room. If this room was revealed by you moving into it, immediately take 2 damage. Also, at the start of Final Battle, place 1 Altar Token on this card.", type:"Encounter"},
   bosslairdoor: {name:"Boss' Lair Door", src:"arquivos/rooms/Boss Lair Door.png", text:"Free Action: Once all Minions are killed, spend 1 Speed to enter the Boss’ Lair (revealing the face-down Boss Mat if needed).", type:"Boss"},
   arcanealtar: {name:"Arcane Altar", src:"arquivos/rooms/Arcane Altar.png", text:"Perform an Intellect check of 5. If successful, spend 4 focus to move the torch token 2 spaces up the torch track.", type:"Room"},
   armory: {name:"Armory", src:"arquivos/rooms/Armory.png", text:"Free Action: Perform a skill check of 7 using a skill of your choice. If successful, pick up 1 Loot from the discard row. If failed, move the torch down 1 space on the torch track.", type:"Room"},
@@ -114,14 +222,94 @@ const rooms = {
   witchscauldron: {name:"Witch’s Cauldron", src:"arquivos/rooms/Witchs Cauldron.png", text:"Perform an Intellect check of 5. If successful, gain 2 focus and discover 1 Spell from the deck or the discard row. If failed, move the torch down 1 space on the torch track.", type:"Room"},
 }
 
-// 1. Prompt para quantidade de jogadores com validação
-let numPlayers = 0;
-while (![2, 3, 4].includes(numPlayers)) {
-  const input = prompt("Quantos jogadores? (Digite 2, 3 ou 4)");
-  numPlayers = parseInt(input);
+const spells = {
+  chainlightning: {name:"Chain Lightning", src:"arquivos/spells/Chain Lightning.png", text:"Perform an Intellect check of 6. If successful, spend 3 focus to deal 1 damage to up to 2 different targets, each which are within 2 spaces of you along any path (cannot target the same enemy twice)."},
+  clawofdarkness: {name:"Claw of Darkness", src:"arquivos/spells/Claw of Darkness.png", text:"Perform an Intellect check of 6. If successful, spend 4 focus and deal 3 damage to a target up to 2 spaces away along any path. If unsuccessful, move the torch down 1 space on the torch track."},
+  conjuersgambit: {name:"Conjurer’s Gambit", src:"arquivos/spells/Conjurers Gambit.png", text:"Perform an Intellect check of 7. If successful, spend 5 focus and deal 4 damage to a target up to 3 spaces away along any path. If unsuccessful, add a goblin to your space."},
+  cloudofdeath: {name:"Cloud of Death", src:"arquivos/spells/Cloud of Death.png", text:"Perform an Intellect check of 6. If successful, spend 4 focus and deal 2 damage to all enemies within 1 space of you."},
+  darkbargain: {name:"Dark Bargain", src:"arquivos/spells/Dark Bargain.png", text:"Perform an Intellect check of 7. If successful, spend 4 focus for all heroes within 2 spaces of you (including yourself) to their maximum health and additionally, add a goblin to your space."},
+  delversluck: {name:"Delver’s Luck", src:"arquivos/spells/Delvers Luck.png", text:"Perform a skill check of 7 using the skill of your choice. If successful, spend 4 focus and perform an additional action. If that action requires a skill check, add 3 to your die result."},
+  dungeonscry: {name:"Dungeon Scry", src:"arquivos/spells/Dungeon Scry.png", text:"Perform a skill check of 5 using a skill of your choice. If successful, spend 2 focus and reveal an unexplored room anywhere on the map. You may then perform an additional movement this turn OR perform an additional Heroic action (1x this turn). Other abilities may not be used to take that same action again on the same turn."},
+  eaglesswiftness: {name:"Eagle’s Swiftness ", src:"arquivos/spells/Eagles Swiftness.png", text:"Perform an Intellect check of 3. If successful, spend 3 focus to perform a Missile Attack action with a weapon and add 3 to your die result for that attack."},
+  elementalcharge: {name:"Elemental Charge", src:"arquivos/spells/Elemental Charge.png", text:"Perform a skill check of 5 using a skill of your choice. If successful, spend 2 focus to perform a movement up to your speed and deal 2 damage to all enemies in the space where your movement ends."},
+  fireball: {name:"Fireball", src:"arquivos/spells/Fireball.png", text:"Perform an Intellect check of 7. If successful, spend 6 focus and deal 4 damage to a target up to 2 spaces away along any path."},
+  giantsstrength: {name:"Giant’s Strength", src:"arquivos/spells/Giants Strength.png", text:"Perform a Intellect check of 3. If successful, spend 3 focus to perform a Melee Attack action with a weapon and add 3 to your die result for that attack."},
+  holyabundance: {name:"Holy Abundance", src:"arquivos/spells/Holy Abundance.png", text:"Perform an Intellect check of 5. If successful, spend 4 focus for all heroes within 4 spaces (including yourself) to heal 3 health, gain 2 focus, and Heroes in your space (including you) discover a loot or spell from the discard row."},
+  invisibility: {name:"Invisibility", src:"arquivos/spells/Invisibility.png", text:"Perform a skill check of 5 using a skill of your choice. If successful, spend 2 focus to perform a movement up to your speed. You may ignore enemies and damage from goblin and minion encounters during this movement. After your movement, you may perform 1 additional Heroic Action. The additional Heroic action performed is limited to 1x this turn."},
+  tempestofarrows: {name:"Tempest of Arrows", src:"arquivos/spells/Tempest of Arrows.png", text:"Perform an Intellect check of 6. If successful, spend 5 focus to deal 1 damage to all enemies within 1 space of you and additionally, you may target a single enemy for 2 damage that is up to 3 spaces away from you along any path. If the targeted enemy is within 1 space of you, they will take the 2 damage for being targeted as well as the 1 damage for the area effect."},
 }
 
-// Função de embaralhar
+const goblins = {
+  boomygoblin: {name:"Boomy Goblin", src:"arquivos/goblins/Boomy Goblin.png", text:"Speed: 1 Defense: 4\nReward: Discover 1 Loot OR 1 Spell.\nEnemy Action: If Boomy is within 2 rooms of a Hero: all Heroes within 2 rooms of Boomy’s room lose 2 health. If not, move Boomy 1 space towards the closest Hero."},
+  pokeygoblin: {name:"Pokey Goblin", src:"arquivos/goblins/Pokey Goblin.png", text:"Speed: 3 Defense: 6\nReward: Discover 1 Loot AND reveal one unexplored room anywhere in the dungeon.\nEnemy Action: If Pokey is within 1 room of a Hero: all Heroes within 1 room of Pokey’s room lose 1 health times the number of Goblins in the dungeon (1 Goblin= 1 health, 2 Goblins = 2 health, etc.). If not, move Pokey 3 rooms towards the closest Hero."},
+  shootygoblin: {name:"Shooty Goblin", src:"arquivos/goblins/Shooty Goblin.png", text:"Speed: 2 Defense: 5\nReward: Discover 1 Loot OR gain 5 focus.\nEnemy Action: Shooty moves 2 rooms towards the closest Hero AND all Heroes within 2 rooms of where Shooty ends their movement loses 1 health."},
+  stabbygoblin: {name:"Stabby Goblin", src:"arquivos/goblins/Stabby Goblin.png", text:"Speed: 4 Defense: 4\nReward: Discover 1 Loot OR gain 3 health.\nEnemy Action: If Stabby is in the same room as a Hero: all Heroes in Stabby’s room lose 1 health times the number of Goblins in the dungeon, plus 1 (1 Goblin= 2 health, 2 Goblins = 3 health, etc.) If not, move Stabby up to 4 rooms towards the closest Hero."},
+}
+
+const loot = {
+  amethistfigurine: {name:"Amethyst Figurine", src:"arquivos/loot/Amethyst Figurine.png", text:"Anytime you perform an Intellect check, roll 1 additional die (3 dice limit applies)."},
+  crossbow: {name:"Crossbow", src:"arquivos/loot/Crossbow.png", text:"Perform a Missile Attack using Agility at a target up to 3 spaces away from you in a straight path (target cannot be in your space), and add 1 to your die total.\nWhenever you perform a Missile Attack, immediately gain 1 focus."},
+  curseddragonscale: {name:"Cursed Dragonscale", src:"arquivos/loot/Cursed Dragonscale.png", text:"Your Defense is decreased by 1. Anytime you perform a Strength, Agility, or Intellect check, add 1 to your die result."},
+  elvenchain: {name:"Elven Chain", src:"arquivos/loot/Elven Chain.png", text:"Your Defense and Speed are both increased by 1."},
+  hookshot: {name:"Hook Shot", src:"arquivos/loot/Hook Shot.png", text:"Perform a Melee Attack using Strength and add 1 to your die result...\nOR\nPerform a Missile Attack using Agility at a target 1 space away from you in a straight path (target cannot be in your space) and add 1 to your die result."},
+  jadefigurine: {name:"Jade Figurine", src:"arquivos/loot/Jade Figurine.png", text:"Anytime you perform an Agility check, roll 1 additional die (3 dice limit applies)."},
+  rubyfigurine: {name:"Ruby Figurine", src:"arquivos/loot/Ruby Figurine.png", text:"Anytime you perform a Strength check, roll 1 additional die (3 dice limit applies)."},
+  spikedbuckler: {name:"Spiked Buckler", src:"arquivos/loot/Spiked Buckler.png", text:"Whenever you perform a Melee Attack, your Defense is increased by 1 and add 1 to your die total if performing a Strength check for the attack."},
+  sunhammer: {name:"Sun Hammer", src:"arquivos/loot/Sun Hammer.png", text:"Perform a Melee Attack using Strength and add 1 to your die result.\nWhenever you perform a Melee Attack, immediately gain 1 focus."},
+  violetcape: {name:"Violet Cape", src:"arquivos/loot/Violet Cape.png", text:"Whenever you perform a Missile Attack or Cast a Spell, your Defense is increased by 1.\nAnytime you perform an Intellect check, add 1 to your die result."},
+  greataxebear: {name:"Great Axe of the Bear", src:"arquivos/loot/Great Axe of the Bear.png", text:"Perform a Melee Attack using Strength and add 2 to your result.\nYour Speed is decreased by 1."},
+  studdedjerkinbear: {name:"Studded Jerkin of the Bear", src:"arquivos/loot/Studded Jerkin of the Bear.png", text:"Whenever you perform a Melee Attack, your Defense is increased by 1."},
+  throwingaxesbear: {name:"Throwing Axes of the Bear", src:"arquivos/loot/Throwing Axes of the Bear.png", text:"Perform a Missile Attack using Strength at a target 2 spaces away from you in a straight path (target cannot be in your space) and add 2 to your result."},
+  warhornbear: {name:"War Horn of the Bear", src:"arquivos/loot/War Horn of the Bear.png", text:"Free Action: Spend 2 focus to move all enemies within 4 spaces, up to 2 spaces each, with you controlling their movement."},
+  greaveslion: {name:"Greaves of the Lion", src:"arquivos/loot/Greaves of the Lion.png", text:"Your Speed is increased by 1."},
+  longswordlion: {name:"Long Sword of the Lion", src:"arquivos/loot/Long Sword of the Lion.png", text:"Perform a Melee Attack using Strength and add 1 to your result.\nWhenever you perform a Melee Attack, you may spend 2 focus to add 1 to your die result."},
+  platemaillion: {name:"Platemail of the Lion", src:"arquivos/loot/Platemail of the Lion.png", text:"Your Defense is increased by 1."},
+  shieldlion: {name:"Shield of the Lion", src:"arquivos/loot/Shield of the Lion.png", text:"Whenever you perform a Melee Attack your Defense is increased by 1.\nWhenever you perform a Melee Attack, you may reroll one of your Hero Dice. (only once per attack)."},
+  clawpanther: {name:"Claw of the Panther", src:"arquivos/loot/Claw of the Panther.png", text:"Perform a Melee Attack using Agility and add 1 to your die result."},
+  cloakpanther: {name:"Cloak of the Panther", src:"arquivos/loot/Cloak of the Panther.png", text:"Stealth: While moving, you may move through enemies (instead of stopping)."},
+  glovepanther: {name:"Glove of the Panther", src:"arquivos/loot/Glove of the Panther.png", text:"TEXT"},
+  longbowpanther: {name:"Long Bow of the Panther", src:"arquivos/loot/Long Bow of the Panther.png", text:"Perform a Missile Attack using Agility at a target up to 4 spaces away in a straight path (target cannot be in your space)...\nOR\nSpend 3 Focus to perform a Missile Attack targeting all enemies within 1 space of you (including your own space)."},
+  greatstaffphoenix: {name:"Great Staff of the Phoenix", src:"arquivos/loot/Great Staff of the Phoenix.png", text:"Perform a Missile Attack using Intellect at a target up to 3 spaces away in a straight path (target cannot be in your space)."},
+  ringphoenix: {name:"Ring of the Phoenix", src:"arquivos/loot/Ring of the Phoenix.png", text:"When you Cast a Spell that deals damage, you deal 1 additional damage to a target of the attack. If it targets multiple enemies, increase the damage dealt by 1 to a single target of your choice."},
+  robesphoenix: {name:"Robes of the Phoenix", src:"arquivos/loot/Robes of the Phoenix.png", text:"Free Action: Spend 2 Focus to place your hero to any revealed room in the Dungeon. Clarification: You cannot teleport onto the Boss Mat, but you are allowed to teleport away from it.\nNote, that you can use teleportation ONLY when you would be free to move away from the room anyway. You cannot teleport if you are in the middle of combat, or have moved without Stealth into a room with an enemy in it. If you have, then you must kill the enemy first, or wait until your next turn."},
+  spelltomephoenix: {name:"Spell Tome of the Phoenix", src:"arquivos/loot/Spell Tome of the Phoenix.png", text:"Anytime you perform a Intellect check, add 1 to your die result."},
+}
+
+const minions = {
+  direserpent: {name:"Dire Serpent", src:"arquivos/minions/Dire Serpent.png", text:"Health: 6 Speed: 3 Defense: 5\nMelee Counter-Attack: +4 to Enemy Die and Defense increases by 1.\nMissile/Spell Counter-Attack: +2 to Enemy Die.\nEnemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health."},
+  dungeoncrawler: {name:"Dungeon Crawler", src:"arquivos/minions/Dungeon Crawler.png", text:"Health: 7 Speed: 2 Defense: 5\nMelee Counter-Attack: +3 to Enemy Die.\nMissile/Spell Counter-Attack: +2 to Enemy Die.\nEnemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 room as the Crawler lose 2 health and 2 focus."},
+  ogre: {name:"Ogre", src:"arquivos/minions/Ogre.png", text:"Health: 6 Speed: 4 Defense: 5\nMelee Counter-Attack: +2 to Enemy Die and Defense increases by 2.\nMissile/Spell Counter-Attack: +2 to Enemy Die.\nEnemy Action: Move 4 rooms towards the nearest Hero, then all Heroes in the same room as the Ogre lose 2 health."},
+  ooze: {name:"Ooze", src:"arquivos/minions/Ooze.png", text:"Health: 8 Speed: 2 Defense: 4\nMelee Counter-Attack: +3 to Enemy Die.\nMissile/Spell Counter-Attack: +1 to Enemy Die and Defense increases by 2.\nEnemy Action: Move 2 spaces towards the nearest Hero, then all Heroes within 1 space of the Ooze lose 1 health and discard 1 Loot to the discard row if they are able."},
+  minotaur: {name:"Minotaur", src:"arquivos/minions/Minotaur.png", text:"Health: 6 Speed: 5 Defense: 4\nMelee Counter-Attack: +3 to Enemy Die and Defense increases by 2.\nMissile/Spell Counter-Attack: +1 to Enemy Die.\nEnemy Action: Move 5 rooms towards the nearest Hero, then all Heroes in the same room as the Minotaur lose 3 health."},
+  skeleton: {name:"Skeleton", src:"arquivos/minions/Skeleton.png", text:"Health: 8 Speed: 3 Defense: 4\nMelee Counter-Attack: +2 to Enemy Die.\nMissile/Spell Counter-Attack: +3 to Enemy Die.\nEnemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Skeleton lose 2 health and 3 focus."},
+  troglodyte: {name:"Troglodyte", src:"arquivos/minions/Troglodyte.png", text:"Health: 7 Speed: 1 Defense: 5\nMelee Counter-Attack: +2 to Enemy Die.\nMissile/Spell Counter-Attack: +3 to Enemy Die.\nEnemy Action: Move 1 room towards the nearest Hero, then all Heroes within 1 room as the Troglodyte lose 2 health and 2 focus."},
+  troll: {name:"Troll", src:"arquivos/minions/Troll.png", text:"Health: 7 Speed: 4 Defense: 4\nMelee Counter-Attack: +3 to Enemy Die.\nMissile/Spell Counter-Attack: +2 to Enemy Die.\nEnemy Action: Move 4 rooms towards the nearest Hero, then all Heroes in the same room as the Troll lose 1 health. Additionally add a Goblin to the Troll's space."},
+}
+
+const bosses = {
+  thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Health: 6 Speed: 3 Defense: 5\nMelee Counter-Attack: +4 to Enemy Die and Defense increases by 1.\nMissile/Spell Counter-Attack: +2 to Enemy Die.\nEnemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health."},
+}
+
+const heroes = {
+  ethairna: {name:"Ethairna", src:"arquivos/heroes/Ethairna.png", text:"Seeking Bolt: Perform an Intellect check of 5. If successful, spend 2 focus and deal 1 damage to a target within 4 spaces along any path."},
+  gerrund: {name:"Gerrund the Blue", src:"arquivos/heroes/Gerrund the Blue.png", text:"Magic Arrow: Perform an Intellect check of 6. If successful, spend 2 focus and deal 2 damage to a target within 2 spaces along any path."},
+  grokull: {name:"Grok'Ull", src:"arquivos/heroes/Grokull.png", text:"Battle Rage: Whenever you perform a Melee or Missile Attack action, you may spend 3 focus to add 2 to your die result."},
+  moonblade: {name:"Moonblade", src:"arquivos/heroes/Moonblade.png", text:"Shadow Walk: Perform an Agility Check of 6. If successful, spend 3 focus to move up to your speed, ignoring enemies, and deal 1 damage to all targets in the space where your movement ends."},
+  sirlanon: {name:"Sir Lanon", src:"arquivos/heroes/Sir Lanon.png", text:"Divine Might: Perform an Intellect check of 4. If successful, spend 2 focus to perform a Melee Attack and add 2 to your die result."},
+  thordin: {name:"Thordin Firebraid", src:"arquivos/heroes/Thordin Firebraid.png", text:"Stone Stance: While performing a Melee Attack, you may spend 2 focus to increase your Defense by 2 (may do this after the Enemy Die roll)."},
+  uliessa: {name:"Uliessa", src:"arquivos/heroes/Uliessa.png", text:"Heal: Whenever you Cast a Spell, you may also spend 2 focus to heal 1 Hero up to 3 rooms away 4 health (can be self)."},
+  wyn: {name:"Wyn Keleas", src:"arquivos/heroes/Wyn Keleas.png", text:"Stealth- Free Action: Spend 2 focus move through enemies (instead of stopping)."},
+}
+
+const cardbacks = {
+  roomback: {name:"Dungeon Deck", src:"arquivos/rooms/Room Back.png", text:"Arraste para revelar."},
+  goblinback: {name:"Goblins", src:"arquivos/goblins/Goblin Back.png", text:"Arraste para revelar."},
+  minionback: {name:"Minions", src:"arquivos/minions/Minion Back.png", text:"Arraste para revelar."},
+  lootback: {name:"Loot", src:"arquivos/loot/Loot Back.png", text:"Arraste para revelar."},
+  spellback: {name:"Spells", src:"arquivos/spells/Spell Back.png", text:"Arraste para revelar."},
+}
+
+// 1. Função de Embaralhar
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -129,75 +317,172 @@ function shuffle(array) {
   }
 }
 
-// 2. Separação das cartas disponíveis por tipo
-let availableRooms = Object.keys(rooms).filter(k => rooms[k].type === "Room");
-shuffle(availableRooms); // Embaralha a pool de Rooms para comprar aleatoriamente
+// 2. Setup do Dungeon Deck (Rooms)
+let numPlayers = 0;
+while (![2, 3, 4].includes(numPlayers)) {
+  const input = prompt("Quantos jogadores? (Digite 2, 3 ou 4)");
+  numPlayers = parseInt(input);
+}
 
-// 3. Montagem do Deck A
+let availableRooms = Object.keys(rooms).filter(k => rooms[k].type === "Room");
+shuffle(availableRooms);
 const countA = numPlayers === 2 ? 9 : (numPlayers === 3 ? 7 : 5);
 const deckA = availableRooms.splice(0, countA);
-
-// 4. Montagem do Deck B
 const countBRooms = numPlayers * 3;
 const deckBRooms = availableRooms.splice(0, countBRooms);
-const deckBEncounters = Array(numPlayers).fill("minionencounters"); // 1 minion encounter por herói
+const deckBEncounters = Array(numPlayers).fill("minionencounters");
 const deckB = [...deckBRooms, ...deckBEncounters];
 shuffle(deckB);
-
-// 5. Montagem do Deck C
-const countCRooms = 3;
-const deckCRooms = availableRooms.splice(0, countCRooms);
+const deckCRooms = availableRooms.splice(0, 3);
 const deckC = [...deckCRooms, "bosslairdoor"];
 shuffle(deckC);
 
-// 6. Empilhamento Final (O array usa push/pop. O final do array é o topo do baralho)
-// Fundo: Deck C -> Meio: Deck B -> Topo: Deck A
-let deck = [...deckC, ...deckB, ...deckA];
+const decks = {
+  rooms: [...deckC, ...deckB, ...deckA],
+  goblins: Object.keys(goblins),
+  minions: Object.keys(minions),
+  loot: Object.keys(loot),
+  spells: Object.keys(spells)
+};
 
-// O resto das cartas em "availableRooms" é descartado automaticamente por não ser incluído em "deck"
+shuffle(decks.goblins);
+shuffle(decks.minions);
+shuffle(decks.loot);
+shuffle(decks.spells);
 
-// Histórico de jogadas para o Ctrl+Z
-let historicoJogadas = [];
+const allCardsDB = { ...rooms, ...goblins, ...minions, ...loot, ...spells };
 
-// 7. Renderizar o Baralho
-const deckArea = document.getElementById('deck-area');
-const deckCountText = document.getElementById('deck-count');
-const deckImage = document.createElement('img');
-deckImage.src = rooms['roomback'].src;
-deckImage.alt = rooms['roomback'].name;
-deckImage.classList.add('card', 'draggable');
+// 3. Setup Visual dos Baralhos na Sidebar
+const deckConfigs = [
+  { id: 'rooms', back: cardbacks.roomback, action: 'draw_room' },
+  { id: 'goblins', back: cardbacks.goblinback, action: 'draw_misc' },
+  { id: 'minions', back: cardbacks.minionback, action: 'draw_misc' },
+  { id: 'loot', back: cardbacks.lootback, action: 'draw_misc' },
+  { id: 'spells', back: cardbacks.spellback, action: 'draw_misc' }
+];
 
-function atualizarVisualBaralho() {
-  deckCountText.innerText = `Cartas restantes: ${deck.length}`;
-  if (deck.length === 0) {
-    deckImage.style.opacity = '0.3';
-    deckImage.draggable = false;
-    deckImage.classList.remove('draggable');
-    deckImage.title = "Baralho vazio!";
-  } else {
-    deckImage.style.opacity = '1';
-    deckImage.draggable = true;
-    deckImage.classList.add('draggable');
-    deckImage.title = rooms['roomback'].text;
-  }
+function atualizarVisualBaralhos() {
+  deckConfigs.forEach(cfg => {
+    const imgEl = document.getElementById(`deck-${cfg.id}`);
+    const countEl = document.getElementById(`count-${cfg.id}`);
+    const currentDeck = decks[cfg.id];
+    
+    countEl.innerText = `${currentDeck.length} cartas`;
+    imgEl.src = cfg.back.src;
+    imgEl.title = cfg.back.name;
+    
+    if (currentDeck.length === 0) {
+      imgEl.style.opacity = '0.3';
+      imgEl.draggable = false;
+      imgEl.classList.remove('draggable-deck');
+    } else {
+      imgEl.style.opacity = '1';
+      imgEl.draggable = true;
+      imgEl.classList.add('draggable-deck');
+    }
+
+    if (!imgEl.dataset.initialized) {
+      imgEl.addEventListener('dragstart', (e) => {
+        if (decks[cfg.id].length === 0) return e.preventDefault();
+        e.dataTransfer.setData('action', cfg.action);
+        e.dataTransfer.setData('deckType', cfg.id);
+      });
+      imgEl.dataset.initialized = "true";
+    }
+
+    const container = document.getElementById(`container-${cfg.id}`);
+    
+    container.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      container.classList.add('drag-over');
+    });
+
+    container.addEventListener('dragleave', () => {
+      container.classList.remove('drag-over');
+    });
+
+    container.addEventListener('drop', (e) => {
+      e.preventDefault();
+      container.classList.remove('drag-over');
+      
+      const action = e.dataTransfer.getData('action');
+      const cardId = e.dataTransfer.getData('card_id');
+      const originDeck = e.dataTransfer.getData('origin_deck');
+
+      if (action === 'move_card' && originDeck === cfg.id) {
+        const cardElement = document.getElementById(cardId);
+        if (cardElement) {
+          const cardKey = cardElement.dataset.cardKey;
+          decks[cfg.id].push(cardKey);
+          cardElement.remove();
+          atualizarVisualBaralhos();
+        }
+      }
+    });
+  });
 }
-atualizarVisualBaralho();
-deckArea.appendChild(deckImage);
+atualizarVisualBaralhos();
 
-deckImage.addEventListener('dragstart', (e) => {
-  if (deck.length === 0) return e.preventDefault();
-  e.dataTransfer.setData('action', 'draw_room');
+// --- Setup e Lógica dos Marcadores ---
+const tokensList = ['🚫','🚫','🚫','🚫','🚫','🚫','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','👹','🗿','😎','😼','👺'];
+const markersContainer = document.getElementById('markers-container');
+
+tokensList.forEach((emoji, index) => {
+  const marker = document.createElement('div');
+  marker.classList.add('marker');
+  marker.innerText = emoji;
+  marker.draggable = true;
+  marker.id = 'marker_' + index;
+  
+  marker.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('action', 'move_marker');
+    e.dataTransfer.setData('marker_id', marker.id);
+  });
+  
+  markersContainer.appendChild(marker);
 });
 
-// Função para criar as imagens das salas
-function criarImagemSala(chaveSala) {
-  const dadosSala = rooms[chaveSala];
+const markersBox = document.getElementById('markers-box');
+markersBox.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  markersBox.classList.add('drag-over');
+});
+markersBox.addEventListener('dragleave', () => {
+  markersBox.classList.remove('drag-over');
+});
+markersBox.addEventListener('drop', (e) => {
+  e.preventDefault();
+  markersBox.classList.remove('drag-over');
+  
+  if (e.dataTransfer.getData('action') === 'move_marker') {
+    const markerId = e.dataTransfer.getData('marker_id');
+    const marker = document.getElementById(markerId);
+    if (marker) {
+      markersContainer.appendChild(marker);
+    }
+  }
+});
+
+// 5. Criação da Imagem da Carta
+function criarImagemCarta(chaveCarta, originDeckId) {
+  const dadosCarta = allCardsDB[chaveCarta];
   const img = document.createElement('img');
-  img.src = dadosSala.src;
-  img.alt = dadosSala.name;
-  img.title = `${dadosSala.name}\n\n${dadosSala.text}`;
+  img.src = dadosCarta.src;
+  img.alt = dadosCarta.name;
+  img.title = `${dadosCarta.name}\n\n${dadosCarta.text}`;
   img.classList.add('card');
+  
+  img.draggable = true;
+  img.id = 'card_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
   img.dataset.rotation = 0;
+  img.dataset.originDeck = originDeckId; 
+  img.dataset.cardKey = chaveCarta;
+
+  img.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('action', 'move_card');
+    e.dataTransfer.setData('card_id', img.id);
+    e.dataTransfer.setData('origin_deck', img.dataset.originDeck);
+  });
 
   img.addEventListener('contextmenu', (evt) => {
     evt.preventDefault();
@@ -210,62 +495,91 @@ function criarImagemSala(chaveSala) {
   return img;
 }
 
-// 8. Gerar o Tabuleiro (Grid 7x7) e posicionar a Entrance
-const dungeonArea = document.getElementById('dungeon-area');
-const totalSlots = 49;
-const centroIndex = 24;
+// 6. Histórico Global para Ctrl+Z
+let historicoJogadas = [];
 
-for (let i = 0; i < totalSlots; i++) {
-  const slot = document.createElement('div');
-  slot.classList.add('slot');
-  slot.dataset.index = i;
+// 7. Gerador Genérico de Grids
+function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = false) {
+  const container = document.getElementById(containerId);
+  const centroIndex = Math.floor(totalSlots / 2);
 
-  if (i === centroIndex) {
-    const entranceImg = criarImagemSala('entrance');
-    slot.appendChild(entranceImg);
-  }
+  for (let i = 0; i < totalSlots; i++) {
+    const slot = document.createElement('div');
+    slot.classList.add('slot');
+    slot.dataset.index = i;
 
-  slot.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    if (slot.children.length === 0) {
+    if (temEntrance && i === centroIndex) {
+      const entranceImg = criarImagemCarta('entrance', 'rooms');
+      slot.appendChild(entranceImg);
+    }
+
+    slot.addEventListener('dragover', (e) => {
+      e.preventDefault();
       slot.classList.add('drag-over');
-    }
-  });
+    });
 
-  slot.addEventListener('dragleave', () => {
-    slot.classList.remove('drag-over');
-  });
+    slot.addEventListener('dragleave', () => {
+      slot.classList.remove('drag-over');
+    });
 
-  slot.addEventListener('drop', (e) => {
-    e.preventDefault();
-    slot.classList.remove('drag-over');
-    const action = e.dataTransfer.getData('action');
+    slot.addEventListener('drop', (e) => {
+      e.preventDefault();
+      slot.classList.remove('drag-over');
+      
+      const action = e.dataTransfer.getData('action');
+      const deckType = e.dataTransfer.getData('deckType');
+      const cardId = e.dataTransfer.getData('card_id');
+      const markerId = e.dataTransfer.getData('marker_id');
 
-    if (action === 'draw_room' && deck.length > 0 && slot.children.length === 0) {
-      const drawnRoomKey = deck.pop();
-      const newRoomImage = criarImagemSala(drawnRoomKey);
-      slot.appendChild(newRoomImage);
+      const hasCard = slot.querySelector('.card') !== null;
 
-      historicoJogadas.push({
-        chave: drawnRoomKey,
-        elementoImg: newRoomImage
-      });
+      if (action === 'move_marker') {
+        const markerElement = document.getElementById(markerId);
+        if (markerElement) {
+          slot.appendChild(markerElement);
+        }
+      } 
+      else if (!hasCard) {
+        if (slotAcceptsActions.includes(action) && (action === 'draw_room' || action === 'draw_misc')) {
+          if (decks[deckType] && decks[deckType].length > 0) {
+            const drawnKey = decks[deckType].pop();
+            const newImage = criarImagemCarta(drawnKey, deckType);
+            
+            slot.prepend(newImage);
 
-      atualizarVisualBaralho();
-    }
-  });
+            historicoJogadas.push({
+              deckOrigem: deckType,
+              chaveCarta: drawnKey,
+              elementoImg: newImage
+            });
 
-  dungeonArea.appendChild(slot);
+            atualizarVisualBaralhos();
+          }
+        } 
+        else if (slotAcceptsActions.includes(action) && action === 'move_card') {
+          const cardElement = document.getElementById(cardId);
+          if (cardElement) {
+            slot.prepend(cardElement);
+          }
+        }
+      }
+    });
+
+    container.appendChild(slot);
+  }
 }
 
-// 9. Funcionalidade Ctrl + Z (Desfazer)
+criarGrid('dungeon-area', 49, ['draw_room', 'move_card'], true); 
+criarGrid('misc-area', 49, ['draw_misc', 'move_card'], false); 
+
+// 8. Funcionalidade Ctrl + Z
 window.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
     if (historicoJogadas.length > 0) {
       const ultimaJogada = historicoJogadas.pop();
       ultimaJogada.elementoImg.remove();
-      deck.push(ultimaJogada.chave);
-      atualizarVisualBaralho();
+      decks[ultimaJogada.deckOrigem].push(ultimaJogada.chaveCarta);
+      atualizarVisualBaralhos();
     }
   }
 });
