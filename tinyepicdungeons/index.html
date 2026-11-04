@@ -150,9 +150,56 @@
     .slot .marker:nth-of-type(5) { top: 50%; left: 5px; transform: translateY(-50%); }
     .slot .marker:nth-of-type(6) { top: 50%; right: 5px; transform: translateY(-50%); }
     .slot .marker:nth-of-type(n+7) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    /* NOVO: Estilos do Modal de Herói (Hero Card) */
+    #hero-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+    }
+    #hero-modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #hero-modal-img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+    }
+    #close-hero-modal {
+      position: absolute;
+      top: -15px;
+      right: -25px;
+      color: #fff;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      text-shadow: 2px 2px 5px #000;
+    }
+    #close-hero-modal:hover { color: #f1c40f; }
   </style>
 </head>
 <body>
+
+  <!-- Modal de Ficha do Herói -->
+  <div id="hero-modal" onclick="closeHeroModal(event)">
+    <div id="hero-modal-content" onclick="event.stopPropagation()">
+      <span id="close-hero-modal" onclick="closeHeroModal()">&times;</span>
+      <img id="hero-modal-img" src="" alt="Hero Card">
+    </div>
+  </div>
 
   <!-- Menu Lateral -->
   <div id="sidebar">
@@ -185,6 +232,12 @@
     <div class="deck-container" id="markers-box">
       <h3 style="font-size: 14px; margin: 0 0 10px 0; color: #ccc;">Marcadores</h3>
       <div id="markers-container" style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;"></div>
+    </div>
+
+    <!-- NOVO: Deck de Heróis -->
+    <div class="deck-container" id="container-heroes" data-deck-id="heroes">
+      <div id="count-heroes" class="deck-count"></div>
+      <img id="deck-heroes" class="deck-image draggable-deck" title="Heroes">
     </div>
   </div>
 
@@ -292,13 +345,21 @@ const bosses = {
 
 const heroes = {
   ethairna: {name:"Ethairna", src:"arquivos/heroes/Ethairna.png", text:"Seeking Bolt: Perform an Intellect check of 5. If successful, spend 2 focus and deal 1 damage to a target within 4 spaces along any path."},
+  ethairnacard: {name:"Ethairna Card", src:"arquivos/heroes/Ethairna Card.png", text:"Seeking Bolt: Perform an Intellect check of 5. If successful, spend 2 focus and deal 1 damage to a target within 4 spaces along any path."},
   gerrund: {name:"Gerrund the Blue", src:"arquivos/heroes/Gerrund the Blue.png", text:"Magic Arrow: Perform an Intellect check of 6. If successful, spend 2 focus and deal 2 damage to a target within 2 spaces along any path."},
-  grokull: {name:"Grok'Ull", src:"arquivos/heroes/Grokull.png", text:"Battle Rage: Whenever you perform a Melee or Missile Attack action, you may spend 3 focus to add 2 to your die result."},
+  gerrundcard: {name:"Gerrund the Blue Card", src:"arquivos/heroes/Gerrund the Blue Card.png", text:"Magic Arrow: Perform an Intellect check of 6. If successful, spend 2 focus and deal 2 damage to a target within 2 spaces along any path."},
+  grokull: {name:"Grok'Ull", src:"arquivos/heroes/GrokUll.png", text:"Battle Rage: Whenever you perform a Melee or Missile Attack action, you may spend 3 focus to add 2 to your die result."},
+  grokullcard: {name:"Grok'Ull Card", src:"arquivos/heroes/GrokUll Card.png", text:"Battle Rage: Whenever you perform a Melee or Missile Attack action, you may spend 3 focus to add 2 to your die result."},
   moonblade: {name:"Moonblade", src:"arquivos/heroes/Moonblade.png", text:"Shadow Walk: Perform an Agility Check of 6. If successful, spend 3 focus to move up to your speed, ignoring enemies, and deal 1 damage to all targets in the space where your movement ends."},
+  moonbladecard: {name:"Moonblade Card", src:"arquivos/heroes/Moonblade Card.png", text:"Shadow Walk: Perform an Agility Check of 6. If successful, spend 3 focus to move up to your speed, ignoring enemies, and deal 1 damage to all targets in the space where your movement ends."},
   sirlanon: {name:"Sir Lanon", src:"arquivos/heroes/Sir Lanon.png", text:"Divine Might: Perform an Intellect check of 4. If successful, spend 2 focus to perform a Melee Attack and add 2 to your die result."},
+  sirlanoncard: {name:"Sir Lanon Card", src:"arquivos/heroes/Sir Lanon Card.png", text:"Divine Might: Perform an Intellect check of 4. If successful, spend 2 focus to perform a Melee Attack and add 2 to your die result."},
   thordin: {name:"Thordin Firebraid", src:"arquivos/heroes/Thordin Firebraid.png", text:"Stone Stance: While performing a Melee Attack, you may spend 2 focus to increase your Defense by 2 (may do this after the Enemy Die roll)."},
+  thordincard: {name:"Thordin Firebraid Card", src:"arquivos/heroes/Thordin Firebraid Card.png", text:"Stone Stance: While performing a Melee Attack, you may spend 2 focus to increase your Defense by 2 (may do this after the Enemy Die roll)."},
   uliessa: {name:"Uliessa", src:"arquivos/heroes/Uliessa.png", text:"Heal: Whenever you Cast a Spell, you may also spend 2 focus to heal 1 Hero up to 3 rooms away 4 health (can be self)."},
+  uliessacard: {name:"Uliessa Card", src:"arquivos/heroes/Uliessa Card.png", text:"Heal: Whenever you Cast a Spell, you may also spend 2 focus to heal 1 Hero up to 3 rooms away 4 health (can be self)."},
   wyn: {name:"Wyn Keleas", src:"arquivos/heroes/Wyn Keleas.png", text:"Stealth- Free Action: Spend 2 focus move through enemies (instead of stopping)."},
+  wyncard: {name:"Wyn Keleas Card", src:"arquivos/heroes/Wyn Keleas Card.png", text:"Stealth- Free Action: Spend 2 focus move through enemies (instead of stopping)."},
 }
 
 const cardbacks = {
@@ -307,6 +368,7 @@ const cardbacks = {
   minionback: {name:"Minions", src:"arquivos/minions/Minion Back.png", text:"Arraste para revelar."},
   lootback: {name:"Loot", src:"arquivos/loot/Loot Back.png", text:"Arraste para revelar."},
   spellback: {name:"Spells", src:"arquivos/spells/Spell Back.png", text:"Arraste para revelar."},
+  heroback: {name:"Heroes", src:"arquivos/heroes/Hero Back.png", text:"Arraste para revelar."},
 }
 
 // 1. Função de Embaralhar
@@ -317,7 +379,7 @@ function shuffle(array) {
   }
 }
 
-// 2. Setup do Dungeon Deck (Rooms)
+// 2. Setup do Dungeon Deck (Rooms) e Heroes
 let numPlayers = 0;
 while (![2, 3, 4].includes(numPlayers)) {
   const input = prompt("Quantos jogadores? (Digite 2, 3 ou 4)");
@@ -330,27 +392,32 @@ const countA = numPlayers === 2 ? 9 : (numPlayers === 3 ? 7 : 5);
 const deckA = availableRooms.splice(0, countA);
 const countBRooms = numPlayers * 3;
 const deckBRooms = availableRooms.splice(0, countBRooms);
-const deckBEncounters = Array(numPlayers).fill("minionencounters");
+const deckBEncounters = Array(numPlayers).fill("minionencounter");
 const deckB = [...deckBRooms, ...deckBEncounters];
 shuffle(deckB);
 const deckCRooms = availableRooms.splice(0, 3);
 const deckC = [...deckCRooms, "bosslairdoor"];
 shuffle(deckC);
 
+// Filtra os Heróis para puxar apenas os "tokens" (chaves que não terminam com 'card')
+const playableHeroes = Object.keys(heroes).filter(k => !k.endsWith('card'));
+
 const decks = {
   rooms: [...deckC, ...deckB, ...deckA],
-  goblins: Object.keys(goblins),
+  goblins: ['boomygoblin', 'boomygoblin', 'pokeygoblin', 'shootygoblin', 'stabbygoblin', 'stabbygoblin'],
   minions: Object.keys(minions),
   loot: Object.keys(loot),
-  spells: Object.keys(spells)
+  spells: Object.keys(spells),
+  heroes: playableHeroes
 };
 
 shuffle(decks.goblins);
 shuffle(decks.minions);
 shuffle(decks.loot);
 shuffle(decks.spells);
+shuffle(decks.heroes);
 
-const allCardsDB = { ...rooms, ...goblins, ...minions, ...loot, ...spells };
+const allCardsDB = { ...rooms, ...goblins, ...minions, ...loot, ...spells, ...heroes };
 
 // 3. Setup Visual dos Baralhos na Sidebar
 const deckConfigs = [
@@ -358,7 +425,8 @@ const deckConfigs = [
   { id: 'goblins', back: cardbacks.goblinback, action: 'draw_misc' },
   { id: 'minions', back: cardbacks.minionback, action: 'draw_misc' },
   { id: 'loot', back: cardbacks.lootback, action: 'draw_misc' },
-  { id: 'spells', back: cardbacks.spellback, action: 'draw_misc' }
+  { id: 'spells', back: cardbacks.spellback, action: 'draw_misc' },
+  { id: 'heroes', back: cardbacks.heroback, action: 'draw_misc' } // Adicionado Heróis
 ];
 
 function atualizarVisualBaralhos() {
@@ -413,7 +481,13 @@ function atualizarVisualBaralhos() {
         const cardElement = document.getElementById(cardId);
         if (cardElement) {
           const cardKey = cardElement.dataset.cardKey;
-          decks[cfg.id].push(cardKey);
+          
+          if (cfg.id === 'goblins' || cfg.id === 'minions') {
+            decks[cfg.id].unshift(cardKey); 
+          } else {
+            decks[cfg.id].push(cardKey);
+          }
+          
           cardElement.remove();
           atualizarVisualBaralhos();
         }
@@ -423,8 +497,21 @@ function atualizarVisualBaralhos() {
 }
 atualizarVisualBaralhos();
 
+// --- Funções do Modal de Herói ---
+function openHeroModal(srcPath) {
+  const modal = document.getElementById('hero-modal');
+  const img = document.getElementById('hero-modal-img');
+  img.src = srcPath;
+  modal.style.display = 'flex';
+}
+
+function closeHeroModal(event) {
+  if (event && event.target.id === 'hero-modal-img') return; // Impede fechar ao clicar apenas na imagem
+  document.getElementById('hero-modal').style.display = 'none';
+}
+
 // --- Setup e Lógica dos Marcadores ---
-const tokensList = ['🚫','🚫','🚫','🚫','🚫','🚫','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','👹','🗿','😎','😼','👺'];
+const tokensList = ['🚫','🚫','🚫','🚫','🚫','🚫','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','👿'];
 const markersContainer = document.getElementById('markers-container');
 
 tokensList.forEach((emoji, index) => {
@@ -486,10 +573,21 @@ function criarImagemCarta(chaveCarta, originDeckId) {
 
   img.addEventListener('contextmenu', (evt) => {
     evt.preventDefault();
-    let rotacaoAtual = parseInt(img.dataset.rotation);
-    rotacaoAtual += 90;
-    img.dataset.rotation = rotacaoAtual;
-    img.style.transform = `rotate(${rotacaoAtual}deg)`;
+    
+    // NOVO: Se for herói, abre a Ficha do Herói em vez de rotacionar
+    if (originDeckId === 'heroes') {
+      const heroCardKey = chaveCarta + 'card'; // Ex: 'ethairna' vira 'ethairnacard'
+      const heroCardData = allCardsDB[heroCardKey];
+      if (heroCardData) {
+        openHeroModal(heroCardData.src);
+      }
+    } else {
+      // Rotaciona as outras cartas
+      let rotacaoAtual = parseInt(img.dataset.rotation);
+      rotacaoAtual += 90;
+      img.dataset.rotation = rotacaoAtual;
+      img.style.transform = `rotate(${rotacaoAtual}deg)`;
+    }
   });
 
   return img;
