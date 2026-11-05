@@ -151,8 +151,8 @@
     .slot .marker:nth-of-type(6) { top: 50%; right: 5px; transform: translateY(-50%); }
     .slot .marker:nth-of-type(n+7) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-    /* NOVO: Estilos do Modal de Herói (Hero Card) */
-    #hero-modal {
+    /* Estilos do Modal de Herói / Boss (Card) */
+    #card-modal {
       display: none;
       position: fixed;
       z-index: 1000;
@@ -164,7 +164,7 @@
       align-items: center;
       justify-content: center;
     }
-    #hero-modal-content {
+    #card-modal-content {
       position: relative;
       max-width: 90vw;
       max-height: 90vh;
@@ -172,13 +172,13 @@
       flex-direction: column;
       align-items: center;
     }
-    #hero-modal-img {
+    #card-modal-img {
       max-width: 100%;
       max-height: 85vh;
       border-radius: 12px;
       box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
     }
-    #close-hero-modal {
+    #close-card-modal {
       position: absolute;
       top: -15px;
       right: -25px;
@@ -188,16 +188,16 @@
       cursor: pointer;
       text-shadow: 2px 2px 5px #000;
     }
-    #close-hero-modal:hover { color: #f1c40f; }
+    #close-card-modal:hover { color: #f1c40f; }
   </style>
 </head>
 <body>
 
-  <!-- Modal de Ficha do Herói -->
-  <div id="hero-modal" onclick="closeHeroModal(event)">
-    <div id="hero-modal-content" onclick="event.stopPropagation()">
-      <span id="close-hero-modal" onclick="closeHeroModal()">&times;</span>
-      <img id="hero-modal-img" src="" alt="Hero Card">
+  <!-- Modal de Ficha do Herói / Boss -->
+  <div id="card-modal" onclick="closeCardModal(event)">
+    <div id="card-modal-content" onclick="event.stopPropagation()">
+      <span id="close-card-modal" onclick="closeCardModal()">&times;</span>
+      <img id="card-modal-img" src="" alt="Full Card">
     </div>
   </div>
 
@@ -234,10 +234,16 @@
       <div id="markers-container" style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;"></div>
     </div>
 
-    <!-- NOVO: Deck de Heróis -->
+    <!-- Deck de Heróis -->
     <div class="deck-container" id="container-heroes" data-deck-id="heroes">
       <div id="count-heroes" class="deck-count"></div>
       <img id="deck-heroes" class="deck-image draggable-deck" title="Heroes">
+    </div>
+
+    <!-- Deck de Bosses -->
+    <div class="deck-container" id="container-bosses" data-deck-id="bosses">
+      <div id="count-bosses" class="deck-count"></div>
+      <img id="deck-bosses" class="deck-image draggable-deck" title="Bosses">
     </div>
   </div>
 
@@ -340,18 +346,18 @@ const minions = {
 }
 
 const bosses = {
-  thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n• Any Skill Check: add 3 to the die result.\n• Agility Check: add 2 to the die result.\n• Strength Check: add 2 to the die result.\n• Immediately lose 1 health.\n• Lair Entrance: Immediately lose 2 health.\n• Immediately gain 2 focus."},
-  thedragoncard: {name:"The Dragon", src:"arquivos/bosses/The Dragon Card.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n• Any Skill Check: add 3 to the die result.\n• Agility Check: add 2 to the die result.\n• Strength Check: add 2 to the die result.\n• Immediately lose 1 health.\n• Lair Entrance: Immediately lose 2 health.\n• Immediately gain 2 focus."},
-  thegoblinking: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n• Any Skill Check: add 2 to the die result.\n• Any Skill Check: add 1 to the die result.\n• Immediately gain 1 focus.\n• Immediately add a Goblin to Entrance.\n• Lair Entrance: Immediately add a Goblin to Entrance.\n• Immediately gain 1 focus."},
-  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n• Any Skill Check: add 2 to the die result.\n• Any Skill Check: add 1 to the die result.\n• Immediately gain 1 focus.\n• Immediately add a Goblin to Entrance.\n• Lair Entrance: Immediately add a Goblin to Entrance.\n• Immediately gain 1 focus."},
-  thegorgon: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 focus. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Agility Check: add 2 to the die result.\n• Intellect Check: add 2 to the die result.\n• Immediately gain 2 focus.\n• Strength Check: add 2 to the die result.\n• Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n• Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
-  thegorgoncard: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon Card.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 focus. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Agility Check: add 2 to the die result.\n• Intellect Check: add 2 to the die result.\n• Immediately gain 2 focus.\n• Strength Check: add 2 to the die result.\n• Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n• Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
-  thehydra: {name:"The Hydra", src:"arquivos/bosses/The Hydra.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Immediately gain MAX health and focus.\n• Immediately lose 1 health.\n• Immediately lose 1 health.\n• Hero may immediately move again.\n• Immediately lose 1 health.\n• Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
-  thehydracard: {name:"The Hydra", src:"arquivos/bosses/The Hydra Card.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Immediately gain MAX health and focus.\n• Immediately lose 1 health.\n• Immediately lose 1 health.\n• Hero may immediately move again.\n• Immediately lose 1 health.\n• Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
-  thepharaoh: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 focus or discard one or their Spells from the game (if they do not have 3 focus to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):• Lair Entrance: Immediately lose 2 focus.\n• Immediately lose 1 focus.\n• Intellect Check: add 2 to the die result.\n• Agility Check: add 2 to the die result.\n• Strength Check: add 2 to the die result.\n• Immediately gain 2 focus."},
-  thepharaohcard: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh Card.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 focus or discard one or their Spells from the game (if they do not have 3 focus to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):• Lair Entrance: Immediately lose 2 focus.\n• Immediately lose 1 focus.\n• Intellect Check: add 2 to the die result.\n• Agility Check: add 2 to the die result.\n• Strength Check: add 2 to the die result.\n• Immediately gain 2 focus."},
-  theseer: {name:"The Seer", src:"arquivos/bosses/The Seer.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 focus.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Lair Entrance: Immediately lose 3 focus.\n• Immediately lose 2 focus.\n• Immediately gain 1 focus.\n• Any Skill Check: add 1 to the die result.\n• Immediately gain 1 focus.\n• Any Skill Check: add 2 to the die result."},
-  theseercard: {name:"The Seer", src:"arquivos/bosses/The Seer Card.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 focus.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n• Lair Entrance: Immediately lose 3 focus.\n• Immediately lose 2 focus.\n• Immediately gain 1 focus.\n• Any Skill Check: add 1 to the die result.\n• Immediately gain 1 focus.\n• Any Skill Check: add 2 to the die result."},
+  thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\nAny Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 focus."},
+  thedragoncard: {name:"The Dragon", src:"arquivos/bosses/The Dragon Card.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\nAny Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 focus."},
+  thegoblinking: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\nAny Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 focus.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 focus."},
+  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\nAny Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 focus.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 focus."},
+  thegorgon: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 focus. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nAgility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 focus.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
+  thegorgoncard: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon Card.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 focus. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nAgility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 focus.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
+  thehydra: {name:"The Hydra", src:"arquivos/bosses/The Hydra.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nImmediately gain MAX health and focus.\n- Immediately lose 1 health.\n- Immediately lose 1 health.\n- Hero may immediately move again.\n- Immediately lose 1 health.\n- Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
+  thehydracard: {name:"The Hydra", src:"arquivos/bosses/The Hydra Card.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nImmediately gain MAX health and focus.\n- Immediately lose 1 health.\n- Immediately lose 1 health.\n- Hero may immediately move again.\n- Immediately lose 1 health.\n- Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
+  thepharaoh: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 focus or discard one or their Spells from the game (if they do not have 3 focus to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):• Lair Entrance: Immediately lose 2 focus.\n- Immediately lose 1 focus.\n- Intellect Check: add 2 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately gain 2 focus."},
+  thepharaohcard: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh Card.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 focus or discard one or their Spells from the game (if they do not have 3 focus to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):• Lair Entrance: Immediately lose 2 focus.\n- Immediately lose 1 focus.\n- Intellect Check: add 2 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately gain 2 focus."},
+  theseer: {name:"The Seer", src:"arquivos/bosses/The Seer.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 focus.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 3 focus.\n- Immediately lose 2 focus.\n- Immediately gain 1 focus.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 focus.\n- Any Skill Check: add 2 to the die result."},
+  theseercard: {name:"The Seer", src:"arquivos/bosses/The Seer Card.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 focus.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 3 focus.\n- Immediately lose 2 focus.\n- Immediately gain 1 focus.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 focus.\n- Any Skill Check: add 2 to the die result."},
 }
 
 const heroes = {
@@ -391,7 +397,7 @@ function shuffle(array) {
   }
 }
 
-// 2. Setup do Dungeon Deck (Rooms) e Heroes
+// 2. Setup do Dungeon Deck (Rooms), Heroes e Bosses
 let numPlayers = 0;
 while (![2, 3, 4].includes(numPlayers)) {
   const input = prompt("Quantos jogadores? (Digite 2, 3 ou 4)");
@@ -411,8 +417,9 @@ const deckCRooms = availableRooms.splice(0, 3);
 const deckC = [...deckCRooms, "bosslairdoor"];
 shuffle(deckC);
 
-// Filtra os Heróis para puxar apenas os "tokens" (chaves que não terminam com 'card')
+// Filtra Heróis e Bosses para puxar apenas os "tokens"
 const playableHeroes = Object.keys(heroes).filter(k => !k.endsWith('card'));
+const playableBosses = Object.keys(bosses).filter(k => !k.endsWith('card'));
 
 const decks = {
   rooms: [...deckC, ...deckB, ...deckA],
@@ -420,7 +427,8 @@ const decks = {
   minions: Object.keys(minions),
   loot: Object.keys(loot),
   spells: Object.keys(spells),
-  heroes: playableHeroes
+  heroes: playableHeroes,
+  bosses: playableBosses 
 };
 
 shuffle(decks.goblins);
@@ -428,8 +436,9 @@ shuffle(decks.minions);
 shuffle(decks.loot);
 shuffle(decks.spells);
 shuffle(decks.heroes);
+shuffle(decks.bosses); 
 
-const allCardsDB = { ...rooms, ...goblins, ...minions, ...loot, ...spells, ...heroes };
+const allCardsDB = { ...rooms, ...goblins, ...minions, ...loot, ...spells, ...heroes, ...bosses };
 
 // 3. Setup Visual dos Baralhos na Sidebar
 const deckConfigs = [
@@ -438,7 +447,8 @@ const deckConfigs = [
   { id: 'minions', back: cardbacks.minionback, action: 'draw_misc' },
   { id: 'loot', back: cardbacks.lootback, action: 'draw_misc' },
   { id: 'spells', back: cardbacks.spellback, action: 'draw_misc' },
-  { id: 'heroes', back: cardbacks.heroback, action: 'draw_misc' } // Adicionado Heróis
+  { id: 'heroes', back: cardbacks.heroback, action: 'draw_misc' },
+  { id: 'bosses', back: cardbacks.bossback, action: 'draw_misc' }
 ];
 
 function atualizarVisualBaralhos() {
@@ -509,21 +519,21 @@ function atualizarVisualBaralhos() {
 }
 atualizarVisualBaralhos();
 
-// --- Funções do Modal de Herói ---
-function openHeroModal(srcPath) {
-  const modal = document.getElementById('hero-modal');
-  const img = document.getElementById('hero-modal-img');
+// --- Funções do Modal de Herói / Boss ---
+function openCardModal(srcPath) {
+  const modal = document.getElementById('card-modal');
+  const img = document.getElementById('card-modal-img');
   img.src = srcPath;
   modal.style.display = 'flex';
 }
 
-function closeHeroModal(event) {
-  if (event && event.target.id === 'hero-modal-img') return; // Impede fechar ao clicar apenas na imagem
-  document.getElementById('hero-modal').style.display = 'none';
+function closeCardModal(event) {
+  if (event && event.target.id === 'card-modal-img') return; 
+  document.getElementById('card-modal').style.display = 'none';
 }
 
 // --- Setup e Lógica dos Marcadores ---
-const tokensList = ['🚫','🚫','🚫','🚫','🚫','🚫','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','👿'];
+const tokensList = ['🚫','🚫','🚫','🚫','🚫','🚫','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','👿', '😎','😼','🐶','🥷'];
 const markersContainer = document.getElementById('markers-container');
 
 tokensList.forEach((emoji, index) => {
@@ -562,13 +572,23 @@ markersBox.addEventListener('drop', (e) => {
   }
 });
 
-// 5. Criação da Imagem da Carta
-function criarImagemCarta(chaveCarta, originDeckId) {
+// 5. Criação da Imagem da Carta (Com Suporte para Cartas Viradas)
+function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
   const dadosCarta = allCardsDB[chaveCarta];
   const img = document.createElement('img');
-  img.src = dadosCarta.src;
+  
+  // Salva no dataset se a carta está virada para baixo
+  img.dataset.isFacedown = isFacedown;
+  
+  if (isFacedown && originDeckId === 'rooms') {
+    img.src = cardbacks.roomback.src;
+    img.title = "Dungeon Card (Face para baixo)";
+  } else {
+    img.src = dadosCarta.src;
+    img.title = `${dadosCarta.name}\n\n${dadosCarta.text}`;
+  }
+
   img.alt = dadosCarta.name;
-  img.title = `${dadosCarta.name}\n\n${dadosCarta.text}`;
   img.classList.add('card');
   
   img.draggable = true;
@@ -583,18 +603,44 @@ function criarImagemCarta(chaveCarta, originDeckId) {
     e.dataTransfer.setData('origin_deck', img.dataset.originDeck);
   });
 
+  // NOVO: Evento para "Virar a carta" com botão esquerdo
+  img.addEventListener('click', (e) => {
+    if (img.dataset.isFacedown === 'true') {
+      img.draggable = false; // Impede arrastar durante a animação
+      
+      // Animação de encolher (metade do Flip)
+      img.style.transition = 'transform 0.15s ease-in';
+      img.style.transform = `rotate(${img.dataset.rotation}deg) scaleX(0)`;
+      
+      setTimeout(() => {
+        // Revela a carta
+        img.src = dadosCarta.src;
+        img.title = `${dadosCarta.name}\n\n${dadosCarta.text}`;
+        
+        // Animação de expandir (segunda metade do Flip)
+        img.style.transition = 'transform 0.15s ease-out';
+        img.style.transform = `rotate(${img.dataset.rotation}deg) scaleX(1)`;
+        
+        setTimeout(() => {
+          img.dataset.isFacedown = 'false';
+          img.style.transition = 'transform 0.3s ease'; // Volta à transição padrão
+          img.draggable = true;
+        }, 150);
+      }, 150);
+    }
+  });
+
   img.addEventListener('contextmenu', (evt) => {
     evt.preventDefault();
     
-    // NOVO: Se for herói, abre a Ficha do Herói em vez de rotacionar
-    if (originDeckId === 'heroes') {
-      const heroCardKey = chaveCarta + 'card'; // Ex: 'ethairna' vira 'ethairnacard'
-      const heroCardData = allCardsDB[heroCardKey];
-      if (heroCardData) {
-        openHeroModal(heroCardData.src);
+    if (originDeckId === 'heroes' || originDeckId === 'bosses') {
+      const fullCardKey = chaveCarta + 'card'; 
+      const fullCardData = allCardsDB[fullCardKey];
+      if (fullCardData) {
+        openCardModal(fullCardData.src);
       }
     } else {
-      // Rotaciona as outras cartas
+      // Rotaciona as outras cartas (funciona inclusive se estiver virada pra baixo)
       let rotacaoAtual = parseInt(img.dataset.rotation);
       rotacaoAtual += 90;
       img.dataset.rotation = rotacaoAtual;
@@ -619,7 +665,8 @@ function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = fa
     slot.dataset.index = i;
 
     if (temEntrance && i === centroIndex) {
-      const entranceImg = criarImagemCarta('entrance', 'rooms');
+      // A Entrance inicia virada para cima
+      const entranceImg = criarImagemCarta('entrance', 'rooms', false);
       slot.appendChild(entranceImg);
     }
 
@@ -653,7 +700,10 @@ function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = fa
         if (slotAcceptsActions.includes(action) && (action === 'draw_room' || action === 'draw_misc')) {
           if (decks[deckType] && decks[deckType].length > 0) {
             const drawnKey = decks[deckType].pop();
-            const newImage = criarImagemCarta(drawnKey, deckType);
+            
+            // NOVO: Se a ação é 'draw_room' (comprar do Dungeon Deck), entra virada para baixo (isFacedown = true)
+            const isFacedown = (action === 'draw_room');
+            const newImage = criarImagemCarta(drawnKey, deckType, isFacedown);
             
             slot.prepend(newImage);
 
