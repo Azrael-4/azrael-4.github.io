@@ -26,7 +26,7 @@
       gap: 15px;
       position: sticky;
       top: 20px;
-      flex-shrink: 0; /* Impede que a sidebar seja comprimida ou suma */
+      flex-shrink: 0;
     }
 
     .deck-container {
@@ -71,11 +71,11 @@
       border: 2px solid #444;
     }
 
-    /* Nova grid Misc agora é 7x7 */
+    /* Nova grid Misc agora é 7x10 */
     #misc-area {
       display: grid;
       grid-template-columns: repeat(7, 150px);
-      grid-template-rows: repeat(10, 150px); /* Alterado de 7 para 10 */
+      grid-template-rows: repeat(10, 150px);
       gap: 5px;
       padding: 20px;
       background-color: #1c2a38; 
@@ -173,17 +173,16 @@
     }
     #card-modal-content {
       position: relative;
+      display: inline-block; /* Altera para se ajustar ao tamanho da imagem */
       max-width: 90vw;
       max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     #card-modal-img {
       max-width: 100%;
       max-height: 85vh;
       border-radius: 12px;
       box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+      display: block; /* Evita margens fantasmas na imagem */
     }
     #close-card-modal {
       position: absolute;
@@ -194,8 +193,33 @@
       font-weight: bold;
       cursor: pointer;
       text-shadow: 2px 2px 5px #000;
+      z-index: 1020;
     }
     #close-card-modal:hover { color: #f1c40f; }
+
+    /* ---------------------------------------------------
+       NOVO: ESTILO DOS MARCADORES DE VIDA E FOCO NO MODAL 
+       Altere o tamanho (width, height e font-size) aqui!
+       --------------------------------------------------- */
+    .modal-marker {
+      position: absolute;
+      width: 80px;          /* Largura do marcador (bolinha) */
+      height: 80px;         /* Altura do marcador (bolinha) */
+      font-size: 60px;      /* Tamanho do emoji dentro da bolinha */
+      background-color: rgba(0,0,0,0.75);
+      border: 1px solid #aaa;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      z-index: 1010;
+      user-select: none;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+    }
+    .modal-marker:active {
+      cursor: grabbing;
+    }
 
     /* Estilos da Tocha */
     #torch-wrapper {
@@ -216,7 +240,7 @@
     }
     
     #torch-mat {
-      max-width: 680px; /* Alinha com a largura aproximada da Dungeon 7x7 */
+      max-width: 680px; 
       width: 100%;
       border-radius: 8px;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
@@ -228,7 +252,7 @@
       position: absolute;
       top: 20px;
       left: 340px;
-      width: 80px; /* Tamanho customizável dependendo do asset */
+      width: 80px; 
       height: auto;
       cursor: grab;
       z-index: 20;
@@ -245,7 +269,12 @@
   <div id="card-modal" onclick="closeCardModal(event)">
     <div id="card-modal-content" onclick="event.stopPropagation()">
       <span id="close-card-modal" onclick="closeCardModal()">&times;</span>
-      <img id="card-modal-img" src="" alt="Full Card">
+      <!-- draggable="false" impede arrastar a imagem em si, para facilitar arrastar os marcadores por cima dela -->
+      <img id="card-modal-img" src="" alt="Full Card" draggable="false">
+      
+      <!-- Novos Marcadores Exclusivos do Modal -->
+      <div id="modal-marker-health" class="modal-marker" draggable="true" title="Vida">❤️</div>
+      <div id="modal-marker-focus" class="modal-marker" draggable="true" title="Foco">⚡</div>
     </div>
   </div>
 
@@ -300,7 +329,7 @@
     <div id="dungeon-column">
       <div id="dungeon-area"></div>
       
-      <!-- Novo Container da Tocha -->
+      <!-- Container da Tocha -->
       <div id="torch-wrapper">
         <div id="torch-container">
           <img id="torch-mat" src="" title="Clique para avançar para o Ato II">
@@ -585,20 +614,99 @@ function atualizarVisualBaralhos() {
 }
 atualizarVisualBaralhos();
 
-// --- Funções do Modal de Herói / Boss ---
-function openCardModal(srcPath) {
+
+// ============================================
+// LÓGICA DO MODAL DA CARTA DE HERÓI / BOSS
+// ============================================
+// Dicionário para salvar a posição dos marcadores de cada carta
+const modalMarkersPositions = {};
+let currentModalCardKey = null;
+
+function openCardModal(srcPath, cardKey) {
   const modal = document.getElementById('card-modal');
   const img = document.getElementById('card-modal-img');
+  const hMarker = document.getElementById('modal-marker-health');
+  const fMarker = document.getElementById('modal-marker-focus');
+  
   img.src = srcPath;
+  currentModalCardKey = cardKey;
+
+  // Se a carta ainda não tem posições salvas, define o padrão (canto superior esquerdo)
+  if (!modalMarkersPositions[cardKey]) {
+    modalMarkersPositions[cardKey] = {
+      health: { left: '20px', top: '20px' },
+      focus: { left: '60px', top: '20px' }
+    };
+  }
+
+  // Aplica as posições salvas para a carta específica que está sendo aberta
+  hMarker.style.left = modalMarkersPositions[cardKey].health.left;
+  hMarker.style.top = modalMarkersPositions[cardKey].health.top;
+  
+  fMarker.style.left = modalMarkersPositions[cardKey].focus.left;
+  fMarker.style.top = modalMarkersPositions[cardKey].focus.top;
+
   modal.style.display = 'flex';
 }
 
 function closeCardModal(event) {
   if (event && event.target.id === 'card-modal-img') return; 
   document.getElementById('card-modal').style.display = 'none';
+  currentModalCardKey = null;
 }
 
-// --- Setup e Lógica dos Marcadores ---
+// Lógica de Arrastar e Soltar para os Marcadores dentro do Modal
+const modalContent = document.getElementById('card-modal-content');
+const modalMarkers = document.querySelectorAll('.modal-marker');
+let activeModalMarker = null;
+let modalMarkerOffsetX = 0;
+let modalMarkerOffsetY = 0;
+
+modalMarkers.forEach(marker => {
+  marker.addEventListener('dragstart', (e) => {
+    activeModalMarker = marker;
+    const rect = marker.getBoundingClientRect();
+    modalMarkerOffsetX = e.clientX - rect.left;
+    modalMarkerOffsetY = e.clientY - rect.top;
+    
+    e.dataTransfer.setData('action', 'move_modal_marker');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+});
+
+modalContent.addEventListener('dragover', (e) => {
+  if (e.dataTransfer.getData('action') === 'move_modal_marker' || activeModalMarker) {
+    e.preventDefault();
+  }
+});
+
+modalContent.addEventListener('drop', (e) => {
+  if ((e.dataTransfer.getData('action') === 'move_modal_marker' || activeModalMarker) && currentModalCardKey) {
+    e.preventDefault();
+    const rect = modalContent.getBoundingClientRect();
+    
+    // Calcula nova posição baseada no mouse
+    let x = e.clientX - rect.left - modalMarkerOffsetX;
+    let y = e.clientY - rect.top - modalMarkerOffsetY;
+
+    // Impede o marcador de sair dos limites da imagem da carta
+    x = Math.max(0, Math.min(x, rect.width - activeModalMarker.offsetWidth));
+    y = Math.max(0, Math.min(y, rect.height - activeModalMarker.offsetHeight));
+
+    // Aplica visualmente
+    activeModalMarker.style.left = x + 'px';
+    activeModalMarker.style.top = y + 'px';
+
+    // Salva a nova posição no dicionário para a carta atual
+    const type = activeModalMarker.id === 'modal-marker-health' ? 'health' : 'focus';
+    modalMarkersPositions[currentModalCardKey][type] = { left: x + 'px', top: y + 'px' };
+    
+    activeModalMarker = null;
+  }
+});
+
+
+// --- Setup e Lógica dos Marcadores Globais ---
 const tokensList = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','🚫','🚫','🚫','🚫','🚫','🚫','👺','👹', '😎','😼','🐶','🥷'];
 const markersContainer = document.getElementById('markers-container');
 
@@ -643,7 +751,6 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
   const dadosCarta = allCardsDB[chaveCarta];
   const img = document.createElement('img');
   
-  // Salva no dataset se a carta está virada para baixo
   img.dataset.isFacedown = isFacedown;
   
   if (isFacedown && originDeckId === 'rooms') {
@@ -672,24 +779,21 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
   // Evento para "Virar a carta" com botão esquerdo
   img.addEventListener('click', (e) => {
     if (img.dataset.isFacedown === 'true') {
-      img.draggable = false; // Impede arrastar durante a animação
+      img.draggable = false;
       
-      // Animação de encolher (metade do Flip)
       img.style.transition = 'transform 0.15s ease-in';
       img.style.transform = `rotate(${img.dataset.rotation}deg) scaleX(0)`;
       
       setTimeout(() => {
-        // Revela a carta
         img.src = dadosCarta.src;
         img.title = `${dadosCarta.name}\n\n${dadosCarta.text}`;
         
-        // Animação de expandir (segunda metade do Flip)
         img.style.transition = 'transform 0.15s ease-out';
         img.style.transform = `rotate(${img.dataset.rotation}deg) scaleX(1)`;
         
         setTimeout(() => {
           img.dataset.isFacedown = 'false';
-          img.style.transition = 'transform 0.3s ease'; // Volta à transição padrão
+          img.style.transition = 'transform 0.3s ease';
           img.draggable = true;
         }, 150);
       }, 150);
@@ -703,10 +807,10 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
       const fullCardKey = chaveCarta + 'card'; 
       const fullCardData = allCardsDB[fullCardKey];
       if (fullCardData) {
-        openCardModal(fullCardData.src);
+        // Envia também a KEY do Card para salvar a posição
+        openCardModal(fullCardData.src, fullCardKey);
       }
     } else {
-      // Rotaciona as outras cartas (funciona inclusive se estiver virada pra baixo)
       let rotacaoAtual = parseInt(img.dataset.rotation);
       rotacaoAtual += 90;
       img.dataset.rotation = rotacaoAtual;
@@ -731,7 +835,6 @@ function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = fa
     slot.dataset.index = i;
 
     if (temEntrance && i === centroIndex) {
-      // A Entrance inicia virada para cima
       const entranceImg = criarImagemCarta('entrance', 'rooms', false);
       slot.appendChild(entranceImg);
     }
@@ -767,7 +870,6 @@ function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = fa
           if (decks[deckType] && decks[deckType].length > 0) {
             const drawnKey = decks[deckType].pop();
             
-            // Se a ação é 'draw_room' (comprar do Dungeon Deck), entra virada para baixo (isFacedown = true)
             const isFacedown = (action === 'draw_room');
             const newImage = criarImagemCarta(drawnKey, deckType, isFacedown);
             
@@ -866,7 +968,7 @@ torchMarker.addEventListener('dragstart', (e) => {
 });
 
 torchContainer.addEventListener('dragover', (e) => {
-  e.preventDefault(); // Necessário para aceitar o drop
+  e.preventDefault(); 
 });
 
 torchContainer.addEventListener('drop', (e) => {
