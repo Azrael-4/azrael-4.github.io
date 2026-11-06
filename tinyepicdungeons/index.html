@@ -71,7 +71,7 @@
       border: 2px solid #444;
     }
 
-    /* Nova grid Misc agora é 7x10 */
+    /* Nova grid Misc 7x10 */
     #misc-area {
       display: grid;
       grid-template-columns: repeat(7, 150px);
@@ -129,7 +129,7 @@
       cursor: grabbing;
     }
 
-    /* Estilos dos Marcadores */
+    /* Estilos dos Marcadores Globais */
     .marker {
       width: 40px;
       height: 40px;
@@ -173,7 +173,7 @@
     }
     #card-modal-content {
       position: relative;
-      display: inline-block; /* Altera para se ajustar ao tamanho da imagem */
+      display: inline-block; 
       max-width: 90vw;
       max-height: 90vh;
     }
@@ -182,7 +182,7 @@
       max-height: 85vh;
       border-radius: 12px;
       box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
-      display: block; /* Evita margens fantasmas na imagem */
+      display: block; 
     }
     #close-card-modal {
       position: absolute;
@@ -197,19 +197,16 @@
     }
     #close-card-modal:hover { color: #f1c40f; }
 
-    /* ---------------------------------------------------
-       NOVO: ESTILO DOS MARCADORES DE VIDA E FOCO NO MODAL 
-       Altere o tamanho (width, height e font-size) aqui!
-       --------------------------------------------------- */
+    /* Estilos dos Marcadores Específicos do Modal */
     .modal-marker {
       position: absolute;
-      width: 75px;          /* Largura do marcador (bolinha) */
-      height: 75px;         /* Altura do marcador (bolinha) */
-      font-size: 55px;      /* Tamanho do emoji dentro da bolinha */
-      background-color: rgba(0,0,0,0.75);
+      width: 75px;          
+      height: 75px;         
+      font-size: 55px;      
+      background-color: rgba(0,0,0,0.8);
       border: 1px solid #aaa;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       cursor: grab;
@@ -269,12 +266,17 @@
   <div id="card-modal" onclick="closeCardModal(event)">
     <div id="card-modal-content" onclick="event.stopPropagation()">
       <span id="close-card-modal" onclick="closeCardModal()">&times;</span>
-      <!-- draggable="false" impede arrastar a imagem em si, para facilitar arrastar os marcadores por cima dela -->
       <img id="card-modal-img" src="" alt="Full Card" draggable="false">
       
-      <!-- Novos Marcadores Exclusivos do Modal -->
-      <div id="modal-marker-health" class="modal-marker" draggable="true" title="Vida">❤️</div>
-      <div id="modal-marker-focus" class="modal-marker" draggable="true" title="Foco">⚡</div>
+      <!-- Marcadores de Heróis (Hero) -->
+      <div id="modal-marker-health" class="modal-marker hero-marker" data-type="health" draggable="true" title="Vida">❤️</div>
+      <div id="modal-marker-focus" class="modal-marker hero-marker" data-type="focus" draggable="true" title="Foco">⚡</div>
+      
+      <!-- Marcadores de Bosses (4 Corações Negros) -->
+      <div id="modal-marker-boss1" class="modal-marker boss-marker" data-type="boss1" draggable="true" title="Vida Boss 1">🖤</div>
+      <div id="modal-marker-boss2" class="modal-marker boss-marker" data-type="boss2" draggable="true" title="Vida Boss 2">🖤</div>
+      <div id="modal-marker-boss3" class="modal-marker boss-marker" data-type="boss3" draggable="true" title="Vida Boss 3">🖤</div>
+      <div id="modal-marker-boss4" class="modal-marker boss-marker" data-type="boss4" draggable="true" title="Vida Boss 4">🖤</div>
     </div>
   </div>
 
@@ -305,7 +307,7 @@
       <img id="deck-spells" class="deck-image draggable-deck" title="Spells">
     </div>
 
-    <!-- Caixinha de Marcadores -->
+    <!-- Caixinha de Marcadores Globais -->
     <div class="deck-container" id="markers-box">
       <h3 style="font-size: 14px; margin: 0 0 10px 0; color: #ccc;">Marcadores</h3>
       <div id="markers-container" style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;"></div>
@@ -438,7 +440,7 @@ const bosses = {
   thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 ⚡."},
   thedragoncard: {name:"The Dragon", src:"arquivos/bosses/The Dragon Card.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 ⚡."},
   thegoblinking: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 ⚡."},
-  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\nA- ny Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 ⚡."},
+  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 ⚡."},
   thegorgon: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Agility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 ⚡.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
   thegorgoncard: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon Card.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Agility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 ⚡.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
   thehydra: {name:"The Hydra", src:"arquivos/bosses/The Hydra.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Immediately gain MAX health and ⚡.\n- Immediately lose 1 health.\n- Immediately lose 1 health.\n- Hero may immediately move again.\n- Immediately lose 1 health.\n- Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
@@ -618,33 +620,52 @@ atualizarVisualBaralhos();
 // ============================================
 // LÓGICA DO MODAL DA CARTA DE HERÓI / BOSS
 // ============================================
-// Dicionário para salvar a posição dos marcadores de cada carta
 const modalMarkersPositions = {};
 let currentModalCardKey = null;
 
-function openCardModal(srcPath, cardKey) {
+function openCardModal(srcPath, cardKey, deckType) {
   const modal = document.getElementById('card-modal');
   const img = document.getElementById('card-modal-img');
-  const hMarker = document.getElementById('modal-marker-health');
-  const fMarker = document.getElementById('modal-marker-focus');
-  
   img.src = srcPath;
   currentModalCardKey = cardKey;
 
-  // Se a carta ainda não tem posições salvas, define o padrão (canto superior esquerdo)
+  const isBoss = (deckType === 'bosses');
+
   if (!modalMarkersPositions[cardKey]) {
-    modalMarkersPositions[cardKey] = {
-      health: { left: '20px', top: '20px' },
-      focus: { left: '60px', top: '20px' }
-    };
+    if (isBoss) {
+      modalMarkersPositions[cardKey] = {};
+      for(let i=1; i<=numPlayers; i++) {
+        modalMarkersPositions[cardKey]['boss'+i] = { left: (20 + (i-1)*40) + 'px', top: '20px' };
+      }
+    } else {
+      modalMarkersPositions[cardKey] = {
+        health: { left: '20px', top: '20px' },
+        focus: { left: '60px', top: '20px' }
+      };
+    }
   }
 
-  // Aplica as posições salvas para a carta específica que está sendo aberta
-  hMarker.style.left = modalMarkersPositions[cardKey].health.left;
-  hMarker.style.top = modalMarkersPositions[cardKey].health.top;
-  
-  fMarker.style.left = modalMarkersPositions[cardKey].focus.left;
-  fMarker.style.top = modalMarkersPositions[cardKey].focus.top;
+  const allMarkers = document.querySelectorAll('.modal-marker');
+  allMarkers.forEach(marker => {
+    const isBossMarker = marker.classList.contains('boss-marker');
+    
+    if (isBoss && isBossMarker) {
+      const bossIndex = parseInt(marker.dataset.type.replace('boss', ''));
+      if (bossIndex <= numPlayers) {
+        marker.style.display = 'flex';
+        marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
+        marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
+      } else {
+        marker.style.display = 'none'; // Oculta os corações excedentes ao número de jogadores
+      }
+    } else if (!isBoss && !isBossMarker) {
+      marker.style.display = 'flex';
+      marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
+      marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
+    } else {
+      marker.style.display = 'none';
+    }
+  });
 
   modal.style.display = 'flex';
 }
@@ -655,7 +676,6 @@ function closeCardModal(event) {
   currentModalCardKey = null;
 }
 
-// Lógica de Arrastar e Soltar para os Marcadores dentro do Modal
 const modalContent = document.getElementById('card-modal-content');
 const modalMarkers = document.querySelectorAll('.modal-marker');
 let activeModalMarker = null;
@@ -685,20 +705,16 @@ modalContent.addEventListener('drop', (e) => {
     e.preventDefault();
     const rect = modalContent.getBoundingClientRect();
     
-    // Calcula nova posição baseada no mouse
     let x = e.clientX - rect.left - modalMarkerOffsetX;
     let y = e.clientY - rect.top - modalMarkerOffsetY;
 
-    // Impede o marcador de sair dos limites da imagem da carta
     x = Math.max(0, Math.min(x, rect.width - activeModalMarker.offsetWidth));
     y = Math.max(0, Math.min(y, rect.height - activeModalMarker.offsetHeight));
 
-    // Aplica visualmente
     activeModalMarker.style.left = x + 'px';
     activeModalMarker.style.top = y + 'px';
 
-    // Salva a nova posição no dicionário para a carta atual
-    const type = activeModalMarker.id === 'modal-marker-health' ? 'health' : 'focus';
+    const type = activeModalMarker.dataset.type;
     modalMarkersPositions[currentModalCardKey][type] = { left: x + 'px', top: y + 'px' };
     
     activeModalMarker = null;
@@ -746,7 +762,6 @@ markersBox.addEventListener('drop', (e) => {
   }
 });
 
-// 5. Criação da Imagem da Carta (Com Suporte para Cartas Viradas)
 function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
   const dadosCarta = allCardsDB[chaveCarta];
   const img = document.createElement('img');
@@ -776,7 +791,6 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
     e.dataTransfer.setData('origin_deck', img.dataset.originDeck);
   });
 
-  // Evento para "Virar a carta" com botão esquerdo
   img.addEventListener('click', (e) => {
     if (img.dataset.isFacedown === 'true') {
       img.draggable = false;
@@ -807,8 +821,7 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
       const fullCardKey = chaveCarta + 'card'; 
       const fullCardData = allCardsDB[fullCardKey];
       if (fullCardData) {
-        // Envia também a KEY do Card para salvar a posição
-        openCardModal(fullCardData.src, fullCardKey);
+        openCardModal(fullCardData.src, fullCardKey, originDeckId);
       }
     } else {
       let rotacaoAtual = parseInt(img.dataset.rotation);
@@ -821,10 +834,8 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
   return img;
 }
 
-// 6. Histórico Global para Ctrl+Z
 let historicoJogadas = [];
 
-// 7. Gerador Genérico de Grids
 function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = false) {
   const container = document.getElementById(containerId);
   const centroIndex = Math.floor(totalSlots / 2);
@@ -900,7 +911,6 @@ function criarGrid(containerId, totalSlots, slotAcceptsActions, temEntrance = fa
 criarGrid('dungeon-area', 49, ['draw_room', 'move_card'], true); 
 criarGrid('misc-area', 70, ['draw_misc', 'move_card'], false); 
 
-// 8. Funcionalidade Ctrl + Z
 window.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
     if (historicoJogadas.length > 0) {
@@ -920,41 +930,34 @@ const torchMarker = document.getElementById('torch-marker');
 const torchContainer = document.getElementById('torch-container');
 let isActII = false;
 
-// Inicializa as imagens
 torchMatImg.src = torchmats.torchmat1.src;
 torchMarker.src = torchmats.torchmarker.src;
 
-// Clique com o botão direito para virar o Tabuleiro da Tocha (Ato I para Ato II)
 torchMatImg.addEventListener('contextmenu', (evt) => {
-  evt.preventDefault(); // Impede que o menu de clique direito do navegador apareça
+  evt.preventDefault();
 
   if (!isActII) {
-    // Pergunta de confirmação com OK e Cancelar
     const confirmar = confirm("Tem certeza de que deseja avançar para o Ato II? Esta ação é irreversível.");
-    if (!confirmar) return; // Se clicar em Cancelar, interrompe a ação
+    if (!confirmar) return;
 
-    // Primeira metade da animação (encolher)
     torchMatImg.style.transition = 'transform 0.15s ease-in';
     torchMatImg.style.transform = 'scaleX(0)';
     
     setTimeout(() => {
-      // Troca a imagem
       torchMatImg.src = torchmats.torchmat2.src;
       torchMatImg.title = "Torch Mat Act II";
       
-      // Segunda metade da animação (expandir)
       torchMatImg.style.transition = 'transform 0.15s ease-out';
       torchMatImg.style.transform = 'scaleX(1)';
       
       setTimeout(() => {
         isActII = true;
-        torchMatImg.style.cursor = 'default'; // Não é mais clicável
+        torchMatImg.style.cursor = 'default';
       }, 150);
     }, 150);
   }
 });
 
-// Arrastar e Soltar do Marcador de Tocha
 let torchMarkerOffsetX = 0;
 let torchMarkerOffsetY = 0;
 
@@ -976,11 +979,9 @@ torchContainer.addEventListener('drop', (e) => {
     e.preventDefault();
     const rect = torchContainer.getBoundingClientRect();
     
-    // Calcula a nova posição baseada em onde o mouse soltou
     let x = e.clientX - rect.left - torchMarkerOffsetX;
     let y = e.clientY - rect.top - torchMarkerOffsetY;
 
-    // Mantém o marcador dentro dos limites do container da Tocha
     x = Math.max(0, Math.min(x, rect.width - torchMarker.offsetWidth));
     y = Math.max(0, Math.min(y, rect.height - torchMarker.offsetHeight));
 
