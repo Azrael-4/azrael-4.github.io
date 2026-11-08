@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tiny Epic Dungeons Online</title>
+  <script src="https://unpkg.com/drag-drop-touch"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -100,6 +101,14 @@
       border-color: #888;
     }
 
+    /* Prevenção de menus nativos e zoom indesejado no mobile */
+    .card, .deck-image, .marker, .modal-marker, #torch-mat {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
     .card {
       width: 100%;
       height: 100%;
@@ -142,7 +151,6 @@
       font-size: 24px;
       cursor: grab;
       z-index: 10;
-      user-select: none;
       box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     .marker:active {
@@ -211,7 +219,6 @@
       justify-content: center;
       cursor: grab;
       z-index: 1010;
-      user-select: none;
       box-shadow: 2px 2px 6px rgba(0,0,0,0.9);
     }
     .modal-marker:active {
@@ -277,6 +284,11 @@
       <div id="modal-marker-boss2" class="modal-marker boss-marker" data-type="boss2" draggable="true" title="Vida Boss 2">🖤</div>
       <div id="modal-marker-boss3" class="modal-marker boss-marker" data-type="boss3" draggable="true" title="Vida Boss 3">🖤</div>
       <div id="modal-marker-boss4" class="modal-marker boss-marker" data-type="boss4" draggable="true" title="Vida Boss 4">🖤</div>
+      
+      <!-- Marcadores de Altares (Bosses) -->
+      <div id="modal-marker-altar1" class="modal-marker boss-altar-marker" data-type="altar1" draggable="true" title="Altar 1">⛦</div>
+      <div id="modal-marker-altar2" class="modal-marker boss-altar-marker" data-type="altar2" draggable="true" title="Altar 2">⛦</div>
+      <div id="modal-marker-altar3" class="modal-marker boss-altar-marker" data-type="altar3" draggable="true" title="Altar 3">⛦</div>
     </div>
   </div>
 
@@ -437,18 +449,18 @@ const minions = {
 }
 
 const bosses = {
-  thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 ⚡."},
-  thedragoncard: {name:"The Dragon", src:"arquivos/bosses/The Dragon Card.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 3 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately lose 1 health.\n- Lair Entrance: Immediately lose 2 health.\n- Immediately gain 2 ⚡."},
-  thegoblinking: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 ⚡."},
-  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\n- Any Skill Check: add 2 to the die result.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Immediately add a Goblin to Entrance.\n- Lair Entrance: Immediately add a Goblin to Entrance.\n- Immediately gain 1 ⚡."},
-  thegorgon: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Agility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 ⚡.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
-  thegorgoncard: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon Card.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Agility Check: add 2 to the die result.\n- Intellect Check: add 2 to the die result.\n- Immediately gain 2 ⚡.\n- Strength Check: add 2 to the die result.\n- Roll 1 less Hero Die when performing any Skill Check (can not be 0).\n- Lair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0)."},
-  thehydra: {name:"The Hydra", src:"arquivos/bosses/The Hydra.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Immediately gain MAX health and ⚡.\n- Immediately lose 1 health.\n- Immediately lose 1 health.\n- Hero may immediately move again.\n- Immediately lose 1 health.\n- Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
-  thehydracard: {name:"The Hydra", src:"arquivos/bosses/The Hydra Card.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Immediately gain MAX health and ⚡.\n- Immediately lose 1 health.\n- Immediately lose 1 health.\n- Hero may immediately move again.\n- Immediately lose 1 health.\n- Lair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result."},
-  thepharaoh: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 ⚡ or discard one or their Spells from the game (if they do not have 3 ⚡ to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):\n- Lair Entrance: Immediately lose 2 ⚡.\n- Immediately lose 1 ⚡.\n- Intellect Check: add 2 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately gain 2 ⚡."},
-  thepharaohcard: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh Card.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 ⚡ or discard one or their Spells from the game (if they do not have 3 ⚡ to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):\n- Lair Entrance: Immediately lose 2 ⚡.\n- Immediately lose 1 ⚡.\n- Intellect Check: add 2 to the die result.\n- Agility Check: add 2 to the die result.\n- Strength Check: add 2 to the die result.\n- Immediately gain 2 ⚡."},
-  theseer: {name:"The Seer", src:"arquivos/bosses/The Seer.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 ⚡.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Lair Entrance: Immediately lose 3 ⚡.\n- Immediately lose 2 ⚡.\n- Immediately gain 1 ⚡.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Any Skill Check: add 2 to the die result."},
-  theseercard: {name:"The Seer", src:"arquivos/bosses/The Seer Card.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 ⚡.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\n- Lair Entrance: Immediately lose 3 ⚡.\n- Immediately lose 2 ⚡.\n- Immediately gain 1 ⚡.\n- Any Skill Check: add 1 to the die result.\n- Immediately gain 1 ⚡.\n- Any Skill Check: add 2 to the die result."},
+  thedragon: {name:"The Dragon", src:"arquivos/bosses/The Dragon.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\nAny Skill Check: add 3 to the die result.\nAgility Check: add 2 to the die result.\nStrength Check: add 2 to the die result.\nImmediately lose 1 health.\nLair Entrance: Immediately lose 2 health.\nImmediately gain 2 ⚡.", altars:1},
+  thedragoncard: {name:"The Dragon", src:"arquivos/bosses/The Dragon Card.png", text:"Inferno - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes in the same room as the Serpent lose 3 health.\nScorch - Torch Die Effect: All Heroes within 1 room of Dragon lose 2 health.\n\nHero Space Effects (from left to right):\nAny Skill Check: add 3 to the die result.\nAgility Check: add 2 to the die result.\nStrength Check: add 2 to the die result.\nImmediately lose 1 health.\nLair Entrance: Immediately lose 2 health.\nImmediately gain 2 ⚡.", altars:1},
+  thegoblinking: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\nAny Skill Check: add 2 to the die result.\nAny Skill Check: add 1 to the die result.\nImmediately gain 1 ⚡.\nImmediately add a Goblin to Entrance.\nLair Entrance: Immediately add a Goblin to Entrance.\nImmediately gain 1 ⚡.", altars:1},
+  thegoblinkingcard: {name:"The Goblin King", src:"arquivos/bosses/The Goblin King Card.png", text:"Get Over ‘ere - Enemy Action: Add a Goblin to the Entrance. Additionally, Goblin King heals 2 health (any 1 health marker).\n\nGive ‘em the Stick - Torch Die Effect: All Heroes within 2 room of a Goblin lose 1 health (resolve for each Goblin).\n\nHero Space Effects (from left to right):\nAny Skill Check: add 2 to the die result.\nAny Skill Check: add 1 to the die result.\nImmediately gain 1 ⚡.\nImmediately add a Goblin to Entrance.\nLair Entrance: Immediately add a Goblin to Entrance.\nImmediately gain 1 ⚡.", altars:1},
+  thegorgon: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nAgility Check: add 2 to the die result.\nIntellect Check: add 2 to the die result.\nImmediately gain 2 ⚡.\nStrength Check: add 2 to the die result.\nRoll 1 less Hero Die when performing any Skill Check (can not be 0).\nLair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0).", altars:1},
+  thegorgoncard: {name:"The Gorgon", src:"arquivos/bosses/The Gorgon Card.png", text:"Choke Hold - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 3 rooms of Gorgon lose 2 health.\n\nStone Gaze - Torch Die Effect: All Heroes within 3 rooms of Gorgon lose 3 ⚡. Additionally, Gorgon heals 1 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nAgility Check: add 2 to the die result.\nIntellect Check: add 2 to the die result.\nImmediately gain 2 ⚡.\nStrength Check: add 2 to the die result.\nRoll 1 less Hero Die when performing any Skill Check (can not be 0).\nLair Entrance: Roll 1 less Hero Die when performing any Skill Check (can not be 0).", altars:1},
+  thehydra: {name:"The Hydra", src:"arquivos/bosses/The Hydra.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nImmediately gain MAX health and ⚡.\nImmediately lose 1 health.\nImmediately lose 1 health.\nHero may immediately move again.\nImmediately lose 1 health.\nLair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result.", altars:3},
+  thehydracard: {name:"The Hydra", src:"arquivos/bosses/The Hydra Card.png", text:"Bite - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 1 rooms of Hydra lose 2 health.\n\nRegrowth- Torch Die Effect: Hydra heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nImmediately gain MAX health and ⚡.\nImmediately lose 1 health.\nImmediately lose 1 health.\nHero may immediately move again.\nImmediately lose 1 health.\nLair Entrance: Strength, Agility, or Intellect Checks: subtract 2 to the die result.", altars:3},
+  thepharaoh: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 ⚡ or discard one or their Spells from the game (if they do not have 3 ⚡ to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 2 ⚡.\nImmediately lose 1 ⚡.\nIntellect Check: add 2 to the die result.\nAgility Check: add 2 to the die result.\nStrength Check: add 2 to the die result.\nImmediately gain 2 ⚡.", altars:2},
+  thepharaohcard: {name:"The Pharaoh", src:"arquivos/bosses/The Pharaoh Card.png", text:"Plague - Enemy Action: Move 2 rooms towards the nearest Hero, then all Heroes within 2 rooms of Pharaoh lose 2 health.\n\nSacrifice - Torch Die Effect: All Heroes within 3 room of Pharaoh must choose to lose 3 ⚡ or discard one or their Spells from the game (if they do not have 3 ⚡ to lose, they must discard a Spell).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 2 ⚡.\nImmediately lose 1 ⚡.\nIntellect Check: add 2 to the die result.\nAgility Check: add 2 to the die result.\nStrength Check: add 2 to the die result.\nImmediately gain 2 ⚡.", altars:2},
+  theseer: {name:"The Seer", src:"arquivos/bosses/The Seer.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 ⚡.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 3 ⚡.\nImmediately lose 2 ⚡.\nImmediately gain 1 ⚡.\nAny Skill Check: add 1 to the die result.\nImmediately gain 1 ⚡.\nAny Skill Check: add 2 to the die result.", altars:2},
+  theseercard: {name:"The Seer", src:"arquivos/bosses/The Seer Card.png", text:"Mind Blade - Enemy Action: Move 3 rooms towards the nearest Hero, then all Heroes within 1 room of lose 2 health and 1 ⚡.\n\nCosmic Shift - Torch Die Effect: Seer immediately moves to the Boss Mat (does nothing if already there). Additionally, Seer heals 2 health (any 1 health marker).\n\nHero Space Effects (from left to right):\nLair Entrance: Immediately lose 3 ⚡.\nImmediately lose 2 ⚡.\nImmediately gain 1 ⚡.\nAny Skill Check: add 1 to the die result.\nImmediately gain 1 ⚡.\nAny Skill Check: add 2 to the die result.", altars:2},
 }
 
 const heroes = {
@@ -630,6 +642,7 @@ function openCardModal(srcPath, cardKey, deckType) {
   currentModalCardKey = cardKey;
 
   const isBoss = (deckType === 'bosses');
+  const maxAltars = allCardsDB[cardKey].altars || 0;
 
   if (!modalMarkersPositions[cardKey]) {
     if (isBoss) {
@@ -637,10 +650,13 @@ function openCardModal(srcPath, cardKey, deckType) {
       for(let i=1; i<=numPlayers; i++) {
         modalMarkersPositions[cardKey]['boss'+i] = { left: (20 + (i-1)*40) + 'px', top: '20px' };
       }
+      for(let i=1; i<=maxAltars; i++) {
+        modalMarkersPositions[cardKey]['altar'+i] = { left: (20 + (i-1)*40) + 'px', top: '100px' };
+      }
     } else {
       modalMarkersPositions[cardKey] = {
         health: { left: '20px', top: '20px' },
-        focus: { left: '60px', top: '20px' }
+        focus: { left: '100px', top: '20px' }
       };
     }
   }
@@ -648,22 +664,38 @@ function openCardModal(srcPath, cardKey, deckType) {
   const allMarkers = document.querySelectorAll('.modal-marker');
   allMarkers.forEach(marker => {
     const isBossMarker = marker.classList.contains('boss-marker');
+    const isAltarMarker = marker.classList.contains('boss-altar-marker');
     
-    if (isBoss && isBossMarker) {
-      const bossIndex = parseInt(marker.dataset.type.replace('boss', ''));
-      if (bossIndex <= numPlayers) {
+    if (isBoss) {
+      if (isBossMarker) {
+        const bossIndex = parseInt(marker.dataset.type.replace('boss', ''));
+        if (bossIndex <= numPlayers) {
+          marker.style.display = 'flex';
+          marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
+          marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
+        } else {
+          marker.style.display = 'none';
+        }
+      } else if (isAltarMarker) {
+        const altarIndex = parseInt(marker.dataset.type.replace('altar', ''));
+        if (altarIndex <= maxAltars) {
+          marker.style.display = 'flex';
+          marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
+          marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
+        } else {
+          marker.style.display = 'none';
+        }
+      } else {
+        marker.style.display = 'none';
+      }
+    } else {
+      if (!isBossMarker && !isAltarMarker) {
         marker.style.display = 'flex';
         marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
         marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
       } else {
-        marker.style.display = 'none'; // Oculta os corações excedentes ao número de jogadores
+        marker.style.display = 'none';
       }
-    } else if (!isBoss && !isBossMarker) {
-      marker.style.display = 'flex';
-      marker.style.left = modalMarkersPositions[cardKey][marker.dataset.type].left;
-      marker.style.top = modalMarkersPositions[cardKey][marker.dataset.type].top;
-    } else {
-      marker.style.display = 'none';
     }
   });
 
@@ -814,9 +846,8 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
     }
   });
 
-  img.addEventListener('contextmenu', (evt) => {
-    evt.preventDefault();
-    
+  // Função centralizada para clique secundário / double tap
+  const handleSecondaryAction = () => {
     if (originDeckId === 'heroes' || originDeckId === 'bosses') {
       const fullCardKey = chaveCarta + 'card'; 
       const fullCardData = allCardsDB[fullCardKey];
@@ -829,6 +860,16 @@ function criarImagemCarta(chaveCarta, originDeckId, isFacedown = false) {
       img.dataset.rotation = rotacaoAtual;
       img.style.transform = `rotate(${rotacaoAtual}deg)`;
     }
+  };
+
+  img.addEventListener('contextmenu', (evt) => {
+    evt.preventDefault();
+    handleSecondaryAction();
+  });
+
+  img.addEventListener('dblclick', (evt) => {
+    evt.preventDefault();
+    handleSecondaryAction();
   });
 
   return img;
@@ -933,9 +974,7 @@ let isActII = false;
 torchMatImg.src = torchmats.torchmat1.src;
 torchMarker.src = torchmats.torchmarker.src;
 
-torchMatImg.addEventListener('contextmenu', (evt) => {
-  evt.preventDefault();
-
+function advanceToActII() {
   if (!isActII) {
     const confirmar = confirm("Tem certeza de que deseja avançar para o Ato II? Esta ação é irreversível.");
     if (!confirmar) return;
@@ -956,6 +995,16 @@ torchMatImg.addEventListener('contextmenu', (evt) => {
       }, 150);
     }, 150);
   }
+}
+
+torchMatImg.addEventListener('contextmenu', (evt) => {
+  evt.preventDefault();
+  advanceToActII();
+});
+
+torchMatImg.addEventListener('dblclick', (evt) => {
+  evt.preventDefault();
+  advanceToActII();
 });
 
 let torchMarkerOffsetX = 0;
